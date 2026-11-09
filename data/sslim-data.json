@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238607479",
+      "title": "Banal mong tahanan",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\n \n    C       Em            Am\nAng puso ko ay dinudulog sa Iyo\n   F                   G\nNagpapakumbaba, nagsusumamo\n        F    G    Em         Am\nPagindapatin Mo Ikaw ay mamasdan\n      Dm           Bb          G\nMakaniig Ka at sa Iyo ay pumisan\n \n \n(Ulitin Talata)\n \n \n[Chorus]\n \n        C             Em\nLoobin Mong ang buhay ko’y\n          Am           G\nMaging banal Mong tahanan\n         F         Dm          Bb  G\nLuklukan ng Iyong wagas na pagsinta\n        C             Em\nDaluyan ng walang hanggang\n       Am          G\nMga papuri’t pagsamba\n        F\nMaghari ka O Diyos\n    G            C\nNgayon at kailanman",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238547683",
       "title": "Awit ng Pagsamba",
       "singer": "",
@@ -99,5 +110,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:35:49.012Z"
+  "updatedAt": "2026-11-09T15:36:48.806Z"
 }

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239020331",
+      "title": "Come now is the time to worship",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Chorus]\n \nD                        Dsus4  D\nCome, now is the time to wor - ship\nA                        G -  D/F# - D\nCome, now is the time to give your heart\nD                        Dsus4  D\nCome, just as you are to wor - ship\nA                        G -  D/F# - G\nCome, just as you are before your God\nD\nCome\n \n \n[Verse 1]\n \nG                             D\nOne day every tongue will confess you are God\nG                        D\nOne day every knee will bow\nG                             F#m - Bm\nStill the greatest treasure remains\n               C               Asus4     A\nFor those who gladly choose You now",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238990267",
       "title": "Christmas Medley",
       "singer": "",
@@ -187,5 +198,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:43:11.504Z"
+  "updatedAt": "2026-11-09T15:43:41.704Z"
 }

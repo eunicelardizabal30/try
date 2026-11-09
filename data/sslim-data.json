@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239161796",
+      "title": "Dakilang katapatan",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "VERSE1:\n   C        G/B      Am          G \nSADYANG KAY BUTI NG ATING PANGINOON\n   F          G          C\nMAGTATAPAT SA HABANG PANAHON\n  F           G          Em                 Am         \nMAGING SA KABILA NG AKING PAGKUKULANG\n  Dm         G   G7\nBIYAYA NYA'Y PATULOY NA LAAN\n\n\nVERSE2:\n  C     G/B         Am          G\nKATULAD NG PAGSINAG NG GINTONG ARAW\n  F               G          C\nPATULOY S'YANG NAGBIBIGAY TANGLAW\n  F         G           Am     \nKAYA SA PUSO KO'T DAMDAMIN\n    Dm                     G\nKATAPATAN NYA'Y AKING PUPURIHIN\n\n \nCHORUS:\n  C\nDAKILA KA O DIYOS\n  Dm            \nTAPAT KA NGANG TUNAY\n     F                      G                    C \nMAGMULA PA SA UGAT NG AMING LAHI\n   F            G       Em           Am\nMUNDO'Y MAGUNAW MAN MAAASAHAN KANG LAGI\n  Dm             G            C\nMAGING HANGANG WAKAS NITONG BUHAY\n\n\nVERSE3:\n  C      G/B        Am         G\nKAYA O DIYOS IKA'Y AKING PUPURIHIN\n     F            G      C\nSA BUONG MUNDO'Y AKING AAWITIN\n  F         G            Em       Am  \nDAKILA ANG IYONG KATAPATAN\n    Dm              G\nPAG-IBIG MO'Y WALANG HANGAN\n\n \nCHORUS:\n  C\nDAKILA KA O DIYOS\n  Dm            \nTAPAT KA NGANG TUNAY\n     F                  G                      C \nMAGMULA PA SA UGAT NG AMING LAHI\n   F            G       Em           Am\nMUNDO'Y MAGUNAW MAN MAAASAHAN KANG LAGI\n  Dm             G            C\nMAGING HANGANG WAKAS NITONG BUHAY\n\n  C           \nDAKILA KA O DIYOS\n   Dm   \nSA HABANG PANAHON\n    F                     G                        C \nKATAPATAN MO'Y MATIBAY NA SANDIGAN\n   F          G            Em         Am\nSA BAWAT PIGHATI TAGUMPA'Y MAN AY NAROON\n  F            G           Em          Am\nDALUYAN NG PAG ASA KUNG KAILANGA'Y HINAHON\n   F          G             Em            Am\nPAGIBIG MO'Y ALAY SA AMIN NOON HANGANG NGAYON\n  Dm   Em   F\nDAKILA KA\n  Dm    Em   F\nDAKILA KA\n  Dm    Em    F     G    C\nDAKILA KA O DIYOS",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239054925",
       "title": "Cover the earth",
       "singer": "",
@@ -220,5 +231,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:44:16.070Z"
+  "updatedAt": "2026-11-09T15:46:03.604Z"
 }

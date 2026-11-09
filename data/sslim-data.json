@@ -28,10 +28,11 @@
       "singer": "",
       "originalKey": "C",
       "tempo": "",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=IkHgxKemCRk&list=RDIkHgxKemCRk&start_radio=1",
       "spotify": "",
       "lyrics": "[Intro]\nA   C#m B     E/G#   C#m B\n\n[Verse 1]\n  E                                        A                          E\nA thousand generations falling down in worship\n   C#m                         B                  A\nTo sing the song of ages to the Lamb\n\tE                                          A                     E\nAnd all who've gone before us and all who will believe\n \tC#m      \t                B                  A\nWill sing the song of ages to the Lamb\n\n[Verse 2]\nE            \t                                A                             E\nIf you've been forgiven and if you've been redeemed\nC#m    \t             B                    A\nSing the song forever to the Lamb\nE                      \t                     A    \t                 E\nIf you walk in freedom and if you bear His name\nC#m        \t          B                   A\nSing the song forever to the Lamb\n      C#m          \t            B                A\nWe'll sing the song forever and amen\n\n[Pre-chorus]\n           A\nYour name is the highest\n  C#m-B\nYour name is the greatest\n         C#m        B                            A\nYour name stands above them all\n          A\nAll thrones and dominions\nC#m-B\nAll powers and positions\n\t     C#m             \t                    F#m\nYour name stands above them all\n\n\n\n\n[Chorus 2]\n           \t              A      C#m B\nAnd the angels cry: \"Ho-o-ly\"\n           \t      G#m            C#m\nAll creation cries: \"Ho-o-ly\"\n            \t         F#m            B\nYou are lifted high, ho-o-ly\n      \t    E    Esus4   E\nHoly fore - ver\n         \t                     A   \tC#m B\nHear your people sing: \"Ho-o-ly\"\n            \t          G#m             C#m\nTo the King of Kings: \"Ho-o-ly\"\n            \t          F#m         B\nYou will always be ho-o-ly\n     \t    E   Esus4   E\nHoly fore - ver\n \n[Tag]\n           \t           F#m         B\nYou will always be ho-o-ly\n      \t   E    Esus4  E\nHoly fore - ver",
-      "createdAt": "2026-11-09"
+      "createdAt": "2026-11-09",
+      "language": "English"
     },
     {
       "id": "s_1794239686202",
@@ -620,5 +621,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-09T16:07:45.907Z"
+  "updatedAt": "2026-11-09T16:47:21.177Z"
 }

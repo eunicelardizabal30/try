@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239318470",
+      "title": "Every Praise",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nC Am F G\n(D-F-G-A#-C)\n\n[Verse 1]\nC\nEvery praise is to our God\n  Am\nEvery word of worship with one accord\n F            G                        C (D-F-G-A#-C)\nEvery praise, every praise is  to our God\n \n[Verse 2]\nC\nSing Hallelujah to our God\n Am\nGlory Hallelujah unto our God\n F            G                       C (D-F-G-A#-C)\nEvery praise, every praise is to our God\n\n[Chorus]\nC              Am             F\nGod my Savior, God my Healer, God my Deliverer\nG\nYes He is, yes He is\nC              Am             F\nGod my Savior, God my Healer, God my Deliverer\nG\nYes He is, yes He is\n \n\n\n\n(Modulated)\n\n[Verse 1] \n(E-G-A-C-D)\nD\nEvery praise is to our God\nBm\nEvery word of worship with one accord\nG             A                      D (E-G-A-C-D)\nEvery Praise, every praise is to our God\n \n\n\n\n\n[Verse 2]\nD\nSing Hallelujah to our God\nBm\nGlory Hallelujah unto our God\nG             A                      D (E-G-A-C-D)\nEvery praise, every praise is to our God\n \n[Chorus]\n D             Bm             G\nGod my Savior, God my Healer, God my Deliverer\nA\nYes He is, yes He is\nG          A\nYes He is, yes He is\nG          A\nYes He is, yes He is",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239302521",
       "title": "El Shadai",
       "singer": "",
@@ -308,5 +319,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:48:23.705Z"
+  "updatedAt": "2026-11-09T15:48:40.040Z"
 }

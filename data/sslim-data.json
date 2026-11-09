@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239540791",
+      "title": "God will make a way",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro\nC   G   F   G   C\n\nChorus\nC                G\nGod will make a way\n             F              C\nWhere there seems to be no way\n     F               C\nHe works in ways we cannot see\nF              G       \nHe will make a way for me\nC              G\nHe will be my guide\n          F             C\nHold me closely to His side\n       F                    C\nWith love and strength for each new day\nF               G\nHe will make a way\nF        G      C\nHe will make a way\n\nRefrain\n      F              G\nBy a roadway in the wilderness\n       C    \nHe'll lead me\n     F             G             A\nAnd rivers in the desert will I see\nF                      G\nHeaven and earth will fade\n         C         Em      F\nBut His word will still remain\n    Dm               G          A\nAnd He will do something new today\n\n\nChorus (Transpose a key up)\n    D               A\nOh God will make a way\n             G              D\nWhere there seems to be no way\n     G               D\nHe works in ways we cannot see\nG               A       \nHe will make a way for me\nD              A\nHe will be my guide\n         G              D\nHold me closely to His side\n      G                     D\nWith love and strength for each new day\nG               A\nHe will make a way\nG        A      D\nHe will make a way\n(repeat)",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239529479",
       "title": "God is here",
       "singer": "",
@@ -451,5 +462,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:52:11.350Z"
+  "updatedAt": "2026-11-09T15:52:22.280Z"
 }

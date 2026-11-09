@@ -127,7 +127,7 @@ Search through song lyrics, manage real-time key transpositions, and build servi
 </div>
 <button onclick="openSongModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>Add Song</span>
+<span>+ Add Song</span>
 </button>
 </div>
 <div id="songs-bank-list" class="space-y-3"></div>
@@ -145,7 +145,7 @@ Search through song lyrics, manage real-time key transpositions, and build servi
 </div>
 <button onclick="openLineupModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>Create New Lineup</span>
+<span>+ Create New Lineup</span>
 </button>
 </div>
 <div id="lineups-view-container" class="space-y-8"></div>
@@ -272,7 +272,7 @@ For best chord alignment, use inline chords like [G]Amazing [D]Grace, or chord l
 <div id="lineup-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
 <div class="bg-slate-900 border border-blue-500/30 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
 <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-<h3 id="lineup-modal-title" class="text-xl font-bold text-white">Create Service Lineup</h3>
+<h3 class="text-xl font-bold text-white">Create Service Lineup</h3>
 <button onclick="closeLineupModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
 </div>
 <form onsubmit="saveLineupForm(event)" class="space-y-4">
@@ -300,7 +300,7 @@ For best chord alignment, use inline chords like [G]Amazing [D]Grace, or chord l
 </div>
 <div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
 <button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-medium">Cancel</button>
-<button id="lineup-submit-btn" type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold">Create Lineup</button>
+<button type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold">Create Lineup</button>
 </div>
 </form>
 </div>
@@ -341,8 +341,6 @@ let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
 let songTranspositions = {};
 let activeTabState = 'home';
 let expandedSongId = null;
-let editingLineupId = null;
-let lineupDraftSongIds = [];
 
 // Presentation Stage state
 let currentStageLineup = null;
@@ -746,8 +744,7 @@ return `
 </div>
 <div class="flex items-center space-x-2">
 <button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
-<button onclick="editLineup('${l.id}')" title="Edit lineup" aria-label="Edit lineup" class="p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
-<button onclick="deleteLineup('${l.id}')" title="Delete lineup" aria-label="Delete lineup" class="p-2 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+<button onclick="deleteLineup('${l.id}')" class="p-2 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
 </div>
 </div>`;
 }).join('');
@@ -923,129 +920,36 @@ closeSongModal();
 renderSongsBank();
 }
 
-function renderLineupSongSelection() {
-    const container = document.getElementById('lineup-songs-checkboxes');
-    const selected = new Set(lineupDraftSongIds);
-
-    const songChoices = songs.map(s => `
-        <label class="flex items-center justify-between gap-3 p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs cursor-pointer hover:border-blue-700/60">
-            <span class="min-w-0"><span class="font-semibold text-slate-200">${s.title}</span><span class="text-slate-500"> (${s.singer || 'Unknown artist'})</span></span>
-            <input type="checkbox" name="lineup-song" value="${s.id}" ${selected.has(s.id) ? 'checked' : ''}
-                onchange="toggleLineupSong('${s.id}', this.checked)"
-                class="rounded bg-slate-950 border-slate-700 text-cyan-500">
-        </label>`).join('');
-
-    const orderedSongs = lineupDraftSongIds.map((id, index) => {
-        const song = songs.find(s => s.id === id);
-        if (!song) return '';
-        return `
-        <div class="flex items-center gap-2 p-2.5 rounded-xl bg-blue-950/40 border border-blue-800/50">
-            <span class="w-7 h-7 flex items-center justify-center rounded-lg bg-blue-600/20 text-cyan-300 text-xs font-bold">${index + 1}</span>
-            <div class="flex-1 min-w-0">
-                <p class="text-xs font-semibold text-white truncate">${song.title}</p>
-                <p class="text-[10px] text-slate-400 truncate">${song.singer || 'Unknown artist'}</p>
-            </div>
-            <button type="button" onclick="moveLineupSong('${id}', -1)" ${index === 0 ? 'disabled' : ''}
-                title="Move up" class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"><i data-lucide="arrow-up" class="w-4 h-4"></i></button>
-            <button type="button" onclick="moveLineupSong('${id}', 1)" ${index === lineupDraftSongIds.length - 1 ? 'disabled' : ''}
-                title="Move down" class="p-1.5 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"><i data-lucide="arrow-down" class="w-4 h-4"></i></button>
-        </div>`;
-    }).join('');
-
-    container.innerHTML = `
-        <div class="space-y-2">
-            <p class="text-[11px] text-slate-400">Choose songs below. Their final presentation order is shown here; use the arrows to rearrange them.</p>
-            <div class="space-y-1.5">${songChoices || '<p class="text-xs text-slate-500 p-2">No songs in the song bank yet.</p>'}</div>
-        </div>
-        <div class="mt-4 pt-4 border-t border-slate-800 space-y-2">
-            <div class="flex items-center justify-between">
-                <p class="text-[11px] font-bold uppercase tracking-wider text-cyan-300">Final song order</p>
-                <span class="text-[10px] text-slate-500">${lineupDraftSongIds.length} selected</span>
-            </div>
-            <div class="space-y-1.5">${orderedSongs || '<p class="text-xs text-slate-500 p-3 rounded-xl bg-slate-900/60">Select one or more songs to build the lineup.</p>'}</div>
-        </div>`;
-    lucide.createIcons();
-}
-
-function toggleLineupSong(id, checked) {
-    if (checked && !lineupDraftSongIds.includes(id)) lineupDraftSongIds.push(id);
-    if (!checked) lineupDraftSongIds = lineupDraftSongIds.filter(songId => songId !== id);
-    renderLineupSongSelection();
-}
-
-function moveLineupSong(id, direction) {
-    const index = lineupDraftSongIds.indexOf(id);
-    const target = index + direction;
-    if (index < 0 || target < 0 || target >= lineupDraftSongIds.length) return;
-    [lineupDraftSongIds[index], lineupDraftSongIds[target]] =
-        [lineupDraftSongIds[target], lineupDraftSongIds[index]];
-    renderLineupSongSelection();
-}
-
 function openLineupModal() {
-    editingLineupId = null;
-    lineupDraftSongIds = [];
-    document.getElementById('lineup-modal-title').innerText = 'Create Service Lineup';
-    document.getElementById('lineup-submit-btn').innerText = 'Create Lineup';
-    document.getElementById('form-lineup-title').value = '';
-    document.getElementById('form-lineup-date').value = new Date().toISOString().split('T')[0];
-    document.getElementById('form-lineup-leader').value = '';
-    document.getElementById('form-lineup-notes').value = '';
-    renderLineupSongSelection();
-    document.getElementById('lineup-modal').classList.remove('hidden');
+document.getElementById('form-lineup-title').value = '';
+document.getElementById('form-lineup-date').value = new Date().toISOString().split('T')[0];
+document.getElementById('form-lineup-leader').value = '';
+document.getElementById('form-lineup-notes').value = '';
+document.getElementById('lineup-songs-checkboxes').innerHTML = songs.map(s => `
+<label class="flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs cursor-pointer">
+<span>${s.title} (${s.singer})</span>
+<input type="checkbox" name="lineup-song" value="${s.id}" class="rounded bg-slate-950 border-slate-700 text-cyan-500">
+</label>`).join('');
+document.getElementById('lineup-modal').classList.remove('hidden');
 }
-
-function editLineup(id) {
-    const lineup = lineups.find(item => item.id === id);
-    if (!lineup) return;
-
-    editingLineupId = id;
-    lineupDraftSongIds = [...(lineup.songIds || [])].filter(songId => songs.some(s => s.id === songId));
-    document.getElementById('lineup-modal-title').innerText = 'Edit Service Lineup';
-    document.getElementById('lineup-submit-btn').innerText = 'Save Changes';
-    document.getElementById('form-lineup-title').value = lineup.title || '';
-    document.getElementById('form-lineup-date').value = lineup.date || '';
-    document.getElementById('form-lineup-leader').value = lineup.leader || '';
-    document.getElementById('form-lineup-notes').value = lineup.notes || '';
-    renderLineupSongSelection();
-    document.getElementById('lineup-modal').classList.remove('hidden');
-}
-
-function closeLineupModal() {
-    document.getElementById('lineup-modal').classList.add('hidden');
-    editingLineupId = null;
-}
+function closeLineupModal() { document.getElementById('lineup-modal').classList.add('hidden'); }
 
 function saveLineupForm(e) {
-    e.preventDefault();
-    if (lineupDraftSongIds.length === 0) {
-        alert('Select at least one song.');
-        return;
-    }
-
-    const data = {
-        title: document.getElementById('form-lineup-title').value.trim(),
-        date: document.getElementById('form-lineup-date').value,
-        leader: document.getElementById('form-lineup-leader').value.trim(),
-        notes: document.getElementById('form-lineup-notes').value.trim(),
-        songIds: [...lineupDraftSongIds]
-    };
-
-    if (editingLineupId) {
-        lineups = lineups.map(lineup => lineup.id === editingLineupId
-            ? { ...lineup, ...data, transpositions: lineup.transpositions || {} }
-            : lineup);
-    } else {
-        lineups.unshift({
-            id: 'l_' + Date.now(),
-            ...data,
-            transpositions: {}
-        });
-    }
-
-    saveData();
-    closeLineupModal();
-    renderLineupsView();
+e.preventDefault();
+const songIds = Array.from(document.querySelectorAll('input[name="lineup-song"]:checked')).map(el => el.value);
+if (songIds.length === 0) { alert('Select at least one song.'); return; }
+lineups.unshift({
+id: 'l_' + Date.now(),
+title: document.getElementById('form-lineup-title').value,
+date: document.getElementById('form-lineup-date').value,
+leader: document.getElementById('form-lineup-leader').value,
+notes: document.getElementById('form-lineup-notes').value,
+songIds,
+transpositions: {}
+});
+saveData();
+closeLineupModal();
+renderLineupsView();
 }
 
 // Initialize on load

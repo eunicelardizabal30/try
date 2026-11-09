@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238806980",
+      "title": "Blessed be the name of the LORD",
+      "singer": "",
+      "originalKey": "D",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Chords: D G Bm G D\nChorus:\nD\nBlessed be the name of the Lord\nG                                                 G-A\nBlessed be the name of the Lord\nBm                                               G               A  (D)\nBlessed be the name of the Lord, Most High.\n\nBridge:\n                                 D                          G\nThe name of the Lord is a strong tower\n                                 A                                   D\nThe righteous run into it and they are saved\n                                 D                          G\nThe name of the Lord is a strong tower\n                                 A                                   D\nThe righteous run into it and they are saved.",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238711449",
       "title": "Because of who You are",
       "singer": "",
@@ -132,5 +143,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:38:32.792Z"
+  "updatedAt": "2026-11-09T15:40:08.334Z"
 }

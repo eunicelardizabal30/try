@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239662612",
+      "title": "Heart of worship",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\nD                  A                      Em7                 Asus A\n  When the music fades all is stripped away and I simply come\nD                     A                        Em7                          Asus A\n  Longing just to bring something that's of worth that will bless your heart\n \n[Pre-Chorus]\nEm                D/F#           A\n   I'll bring you more than a song for a song in itself\nEm             D/F#           A\n   is not what you have required\nEm                 D/F#        A\n   You search much deeper within through the way things appear\nEm                D/F#        A\n   You're looking into my heart\n \n[Chorus]\nD                         A/C#                     Em\n  I'm coming back to the heart of worship and it's all about you\n     G            A\nIt's all about you, Jesus\nD                         A/C#                        Em\n  I'm sorry Lord for the thing I've made it when it's all about you\n     G            A     D\nIt's all about you, Jesus\n \n[Verse 2]\nD                    A                     Em7                  Asus A\n  King of endless worth, no one could express how much you deserve\nD                       A                Em7                    Asus A\n  Though I'm weak and poor all I have is yours, every single breath\n \n[Pre-Chorus]\nEm                D/F#           A\n   I'll bring you more than a song for a song in itself\nEm             D/F#           A\n   is not what you have required\nEm                 D/F#        A\n   You search much deeper within through the way things appear\nEm                D/F#       A\n   You're looking into my heart\n \n[Chorus]\nD                         A/C#                     Em\n  I'm coming back to the heart of worship and it's all about you\n     G            A\nIt's all about you, Jesus\nD                         A/C#                        Em\n  I'm sorry Lord for the thing I've made it when it's all about you\n     G            A\nIt's all about you, Jesus\nD                         A/C#                     Em\n  I'm coming back to the heart of worship and it's all about you\n     G            A\nIt's all about you, Jesus\nD                         A/C#                        Em\n  I'm sorry Lord for the thing I've made it when it's all about you\n     G            A     D\nIt's all about you, Jesus",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239652272",
       "title": "Heart of a servant",
       "singer": "",
@@ -539,5 +550,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:54:13.851Z"
+  "updatedAt": "2026-11-09T15:54:23.746Z"
 }

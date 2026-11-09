@@ -1,14 +1,6 @@
 {
   "songs": [
     {
-      "id": "s1",
-      "title": "Way Maker",
-      "singer": "Sinach / Leeland",
-      "originalKey": "G",
-      "tempo": "Slow (68 BPM)",
-      "lyrics": "[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are"
-    },
-    {
       "id": "s2",
       "title": "Goodness of God",
       "singer": "Bethel Music",
@@ -36,8 +28,10 @@
         "s1",
         "s2"
       ],
-      "transpositions": {}
+      "transpositions": {
+        "s2": 0
+      }
     }
   ],
-  "updatedAt": "2026-11-09T11:10:07.854Z"
+  "updatedAt": "2026-11-09T11:13:26.391Z"
 }

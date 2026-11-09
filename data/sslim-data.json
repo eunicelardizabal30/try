@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239507468",
+      "title": "Glorify thy Name",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\n \nG         C            D            G\nFather we love You, we worship and adore You\nBm          C     D.          G         \nGlorify Thy Name in all the earth\n \n[Chorus]\n \nG           C     B           Em\nGlorify Thy Name, Glorify Thy Name,\nC           D               G\nGlorify Thy Name in all the earth\n \n[Verse 2]\n \nG         C           D            G\nJesus we love You, we worship and adore You\nBm          C      D.         G\nGlorify Thy Name in all the earth",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239495767",
       "title": "Friend of God",
       "singer": "",
@@ -418,5 +429,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:51:37.068Z"
+  "updatedAt": "2026-11-09T15:51:48.831Z"
 }

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239410460",
+      "title": "Firm Foundation",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "D G-A\n\n[Chorus]\nD               G        Asus\nJesus you're my firm foundation\nD             G      A\nI know I can stand secure\nBm7   D         G    F#m  Em\nJesus you're my firm foundation\nG         D           A      Bm7\nI put my hope in your Holy Word\nG        D              A    D\nI put my hope in your Holy Word\n \n \n[Verse 1]\nD                     D\nI have a living hope (echo)\nG   -    A        G - A\nI have a future (echo)\nBm - A - G\nGod has a plan for me (echo)\n   G - F#m - Em - A\nOf this I'm sure, of this I'm sure.\n  \n \n[Verse 2]\nD                      D\nYour Word is faithful (echo)\nG    -    A       G - A\nMighty in power (echo)\nBm - A - G\nGod has delivered me (echo)\n   G - F#m - Em -  A\nOf this I'm sure, Of this I'm sure",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239399697",
       "title": "Fall",
       "singer": "",
@@ -352,5 +363,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:50:01.598Z"
+  "updatedAt": "2026-11-09T15:50:11.545Z"
 }

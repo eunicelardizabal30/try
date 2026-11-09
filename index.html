@@ -131,13 +131,21 @@ input, select, textarea, button { max-width: 100%; }
 </head>
 <body class="text-neutral-100 min-h-screen selection:bg-neutral-200 selection:text-neutral-950 relative pb-24 md:pb-10">
 
-<!-- ALWAYS VISIBLE FULL-SCREEN PERSISTENT MOUNTAIN BACKGROUND -->
-<div class="fixed inset-0 w-full h-full pointer-events-none -z-20 overflow-hidden select-none" style="background-color: #F5F5F5;">
-    <!-- Base Mountain Landscape Image Overlay -->
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-55 grayscale" style="background-image: url('black-white-mountain-background_2.jpg');"></div>
-    
-    <!-- Atmospheric Overlay for High-Contrast Text Legibility -->
-    <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/60 via-neutral-950/40 to-neutral-950/70"></div>
+<!-- ALWAYS VISIBLE FULL-SCREEN MOUNTAIN BACKGROUND -->
+<div class="fixed inset-0 w-full h-full pointer-events-none -z-20 overflow-hidden select-none">
+
+    <!-- Mountain Background Image -->
+    <div
+        class="absolute inset-0 bg-cover bg-center bg-no-repeat grayscale"
+        style="
+            background-image: url('black-white-mountain-background.jpg');
+            opacity: 1;
+        ">
+    </div>
+
+    <!-- Subtle Atmospheric Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-neutral-950/25"></div>
+
 </div>
 
 <!-- HEADER -->

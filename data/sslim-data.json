@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239383733",
+      "title": "Faith",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: Em B Am B\n[Verse]\nEm\nI'M REACHING FOR THE PRIZE\nI'M GIVING EVERYTHING\nAm\nI GIVE MY LIFE FOR THIS\nB\nIT'S WHAT I LIVE FOR\nEm\nNOTHING WILL KEEP ME FROM\nALL THAT YOU HAVE FOR ME\nAm\nYOU HOLD MY HEAD UP HIGH\nB\nI LIVE FOR YOU\n\n[Pre-Chorus]\nAm                D                                   Am\nGREATER IS HE THAT'S LIVING IN ME\n                            B\nTHAN HE THAT IS IN THE WORLD\ne\n[CHORUS]\nEm                                      B\nFAITH I CAN MOVE THE MOUNTAIN\n                          Am7\nI CAN DO ALL THINGS THROUGH CHRIST\nB              Em                                  B\nI KNOW, FAITH STANDING AND BELIEVING\n                          Am7\nI CAN DO ALL THINGS THROUGH CHRIST\n      B\nWHO STRENGTHENS ME",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239337263",
       "title": "Everything that has breath",
       "singer": "",
@@ -330,5 +341,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:49:24.210Z"
+  "updatedAt": "2026-11-09T15:49:45.194Z"
 }

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239461381",
+      "title": "For who you are",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD   G\nD   G\n \n \n[Verse]\nD\n Standing here in Your presence\nG\n Thinking of the good things You have done\nD\n Waiting here patiently\nG\n Just to hear Your still small voice again\n \n \n[Pre-chorus]\nBm   A         G          A\n Holy, righteous, faithful to the end\nBm      A          G\n Saviour, healer, redeemer and friend\n \n \n[Chorus]\n                D\nI will worship You for who You are\n                Bm\nI will worship You for who You are\n                A\nI will worship You for who You are\n   G\nJesus\n \n  \n[Bridge]\n     D                  Bm\nMy soul secure, Your promise sure\n      A             G\nYour love endures always\n \n     D                  Bm\nMy soul secure, Your promise sure\n      A             G\nYour love endures always",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239440462",
       "title": "For the LORD is my tower",
       "singer": "",
@@ -385,5 +396,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:50:42.207Z"
+  "updatedAt": "2026-11-09T15:51:02.929Z"
 }

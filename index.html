@@ -237,6 +237,25 @@ Exit Mode
 <input type="text" id="form-song-tempo" placeholder="e.g. Slow (68 BPM)" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
 </div>
 </div>
+<div class="rounded-2xl border border-blue-800/50 bg-slate-950/70 p-4 space-y-3">
+<div class="flex items-center justify-between gap-3 flex-wrap">
+<div>
+<h4 class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="search" class="w-4 h-4 text-cyan-300"></i> Find this song online</h4>
+<p class="text-[11px] text-slate-400 mt-1">Search Google for lyrics and chords, then bring the text you are allowed to use into the importer below.</p>
+</div>
+<button type="button" onclick="searchSongOnGoogle()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-2"><i data-lucide="external-link" class="w-3.5 h-3.5"></i> Search Google</button>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-medium text-slate-300" for="song-import-text">Paste lyrics or a chord sheet</label>
+<textarea id="song-import-text" rows="5" placeholder="Paste the song text here…
+For best chord alignment, use inline chords like [G]Amazing [D]Grace, or chord lines directly above lyrics." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
+<div class="flex flex-wrap gap-2">
+<button type="button" onclick="importSongText('lyrics')" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold">Import lyrics only</button>
+<button type="button" onclick="importSongText('chords')" class="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold">Import lyrics + chords</button>
+</div>
+<p id="song-import-status" class="text-[11px] text-slate-500">Google results open in a new tab. Copy the text from a source you have permission to use, return here, and paste it above. Importing does not save the song until you click Save Song.</p>
+</div>
+</div>
 <div>
 <label class="text-xs font-medium text-slate-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
 <textarea id="form-song-lyrics" rows="8" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
@@ -744,9 +763,84 @@ function exitPresentation() {
 document.getElementById('presentation-modal').classList.add('hidden');
 }
 
+// Song lookup and text importer. Google search opens externally; the app does not scrape or copy lyrics from websites.
+function searchSongOnGoogle() {
+    const title = document.getElementById('form-song-title').value.trim();
+    const singer = document.getElementById('form-song-singer').value.trim();
+    if (!title) {
+        alert('Enter the song title first, then search Google.');
+        document.getElementById('form-song-title').focus();
+        return;
+    }
+    const query = [title, singer, 'lyrics chords'].filter(Boolean).join(' ');
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+    window.open(url, '_blank', 'noopener,noreferrer');
+    document.getElementById('song-import-status').textContent = 'Google search opened in a new tab. Copy the lyrics or chord sheet from a source you are permitted to use, then paste it here.';
+}
+
+function isChordToken(token) {
+    return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|2|4|5|6|7|9|11|13|\+|°|ø|-)*)?(?:\/(?:[A-G](?:#|b)?))?$/.test(token.replace(/[|,;]/g, '')) || /^(?:N\.C\.|NC)$/i.test(token);
+}
+
+function isChordOnlyLine(line) {
+    const tokens = line.trim().split(/\s+/).filter(Boolean);
+    return tokens.length > 0 && tokens.every(isChordToken);
+}
+
+function chordLineToInline(chordLine, lyricLine) {
+    const tokens = [...chordLine.matchAll(/\S+/g)].filter(m => isChordToken(m[0]));
+    let result = lyricLine;
+    // Insert from right to left so earlier character positions remain valid.
+    tokens.sort((a, b) => b.index - a.index).forEach(token => {
+        const position = Math.min(token.index, result.length);
+        result = result.slice(0, position) + '[' + token[0].replace(/[|,;]/g, '') + ']' + result.slice(position);
+    });
+    return result;
+}
+
+function formatImportedSongText(rawText, mode) {
+    const lines = String(rawText || '').replace(/\r/g, '').split('\n');
+    const output = [];
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (mode === 'chords' && isChordOnlyLine(line) && i + 1 < lines.length && lines[i + 1].trim()) {
+            output.push(chordLineToInline(line, lines[i + 1]));
+            i++;
+            continue;
+        }
+        if (mode === 'lyrics' && isChordOnlyLine(line)) continue;
+        let cleaned = line;
+        if (mode === 'lyrics') cleaned = cleaned.replace(/\[[^\]]+\]/g, '').replace(/\s{2,}/g, ' ').trimEnd();
+        output.push(cleaned);
+    }
+    return output.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function importSongText(mode) {
+    const raw = document.getElementById('song-import-text').value.trim();
+    if (!raw) {
+        alert('Paste the song text into the import box first.');
+        return;
+    }
+    const formatted = formatImportedSongText(raw, mode);
+    if (!formatted) {
+        alert('No usable song text was found.');
+        return;
+    }
+    const lyricsField = document.getElementById('form-song-lyrics');
+    if (lyricsField.value.trim() && !confirm('Replace the lyrics currently in the song editor with the imported text?')) return;
+    lyricsField.value = formatted;
+    document.getElementById('song-import-status').textContent = mode === 'lyrics'
+        ? 'Imported lyrics only. Chord symbols were removed.'
+        : 'Imported lyrics with chord markers. Chord lines above lyrics were converted to the app’s [G] chord format where possible.';
+    lyricsField.focus();
+}
+
 // Modals management
 function openSongModal(id = null) {
 document.getElementById('edit-song-id').value = id || '';
+document.getElementById('song-import-text').value = '';
+document.getElementById('song-import-status').textContent = 'Google results open in a new tab. Copy text from a source you have permission to use, return here, and paste it above.';
 if (id) {
 const s = songs.find(x => x.id === id);
 document.getElementById('song-modal-title').innerText = 'Edit Song';

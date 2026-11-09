@@ -1,0 +1,46 @@
+{
+  "songs": [
+    {
+      "id": "s1",
+      "title": "Way Maker",
+      "singer": "Sinach / Leeland",
+      "originalKey": "G",
+      "tempo": "Slow (68 BPM)",
+      "lyrics": "[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are"
+    },
+    {
+      "id": "s2",
+      "title": "Goodness of God",
+      "singer": "Bethel Music",
+      "originalKey": "A",
+      "tempo": "Mid (70 BPM)",
+      "lyrics": "[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I've been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good"
+    },
+    {
+      "id": "s3",
+      "title": "Build My Life",
+      "singer": "Housefires",
+      "originalKey": "G",
+      "tempo": "Mid (68 BPM)",
+      "lyrics": "[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring"
+    }
+  ],
+  "lineups": [
+    {
+      "id": "l1",
+      "date": "2025-02-16",
+      "leader": "Sarah Jenkins",
+      "title": "Sunday Morning Worship",
+      "notes": "Focus on God's faithfulness.",
+      "songIds": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "transpositions": {
+        "s1": 1
+      }
+    }
+  ],
+  "updatedAt": "2026-11-09T11:09:43.002Z"
+}

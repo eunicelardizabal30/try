@@ -10,6 +10,18 @@
       "createdAt": "2026-11-09"
     }
   ],
-  "lineups": [],
-  "updatedAt": "2026-11-09T11:35:44.368Z"
+  "lineups": [
+    {
+      "id": "l_1794224365112",
+      "title": "Sunday",
+      "date": "2026-11-09",
+      "leader": "",
+      "notes": "",
+      "songIds": [
+        "s_1794223947676"
+      ],
+      "transpositions": {}
+    }
+  ],
+  "updatedAt": "2026-11-09T11:39:28.573Z"
 }

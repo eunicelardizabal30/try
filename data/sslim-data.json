@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239246283",
+      "title": "Diyos na makapangyarihan",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\n \nD – Bm   G    E (x2)\n \n \n[Verse 1]\n \nD   \nDIYOS NA MAKAPANGYARIHAN\nBm\nHARING KATAAS TAASAN\nG           Em. A. A\nSA AKING PUSO AY NANANAHAN\nD                                 \nPAGPAPALA MO’T PAGSAMA\nBm\nAY LAGING NARARANASAN\nG   - \t F#m - Em - A  - D\nKAILAN MAY HINDI MAG-IISA\n \n \n[Verse 2]\n \n   G\nPANGAKO MO SA AKI’Y\n   A       F#m – Bm\nHINDI AKO IIWAN\n    G\nSA BAWAT SANDALI\n    A      \tD\nAY LAGING SASAMAHAN\n   G\nBANAL NA ESPIRITU\n  F#m        Bm\nHATID AY KALAKASAN\n  Em\nUPANG LAHAT NG BAGAY \n      A...A...A\nAY MAPAG-TAGUMPAYAN",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239234255",
       "title": "Diyos Ka sa amin / Walang Katulad Mo",
       "singer": "",
@@ -275,5 +286,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:47:16.169Z"
+  "updatedAt": "2026-11-09T15:47:27.828Z"
 }

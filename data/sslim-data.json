@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239563305",
+      "title": "Great is the Lord",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse:\nG                   C                         D                G\nGreat is the Lord and most worthy of praise,\n        C                 D                       Em\nthe city of our God, the holy place,\n        G   -     F#m   -     Em     -       D\nthe joy of the whole Earth.\nG                   C                         D                G\nGreat is the Lord in whom we have the victory,\n        C              D                           Em\nhe aids us against the enemy,\n        G       -       F#m      -       Em       -        D\nwe bow down on our knees.\n\nChorus:\n         G                                                            Bm\nAnd Lord, we want to lift your name on high,\n         G                              Dm-G\nand Lord, we want to thank you,\n               C                                           D\nfor the works you’ve done in our lives;\n         G                                                    Bm\nand Lord, we trust in your unfailing love,\n       C                       Bm\nfor you alone are God eternal,\nAm                                 D                 G\nthroughout Earth and Heaven above.",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239551796",
       "title": "Goodness of God",
       "singer": "",
@@ -473,5 +484,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:52:33.099Z"
+  "updatedAt": "2026-11-09T15:52:44.589Z"
 }

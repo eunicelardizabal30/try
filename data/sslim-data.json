@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239422419",
+      "title": "For all you’ve done",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro] \nD\n[Verse 1]\nD\nMy savior, Redeemer\nLifted me from the miry clay\nAlmighty, Forever, \nI will never be the same\n                              Bm\nCause You came near\n                          G\nFrom the everlasting\n                              D\nTo the world we live\n                                 A\nThe Father's only Son\n\n[Chorus]\n                 D\nAnd You lived\n                 A/C#m    \nAnd You died\n                 G/Bm               A           \nAnd You rose again on high\n                 D          A/C#m         G/Bm               A\nYou opened the way for the world to live again\n            G - A                              D\nHal-lelu-jah,   for all You've done\n\n[Pre-chorus]\n                              Bm\nCause You came near\n                          G\nFrom the everlasting\n                              D\nTo the world we live\n                                 A\nThe Father's only Son",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239410460",
       "title": "Firm Foundation",
       "singer": "",
@@ -363,5 +374,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:50:11.545Z"
+  "updatedAt": "2026-11-09T15:50:23.733Z"
 }

@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SSLIM Music">
-<meta name="theme-color" content="#020617">
-<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%23020617\",\"theme_color\":\"%23020617\",\"icons\":[{\"src\":\"https://placehold.co/192x192/020617/38bdf8?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/020617/38bdf8?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
+<meta name="theme-color" content="#0b0f17">
+<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%230b0f17\",\"theme_color\":\"%230b0f17\",\"icons\":[{\"src\":\"https://placehold.co/192x192/0b0f17/38bdf8?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/0b0f17/38bdf8?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -26,261 +26,191 @@ body {
     font-family: 'JetBrains Mono', monospace; 
 }
 
-/* Mountain & Ambient Atmosphere Background */
+/* Enhanced Dark Gray Gradient Main Background */
 .bg-mountain-atmosphere {
-    background: radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.35) 0%, rgba(15, 23, 42, 0.95) 70%),
-                linear-gradient(180deg, #020617 0%, #090d16 100%);
+    background: radial-gradient(ellipse at 50% 20%, rgba(30, 58, 138, 0.28) 0%, rgba(17, 24, 39, 0.95) 60%),
+                linear-gradient(180deg, #0b0f17 0%, #111827 50%, #161d2a 100%);
 }
 
-/* Glassmorphism utility card effects */
+/* Glassmorphism & Soft Grayish-White UI Panels */
 .glass-panel {
-    background: rgba(15, 23, 42, 0.65);
+    background: rgba(241, 245, 249, 0.05);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-panel-interactive {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(59, 130, 246, 0.18);
+/* Semi-Translucent Song Bank Cards (Background visible through cards) */
+.song-card-glass {
+    background: rgba(241, 245, 249, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.song-card-glass:hover {
+    background: rgba(241, 245, 249, 0.08);
+    border-color: rgba(56, 189, 248, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.2);
+}
+
+.song-card-glass-expanded {
+    background: rgba(20, 27, 41, 0.65) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    box-shadow: 0 16px 36px -10px rgba(14, 165, 233, 0.25);
+}
+
+/* Interactive Filter Cards */
+.filter-card {
+    background: rgba(241, 245, 249, 0.05);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.glass-panel-interactive:hover {
-    background: rgba(30, 41, 59, 0.75);
-    border-color: rgba(56, 189, 248, 0.45);
+.filter-card:hover {
+    background: rgba(241, 245, 249, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
 }
 
-/* Custom scrollbar for song reader & lists */
+.filter-card-active {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(14, 165, 233, 0.25) 100%) !important;
+    border: 1px solid rgba(56, 189, 248, 0.6) !important;
+    box-shadow: 0 8px 25px -6px rgba(56, 189, 248, 0.3);
+}
+
+/* Gradient Buttons */
+.btn-gradient-blue {
+    background: linear-gradient(135deg, #2563eb 0%, #0284c7 50%, #06b6d4 100%);
+    box-shadow: 0 6px 20px -4px rgba(37, 99, 235, 0.45);
+    transition: all 0.25s ease;
+}
+
+.btn-gradient-blue:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #0369a1 50%, #0891b2 100%);
+    box-shadow: 0 8px 25px -2px rgba(14, 165, 233, 0.6);
+    transform: translateY(-1px);
+}
+
+.btn-gradient-blue:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+    animation: pulseGlow 6s infinite ease-in-out;
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
 ::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 9999px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.6); }
 
-/* Responsive layout safeguards */
+/* Mobile safeguards */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 body { overflow-wrap: anywhere; }
 img, iframe, video, svg { max-width: 100%; }
 input, select, textarea, button { max-width: 100%; }
 .min-w-0 { min-width: 0 !important; }
-.break-words, .break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
-pre, code, .font-mono { max-width: 100%; overflow-x: auto; }
-@media (max-width: 640px) {
-  main { width: 100%; }
-  #tab-home, #tab-songs, #tab-lineup,
-  #lineups-view-container, #songs-bank-list,
-  #home-lineups-grid, #global-search-grid { min-width: 0; max-width: 100%; }
-  #lineup-modal > div, #song-modal > div { padding: 1rem; margin-top: .75rem; margin-bottom: .75rem; }
-  #lineup-modal, #song-modal { align-items: flex-start; }
-  #lineup-songs-checkboxes { max-height: 34vh; }
-  #presentation-modal .flex-none { min-width: 0; }
-  #stage-song-title { overflow-wrap: anywhere; word-break: break-word; }
-  #stage-lyrics-box { overflow-x: auto; }
-  #stage-lyrics-box > div { min-width: 0; }
-  #stage-lyrics-box .whitespace-pre { white-space: pre-wrap; overflow-wrap: anywhere; }
-  #stage-song-pills { max-width: 100%; }
-  #lineups-view-container > div { min-width: 0; }
-}
+.break-words { overflow-wrap: anywhere; word-break: break-word; }
 
-
-/* Mobile text/layout corrections */
-html, body { max-width: 100vw; }
-body, main, header, section, article, .glass-panel, .glass-panel-interactive { min-width: 0; }
-main { overflow-x: clip; }
-button, input, textarea, select { min-width: 0; }
-p, h1, h2, h3, h4, label, span, a { overflow-wrap: anywhere; }
-#presentation-modal { width: 100%; max-width: 100vw; }
-#presentation-modal > .flex-none, #presentation-modal .flex-1 { min-width: 0; }
-#stage-song-pills { min-width: 0; max-width: 100%; }
-#stage-song-title, #stage-song-singer, #stage-lineup-title, #stage-lineup-leader {
-  max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
-}
-#stage-lyrics-box {
-  width: 100%; max-width: 100%; min-width: 0; overflow-x: hidden;
-}
-#stage-lyrics-box > div { width: 100%; max-width: 100%; min-width: 0; }
-#stage-lyrics-box .whitespace-pre, #stage-lyrics-box .whitespace-pre-wrap {
-  white-space: pre-wrap !important; overflow-wrap: anywhere !important; word-break: break-word;
-}
-#stage-lyrics-box .flex.flex-wrap { max-width: 100%; }
-#stage-lyrics-box .flex.flex-wrap > span { white-space: normal; }
-#stage-song-title { line-height: 1.2; }
-#songs-bank-list, #lineups-view-container, #home-lineups-grid, #global-search-grid {
-  width: 100%; min-width: 0;
-}
-#songs-bank-list > *, #lineups-view-container > *, #home-lineups-grid > *, #global-search-grid > * {
-  min-width: 0; max-width: 100%;
-}
 @media (max-width: 640px) {
   main { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
-  header > div { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
-  header h1 { font-size: 0.95rem; }
-  #tab-home > .relative { padding: 1.15rem !important; }
-  #tab-home h2 { font-size: clamp(1.65rem, 7vw, 2.25rem) !important; }
-  #tab-lineup h2 { font-size: 1.25rem !important; }
-  #tab-songs .glass-panel { padding: 0.75rem !important; }
-  #presentation-modal > .flex-none:first-child {
-    flex-wrap: wrap; align-items: flex-start; padding: 0.65rem !important;
-  }
-  #presentation-modal > .flex-none:first-child > div:last-child { margin-left: auto; }
-  #presentation-modal .flex-1 { padding: 0.85rem !important; }
-  #presentation-modal .flex-1 > div { gap: 1rem !important; }
-  #presentation-modal .flex-1 > div > .flex { align-items: flex-start; flex-wrap: wrap; }
-  #presentation-modal .flex-1 > div > .flex > div:first-child { flex: 1 1 100%; min-width: 0; }
-  #stage-song-title { font-size: clamp(1.35rem, 6vw, 1.8rem) !important; }
-  #stage-lyrics-box .text-sm { font-size: 0.95rem !important; }
-  #presentation-modal > .flex-none:last-child > div { gap: 0.5rem; }
-  #stage-prev-btn, #stage-next-btn { padding: 0.55rem 0.65rem !important; font-size: 0.7rem !important; }
-  #stage-track-counter { font-size: 0.65rem; white-space: nowrap; }
-  #lineup-modal, #song-modal {
-    padding: 0.5rem !important; overflow-y: auto; align-items: flex-start;
-  }
-  #lineup-modal > div, #song-modal > div {
-    width: 100%; max-width: 100%; max-height: calc(100dvh - 1rem);
-    overflow-y: auto; margin: 0.25rem auto; padding: 0.85rem !important;
-  }
+  #lineup-modal > div, #song-modal > div { padding: 1.15rem !important; margin-top: .5rem; margin-bottom: .5rem; }
+  #lineup-modal, #song-modal { align-items: flex-start; }
 }
-
-
-/* Header sizing for narrow phones */
-@media (max-width: 480px) {
-  header > .max-w-7xl {
-    height: auto !important;
-    min-height: 4rem;
-    padding-top: 0.55rem !important;
-    padding-bottom: 0.55rem !important;
-    align-items: center;
-  }
-  header > .max-w-7xl > .group {
-    width: 100%;
-    min-width: 0;
-    gap: 0.55rem !important;
-  }
-  header > .max-w-7xl > .group > div:last-child {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-  header h1 {
-    flex: 0 0 auto;
-    white-space: nowrap !important;
-    overflow-wrap: normal !important;
-    word-break: normal !important;
-    font-size: 1rem !important;
-    line-height: 1.2;
-  }
-  header h1 + span {
-    flex: 0 1 auto;
-    min-width: 0;
-    max-width: 7.5rem;
-    padding-left: 0.4rem !important;
-    padding-right: 0.4rem !important;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  #sync-status {
-    display: inline-block;
-    max-width: 5.4rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: bottom;
-  }
-  #tab-lineup > div:first-child {
-    align-items: stretch;
-    gap: 0.75rem !important;
-  }
-  #tab-lineup > div:first-child h2 {
-    font-size: 1.2rem !important;
-    line-height: 1.25;
-  }
-  #tab-lineup > div:first-child p {
-    font-size: 0.72rem !important;
-    line-height: 1.4;
-  }
-  #tab-lineup > div:first-child > button {
-    width: 100%;
-    min-height: 2.75rem;
-    white-space: normal;
-    text-align: center;
-  }
-  #lineups-view-container > div {
-    padding: 0.9rem !important;
-    gap: 0.8rem !important;
-  }
-  #lineups-view-container h4 {
-    font-size: 1.05rem !important;
-    line-height: 1.3;
-  }
-  #lineups-view-container > div > div:last-child {
-    width: 100%;
-  }
-  #lineups-view-container > div > div:last-child > button:first-child {
-    flex: 1 1 auto;
-    justify-content: center;
-  }
-}
-
 </style>
 </head>
-<body class="bg-mountain-atmosphere text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-20 md:pb-8">
+<body class="bg-mountain-atmosphere text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-24 md:pb-10">
 
 <!-- Subtle Ambient Glow Orbs -->
-<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="fixed top-1/3 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-gradient-to-b from-blue-600/25 via-sky-500/15 to-transparent rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slow"></div>
+<div class="fixed top-1/3 right-5 w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
-<!-- VISIBLE SUBTLE MOUNTAIN BACKGROUND VECTOR SILHOUETTE -->
-<div class="fixed bottom-0 left-0 right-0 w-full overflow-hidden pointer-events-none -z-10 opacity-30 select-none">
-    <svg class="w-full h-44 sm:h-64 lg:h-80 object-cover object-bottom" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <!-- Distant Mountain Range Layer -->
-        <path d="M0,224 L80,208 C160,192 320,160 480,181.3 C640,203 800,277 960,266.7 C1120,256 1280,160 1360,112 L1440,64 L1440,320 L1360,320 C1280,320 1120,320 960,320 C800,320 640,320 480,320 C320,320 160,320 80,320 L0,320 Z" fill="#1e293b" fill-opacity="0.5"/>
-        <!-- Mid-ground Mountain Peaks Layer -->
-        <path d="M0,288 L60,266.7 C120,245 240,203 360,208 C480,213 600,267 720,261.3 C840,256 960,192 1080,170.7 C1200,149 1320,171 1380,181.3 L1440,192 L1440,320 L1380,320 C1320,320 1200,320 1080,320 C960,320 840,320 720,320 C600,320 480,320 360,320 C240,320 120,320 60,320 L0,320 Z" fill="#0f172a" fill-opacity="0.8"/>
-        <!-- Foreground Peak Outline Accent -->
-        <path d="M0,160 L120,210 L280,140 L440,240 L600,130 L800,230 L980,110 L1180,220 L1340,140 L1440,180 L1440,320 L0,320 Z" fill="url(#mountain-grad)" fill-opacity="0.4"/>
+<!-- REALISTIC MOUNTAIN BACKGROUND (Reaches up to center screen) -->
+<div class="fixed bottom-0 left-0 right-0 w-full h-[55vh] sm:h-[65vh] overflow-hidden pointer-events-none -z-10 select-none opacity-45">
+    <svg class="w-full h-full object-cover object-bottom" viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
-            <linearGradient id="mountain-grad" x1="720" y1="110" x2="720" y2="320" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#38bdf8" stop-opacity="0.3"/>
-                <stop offset="0.8" stop-color="#020617" stop-opacity="0.9"/>
+            <linearGradient id="sky-glow" x1="720" y1="0" x2="720" y2="600" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8" stop-opacity="0.15"/>
+                <stop offset="0.5" stop-color="#1e3a8a" stop-opacity="0.08"/>
+                <stop offset="1" stop-color="#0b0f17" stop-opacity="0.95"/>
+            </linearGradient>
+            <linearGradient id="mountain-back-grad" x1="720" y1="120" x2="720" y2="600" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#1e293b" stop-opacity="0.75"/>
+                <stop offset="0.7" stop-color="#0f172a" stop-opacity="0.9"/>
+                <stop offset="1" stop-color="#0b0f17" stop-opacity="1"/>
+            </linearGradient>
+            <linearGradient id="mountain-mid-grad" x1="720" y1="200" x2="720" y2="600" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#0f172a" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#070a0f" stop-opacity="1"/>
+            </linearGradient>
+            <linearGradient id="peak-highlight" x1="720" y1="80" x2="720" y2="400" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#38bdf8" stop-opacity="0.45"/>
+                <stop offset="0.6" stop-color="#0284c7" stop-opacity="0.1"/>
+                <stop offset="1" stop-color="#0b0f17" stop-opacity="0"/>
             </linearGradient>
         </defs>
+
+        <!-- Sky Background Glow behind peaks -->
+        <rect width="1440" height="600" fill="url(#sky-glow)" />
+
+        <!-- Distant Realistic Mountain Range (High Ridge) -->
+        <path d="M-50,600 L-50,260 L90,160 L240,290 L380,180 L560,310 L740,130 L910,270 L1080,150 L1260,280 L1490,110 L1490,600 Z" fill="url(#mountain-back-grad)"/>
+
+        <!-- Mid-ground Detailed Peaks with Ridge Angles -->
+        <path d="M-50,600 L-50,340 L120,240 L260,330 L450,190 L620,340 L790,210 L980,350 L1150,220 L1320,330 L1490,230 L1490,600 Z" fill="url(#mountain-mid-grad)"/>
+
+        <!-- Foreground Majestic Peak Lines & Highlights -->
+        <path d="M-50,600 L80,380 L220,440 L410,260 L580,410 L760,250 L950,420 L1120,280 L1310,410 L1490,300 L1490,600 Z" fill="#070a0f" fill-opacity="0.9"/>
+
+        <!-- Mountain Peak Rim Glow Highlights -->
+        <path d="M740,130 L760,250 L790,210 L910,270 L1080,150 L1120,280 L1260,280 L1310,410 L1490,110" stroke="url(#peak-highlight)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M-50,160 L90,160 L240,290 L380,180 L450,190 L560,310 L740,130" stroke="url(#peak-highlight)" stroke-width="2" stroke-linecap="round"/>
     </svg>
 </div>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/70 border-b border-blue-900/30 shadow-2xl">
+<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/80 border-b border-blue-900/30 shadow-2xl">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchTab('home')">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
+<div class="w-10 h-10 rounded-xl btn-gradient-blue flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
 <i data-lucide="mountain" class="w-5 h-5 text-white"></i>
 </div>
 <div>
 <div class="flex items-center space-x-2">
-<h1 class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent">
+<h1 class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-sky-300 bg-clip-text text-transparent">
 SSLIM Worship
 </h1>
-<span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border bg-cyan-500/10 border-cyan-400/30 text-cyan-300 shadow-sm">
-<i data-lucide="wifi" class="w-3 h-3 text-cyan-400"></i>
+<span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border bg-sky-500/10 border-sky-400/30 text-sky-300 shadow-sm">
+<i data-lucide="wifi" class="w-3 h-3 text-sky-400"></i>
 <span id="sync-status">Connecting…</span>
 </span>
 </div>
-<p class="text-[10px] text-cyan-400/90 tracking-widest uppercase font-bold">Music Team Portal</p>
+<p class="text-[10px] text-sky-400/90 tracking-widest uppercase font-bold">Music Team Portal</p>
 </div>
 </div>
 
 <!-- Desktop Nav -->
 <nav class="hidden md:flex items-center space-x-1 bg-slate-900/80 p-1.5 rounded-2xl border border-blue-900/40 shadow-inner">
-<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-500/20">
+<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-blue text-white shadow-md">
 <i data-lucide="home" class="w-4 h-4"></i>
 <span>Home</span>
 </button>
 <button onclick="switchTab('songs')" id="nav-songs" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/60">
 <i data-lucide="book-open" class="w-4 h-4"></i>
-<span>Songs Bank</span>
+<span>Song Bank</span>
 </button>
 <button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/60">
 <i data-lucide="calendar" class="w-4 h-4"></i>
@@ -295,10 +225,10 @@ SSLIM Worship
 
 <!-- HOME TAB -->
 <div id="tab-home" class="space-y-8">
-<div class="relative rounded-3xl overflow-hidden border border-blue-500/30 bg-gradient-to-br from-slate-900/90 via-blue-950/40 to-slate-950 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
+<div class="relative rounded-3xl overflow-hidden border border-blue-500/30 bg-gradient-to-br from-slate-900/80 via-slate-900/50 to-slate-950/90 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
 <div class="max-w-2xl relative z-10 space-y-4">
-<span class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold uppercase tracking-wider shadow-sm">
-<i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
+<span class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider shadow-sm">
+<i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-400"></i>
 <span>SSLIM Music Portal</span>
 </span>
 <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
@@ -311,8 +241,8 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <!-- Home Search Bar -->
 <div class="pt-2 space-y-3 max-w-xl">
 <div class="relative flex items-center">
-<i data-lucide="search" id="home-search-icon" class="absolute left-4 w-5 h-5 text-cyan-400"></i>
-<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-950/80 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow-inner text-sm sm:text-base font-medium">
+<i data-lucide="search" id="home-search-icon" class="absolute left-4 w-5 h-5 text-sky-400"></i>
+<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-950/80 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400/50 shadow-inner text-sm sm:text-base font-medium">
 </div>
 </div>
 </div>
@@ -320,7 +250,7 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 
 <!-- Global Search Container -->
 <div id="global-search-results-container" class="space-y-4 hidden">
-<h3 class="text-lg font-bold text-cyan-300 flex items-center space-x-2">
+<h3 class="text-lg font-bold text-sky-300 flex items-center space-x-2">
 <i data-lucide="search" class="w-5 h-5"></i>
 <span id="global-search-count">Search Results</span>
 </h3>
@@ -332,12 +262,12 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div class="flex items-center justify-between">
 <div>
 <h3 class="text-xl font-bold text-white flex items-center space-x-2">
-<i data-lucide="calendar" class="w-5 h-5 text-cyan-400"></i>
+<i data-lucide="calendar" class="w-5 h-5 text-sky-400"></i>
 <span>Recent Lineups</span>
 </h3>
 <p class="text-xs text-slate-400">Scheduled service setlists</p>
 </div>
-<button onclick="switchTab('lineup')" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center space-x-1">
+<button onclick="switchTab('lineup')" class="text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center space-x-1">
 <span>View All</span>
 <i data-lucide="chevron-right" class="w-4 h-4"></i>
 </button>
@@ -348,17 +278,65 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 
 <!-- SONGS BANK TAB -->
 <div id="tab-songs" class="space-y-6 hidden">
-<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-2xl glass-panel">
-<div class="flex-1 relative">
-<i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400"></i>
-<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, or lyrics..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-blue-900/40 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 font-medium">
+<!-- SONG BANK HEADER: TITLE & TOP-RIGHT ADD BUTTON -->
+<div class="flex items-center justify-between gap-4 pt-1">
+<div>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center space-x-2.5">
+<i data-lucide="music" class="w-7 h-7 text-sky-400"></i>
+<span>Song Bank</span>
+</h2>
+<p class="text-xs sm:text-sm text-slate-400">Browse, filter, and manage worship lyrics & chords</p>
 </div>
-<button onclick="openSongModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
-<i data-lucide="plus" class="w-4 h-4"></i>
-<span>Add Song</span>
+<!-- TOP-RIGHT PROMINENT ADD BUTTON -->
+<button onclick="openSongModal()" class="btn-gradient-blue px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl text-white font-bold text-xs sm:text-sm shadow-xl flex items-center space-x-2 transform active:scale-95 transition-all">
+<i data-lucide="plus-circle" class="w-5 h-5"></i>
+<span class="hidden sm:inline">Add New Song</span>
+<span class="sm:hidden">Add</span>
 </button>
 </div>
-<div id="songs-bank-list" class="space-y-3"></div>
+
+<!-- SEARCH BAR & CATEGORY CARDS CONTAINER -->
+<div class="space-y-4">
+<!-- Search Bar Input -->
+<div class="relative flex items-center">
+<i data-lucide="search" class="absolute left-4 w-5 h-5 text-sky-400"></i>
+<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, tag, or lyrics..." class="w-full pl-12 pr-4 py-3 rounded-2xl bg-slate-950/80 border border-blue-900/40 text-sm sm:text-base text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400/50 shadow-inner font-medium">
+</div>
+
+<!-- 2 LANGUAGE FILTER CARDS BELOW SEARCH -->
+<div class="grid grid-cols-2 gap-3 sm:gap-4">
+<!-- 1. All English Songs Card -->
+<div onclick="setLanguageFilter('English')" id="filter-card-english" class="filter-card p-3.5 sm:p-4 rounded-2xl cursor-pointer flex items-center justify-between group">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-blue-500/10 border border-blue-400/20 text-blue-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+<i data-lucide="globe" class="w-5 h-5"></i>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-sky-300 transition-colors">English Songs</h4>
+<p class="text-[10px] sm:text-xs text-slate-400">International Worship</p>
+</div>
+</div>
+<span id="badge-english-count" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-800 text-sky-300 border border-slate-700">0</span>
+</div>
+
+<!-- 2. All Tagalog Songs Card -->
+<div onclick="setLanguageFilter('Tagalog')" id="filter-card-tagalog" class="filter-card p-3.5 sm:p-4 rounded-2xl cursor-pointer flex items-center justify-between group">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-amber-500/10 border border-amber-400/20 text-amber-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+<i data-lucide="heart-handshake" class="w-5 h-5"></i>
+</div>
+<div>
+<h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-amber-300 transition-colors">Tagalog Songs</h4>
+<p class="text-[10px] sm:text-xs text-slate-400">Filipino Worship</p>
+</div>
+</div>
+<span id="badge-tagalog-count" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-800 text-amber-300 border border-slate-700">0</span>
+</div>
+</div>
+</div>
+
+<!-- SONGS BANK LIST (SEMI-TRANSLUCENT CARDS) -->
+<div id="songs-bank-list" class="space-y-3 pt-2"></div>
 </div>
 
 <!-- LINEUPS TAB -->
@@ -366,12 +344,12 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div>
 <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
-<i data-lucide="calendar" class="w-6 h-6 text-cyan-400"></i>
+<i data-lucide="calendar" class="w-6 h-6 text-sky-400"></i>
 <span>Worship Lineups</span>
 </h2>
 <p class="text-xs text-slate-400">Organize service setlists and launch full presentation mode</p>
 </div>
-<button onclick="openLineupModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition-all">
+<button onclick="openLineupModal()" class="btn-gradient-blue px-5 py-2.5 rounded-xl text-white font-bold text-xs sm:text-sm shadow-lg flex items-center justify-center space-x-2">
 <i data-lucide="plus" class="w-4 h-4"></i>
 <span>Create New Lineup</span>
 </button>
@@ -394,7 +372,6 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <button onclick="closeMediaModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
 </div>
 <div id="media-embed-container" class="w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800">
-<!-- Dynamic iframe injected via JS -->
 </div>
 </div>
 </div>
@@ -403,14 +380,14 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div id="presentation-modal" class="fixed inset-0 z-50 bg-slate-950 flex flex-col overflow-hidden hidden">
 <div class="flex-none bg-slate-900/90 border-b border-blue-900/50 p-3 sm:p-4 flex items-center justify-between gap-2 backdrop-blur-2xl">
 <div class="flex items-center space-x-2.5 min-w-0">
-<span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0 shadow-lg shadow-cyan-400/50"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse flex-shrink-0 shadow-lg shadow-sky-400/50"></span>
 <div class="min-w-0">
 <h3 id="stage-lineup-title" class="text-sm sm:text-lg font-bold text-white truncate">Service Title</h3>
 <p id="stage-lineup-leader" class="text-[11px] text-slate-400 truncate">Leader</p>
 </div>
 </div>
 <div class="flex items-center space-x-2 flex-shrink-0">
-<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-cyan-500/20 border-cyan-400 text-cyan-300">
+<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-sky-500/20 border-sky-400 text-sky-300">
 <i data-lucide="eye" class="w-3.5 h-3.5"></i>
 <span>Chords On</span>
 </button>
@@ -425,13 +402,13 @@ Exit Mode
 <div class="flex flex-row justify-between items-center gap-2 pb-4 border-b border-slate-800/80">
 <div>
 <h2 id="stage-song-title" class="text-2xl sm:text-4xl font-extrabold text-white">Song Title</h2>
-<p id="stage-song-singer" class="text-xs sm:text-sm text-cyan-300 font-semibold mt-1">Artist</p>
+<p id="stage-song-singer" class="text-xs sm:text-sm text-sky-300 font-semibold mt-1">Artist</p>
 </div>
 <div class="flex items-center space-x-1.5 bg-slate-900 p-1.5 rounded-2xl border border-blue-800/80 shadow-md">
 <span class="text-[11px] font-bold text-slate-400 px-1">Key:</span>
-<span id="stage-song-key" class="text-xs sm:text-sm font-extrabold text-cyan-300 w-7 text-center">C</span>
-<button onclick="adjustStageKey(-1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-cyan-300 hover:bg-slate-700 flex items-center justify-center text-sm">-</button>
-<button onclick="adjustStageKey(1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-cyan-300 hover:bg-slate-700 flex items-center justify-center text-sm">+</button>
+<span id="stage-song-key" class="text-xs sm:text-sm font-extrabold text-sky-300 w-7 text-center">C</span>
+<button onclick="adjustStageKey(-1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-sky-300 hover:bg-slate-700 flex items-center justify-center text-sm">-</button>
+<button onclick="adjustStageKey(1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-sky-300 hover:bg-slate-700 flex items-center justify-center text-sm">+</button>
 </div>
 </div>
 <div id="stage-lyrics-box" class="py-2 overflow-x-auto min-h-[220px]"></div>
@@ -444,7 +421,7 @@ Exit Mode
 <span>Prev Song</span>
 </button>
 <span id="stage-track-counter" class="text-xs font-bold text-slate-400">Track 1 of 3</span>
-<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-cyan-500/40 bg-cyan-600/30 text-cyan-200 hover:bg-cyan-600/40">
+<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-sky-500/40 bg-sky-600/30 text-sky-200 hover:bg-sky-600/40">
 <span>Next Song</span>
 <i data-lucide="chevron-right" class="w-4 h-4 stroke-[3]"></i>
 </button>
@@ -464,23 +441,26 @@ Exit Mode
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
 <label class="text-xs font-semibold text-slate-300">Song Title *</label>
-<input type="text" id="form-song-title" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<input type="text" id="form-song-title" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-400 font-medium">
 </div>
 <div>
 <label class="text-xs font-semibold text-slate-300">Singer / Artist</label>
-<input type="text" id="form-song-singer" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<input type="text" id="form-song-singer" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-400 font-medium">
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
 <label class="text-xs font-semibold text-slate-300">Original Key</label>
-<select id="form-song-key" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<select id="form-song-key" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-400 font-medium">
 <option value="C">Key of C</option><option value="C#">Key of C#</option><option value="D">Key of D</option><option value="D#">Key of D#</option><option value="E">Key of E</option><option value="F">Key of F</option><option value="F#">Key of F#</option><option value="G">Key of G</option><option value="G#">Key of G#</option><option value="A">Key of A</option><option value="A#">Key of A#</option><option value="B">Key of B</option>
 </select>
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Tempo / Style</label>
-<input type="text" id="form-song-tempo" placeholder="e.g. Slow (68 BPM)" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<label class="text-xs font-semibold text-slate-300">Language</label>
+<select id="form-song-language" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-400 font-medium">
+<option value="English">English</option>
+<option value="Tagalog">Tagalog</option>
+</select>
 </div>
 </div>
 <!-- Media Links Inputs -->
@@ -496,11 +476,11 @@ Exit Mode
 </div>
 <div>
 <label class="text-xs font-semibold text-slate-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
-<textarea id="form-song-lyrics" rows="8" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
+<textarea id="form-song-lyrics" rows="8" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-sky-400"></textarea>
 </div>
 <div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
 <button type="button" onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
-<button type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold shadow-lg shadow-blue-500/20">Save Song</button>
+<button type="submit" class="btn-gradient-blue px-6 py-2 rounded-xl text-white text-xs font-bold shadow-lg">Save Song</button>
 </div>
 </form>
 </div>
@@ -533,11 +513,11 @@ Exit Mode
 <input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
 </div>
 <div class="space-y-3 pt-2">
-<label class="text-xs font-bold text-cyan-300 uppercase tracking-wider">Select Songs for Lineup</label>
+<label class="text-xs font-bold text-sky-300 uppercase tracking-wider">Select Songs for Lineup</label>
 <div id="lineup-songs-checkboxes" class="max-h-48 overflow-y-auto space-y-1.5 p-2 rounded-xl bg-slate-950 border border-slate-800"></div>
-          <div class="mt-3 rounded-xl bg-slate-950/70 border border-cyan-500/20 p-3 space-y-2">
+          <div class="mt-3 rounded-xl bg-slate-950/70 border border-sky-500/20 p-3 space-y-2">
             <div class="flex items-center justify-between gap-2">
-              <span class="text-xs font-bold text-cyan-300 uppercase tracking-wider">Selected song order</span>
+              <span class="text-xs font-bold text-sky-300 uppercase tracking-wider">Selected song order</span>
               <span class="text-[10px] text-slate-500">Use arrows to arrange</span>
             </div>
             <div id="lineup-selected-order" class="space-y-2"></div>
@@ -545,15 +525,15 @@ Exit Mode
 </div>
 <div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
 <button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
-<button id="lineup-submit-btn" type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold shadow-lg shadow-blue-500/20">Create Lineup</button>
+<button id="lineup-submit-btn" type="submit" class="btn-gradient-blue px-6 py-2 rounded-xl text-white text-xs font-bold shadow-lg">Create Lineup</button>
 </div>
 </form>
 </div>
 </div>
 
 <!-- MOBILE BOTTOM NAVIGATION -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/90 backdrop-blur-2xl border-t border-blue-900/40 px-6 py-2 flex justify-around items-center shadow-2xl">
-<button onclick="switchTab('home')" id="bm-home" class="flex flex-col items-center py-1 px-3 text-cyan-400">
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-2xl border-t border-blue-900/40 px-6 py-2 flex justify-around items-center shadow-2xl">
+<button onclick="switchTab('home')" id="bm-home" class="flex flex-col items-center py-1 px-3 text-sky-400">
 <i data-lucide="home" class="w-5 h-5"></i>
 <span class="text-[10px] font-bold mt-1">Home</span>
 </button>
@@ -571,24 +551,16 @@ Exit Mode
 <script>
 const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
-// Initial Seed Songs updated with YouTube / Spotify media references
-let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
-{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
-{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
-{ id: 's3', title: 'Build My Life', singer: 'Housefires', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' }
-];
+// Active language filter ('All', 'English', 'Tagalog')
+let activeLanguageFilter = 'All';
 
-// Curated Online Worship Catalog for YouTube / Spotify search
-const MEDIA_CATALOG = [
-  { title: 'Way Maker', singer: 'Sinach', youtube: 'QM8jQHE5AAk', spotify: '1BxfuPKuaBlyZgBg5aZaB1' },
-  { title: 'Goodness of God', singer: 'Bethel Music / Jenn Johnson', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW' },
-  { title: 'Build My Life', singer: 'Housefires / Pat Barrett', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW' },
-  { title: '10,000 Reasons (Bless The Lord)', singer: 'Matt Redman', youtube: 'XtwIT8JelxI', spotify: '0Z1q24hL8U4K4f3F8J68zW' },
-  { title: 'Reckless Love', singer: 'Cory Asbury', youtube: '6xx0d3R2LoU', spotify: '0uN5f2G17R3q1F7g2sK4M2' },
-  { title: 'What A Beautiful Name', singer: 'Hillsong Worship', youtube: 'r5L6v8h0m8I', spotify: '6W0293N0z7e9K3n0m8I6bW' },
-  { title: 'Oceans (Where Feet May Fail)', singer: 'Hillsong UNITED', youtube: 'dy9nwe9_xzw', spotify: '0x1q59A083uQ22M054fM3v' },
-  { title: 'Graves Into Gardens', singer: 'Elevation Worship', youtube: 'KwX1f2X6d2E', spotify: '0vM005fB08v8H5n3m8I6bW' },
-  { title: 'Holy Forever', singer: 'Chris Tomlin', youtube: 'Hcn1Xmvh1hU', spotify: '4x3n0m8I6bW005fB08v8H5' }
+// Seed Songs with English & Tagalog Worship catalog
+let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
+{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
+{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
+{ id: 's3', title: 'Build My Life', singer: 'Housefires', language: 'English', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' },
+{ id: 's4', title: 'Salamat Musikero', singer: 'Malayang Pilipino', language: 'Tagalog', originalKey: 'D', tempo: 'Mid (74 BPM)', youtube: '', spotify: '', lyrics: '[D] Salamat sa Iyo, Oh [Bm] Panginoong Hesus\n[G] Sa biyaya\'t pagpapala Mo sa [A] aming buhay\n\n[D] Ikaw ang dahilan ng [F#m] aming pag-awit\n[G] Pupurihin Ka sa [A] habang panahon' },
+{ id: 's5', title: 'Dahil Sa Iyo', singer: 'Musikatha', language: 'Tagalog', originalKey: 'E', tempo: 'Slow (65 BPM)', youtube: '', spotify: '', lyrics: '[E] Dahil sa Iyo, may [C#m] pag-asa ako\n[F#m] Ikaw ang liwanag sa [B] aking mundo' }
 ];
 
 // Initial Seed Lineups
@@ -608,7 +580,7 @@ let currentStageSongIdx = 0;
 let stageTranspositions = {};
 let showStageChords = true;
 
-// Shared cloud storage & synchronization settings
+// Shared cloud storage settings
 const SHARED_API_URL = 'https://sslim.eunicelardizabal30.workers.dev';
 const SYNC_INTERVAL_MS = 10000;
 let sharedFileSha = null;
@@ -616,58 +588,13 @@ let syncTimer = null;
 let syncSaveTimer = null;
 let syncInProgress = false;
 let syncDirty = false;
-let lastRemoteUpdatedAt = null;
 
 function setSyncStatus(message, state = 'normal') {
     const el = document.getElementById('sync-status');
     if (!el) return;
     el.textContent = message;
     el.title = message;
-    el.className = state === 'error' ? 'text-red-300' : state === 'ok' ? 'text-emerald-300' : 'text-cyan-300';
-}
-
-function setHomeSearchMode(mode) {
-    homeSearchMode = mode;
-    ['songs', 'youtube', 'spotify'].forEach(m => {
-        const btn = document.getElementById(`search-mode-${m}`);
-        if (btn) {
-            btn.className = m === mode
-                ? 'px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 flex items-center space-x-1'
-                : 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center space-x-1';
-        }
-    });
-
-    const input = document.getElementById('global-search');
-    if (input) {
-        if (mode === 'songs') input.placeholder = 'Search songs, artists, or lyrics...';
-        if (mode === 'youtube') input.placeholder = 'Search YouTube videos or paste link/ID...';
-        if (mode === 'spotify') input.placeholder = 'Search Spotify tracks or paste link/ID...';
-        handleGlobalSearch(input.value);
-    }
-}
-
-function handleGlobalSearch(query) {
-    const container = document.getElementById('global-search-results-container');
-    const grid = document.getElementById('global-search-grid');
-    const countEl = document.getElementById('global-search-count');
-    if (!query.trim()) { container.classList.add('hidden'); return; }
-    container.classList.remove('hidden');
-
-    const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()) || s.lyrics.toLowerCase().includes(query.toLowerCase()));
-    countEl.innerText = `Song Bank Matches (${matches.length})`;
-    grid.innerHTML = matches.length === 0 ? `<div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm">No matching songs found in your Song Bank.</div>` : matches.map(s => `
-    <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
-    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
-    <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
-    </div>`).join('');
-
-    if (window.lucide) lucide.createIcons();
-}
-
-function quickAddMediaSong(ytLink, spLink) {
-    openSongModal();
-    if (ytLink) document.getElementById('form-song-youtube').value = ytLink;
-    if (spLink) document.getElementById('form-song-spotify').value = spLink;
+    el.className = state === 'error' ? 'text-red-300' : state === 'ok' ? 'text-emerald-300' : 'text-sky-300';
 }
 
 function saveLocalBackup() {
@@ -695,7 +622,7 @@ function getWritePassword() {
 
 async function fetchSharedData() {
     const response = await fetch(`${SHARED_API_URL}/api/data`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`Shared data could not be loaded (HTTP ${response.status}).`);
+    if (!response.ok) throw new Error(`Shared data could not be loaded.`);
     return response.json();
 }
 
@@ -722,36 +649,29 @@ async function loadSharedData({ silent = false } = {}) {
                 songs = Array.isArray(result.data.songs) ? result.data.songs : [];
                 lineups = Array.isArray(result.data.lineups) ? result.data.lineups : [];
                 sharedFileSha = result.sha || null;
-                lastRemoteUpdatedAt = result.updatedAt || null;
                 saveLocalBackup();
                 if (!isEditingOrPresenting()) refreshVisibleView();
             }
         } else {
             sharedFileSha = null;
         }
-        setSyncStatus('Cloud synced · checks every 10s', 'ok');
+        setSyncStatus('Cloud synced', 'ok');
         return true;
     } catch (error) {
-        setSyncStatus('Cloud unavailable · using local copy', 'error');
-        if (!silent) console.warn('SSLIM cloud sync:', error);
+        setSyncStatus('Local offline copy active', 'error');
+        if (!silent) console.warn('SSLIM sync:', error);
         return false;
     }
 }
 
 async function pushSharedData() {
     if (!syncDirty || syncInProgress) return;
-    if (SHARED_API_URL.includes('YOUR-WORKER-NAME')) {
-        setSyncStatus('Set Worker URL to enable cloud sync', 'error');
-        return;
-    }
     const password = getWritePassword();
-    if (!password) {
-        setSyncStatus('Cloud save cancelled', 'error');
-        return;
-    }
+    if (!password) return;
+
     syncInProgress = true;
     const snapshot = { songs: structuredClone(songs), lineups: structuredClone(lineups), baseSha: sharedFileSha };
-    setSyncStatus('Saving to GitHub…');
+    setSyncStatus('Saving cloud data…');
     try {
         const response = await fetch(`${SHARED_API_URL}/api/data`, {
             method: 'PUT',
@@ -759,38 +679,19 @@ async function pushSharedData() {
             body: JSON.stringify(snapshot)
         });
         const result = await response.json().catch(() => ({}));
-        if (response.status === 401) {
-            sessionStorage.removeItem('sslim_shared_write_password');
-            throw new Error('Incorrect editing password. Save again to re-enter it.');
-        }
-        if (response.status === 409) {
-            await loadSharedData({ silent: true });
-            syncDirty = false;
-            throw new Error('Another user updated the shared file. Reloaded latest version.');
-        }
-        if (!response.ok) throw new Error(result.error || `Cloud save failed (HTTP ${response.status}).`);
+        if (!response.ok) throw new Error(result.error || `Save failed.`);
         sharedFileSha = result.sha || sharedFileSha;
-        lastRemoteUpdatedAt = result.updatedAt || null;
         syncDirty = false;
         saveLocalBackup();
         setSyncStatus('All changes synced', 'ok');
     } catch (error) {
-        setSyncStatus('Cloud save failed · local copy kept', 'error');
-        alert(error.message);
+        setSyncStatus('Cloud save pending', 'error');
     } finally {
         syncInProgress = false;
-        if (syncDirty) {
-            clearTimeout(syncSaveTimer);
-            syncSaveTimer = setTimeout(pushSharedData, 1000);
-        }
     }
 }
 
 function startSharedSync() {
-    if (SHARED_API_URL.includes('YOUR-WORKER-NAME')) {
-        setSyncStatus('Set Worker URL to enable cloud sync', 'error');
-        return;
-    }
     loadSharedData().finally(() => {
         clearInterval(syncTimer);
         syncTimer = setInterval(() => {
@@ -811,13 +712,13 @@ function switchTab(tab) {
         const nav = document.getElementById(`nav-${t}`);
         if (nav) {
             nav.className = t === tab 
-                ? 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-500/20' 
+                ? 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-blue text-white shadow-md' 
                 : 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/60';
         }
         
         const bm = document.getElementById(`bm-${t}`);
         if (bm) {
-            bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-cyan-400' : 'flex flex-col items-center py-1 px-3 text-slate-400';
+            bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-sky-400' : 'flex flex-col items-center py-1 px-3 text-slate-400';
         }
     });
     
@@ -830,7 +731,7 @@ function switchTab(tab) {
     if (window.lucide) lucide.createIcons();
 }
 
-// Helper functions to parse YouTube & Spotify URLs
+// Helper functions for YouTube & Spotify
 function getYouTubeId(urlOrId) {
     if (!urlOrId) return null;
     const str = String(urlOrId).trim();
@@ -862,18 +763,18 @@ function openMediaModal(songId, type) {
 
     if (type === 'youtube') {
         const ytId = getYouTubeId(song.youtube);
-        if (!ytId) return alert('No valid YouTube link or ID configured for this song.');
+        if (!ytId) return alert('No valid YouTube link configured.');
         titleEl.textContent = `${song.title} - YouTube`;
         iconBg.className = 'p-2 rounded-xl bg-red-500/20 text-red-400';
         icon.setAttribute('data-lucide', 'youtube');
-        container.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        container.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
     } else if (type === 'spotify') {
         const spId = getSpotifyTrackId(song.spotify);
-        if (!spId) return alert('No valid Spotify link or ID configured for this song.');
+        if (!spId) return alert('No valid Spotify link configured.');
         titleEl.textContent = `${song.title} - Spotify`;
         iconBg.className = 'p-2 rounded-xl bg-emerald-500/20 text-emerald-400';
         icon.setAttribute('data-lucide', 'disc');
-        container.innerHTML = `<iframe class="w-full h-full rounded-2xl" src="https://open.spotify.com/embed/track/${spId}?utm_source=generator&theme=0" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+        container.innerHTML = `<iframe class="w-full h-full rounded-2xl" src="https://open.spotify.com/embed/track/${spId}?utm_source=generator&theme=0" frameborder="0" allowfullscreen="" loading="lazy"></iframe>`;
     }
 
     if (window.lucide) lucide.createIcons();
@@ -885,7 +786,7 @@ function closeMediaModal() {
     document.getElementById('media-modal').classList.add('hidden');
 }
 
-// Transposition helpers
+// Transposition logic
 function transposeChord(chord, semitones) {
     if (!chord || semitones === 0) return chord;
     if (chord.includes('/')) {
@@ -903,64 +804,10 @@ function transposeChord(chord, semitones) {
     return CHROMATIC[newIdx] + match[2];
 }
 
-const SECTION_LABELS = new Set([
-    'verse', 'intro', 'chorus', 'bridge', 'pre-chorus', 'pre chorus', 'ending', 'prelude'
-]);
-
-function isSectionLabel(value) {
-    return SECTION_LABELS.has(String(value || '').trim().toLowerCase().replace(/\s+/g, ' '));
-}
-
 function transposeContent(text, semitones) {
     if (!text) return text;
-    const normalized = normalizeChordRows(text);
-    if (semitones === 0) return normalized;
-    return normalized.replace(/\[([^\]]+)\]/g, (whole, c) => {
-        const chord = c.trim();
-        return isSectionLabel(chord) ? whole : `[${transposeChord(chord, semitones)}]`;
-    });
-}
-
-function isChordToken(token) {
-    const clean = String(token || '').replace(/[|,;]/g, '').trim();
-    if (isSectionLabel(clean)) return false;
-    return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|omit|no|2|4|5|6|7|9|11|13|b5|#5|b9|#9|b13|\+|°|ø|-|\(.*\)))*(?:\/(?:[A-G](?:#|b)?))?$/.test(clean)
-        || /^(?:N\.C\.|NC)$/i.test(clean);
-}
-
-function isChordOnlyLine(line) {
-    const tokens = String(line || '').trim().split(/\s+/).filter(Boolean);
-    return tokens.length > 0 && tokens.every(isChordToken);
-}
-
-function chordLineToInline(chordLine, lyricLine) {
-    const tokens = [...String(chordLine || '').matchAll(/\S+/g)].filter(m => isChordToken(m[0]));
-    let result = String(lyricLine || '');
-    tokens.sort((a, b) => b.index - a.index).forEach(token => {
-        const position = Math.min(token.index, result.length);
-        const chord = token[0].replace(/[|,;]/g, '');
-        result = result.slice(0, position) + '[' + chord + ']' + result.slice(position);
-    });
-    return result;
-}
-
-function normalizeChordRows(text) {
-    const lines = String(text || '').replace(/\r/g, '').split('\n');
-    const output = [];
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        if (isChordOnlyLine(line)) {
-            let next = i + 1;
-            while (next < lines.length && !lines[next].trim()) next++;
-            if (next < lines.length && !isChordOnlyLine(lines[next]) && !/\[[^\]]+\]/.test(lines[next])) {
-                output.push(chordLineToInline(line, lines[next]));
-                i = next;
-                continue;
-            }
-        }
-        output.push(line);
-    }
-    return output.join('\n');
+    if (semitones === 0) return text;
+    return text.replace(/\[([^\]]+)\]/g, (whole, c) => `[${transposeChord(c.trim(), semitones)}]`);
 }
 
 function parseLine(line) {
@@ -986,33 +833,33 @@ function renderLyricsHTML(text, semitones = 0, showChords = true) {
         const { hasChords, chords, lyrics } = parseLine(line);
         let chordHtml = '';
         if (showChords && hasChords) {
-            chordHtml = `<div class="flex flex-wrap items-center gap-x-1 gap-y-1 font-bold text-cyan-400 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
-            chords.trim().split(/\s+/).filter(Boolean).map(chord => `<span class="inline-flex bg-cyan-500/10 border border-cyan-400/30 px-1.5 py-0.5 rounded text-cyan-300">${chord}</span>`).join('') +
+            chordHtml = `<div class="flex flex-wrap items-center gap-x-1 gap-y-1 font-bold text-sky-400 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
+            chords.trim().split(/\s+/).filter(Boolean).map(chord => `<span class="inline-flex bg-sky-500/10 border border-sky-400/30 px-1.5 py-0.5 rounded text-sky-300">${chord}</span>`).join('') +
             `</div>`;
         }
         return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap break-words text-slate-100 font-sans tracking-wide text-sm sm:text-base">${lyrics || (hasChords ? '' : line)}</div></div>`;
     }).join('');
 }
 
-// Home View Renderer
+// Home Renderer
 function renderHome() {
     const grid = document.getElementById('home-lineups-grid');
     if (!grid) return;
     grid.innerHTML = lineups.slice(0, 3).map(l => {
         const songPills = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean).map((s, idx) => `<span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">${idx+1}. ${s.title}</span>`).join('');
         return `
-        <div class="rounded-2xl border border-blue-900/40 bg-slate-900/50 backdrop-blur-xl p-5 flex flex-col justify-between shadow-xl">
+        <div class="rounded-2xl border border-blue-900/40 bg-slate-900/60 backdrop-blur-xl p-5 flex flex-col justify-between shadow-xl">
         <div class="space-y-3">
         <div class="flex justify-between items-start">
         <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-400/30 text-blue-300">${l.date}</span>
-        <span class="text-xs text-slate-400"><i data-lucide="user" class="w-3.5 h-3.5 inline text-cyan-400"></i> ${l.leader || 'Team'}</span>
+        <span class="text-xs text-slate-400"><i data-lucide="user" class="w-3.5 h-3.5 inline text-sky-400"></i> ${l.leader || 'Team'}</span>
         </div>
         <h4 class="font-bold text-lg text-white">${l.title}</h4>
         <p class="text-xs text-slate-400 line-clamp-2">${l.notes || ''}</p>
         <div class="space-y-1 pt-2"><p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Tracklist:</p><div class="flex flex-wrap gap-1.5">${songPills}</div></div>
         </div>
         <div class="pt-5 mt-4 border-t border-slate-800/60">
-        <button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
+        <button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl btn-gradient-blue text-white font-medium text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
         <i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch Presentation</span>
         </button>
         </div>
@@ -1030,7 +877,7 @@ function handleGlobalSearch(query) {
     document.getElementById('global-search-count').innerText = `Search Results (${matches.length})`;
     grid.innerHTML = matches.map(s => `
     <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
-    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
+    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-sky-400 font-bold">${s.originalKey}</span></p></div>
     <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
     </div>`).join('');
     if (window.lucide) lucide.createIcons();
@@ -1043,38 +890,74 @@ function alertSongLyrics(id) {
     }
 }
 
-// Songs Bank Renderer updated with YouTube & Spotify action buttons
+// Set active language card filter
+function setLanguageFilter(lang) {
+    activeLanguageFilter = (activeLanguageFilter === lang) ? 'All' : lang;
+    renderSongsBank();
+}
+
+// Songs Bank Renderer with Language Filtering & Translucent Cards
 function renderSongsBank() {
     const searchInput = document.getElementById('song-bank-search');
     const search = searchInput ? searchInput.value.toLowerCase() : '';
     const list = document.getElementById('songs-bank-list');
     if (!list) return;
 
-    const filtered = songs.filter(s => s.title.toLowerCase().includes(search) || s.singer.toLowerCase().includes(search));
+    // Update Language Filter Card UI styles
+    const engCard = document.getElementById('filter-card-english');
+    const tagCard = document.getElementById('filter-card-tagalog');
+    if (engCard) engCard.className = `filter-card p-3.5 sm:p-4 rounded-2xl cursor-pointer flex items-center justify-between group ${activeLanguageFilter === 'English' ? 'filter-card-active' : ''}`;
+    if (tagCard) tagCard.className = `filter-card p-3.5 sm:p-4 rounded-2xl cursor-pointer flex items-center justify-between group ${activeLanguageFilter === 'Tagalog' ? 'filter-card-active' : ''}`;
 
-    list.innerHTML = filtered.length === 0 ? `<div class="p-12 text-center text-slate-400">No songs found.</div>` : filtered.map(s => {
+    // Update Counts
+    const engCount = songs.filter(s => (s.language || 'English') === 'English').length;
+    const tagCount = songs.filter(s => (s.language || '') === 'Tagalog').length;
+    const bEng = document.getElementById('badge-english-count');
+    const bTag = document.getElementById('badge-tagalog-count');
+    if (bEng) bEng.innerText = engCount;
+    if (bTag) bTag.innerText = tagCount;
+
+    // Filter Songs Array
+    const filtered = songs.filter(s => {
+        const matchesLang = activeLanguageFilter === 'All' || (s.language || 'English') === activeLanguageFilter;
+        const matchesSearch = s.title.toLowerCase().includes(search) || 
+                              s.singer.toLowerCase().includes(search) || 
+                              (s.lyrics && s.lyrics.toLowerCase().includes(search));
+        return matchesLang && matchesSearch;
+    });
+
+    list.innerHTML = filtered.length === 0 ? `<div class="p-12 text-center text-slate-400 glass-panel rounded-2xl">No songs found in this category.</div>` : filtered.map(s => {
         const semitones = songTranspositions[s.id] || 0;
         const currentKey = transposeChord(s.originalKey, semitones);
         const isExpanded = expandedSongId === s.id;
         const hasYt = !!getYouTubeId(s.youtube);
         const hasSp = !!getSpotifyTrackId(s.spotify);
+        const langTag = s.language || 'English';
 
         return `
-        <div class="rounded-2xl transition-all overflow-hidden ${isExpanded ? 'border border-cyan-400/50 bg-slate-900/90 shadow-2xl ring-1 ring-cyan-500/30' : 'glass-panel-interactive shadow-lg'}">
+        <div class="rounded-2xl transition-all overflow-hidden ${isExpanded ? 'song-card-glass-expanded' : 'song-card-glass'}">
         <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div class="flex-1 cursor-pointer flex items-center space-x-3" onclick="toggleSongExpand('${s.id}')">
-        <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'}"><i data-lucide="music" class="w-4 h-4"></i></div>
-        <div><h3 class="text-base font-bold text-white">${s.title}</h3><p class="text-xs text-cyan-300/80 font-medium">${s.singer}</p></div>
+        <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-sky-500/20 text-sky-300 border border-sky-400/30' : 'bg-slate-800/80 text-slate-400'}">
+            <i data-lucide="music" class="w-4 h-4"></i>
         </div>
-        <div class="flex items-center space-x-2">
-        ${hasYt ? `<button onclick="openMediaModal('${s.id}', 'youtube')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Watch on YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></button>` : `<button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/40 text-slate-600 hover:text-red-400 transition" title="Add YouTube link"><i data-lucide="youtube" class="w-4 h-4"></i></button>`}
-        ${hasSp ? `<button onclick="openMediaModal('${s.id}', 'spotify')" class="p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition" title="Listen on Spotify"><i data-lucide="disc" class="w-4 h-4"></i></button>` : `<button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/40 text-slate-600 hover:text-emerald-400 transition" title="Add Spotify link"><i data-lucide="disc" class="w-4 h-4"></i></button>`}
+        <div>
+            <div class="flex items-center space-x-2">
+                <h3 class="text-base font-bold text-white">${s.title}</h3>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${langTag === 'Tagalog' ? 'bg-amber-500/10 text-amber-300 border border-amber-400/30' : 'bg-blue-500/10 text-blue-300 border border-blue-400/30'}">${langTag}</span>
+            </div>
+            <p class="text-xs text-sky-300/90 font-medium">${s.singer || 'Unknown Artist'}</p>
+        </div>
+        </div>
+        <div class="flex items-center space-x-2 self-end sm:self-center">
+        ${hasYt ? `<button onclick="openMediaModal('${s.id}', 'youtube')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Watch YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></button>` : ''}
+        ${hasSp ? `<button onclick="openMediaModal('${s.id}', 'spotify')" class="p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition" title="Listen Spotify"><i data-lucide="disc" class="w-4 h-4"></i></button>` : ''}
 
         <div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2.5 py-1 space-x-1.5">
         <span class="text-[11px] font-bold text-slate-400">Key:</span>
-        <span class="text-xs font-extrabold text-cyan-300 w-5 text-center">${currentKey}</span>
-        <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 font-bold text-xs hover:bg-slate-700">-</button>
-        <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 font-bold text-xs hover:bg-slate-700">+</button>
+        <span class="text-xs font-extrabold text-sky-300 w-5 text-center">${currentKey}</span>
+        <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-sky-300 font-bold text-xs hover:bg-slate-700">-</button>
+        <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-sky-300 font-bold text-xs hover:bg-slate-700">+</button>
         </div>
         <button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
         <button onclick="deleteSong('${s.id}')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
@@ -1112,15 +995,15 @@ function renderLineupsView() {
     container.innerHTML = lineups.map(l => {
         const lineupSongs = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
         return `
-        <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/50 border border-blue-900/40 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 min-w-0">
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/60 border border-blue-900/40 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 min-w-0 shadow-lg">
         <div class="min-w-0 flex-1 break-words">
-        <span class="text-xs font-bold text-cyan-400">${l.date}</span> <span class="text-slate-500">•</span> <span class="text-xs text-slate-400">${l.leader || 'Team'}</span>
+        <span class="text-xs font-bold text-sky-400">${l.date}</span> <span class="text-slate-500">•</span> <span class="text-xs text-slate-400">${l.leader || 'Team'}</span>
         <h4 class="font-bold text-white text-lg mt-0.5">${l.title}</h4>
-        <p class="text-xs text-slate-400 mt-1">${lineupSongs.length} ${lineupSongs.length === 1 ? 'song' : 'songs'} in playlist</p>
+        <p class="text-xs text-slate-400 mt-1">${lineupSongs.length} ${lineupSongs.length === 1 ? 'song' : 'songs'} in setlist</p>
         </div>
         <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0">
-        <button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
-        <button onclick="editLineup('${l.id}')" title="Edit lineup" class="p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+        <button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl btn-gradient-blue text-white text-xs font-bold flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
+        <button onclick="editLineup('${l.id}')" title="Edit lineup" class="p-2 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 text-sky-300"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
         <button onclick="deleteLineup('${l.id}')" title="Delete lineup" class="p-2 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
         </div>
         </div>`;
@@ -1155,7 +1038,7 @@ function renderStage() {
         const s = songs.find(x => x.id === sId);
         if (!s) return '';
         const active = idx === currentStageSongIdx;
-        return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white' : 'bg-slate-900 border border-slate-800 text-slate-400'}">${idx+1}. ${s.title}</button>`;
+        return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'btn-gradient-blue text-white shadow-md' : 'bg-slate-900 border border-slate-800 text-slate-400'}">${idx+1}. ${s.title}</button>`;
     }).join('');
 
     const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
@@ -1188,7 +1071,7 @@ function adjustStageKey(delta) {
 function toggleStageChords() {
     showStageChords = !showStageChords;
     const btn = document.getElementById('stage-chords-btn');
-    btn.className = showStageChords ? 'px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-cyan-500/20 border-cyan-400 text-cyan-300' : 'px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-slate-800 border-slate-700 text-slate-400';
+    btn.className = showStageChords ? 'px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-sky-500/20 border-sky-400 text-sky-300' : 'px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-slate-800 border-slate-700 text-slate-400';
     btn.innerHTML = `<i data-lucide="eye" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Chords On' : 'Chords Off'}</span>`;
     renderStage();
 }
@@ -1204,9 +1087,9 @@ function openSongModal(id = null) {
         const s = songs.find(x => x.id === id);
         document.getElementById('song-modal-title').innerText = 'Edit Song';
         document.getElementById('form-song-title').value = s.title;
-        document.getElementById('form-song-singer').value = s.singer;
+        document.getElementById('form-song-singer').value = s.singer || '';
         document.getElementById('form-song-key').value = s.originalKey;
-        document.getElementById('form-song-tempo').value = s.tempo || '';
+        document.getElementById('form-song-language').value = s.language || 'English';
         document.getElementById('form-song-youtube').value = s.youtube || '';
         document.getElementById('form-song-spotify').value = s.spotify || '';
         document.getElementById('form-song-lyrics').value = s.lyrics;
@@ -1215,7 +1098,7 @@ function openSongModal(id = null) {
         document.getElementById('form-song-title').value = '';
         document.getElementById('form-song-singer').value = '';
         document.getElementById('form-song-key').value = 'C';
-        document.getElementById('form-song-tempo').value = '';
+        document.getElementById('form-song-language').value = 'English';
         document.getElementById('form-song-youtube').value = '';
         document.getElementById('form-song-spotify').value = '';
         document.getElementById('form-song-lyrics').value = '';
@@ -1232,7 +1115,7 @@ function saveSongForm(e) {
         title: document.getElementById('form-song-title').value,
         singer: document.getElementById('form-song-singer').value,
         originalKey: document.getElementById('form-song-key').value,
-        tempo: document.getElementById('form-song-tempo').value,
+        language: document.getElementById('form-song-language').value,
         youtube: document.getElementById('form-song-youtube').value,
         spotify: document.getElementById('form-song-spotify').value,
         lyrics: document.getElementById('form-song-lyrics').value
@@ -1240,7 +1123,7 @@ function saveSongForm(e) {
     if (id) {
         songs = songs.map(s => s.id === id ? { ...s, ...data } : s);
     } else {
-        songs.unshift({ id: 's_' + Date.now(), ...data, createdAt: new Date().toISOString().split('T')[0] });
+        songs.unshift({ id: 's_' + Date.now(), ...data });
     }
     saveData();
     closeSongModal();
@@ -1253,11 +1136,11 @@ function renderLineupSongSelection() {
     const selected = new Set(lineupDraftSongIds);
 
     const songChoices = songs.map(s => `
-        <label class="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs cursor-pointer hover:border-cyan-500/40 transition min-w-0">
+        <label class="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs cursor-pointer hover:border-sky-500/40 transition min-w-0">
             <span class="min-w-0 flex-1 break-words"><span class="font-bold text-slate-200">${escapeHTML(s.title)}</span><span class="text-slate-400"> (${escapeHTML(s.singer || 'Unknown artist')})</span></span>
             <input type="checkbox" name="lineup-song" value="${escapeHTML(s.id)}" ${selected.has(s.id) ? 'checked' : ''}
                 onchange="toggleLineupSong('${escapeHTML(s.id)}', this.checked)"
-                class="rounded bg-slate-950 border-slate-700 text-cyan-500 focus:ring-cyan-400 shrink-0">
+                class="rounded bg-slate-950 border-slate-700 text-sky-500 focus:ring-sky-400 shrink-0">
         </label>`).join('');
 
     container.innerHTML = songChoices || '<p class="text-xs text-slate-500 p-2">No songs in song bank yet.</p>';
@@ -1285,12 +1168,12 @@ function renderLineupSelectedOrder() {
         if (!song) return '';
         return `
           <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-900 border border-slate-800 min-w-0">
-            <span class="w-6 h-6 shrink-0 rounded-md bg-cyan-500/10 text-cyan-300 flex items-center justify-center text-xs font-bold">${index + 1}</span>
+            <span class="w-6 h-6 shrink-0 rounded-md bg-sky-500/10 text-sky-300 flex items-center justify-center text-xs font-bold">${index + 1}</span>
             <span class="min-w-0 flex-1 text-xs font-semibold text-slate-200 break-words">${escapeHTML(song.title)}</span>
             <div class="flex items-center gap-1 shrink-0">
-              <button type="button" onclick="moveLineupSong(${index}, -1)" ${index === 0 ? 'disabled' : ''} aria-label="Move ${escapeHTML(song.title)} up" class="w-8 h-8 rounded-lg bg-slate-800 text-cyan-300 disabled:opacity-30 disabled:cursor-not-allowed">↑</button>
-              <button type="button" onclick="moveLineupSong(${index}, 1)" ${index === lineupDraftSongIds.length - 1 ? 'disabled' : ''} aria-label="Move ${escapeHTML(song.title)} down" class="w-8 h-8 rounded-lg bg-slate-800 text-cyan-300 disabled:opacity-30 disabled:cursor-not-allowed">↓</button>
-              <button type="button" onclick="removeLineupSong('${escapeHTML(id)}')" aria-label="Remove ${escapeHTML(song.title)}" class="w-8 h-8 rounded-lg bg-red-500/10 text-red-300">×</button>
+              <button type="button" onclick="moveLineupSong(${index}, -1)" ${index === 0 ? 'disabled' : ''} class="w-8 h-8 rounded-lg bg-slate-800 text-sky-300 disabled:opacity-30">↑</button>
+              <button type="button" onclick="moveLineupSong(${index}, 1)" ${index === lineupDraftSongIds.length - 1 ? 'disabled' : ''} class="w-8 h-8 rounded-lg bg-slate-800 text-sky-300 disabled:opacity-30">↓</button>
+              <button type="button" onclick="removeLineupSong('${escapeHTML(id)}')" class="w-8 h-8 rounded-lg bg-red-500/10 text-red-300">×</button>
             </div>
           </div>`;
     }).join('');
@@ -1381,7 +1264,7 @@ function saveLineupForm(e) {
     renderLineupsView();
 }
 
-// Initialize on load
+// Initialize application on page load
 window.onload = async () => {
     await loadSharedData();
     renderHome();

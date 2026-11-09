@@ -28,7 +28,7 @@ body {
 
 /* Persistent Background Image across all pages */
 .bg-mountain-atmosphere {
-    background-image: linear-gradient(to bottom, rgba(11, 15, 23, 0.75), rgba(17, 24, 39, 0.88)), url('black-white-mountain-background.jpg');
+    background-image: linear-gradient(to bottom, rgba(11, 15, 23, 0.72), rgba(17, 24, 39, 0.86)), url('black-white-mountain-background_2.jpg');
     background-size: cover;
     background-position: center center;
     background-attachment: fixed;
@@ -494,7 +494,6 @@ const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', '
 
 let activeLanguageFilter = 'All';
 
-// Initial Seed Songs with auto-detected or explicit language tags
 let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
 { id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
 { id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
@@ -639,7 +638,6 @@ function startSharedSync() {
     });
 }
 
-// Navigation Tab Switcher
 function switchTab(tab) {
     activeTabState = tab;
     ['home', 'songs', 'lineup'].forEach(t => {
@@ -668,7 +666,6 @@ function switchTab(tab) {
     if (window.lucide) lucide.createIcons();
 }
 
-// Automatic Tagalog vs English Language Detector
 function detectSongLanguage(title, lyrics) {
     const text = `${title} ${lyrics}`.toLowerCase();
     const tagalogKeywords = [
@@ -745,7 +742,6 @@ function closeMediaModal() {
     document.getElementById('media-modal').classList.add('hidden');
 }
 
-// Transposition logic
 function transposeChord(chord, semitones) {
     if (!chord || semitones === 0) return chord;
     if (chord.includes('/')) {
@@ -800,7 +796,6 @@ function renderLyricsHTML(text, semitones = 0, showChords = true) {
     }).join('');
 }
 
-// Home Renderer
 function renderHome() {
     const grid = document.getElementById('home-lineups-grid');
     if (!grid) return;
@@ -854,7 +849,6 @@ function setLanguageFilter(lang) {
     renderSongsBank();
 }
 
-// Songs Bank Renderer with auto-detected languages
 function renderSongsBank() {
     const searchInput = document.getElementById('song-bank-search');
     const search = searchInput ? searchInput.value.toLowerCase() : '';
@@ -944,7 +938,6 @@ function deleteSong(id) {
     }
 }
 
-// Lineups Renderer
 function renderLineupsView() {
     const container = document.getElementById('lineups-view-container');
     if (!container) return;
@@ -975,7 +968,6 @@ function deleteLineup(id) {
     }
 }
 
-// Presentation Stage Mode
 function startPresentation(lineupId, songIdx) {
     currentStageLineup = lineups.find(l => l.id === lineupId);
     if (!currentStageLineup) return;
@@ -1036,7 +1028,6 @@ function exitPresentation() {
     document.getElementById('presentation-modal').classList.add('hidden');
 }
 
-// Modals management
 function openSongModal(id = null) {
     document.getElementById('edit-song-id').value = id || '';
     if (id) {

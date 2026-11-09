@@ -127,7 +127,7 @@ Search through song lyrics, manage real-time key transpositions, and build servi
 </div>
 <button onclick="openSongModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>+ Add Song</span>
+<span>Add Song</span>
 </button>
 </div>
 <div id="songs-bank-list" class="space-y-3"></div>
@@ -145,7 +145,7 @@ Search through song lyrics, manage real-time key transpositions, and build servi
 </div>
 <button onclick="openLineupModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>+ Create New Lineup</span>
+<span>Create New Lineup</span>
 </button>
 </div>
 <div id="lineups-view-container" class="space-y-8"></div>
@@ -535,19 +535,32 @@ if (newIdx < 0) newIdx += 12;
 return CHROMATIC[newIdx] + match[2];
 }
 
+const SECTION_LABELS = new Set([
+'verse', 'intro', 'chorus', 'bridge', 'pre-chorus', 'pre chorus',
+'ending', 'prelude'
+]);
+
+function isSectionLabel(value) {
+return SECTION_LABELS.has(String(value || '').trim().toLowerCase().replace(/\\s+/g, ' '));
+}
+
 function transposeContent(text, semitones) {
 if (!text) return text;
 // Normalize chord rows printed above lyrics into inline chord markers first.
 const normalized = normalizeChordRows(text);
 if (semitones === 0) return normalized;
-return normalized.replace(/\[([^\]]+)\]/g, (_, c) => `[${transposeChord(c.trim(), semitones)}]`);
+return normalized.replace(/\\[([^\\]]+)\\]/g, (whole, c) => {
+    const chord = c.trim();
+    return isSectionLabel(chord) ? whole : `[${transposeChord(chord, semitones)}]`;
+});
 }
 
 // Common chord-sheet notation: G, F#m7, Cadd9, G/B, Bb/D, Dsus4, etc.
 function isChordToken(token) {
 const clean = String(token || '').replace(/[|,;]/g, '').trim();
-return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|omit|no|2|4|5|6|7|9|11|13|b5|#5|b9|#9|b13|\+|°|ø|-|\(.*\)))*(?:\/(?:[A-G](?:#|b)?))?$/.test(clean)
-    || /^(?:N\.C\.|NC)$/i.test(clean);
+if (isSectionLabel(clean)) return false;
+return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|omit|no|2|4|5|6|7|9|11|13|b5|#5|b9|#9|b13|\\+|°|ø|-|\\(.*\\)))*(?:\\/(?:[A-G](?:#|b)?))?$/.test(clean)
+    || /^(?:N\\.C\\.|NC)$/i.test(clean);
 }
 
 function isChordOnlyLine(line) {

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238201358",
+      "title": "Ako ay Masaya/Masayang Tunay",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nC\n\n[Verse]\nC\nAko ay masaya\nIkaw ay masaya\nTayong lahat ay masaya\nPraise the Lord !!!\n\nG\nAko ay masaya\nIkaw ay masaya\nTayong lahat ay masaya\n\n[Chorus]\nF\nHallelujah, Hallelujah\nC\nHesu Kristo purihin ka\nG                                             C\nHallelujah Hesus Kristo purihin ka\n\n\n[MASAYANG TUNAY]\n\n[Intro]\nC G\n\n[Verse]\nC\nAng buhay ng Krsityano ay masayang tunay\nF                        G\nMasayang tunay, masayang tunay\nC\nAng buhay ng kristyano ay masayang tunay\nF  -  G  -  C\nMasayang tunay\n\n[Pre-Chorus]\nC                   F\nBuhay, buhay, buhay kailanpaman\n      G                     C                     \nSi Hesus ay buhay, buhay kailanpaman\nC                   F\nBuhay, buhay, buhay kailanpaman\n      G                               C\nSi Hesus ay buhay kailanpaman\n\n\n[Chorus] / [Instrumental]\n           F                    C\nAwitin natin ang Hallelujah\n      G                C  \nSi Hesus ay buhay kailanpaman\n \n           F                    C\nAwitin natin ang Hallelujah\n     G            C\nSi He-sus buhay\n\n[Verse II]\nC\nAng buhay ng Krsityano ay puno ng pag-ibig\nF                         G\npuno ng pag-ibig, puno ng pag-ibig\nC\nAng buhay ng kristyano ay puno ng pag-ibig\nF - G - C\nPu-no ng pag-ibig​​",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794223947676",
       "title": "All the heavens",
       "singer": "",
@@ -23,5 +34,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-09T11:39:28.573Z"
+  "updatedAt": "2026-11-09T15:30:08.743Z"
 }

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239652272",
+      "title": "Heart of a servant",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: A G#m F#m B\n\nVerse1\n  E                                       Emaj7\nStanding in awe of Your grace\n A                                       Am\nSetting my feet in Your ways\n  C#m                          B\nEntering into Your presence\n    A                              B\nTo behold You face to face\n\nVerse2\n\n E                                   Emaj7\nGod of all heaven and earth\n   A                                Am\nHolding me in Your embrace\n   C#m                         B\nUnfailing love that surrounds me\n     A                            B\nOh… God I stand amazed\n\n\nChorus\n                          E\nMy Jesus, my Lord\n                                       Emaj7\nYou’re the love of my life\n                          C#m\nWherever You go\n                                   B\nWanna be by Your side\n                  A\nNo longer I\n                                 F#m\nBut Christ living in me\n                             A              B\nServing You for all eternity\n\n                             E\nMy eyes set on You\n                               Emaj7\nIn this race that I run\n                         C#m\nNo longer my ways\n                              B\nLet Your will be done\n                       A\nMake me a servant\n                             F#m\nMy heart’s ever true\n                             A\nClinging to the cross\n                  B\nI’ll follow You\n                   E (or A intro)\nI’ll follow You",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239628153",
       "title": "Heart after You",
       "singer": "",
@@ -528,5 +539,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:54:01.600Z"
+  "updatedAt": "2026-11-09T15:54:13.851Z"
 }

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239726498",
+      "title": "How great thou art",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Chorus]\n               G        C/G         G\nThen sings my soul, my Savior God, to Thee\n  Em             Am        D         G\nHow great Thou art! How great Thou art!\n               G       C/G             G\nThen sings my soul, my Savior God, to Thee\n  Em             Am7     D      C      G\nHow great Thou art! How great Thou art!",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239715021",
       "title": "How Great is our God",
       "singer": "",
@@ -594,5 +605,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:55:16.744Z"
+  "updatedAt": "2026-11-09T15:55:27.974Z"
 }

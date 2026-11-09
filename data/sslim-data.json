@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238941502",
+      "title": "By Your side",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro] \nD    C    Bm    C\nD    C    Bm    C\n\n[Verse 1]\nD\nOh dear God we ask for Your favour\n                        G\nCome and sweep through this place\n   Bm    A   G\nOh we desire You\nD\nI just wanna be with You, be where You are\nC                         G\nDwelling in Your presence O God\n   Bm        A          G\nOh I want to walk with You\n \n \n[Chorus]\n    D       A           G\nAnd I will climb this mountain\n    Bm        A         G\nAnd I'll step off the shore\n    D        A       Bm\nAnd I have chosen to follow\n    A           G           D\nAnd be by Your side forever more.\n\n\n[Verse 2]\nD\nTell me what You want me to do, Lord God\n                           G\nTell me what You want for my life\n      Bm       A          G\nIt is Yours oh God, it is Yours\nD\nDo Your will, have Your way\nC                G\nBe Lord God in this place\n   Bm      A           G\nOh I want Your will to be done.\n\n[Outro]\nD    C    Bm    C\nD    C    Bm    C",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238829164",
       "title": "Breathe",
       "singer": "",
@@ -154,5 +165,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:40:30.579Z"
+  "updatedAt": "2026-11-09T15:42:22.753Z"
 }

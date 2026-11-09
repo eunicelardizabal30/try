@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239194646",
+      "title": "Di ako magsasawang purihin ka",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro : G D/F# Em (2x) \nVerse:\n \n    G             D/F#\nSA UMAGA PAG-KAGISING\n        C          G\nNGALAN MO’Y PUPURIHIN\n       C             G/b            D\nPUSO KO’Y LAGING MAY-AWIT PARA SA ‘YO\n       G         D/F#\nLAGI KONG NARARANASAN\n          C                G\nKATAPATAN MONG WALANG HANGGAN\n          C             Am\nPAG-IBIG MO’Y LAGING SARIWA\n      F      D\nSA ARAW-ARAW\n \nChorus:\n \n    G           Bm        C\nDI AKO MAGSASAWANG PURIHIN KA\n         Am            D        G\nBUONG PUSO’T LAKAS MINAMAHAL KITA\n   C         D\nLAGING AAWITIN\n       B7           Em\nANG PAG-IBIG MO SA ‘KIN\n       Am          D\nPANGINOONG-JESUS,\n        G\nPURIHIN KA",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239179623",
       "title": "Days of Elijah",
       "singer": "",
@@ -242,5 +253,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:46:21.162Z"
+  "updatedAt": "2026-11-09T15:46:35.826Z"
 }

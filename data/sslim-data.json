@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239473960",
+      "title": "For You alone",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse\nG                       Bm - Em\nYou are the peace that guards my heart\n   C                D\nMy help in times of need\nG                      Bm - Em\nYou are the hope that leads me on \n      C              D\nAnd brings me to my knees\n    Em                Bm          C             D\nFor there I find you waiting and there I find relief\n    C                Bm - Em\nSo with all my heart I'll worship\n     Am             D\nAnd unto you I'll sing\n\nChorus\n          C                D\nFor you alone deserve all glory\n         Bm                Em\nFor you alone deserve all praise\n            C           D\nFather we worship and adore you\n           Bm              Em\nFather we long to see your face\n         C                 D\nFor you alone deserve all glory\n         Bm                Em\nFor you alone deserve all praise\n           Am              C - D                G    \nFather we love you and we worship you this day",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239461381",
       "title": "For who you are",
       "singer": "",
@@ -396,5 +407,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:51:02.929Z"
+  "updatedAt": "2026-11-09T15:51:15.932Z"
 }

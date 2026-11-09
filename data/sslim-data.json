@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239038419",
+      "title": "Complete",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\n \nG D Em C-D (x2)\n \n \n[Verse]\n \nG      D      Em      C-D               G\nHere I am, Oh God, I bring this sacrifice\n   D     Em       C-D           Em\nMy open heart. I offer up my life\n       C        Em               C          G\nI look to You, Lord.  Your love that never ends\n    C          D\nRestores me again\n \n \n[Chorus]\n \n       G      Em      C     D\nSo I lift my eyes to you, Lord\n           G          Em       C         D\nIn Your strength will I break through, Lord\n         C\nTouch me now,\n                               Bm        Em\nlet Your love fall down on me\n  Am                                                 F      D\nI know Your love dispels all my fears\n             G\nThrough the storm\n   Em       C    D\nI will hold on Lord\n        G       Em       C     D\nAnd by faith I will walk on, Lord\n          C\nThen I'll see\n                       Bm       Em\nbeyond my calvary one day\n    Am             D       G\nAnd I will be complete in You",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239020331",
       "title": "Come now is the time to worship",
       "singer": "",
@@ -198,5 +209,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:43:41.704Z"
+  "updatedAt": "2026-11-09T15:43:59.550Z"
 }

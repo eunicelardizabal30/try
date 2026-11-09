@@ -21,21 +21,13 @@
 
 body {
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0b0f17;
 }
 .font-mono { 
     font-family: 'JetBrains Mono', monospace; 
 }
 
-/* Persistent Background Image across all pages */
-.bg-mountain-atmosphere {
-    background-image: linear-gradient(to bottom, rgba(11, 15, 23, 0.72), rgba(17, 24, 39, 0.86)), url('black-white-mountain-background_2.jpg');
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-}
-
-/* Glassmorphism & Soft Grayish-White UI Panels */
+/* Glassmorphism & Soft UI Panels */
 .glass-panel {
     background: rgba(241, 245, 249, 0.06);
     backdrop-filter: blur(16px);
@@ -45,7 +37,7 @@ body {
 
 /* Semi-Translucent Song Bank Cards */
 .song-card-glass {
-    background: rgba(241, 245, 249, 0.05);
+    background: rgba(15, 23, 42, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.09);
@@ -53,14 +45,14 @@ body {
 }
 
 .song-card-glass:hover {
-    background: rgba(241, 245, 249, 0.1);
+    background: rgba(30, 41, 59, 0.75);
     border-color: rgba(56, 189, 248, 0.4);
     transform: translateY(-2px);
     box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.25);
 }
 
 .song-card-glass-expanded {
-    background: rgba(15, 23, 42, 0.8) !important;
+    background: rgba(15, 23, 42, 0.85) !important;
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
     border: 1px solid rgba(56, 189, 248, 0.5) !important;
@@ -125,7 +117,22 @@ input, select, textarea, button { max-width: 100%; }
 .break-words { overflow-wrap: anywhere; word-break: break-word; }
 </style>
 </head>
-<body class="bg-mountain-atmosphere text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-24 md:pb-10">
+<body class="text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-24 md:pb-10">
+
+<!-- ALWAYS VISIBLE FULL-SCREEN PERSISTENT MOUNTAIN BACKGROUND -->
+<div class="fixed inset-0 w-full h-full pointer-events-none -z-20 overflow-hidden bg-slate-950 select-none">
+    <!-- Base Mountain Landscape Image Overlay -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-60" style="background-image: url('black-white-mountain-background_2.jpg');"></div>
+    
+    <!-- Atmospheric SVG Gradient Layer fallback to ensure landscape visibility on all systems -->
+    <svg class="absolute bottom-0 left-0 right-0 w-full h-[60vh] object-cover opacity-40" viewBox="0 0 1440 600" preserveAspectRatio="none">
+        <path d="M-50,600 L-50,260 L90,160 L240,290 L380,180 L560,310 L740,130 L910,270 L1080,150 L1260,280 L1490,110 L1490,600 Z" fill="#1e293b"/>
+        <path d="M-50,600 L-50,340 L120,240 L260,330 L450,190 L620,340 L790,210 L980,350 L1150,220 L1320,330 L1490,230 L1490,600 Z" fill="#0f172a"/>
+        <path d="M-50,600 L80,380 L220,440 L410,260 L580,410 L760,250 L950,420 L1120,280 L1310,410 L1490,300 L1490,600 Z" fill="#020617"/>
+    </svg>
+    <!-- Dark Glass Contrast Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/50 to-slate-950/85"></div>
+</div>
 
 <!-- HEADER -->
 <header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/80 border-b border-blue-900/30 shadow-2xl">
@@ -171,7 +178,7 @@ SSLIM Worship
 
 <!-- HOME TAB -->
 <div id="tab-home" class="space-y-8 animate-fade-in">
-<div class="relative rounded-3xl overflow-hidden border border-blue-500/30 bg-slate-900/70 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
+<div class="relative rounded-3xl overflow-hidden border border-blue-500/30 bg-slate-900/60 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
 <div class="max-w-2xl relative z-10 space-y-4">
 <span class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-bold uppercase tracking-wider shadow-sm">
 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-400"></i>
@@ -180,7 +187,7 @@ SSLIM Worship
 <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
 SSLIM Worship Ministry.
 </h2>
-<p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+<p class="text-slate-200 text-sm sm:text-base leading-relaxed">
 Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
 </p>
 
@@ -211,7 +218,7 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <i data-lucide="calendar" class="w-5 h-5 text-sky-400"></i>
 <span>Recent Lineups</span>
 </h3>
-<p class="text-xs text-slate-400">Scheduled service setlists</p>
+<p class="text-xs text-slate-300">Scheduled service setlists</p>
 </div>
 <button onclick="switchTab('lineup')" class="text-xs font-bold text-sky-400 hover:text-sky-300 flex items-center space-x-1">
 <span>View All</span>
@@ -719,14 +726,14 @@ function openMediaModal(songId, type) {
 
     if (type === 'youtube') {
         const ytId = getYouTubeId(song.youtube);
-        if (!ytId) return alert('No valid YouTube link configured.');
+        if (!ytId) return alert('No valid YouTube link configured for this song.');
         titleEl.textContent = `${song.title} - YouTube`;
         iconBg.className = 'p-2 rounded-xl bg-red-500/20 text-red-400';
         icon.setAttribute('data-lucide', 'youtube');
         container.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
     } else if (type === 'spotify') {
         const spId = getSpotifyTrackId(song.spotify);
-        if (!spId) return alert('No valid Spotify link configured.');
+        if (!spId) return alert('No valid Spotify link configured for this song.');
         titleEl.textContent = `${song.title} - Spotify`;
         iconBg.className = 'p-2 rounded-xl bg-emerald-500/20 text-emerald-400';
         icon.setAttribute('data-lucide', 'disc');
@@ -849,6 +856,7 @@ function setLanguageFilter(lang) {
     renderSongsBank();
 }
 
+// Render Song Bank with explicit Watch on YouTube / Listen to Spotify text labels
 function renderSongsBank() {
     const searchInput = document.getElementById('song-bank-search');
     const search = searchInput ? searchInput.value.toLowerCase() : '';
@@ -886,33 +894,59 @@ function renderSongsBank() {
 
         return `
         <div class="rounded-2xl transition-all overflow-hidden ${isExpanded ? 'song-card-glass-expanded' : 'song-card-glass'}">
-        <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex-1 cursor-pointer flex items-center space-x-3" onclick="toggleSongExpand('${s.id}')">
-        <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-sky-500/20 text-sky-300 border border-sky-400/30' : 'bg-slate-800/80 text-slate-300'}">
-            <i data-lucide="music" class="w-4 h-4"></i>
-        </div>
-        <div>
-            <div class="flex items-center space-x-2">
-                <h3 class="text-base font-bold text-white">${s.title}</h3>
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${resolvedLang === 'Tagalog' ? 'bg-amber-500/10 text-amber-300 border border-amber-400/30' : 'bg-blue-500/10 text-blue-300 border border-blue-400/30'}">${resolvedLang}</span>
+        <div class="p-4 flex flex-col space-y-3">
+        
+        <!-- Header row -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex-1 cursor-pointer flex items-center space-x-3" onclick="toggleSongExpand('${s.id}')">
+            <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-sky-500/20 text-sky-300 border border-sky-400/30' : 'bg-slate-800/80 text-slate-300'}">
+                <i data-lucide="music" class="w-4 h-4"></i>
             </div>
-            <p class="text-xs text-sky-300/90 font-medium">${s.singer || 'Unknown Artist'}</p>
-        </div>
-        </div>
-        <div class="flex items-center space-x-2 self-end sm:self-center">
-        ${hasYt ? `<button onclick="openMediaModal('${s.id}', 'youtube')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Watch YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></button>` : ''}
-        ${hasSp ? `<button onclick="openMediaModal('${s.id}', 'spotify')" class="p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition" title="Listen Spotify"><i data-lucide="disc" class="w-4 h-4"></i></button>` : ''}
+            <div>
+                <div class="flex items-center space-x-2">
+                    <h3 class="text-base font-bold text-white">${s.title}</h3>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${resolvedLang === 'Tagalog' ? 'bg-amber-500/10 text-amber-300 border border-amber-400/30' : 'bg-blue-500/10 text-blue-300 border border-blue-400/30'}">${resolvedLang}</span>
+                </div>
+                <p class="text-xs text-sky-300/90 font-medium">${s.singer || 'Unknown Artist'}</p>
+            </div>
+            </div>
 
-        <div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2.5 py-1 space-x-1.5">
-        <span class="text-[11px] font-bold text-slate-300">Key:</span>
-        <span class="text-xs font-extrabold text-sky-300 w-5 text-center">${currentKey}</span>
-        <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-sky-300 font-bold text-xs hover:bg-slate-700">-</button>
-        <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-sky-300 font-bold text-xs hover:bg-slate-700">+</button>
+            <div class="flex items-center space-x-2 self-end sm:self-center">
+            <div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2.5 py-1 space-x-1.5">
+            <span class="text-[11px] font-bold text-slate-300">Key:</span>
+            <span class="text-xs font-extrabold text-sky-300 w-5 text-center">${currentKey}</span>
+            <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-sky-300 font-bold text-xs hover:bg-slate-700">-</button>
+            <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-sky-300 font-bold text-xs hover:bg-slate-700">+</button>
+            </div>
+            <button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
+            <button onclick="deleteSong('${s.id}')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            <button onclick="toggleSongExpand('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
+            </div>
         </div>
-        <button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
-        <button onclick="deleteSong('${s.id}')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-        <button onclick="toggleSongExpand('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
+
+        <!-- EXPLICIT MEDIA BUTTONS WITH FULL LABELS & ICONS -->
+        <div class="flex flex-wrap gap-2 pt-1 border-t border-slate-800/60">
+            ${hasYt ? `
+            <button onclick="openMediaModal('${s.id}', 'youtube')" class="px-3 py-1.5 rounded-xl bg-red-500/15 hover:bg-red-500/25 border border-red-500/30 text-red-300 font-bold text-xs flex items-center space-x-2 transition">
+                <span>Watch on Youtube</span>
+                <i data-lucide="youtube" class="w-4 h-4 text-red-400"></i>
+            </button>` : `
+            <button onclick="openSongModal('${s.id}')" class="px-3 py-1.5 rounded-xl bg-slate-800/40 text-slate-500 text-xs flex items-center space-x-2">
+                <span>Add Youtube Link</span>
+                <i data-lucide="youtube" class="w-3.5 h-3.5 opacity-50"></i>
+            </button>`}
+
+            ${hasSp ? `
+            <button onclick="openMediaModal('${s.id}', 'spotify')" class="px-3 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-300 font-bold text-xs flex items-center space-x-2 transition">
+                <span>Listen to Spotify</span>
+                <i data-lucide="disc" class="w-4 h-4 text-emerald-400"></i>
+            </button>` : `
+            <button onclick="openSongModal('${s.id}')" class="px-3 py-1.5 rounded-xl bg-slate-800/40 text-slate-500 text-xs flex items-center space-x-2">
+                <span>Add Spotify Link</span>
+                <i data-lucide="disc" class="w-3.5 h-3.5 opacity-50"></i>
+            </button>`}
         </div>
+
         </div>
         ${isExpanded ? `<div class="p-4 sm:p-6 border-t border-blue-900/40 bg-slate-950/85 overflow-x-auto">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
         </div>`;

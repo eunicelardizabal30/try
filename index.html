@@ -9,8 +9,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SSLIM Music">
-<meta name="theme-color" content="#121212">
-<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%23F5F5F5\",\"theme_color\":\"%23121212\",\"icons\":[{\"src\":\"https://placehold.co/192x192/121212/ffffff?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/121212/ffffff?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
+<meta name="theme-color" content="#0f172a">
+<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%23F5F5F5\",\"theme_color\":\"%230f172a\",\"icons\":[{\"src\":\"https://placehold.co/192x192/0f172a/ffffff?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/0f172a/ffffff?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -27,79 +27,79 @@ body {
     font-family: 'JetBrains Mono', monospace; 
 }
 
-/* Base App Surface Panels */
+/* Glassmorphism Dark Panels with High Legibility */
 .glass-panel {
-    background: rgba(18, 18, 18, 0.90);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Semi-Translucent Song Bank Cards */
 .song-card-glass {
-    background: rgba(18, 18, 18, 0.88);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.80);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .song-card-glass:hover {
-    background: rgba(28, 28, 28, 0.95);
+    background: rgba(30, 41, 59, 0.90);
     border-color: rgba(255, 255, 255, 0.35);
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.3);
 }
 
 .song-card-glass-expanded {
-    background: rgba(10, 10, 10, 0.96) !important;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    background: rgba(11, 15, 25, 0.96) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
-    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45);
 }
 
 /* Interactive Filter Cards */
 .filter-card {
-    background: rgba(18, 18, 18, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-card:hover {
-    background: rgba(30, 30, 30, 0.95);
+    background: rgba(30, 41, 59, 0.88);
     transform: translateY(-2px);
 }
 
 .filter-card-active {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(40, 40, 40, 0.9) 100%) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(30, 41, 59, 0.95) 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.6) !important;
-    box-shadow: 0 8px 25px -6px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 25px -6px rgba(0, 0, 0, 0.3);
 }
 
-/* Monochrome Gradient Accent Buttons */
+/* Dark-Gray / White Gradient Accent Buttons */
 .btn-gradient-bw {
-    background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 40%, #525252 100%);
-    color: #0a0a0a;
-    box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #64748b 100%);
+    color: #0f172a;
+    box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.25);
     transition: all 0.25s ease;
 }
 
 .btn-gradient-bw:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #e5e5e5 50%, #737373 100%);
-    box-shadow: 0 8px 25px -2px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #94a3b8 100%);
+    box-shadow: 0 8px 25px -2px rgba(0, 0, 0, 0.35);
     transform: translateY(-1px);
 }
 
 .btn-gradient-dark {
-    background: linear-gradient(135deg, #262626 0%, #171717 100%);
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
     border: 1px solid rgba(255, 255, 255, 0.18);
     transition: all 0.25s ease;
 }
 
 .btn-gradient-dark:hover {
-    background: linear-gradient(135deg, #404040 0%, #262626 100%);
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
     border-color: rgba(255, 255, 255, 0.35);
 }
 
@@ -115,7 +115,7 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: rgba(18, 18, 18, 0.6); }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
 ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 9999px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
 
@@ -127,506 +127,66 @@ img, iframe, video, svg { max-width: 100%; }
 input, select, textarea, button { max-width: 100%; }
 .min-w-0 { min-width: 0 !important; }
 .break-words { overflow-wrap: anywhere; word-break: break-word; }
-
-
-/* =========================================================
-   RESPONSIVE REPAIR — small phones through tablets
-   Keeps normal words intact; wraps only genuinely long content.
-   ========================================================= */
-html {
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    scroll-padding-top: 5rem;
-}
-body {
-    overflow-wrap: normal !important;
-    word-break: normal !important;
-    min-width: 0;
-}
-body, main, header, section, form, nav, #tab-home, #tab-songs, #tab-lineup {
-    min-width: 0;
-}
-main {
-    width: 100%;
-}
-main > div,
-#tab-home > *,
-#tab-songs > *,
-#tab-lineup > * {
-    min-width: 0;
-}
-p, h1, h2, h3, h4, label, span, a, button {
-    overflow-wrap: break-word;
-}
-input, select, textarea {
-    min-width: 0;
-    width: 100%;
-    font-size: 16px; /* prevents iOS Safari zoom on focus */
-}
-textarea {
-    max-width: 100%;
-    resize: vertical;
-    overflow-wrap: anywhere;
-    word-break: normal;
-}
-button {
-    min-width: 0;
-    white-space: normal;
-    touch-action: manipulation;
-}
-img, iframe, video, svg {
-    max-width: 100%;
-}
-.grid {
-    grid-template-columns: minmax(0, 1fr);
-}
-.flex > * {
-    min-width: 0;
-}
-#home-lineups-grid,
-#global-search-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-}
-#songs-bank-list > *,
-#lineups-view-container > *,
-#home-lineups-grid > *,
-#global-search-grid > * {
-    min-width: 0;
-    max-width: 100%;
-}
-#song-modal,
-#lineup-modal,
-#media-modal {
-    overscroll-behavior: contain;
-    align-items: flex-start;
-}
-#song-modal > div,
-#lineup-modal > div,
-#media-modal > div {
-    width: min(100%, 42rem);
-    max-height: calc(100dvh - 2rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-}
-#song-modal form,
-#lineup-modal form {
-    min-width: 0;
-}
-#stage-song-title,
-#stage-lineup-title,
-#stage-lineup-leader,
-#stage-song-singer {
-    overflow-wrap: anywhere;
-    word-break: normal;
-}
-#stage-lyrics-box {
-    min-width: 0;
-    max-width: 100%;
-    overflow-x: hidden;
-}
-#stage-lyrics-box > div,
-#songs-bank-list .whitespace-pre-wrap {
-    overflow-wrap: anywhere;
-    word-break: normal;
-}
-#stage-song-pills {
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
-}
-#stage-song-pills button {
-    flex: 0 0 auto;
-    max-width: 78vw;
-}
-#lineup-selected-order > div {
-    min-width: 0;
-}
-#lineup-selected-order > div > span:nth-child(2) {
-    overflow-wrap: anywhere;
-}
-#songs-bank-list .song-card-glass > div:first-child > div:first-child {
-    min-width: 0;
-}
-#songs-bank-list .song-card-glass h3 {
-    min-width: 0;
-    overflow-wrap: anywhere;
-}
-#songs-bank-list .song-card-glass .flex.items-center.space-x-2 {
-    min-width: 0;
-    flex-wrap: wrap;
-}
-#songs-bank-list .song-card-glass .self-end,
-#songs-bank-list .song-card-glass .sm\:self-center {
-    max-width: 100%;
-}
-#songs-bank-list .song-card-glass button,
-#lineups-view-container button {
-    min-height: 36px;
-}
-#presentation-modal {
-    height: 100vh;
-    height: 100dvh;
-}
-#presentation-modal > div {
-    min-width: 0;
-}
-#presentation-modal .flex-none {
-    min-width: 0;
-}
-#stage-chords-btn span {
-    white-space: nowrap;
-}
-
-/* Small phones: 320–430px */
-@media (max-width: 430px) {
-    body {
-        padding-bottom: calc(5.25rem + env(safe-area-inset-bottom)) !important;
-    }
-    header > div {
-        height: auto !important;
-        min-height: 3.75rem;
-        padding-left: .75rem !important;
-        padding-right: .75rem !important;
-        gap: .5rem;
-    }
-    header .max-w-7xl > div:first-child {
-        gap: .5rem;
-        min-width: 0;
-    }
-    header h1 {
-        font-size: .9rem !important;
-        line-height: 1.15rem;
-    }
-    #sync-status {
-        max-width: 5.5rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        display: inline-block;
-        vertical-align: middle;
-    }
-    header .rounded-full {
-        padding-left: .4rem !important;
-        padding-right: .4rem !important;
-    }
-    main {
-        padding-left: .75rem !important;
-        padding-right: .75rem !important;
-        padding-top: 1rem !important;
-    }
-    #tab-home,
-    #tab-songs,
-    #tab-lineup {
-        gap: 1.15rem !important;
-    }
-    #tab-home .rounded-3xl {
-        padding: 1.1rem !important;
-        border-radius: 1.25rem !important;
-    }
-    #tab-home h2 {
-        font-size: clamp(1.65rem, 7vw, 2.15rem) !important;
-        line-height: 1.15 !important;
-    }
-    #tab-songs > .flex.items-center.justify-between {
-        align-items: flex-start;
-        gap: .6rem;
-    }
-    #tab-songs h2,
-    #tab-lineup h2 {
-        font-size: 1.35rem !important;
-        line-height: 1.25 !important;
-    }
-    #tab-songs > .flex > div p,
-    #tab-lineup > div p {
-        max-width: 100%;
-        line-height: 1.4;
-    }
-    #tab-songs > .flex > button {
-        padding: .55rem .7rem !important;
-        flex: 0 0 auto;
-    }
-    #filter-card-english,
-    #filter-card-tagalog {
-        padding: .65rem !important;
-        gap: .35rem;
-        align-items: center;
-    }
-    #filter-card-english > div,
-    #filter-card-tagalog > div {
-        gap: .45rem !important;
-        min-width: 0;
-    }
-    #filter-card-english > div > div:last-child,
-    #filter-card-tagalog > div > div:last-child {
-        min-width: 0;
-    }
-    #filter-card-english h4,
-    #filter-card-tagalog h4 {
-        font-size: .68rem !important;
-        line-height: 1rem;
-    }
-    #filter-card-english p,
-    #filter-card-tagalog p {
-        font-size: .58rem !important;
-        line-height: .85rem;
-    }
-    #filter-card-english > span,
-    #filter-card-tagalog > span {
-        padding: .2rem .4rem !important;
-        flex: 0 0 auto;
-    }
-    #songs-bank-list .song-card-glass > div:first-child {
-        padding: .75rem !important;
-    }
-    #songs-bank-list .song-card-glass > div:first-child > div:first-child {
-        gap: .5rem !important;
-    }
-    #songs-bank-list .song-card-glass h3 {
-        font-size: .9rem !important;
-        line-height: 1.25rem;
-    }
-    #songs-bank-list .song-card-glass .self-end,
-    #songs-bank-list .song-card-glass .sm\:self-center {
-        align-self: stretch !important;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: .35rem !important;
-    }
-    #songs-bank-list .song-card-glass .self-end > div {
-        margin-right: auto;
-    }
-    #songs-bank-list .song-card-glass .border-t {
-        flex-wrap: wrap;
-    }
-    #songs-bank-list .song-card-glass .border-t button {
-        flex: 1 1 auto;
-        justify-content: center;
-        min-height: 2.5rem;
-    }
-    #songs-bank-list .song-card-glass-expanded > div:last-child {
-        padding: .85rem !important;
-    }
-    #lineups-view-container > div {
-        padding: .85rem !important;
-    }
-    #lineups-view-container > div > div:last-child {
-        width: 100%;
-    }
-    #lineups-view-container > div > div:last-child button:first-child {
-        flex: 1 1 auto;
-        justify-content: center;
-    }
-    #lineup-modal,
-    #song-modal,
-    #media-modal {
-        padding: .5rem !important;
-    }
-    #lineup-modal > div,
-    #song-modal > div,
-    #media-modal > div {
-        padding: 1rem !important;
-        border-radius: 1.1rem !important;
-        margin-top: .25rem;
-        margin-bottom: .25rem;
-        max-height: calc(100dvh - 1rem);
-    }
-    #song-modal h3,
-    #lineup-modal h3 {
-        font-size: 1rem !important;
-    }
-    #song-modal form > div:last-child,
-    #lineup-modal form > div:last-child {
-        gap: .5rem;
-    }
-    #lineup-selected-order > div {
-        flex-wrap: wrap;
-    }
-    #lineup-selected-order > div > span:nth-child(2) {
-        flex-basis: calc(100% - 2.5rem);
-    }
-    #lineup-selected-order > div > div {
-        margin-left: auto;
-    }
-    #presentation-modal > div:first-child {
-        padding: .55rem !important;
-    }
-    #presentation-modal > div:first-child button {
-        font-size: .65rem !important;
-        padding: .4rem .5rem !important;
-    }
-    #stage-chords-btn {
-        gap: .2rem !important;
-    }
-    #stage-chords-btn span {
-        font-size: .62rem;
-    }
-    #presentation-modal > div:nth-child(3) {
-        padding: .8rem !important;
-    }
-    #presentation-modal > div:nth-child(3) > div > div:first-child {
-        align-items: flex-start;
-        flex-wrap: wrap;
-    }
-    #stage-song-title {
-        font-size: clamp(1.35rem, 6vw, 1.8rem) !important;
-        line-height: 1.2 !important;
-    }
-    #stage-song-pills {
-        padding-left: .5rem !important;
-        padding-right: .5rem !important;
-    }
-    #presentation-modal > div:last-child {
-        padding: .65rem !important;
-        padding-bottom: calc(.65rem + env(safe-area-inset-bottom)) !important;
-    }
-    #presentation-modal > div:last-child button {
-        padding: .55rem .65rem !important;
-        gap: .25rem !important;
-        font-size: .68rem !important;
-    }
-    #stage-track-counter {
-        font-size: .62rem;
-        white-space: nowrap;
-    }
-    .fixed.bottom-0 {
-        padding-left: .5rem !important;
-        padding-right: .5rem !important;
-        padding-bottom: calc(.5rem + env(safe-area-inset-bottom)) !important;
-    }
-    .fixed.bottom-0 button {
-        padding-left: .65rem !important;
-        padding-right: .65rem !important;
-    }
-}
-
-/* Very narrow phones: 320–359px */
-@media (max-width: 359px) {
-    header h1 {
-        font-size: .8rem !important;
-    }
-    header .w-10.h-10 {
-        width: 2rem !important;
-        height: 2rem !important;
-        flex: 0 0 2rem;
-    }
-    header .rounded-full {
-        font-size: 8px !important;
-    }
-    #sync-status {
-        max-width: 4.2rem;
-    }
-    #filter-card-english,
-    #filter-card-tagalog {
-        padding: .5rem !important;
-    }
-    #filter-card-english > div > div:first-child,
-    #filter-card-tagalog > div > div:first-child {
-        display: none;
-    }
-    #tab-songs > .flex > button span {
-        font-size: .68rem;
-    }
-    #stage-chords-btn span {
-        display: none;
-    }
-    #stage-chords-btn {
-        padding: .45rem !important;
-    }
-    #presentation-modal > div:last-child button span {
-        display: none;
-    }
-}
-
-/* Larger phones and small tablets */
-@media (min-width: 431px) and (max-width: 767px) {
-    main {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-    }
-    #songs-bank-list .song-card-glass .self-end,
-    #songs-bank-list .song-card-glass .sm\:self-center {
-        align-self: flex-start !important;
-    }
-    #song-modal > div,
-    #lineup-modal > div {
-        max-height: calc(100dvh - 2rem);
-    }
-}
-
-/* Tablets: prevent overly wide content and preserve readable cards */
-@media (min-width: 768px) and (max-width: 1023px) {
-    main {
-        padding-left: 1.25rem !important;
-        padding-right: 1.25rem !important;
-    }
-    #home-lineups-grid,
-    #global-search-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-/* Respect device accessibility preferences */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-    }
-}
-
 </style>
 </head>
-<body class="text-neutral-100 min-h-screen selection:bg-neutral-200 selection:text-neutral-950 relative pb-24 md:pb-10">
+<body class="text-slate-100 min-h-screen selection:bg-slate-200 selection:text-slate-950 relative pb-24 md:pb-10">
 
 <!-- ALWAYS VISIBLE FULL-SCREEN MOUNTAIN BACKGROUND -->
-<div class="fixed inset-0 w-full h-full pointer-events-none -z-20 overflow-hidden select-none">
+<div class="fixed inset-0 w-full h-full pointer-events-none -z-20 overflow-hidden select-none"
+     style="background-color: #080b12;">
 
-    <!-- Mountain Background Image -->
-    <div
-        class="absolute inset-0 bg-cover bg-center bg-no-repeat grayscale"
-        style="
-            background-image: url('black-white-mountain-background.jpg');
-            opacity: 1;
-        ">
+    <!-- HD Black & White Mountain Image -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+         style="
+            background-image: url('https://images.unsplash.com/photo-1689498608576-54fe1264f558?auto=format&fit=crop&w=2400&q=90');
+            filter: grayscale(100%);
+            opacity: 0.65;
+         ">
     </div>
 
-    <!-- Subtle Atmospheric Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-neutral-950/25"></div>
-
+    <!-- Dark Overlay for Text Readability -->
+    <div class="absolute inset-0"
+         style="background: linear-gradient(
+            to bottom,
+            rgba(2, 6, 23, 0.55),
+            rgba(2, 6, 23, 0.48),
+            rgba(2, 6, 23, 0.75)
+         );">
+    </div>
 </div>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-40 backdrop-blur-2xl bg-neutral-950/90 border-b border-neutral-800 shadow-2xl">
+<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/90 border-b border-slate-800 shadow-2xl">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 <div class="flex items-center space-x-3 cursor-pointer group" onclick="switchTab('home')">
 <div class="w-10 h-10 rounded-xl btn-gradient-bw flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
-<i data-lucide="mountain" class="w-5 h-5 text-neutral-950"></i>
+<i data-lucide="mountain" class="w-5 h-5 text-slate-950"></i>
 </div>
 <div>
 <div class="flex items-center space-x-2">
-<h1 class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent">
+<h1 class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
 SSLIM Worship
 </h1>
-<span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border bg-neutral-800 border-neutral-700 text-neutral-200 shadow-sm">
-<i data-lucide="wifi" class="w-3 h-3 text-neutral-300"></i>
+<span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border bg-slate-800 border-slate-700 text-slate-200 shadow-sm">
+<i data-lucide="wifi" class="w-3 h-3 text-slate-300"></i>
 <span id="sync-status">Connecting…</span>
 </span>
 </div>
-<p class="text-[10px] text-neutral-400 tracking-widest uppercase font-bold">Music Team Portal</p>
+<p class="text-[10px] text-slate-400 tracking-widest uppercase font-bold">Music Team Portal</p>
 </div>
 </div>
 
 <!-- Desktop Nav -->
-<nav class="hidden md:flex items-center space-x-1 bg-neutral-900 p-1.5 rounded-2xl border border-neutral-800 shadow-inner">
-<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-bw font-bold text-neutral-950 shadow-md">
+<nav class="hidden md:flex items-center space-x-1 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-inner">
+<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-bw font-bold text-slate-950 shadow-md">
 <i data-lucide="home" class="w-4 h-4"></i>
 <span>Home</span>
 </button>
-<button onclick="switchTab('songs')" id="nav-songs" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-neutral-400 hover:text-white hover:bg-neutral-800">
+<button onclick="switchTab('songs')" id="nav-songs" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
 <i data-lucide="book-open" class="w-4 h-4"></i>
 <span>Song Bank</span>
 </button>
-<button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-neutral-400 hover:text-white hover:bg-neutral-800">
+<button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
 <i data-lucide="calendar" class="w-4 h-4"></i>
 <span>Lineups</span>
 </button>
@@ -639,24 +199,24 @@ SSLIM Worship
 
 <!-- HOME TAB -->
 <div id="tab-home" class="space-y-8 animate-fade-in">
-<div class="relative rounded-3xl overflow-hidden border border-neutral-700 bg-neutral-900/90 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
+<div class="relative rounded-3xl overflow-hidden border border-slate-700/80 bg-slate-900/85 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
 <div class="max-w-2xl relative z-10 space-y-4">
-<span class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-neutral-800 border border-neutral-700 text-neutral-200 text-xs font-bold uppercase tracking-wider shadow-sm">
-<i data-lucide="sparkles" class="w-3.5 h-3.5 text-neutral-300"></i>
+<span class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-200 text-xs font-bold uppercase tracking-wider shadow-sm">
+<i data-lucide="sparkles" class="w-3.5 h-3.5 text-slate-300"></i>
 <span>SSLIM Music Portal</span>
 </span>
 <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
 SSLIM Worship Ministry.
 </h2>
-<p class="text-neutral-300 text-sm sm:text-base leading-relaxed">
+<p class="text-slate-300 text-sm sm:text-base leading-relaxed">
 Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
 </p>
 
 <!-- Home Search Bar -->
 <div class="pt-2 space-y-3 max-w-xl">
 <div class="relative flex items-center">
-<i data-lucide="search" id="home-search-icon" class="absolute left-4 w-5 h-5 text-neutral-400"></i>
-<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-neutral-950 border border-neutral-700 text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner text-sm sm:text-base font-medium">
+<i data-lucide="search" id="home-search-icon" class="absolute left-4 w-5 h-5 text-slate-400"></i>
+<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-950 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner text-sm sm:text-base font-medium">
 </div>
 </div>
 </div>
@@ -664,7 +224,7 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 
 <!-- Global Search Container -->
 <div id="global-search-results-container" class="space-y-4 hidden">
-<h3 class="text-lg font-bold text-neutral-200 flex items-center space-x-2">
+<h3 class="text-lg font-bold text-slate-200 flex items-center space-x-2">
 <i data-lucide="search" class="w-5 h-5"></i>
 <span id="global-search-count">Search Results</span>
 </h3>
@@ -675,13 +235,13 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div class="space-y-4">
 <div class="flex items-center justify-between">
 <div>
-<h3 class="text-xl font-bold text-neutral-900 flex items-center space-x-2 drop-shadow-sm">
-<i data-lucide="calendar" class="w-5 h-5 text-neutral-800"></i>
+<h3 class="text-xl font-bold text-white flex items-center space-x-2 drop-shadow-sm">
+<i data-lucide="calendar" class="w-5 h-5 text-slate-300"></i>
 <span>Recent Lineups</span>
 </h3>
-<p class="text-xs text-neutral-700 font-medium">Scheduled service setlists</p>
+<p class="text-xs text-slate-300 font-medium">Scheduled service setlists</p>
 </div>
-<button onclick="switchTab('lineup')" class="text-xs font-bold text-neutral-900 hover:text-black flex items-center space-x-1">
+<button onclick="switchTab('lineup')" class="text-xs font-bold text-slate-200 hover:text-white flex items-center space-x-1">
 <span>View All</span>
 <i data-lucide="chevron-right" class="w-4 h-4"></i>
 </button>
@@ -695,13 +255,13 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <!-- SONG BANK HEADER -->
 <div class="flex items-center justify-between gap-4 pt-1">
 <div>
-<h2 class="text-2xl sm:text-3xl font-extrabold text-neutral-900 tracking-tight flex items-center space-x-2.5">
-<i data-lucide="music" class="w-7 h-7 text-neutral-800"></i>
+<h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center space-x-2.5">
+<i data-lucide="music" class="w-7 h-7 text-slate-300"></i>
 <span>Song Bank</span>
 </h2>
-<p class="text-xs sm:text-sm text-neutral-700 font-medium">Browse, filter, and manage worship lyrics & chords</p>
+<p class="text-xs sm:text-sm text-slate-300 font-medium">Browse, filter, and manage worship lyrics & chords</p>
 </div>
-<button onclick="openSongModal()" class="btn-gradient-bw px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl text-neutral-950 font-extrabold text-xs sm:text-sm shadow-xl flex items-center space-x-2 transform active:scale-95 transition-all">
+<button onclick="openSongModal()" class="btn-gradient-bw px-4 sm:px-6 py-2.5 sm:py-3 rounded-2xl text-slate-950 font-extrabold text-xs sm:text-sm shadow-xl flex items-center space-x-2 transform active:scale-95 transition-all">
 <i data-lucide="plus-circle" class="w-5 h-5"></i>
 <span class="hidden sm:inline">Add New Song</span>
 <span class="sm:hidden">Add</span>
@@ -711,36 +271,36 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <!-- SEARCH & FILTER CARDS -->
 <div class="space-y-4">
 <div class="relative flex items-center">
-<i data-lucide="search" class="absolute left-4 w-5 h-5 text-neutral-400"></i>
-<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, tag, or lyrics..." class="w-full pl-12 pr-4 py-3 rounded-2xl bg-neutral-950 border border-neutral-800 text-sm sm:text-base text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner font-medium">
+<i data-lucide="search" class="absolute left-4 w-5 h-5 text-slate-400"></i>
+<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, tag, or lyrics..." class="w-full pl-12 pr-4 py-3 rounded-2xl bg-slate-950 border border-slate-800 text-sm sm:text-base text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner font-medium">
 </div>
 
 <!-- LANGUAGE FILTER CARDS -->
 <div class="grid grid-cols-2 gap-3 sm:gap-4">
 <div onclick="setLanguageFilter('English')" id="filter-card-english" class="filter-card p-3.5 sm:p-4 rounded-2xl cursor-pointer flex items-center justify-between group">
 <div class="flex items-center space-x-3">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-800 border border-neutral-700 text-white flex items-center justify-center group-hover:scale-105 transition-transform">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-800 border border-slate-700 text-white flex items-center justify-center group-hover:scale-105 transition-transform">
 <i data-lucide="globe" class="w-5 h-5"></i>
 </div>
 <div>
-<h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-neutral-300 transition-colors">English Songs</h4>
-<p class="text-[10px] sm:text-xs text-neutral-400">International Worship</p>
+<h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-slate-200 transition-colors">English Songs</h4>
+<p class="text-[10px] sm:text-xs text-slate-400">International Worship</p>
 </div>
 </div>
-<span id="badge-english-count" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-neutral-800 text-white border border-neutral-700">0</span>
+<span id="badge-english-count" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-800 text-white border border-slate-700">0</span>
 </div>
 
 <div onclick="setLanguageFilter('Tagalog')" id="filter-card-tagalog" class="filter-card p-3.5 sm:p-4 rounded-2xl cursor-pointer flex items-center justify-between group">
 <div class="flex items-center space-x-3">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-neutral-800 border border-neutral-700 text-white flex items-center justify-center group-hover:scale-105 transition-transform">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-800 border border-slate-700 text-white flex items-center justify-center group-hover:scale-105 transition-transform">
 <i data-lucide="heart-handshake" class="w-5 h-5"></i>
 </div>
 <div>
-<h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-neutral-300 transition-colors">Tagalog Songs</h4>
-<p class="text-[10px] sm:text-xs text-neutral-400">Filipino Worship</p>
+<h4 class="text-xs sm:text-sm font-bold text-white group-hover:text-slate-200 transition-colors">Tagalog Songs</h4>
+<p class="text-[10px] sm:text-xs text-slate-400">Filipino Worship</p>
 </div>
 </div>
-<span id="badge-tagalog-count" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-neutral-800 text-white border border-neutral-700">0</span>
+<span id="badge-tagalog-count" class="text-xs font-extrabold px-2.5 py-1 rounded-full bg-slate-800 text-white border border-slate-700">0</span>
 </div>
 </div>
 </div>
@@ -752,13 +312,13 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div id="tab-lineup" class="space-y-8 hidden animate-fade-in">
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div>
-<h2 class="text-2xl font-bold text-neutral-900 flex items-center space-x-2">
-<i data-lucide="calendar" class="w-6 h-6 text-neutral-800"></i>
+<h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+<i data-lucide="calendar" class="w-6 h-6 text-slate-300"></i>
 <span>Worship Lineups</span>
 </h2>
-<p class="text-xs text-neutral-700 font-medium">Organize service setlists and launch full presentation mode</p>
+<p class="text-xs text-slate-300 font-medium">Organize service setlists and launch full presentation mode</p>
 </div>
-<button onclick="openLineupModal()" class="btn-gradient-bw px-5 py-2.5 rounded-xl text-neutral-950 font-extrabold text-xs sm:text-sm shadow-lg flex items-center justify-center space-x-2">
+<button onclick="openLineupModal()" class="btn-gradient-bw px-5 py-2.5 rounded-xl text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg flex items-center justify-center space-x-2">
 <i data-lucide="plus" class="w-4 h-4"></i>
 <span>Create New Lineup</span>
 </button>
@@ -769,67 +329,67 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 </main>
 
 <!-- MEDIA EMBED MODAL -->
-<div id="media-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md hidden">
-<div class="bg-neutral-900 border border-neutral-700 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-4">
-<div class="flex justify-between items-center border-b border-neutral-800 pb-3">
+<div id="media-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md hidden">
+<div class="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-4">
+<div class="flex justify-between items-center border-b border-slate-800 pb-3">
 <div class="flex items-center space-x-2">
-<div id="media-modal-icon-bg" class="p-2 rounded-xl bg-neutral-800 text-white">
+<div id="media-modal-icon-bg" class="p-2 rounded-xl bg-slate-800 text-white">
 <i id="media-modal-icon" data-lucide="youtube" class="w-5 h-5"></i>
 </div>
 <h3 id="media-modal-title" class="text-lg font-bold text-white">Media Preview</h3>
 </div>
-<button onclick="closeMediaModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+<button onclick="closeMediaModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
 </div>
-<div id="media-embed-container" class="w-full aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center border border-neutral-800"></div>
+<div id="media-embed-container" class="w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800"></div>
 </div>
 </div>
 
 <!-- STAGE PRESENTATION FULLSCREEN OVERLAY -->
-<div id="presentation-modal" class="fixed inset-0 z-50 bg-neutral-950 flex flex-col overflow-hidden hidden">
-<div class="flex-none bg-neutral-900 border-b border-neutral-800 p-3 sm:p-4 flex items-center justify-between gap-2 backdrop-blur-2xl">
+<div id="presentation-modal" class="fixed inset-0 z-50 bg-slate-950 flex flex-col overflow-hidden hidden">
+<div class="flex-none bg-slate-900 border-b border-slate-800 p-3 sm:p-4 flex items-center justify-between gap-2 backdrop-blur-2xl">
 <div class="flex items-center space-x-2.5 min-w-0">
 <span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse flex-shrink-0 shadow-lg shadow-white/50"></span>
 <div class="min-w-0">
 <h3 id="stage-lineup-title" class="text-sm sm:text-lg font-bold text-white truncate">Service Title</h3>
-<p id="stage-lineup-leader" class="text-[11px] text-neutral-400 truncate">Leader</p>
+<p id="stage-lineup-leader" class="text-[11px] text-slate-400 truncate">Leader</p>
 </div>
 </div>
 <div class="flex items-center space-x-2 flex-shrink-0">
-<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-neutral-800 border-neutral-600 text-white">
+<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-slate-800 border-slate-600 text-white">
 <i data-lucide="eye" class="w-3.5 h-3.5"></i>
 <span>Chords On</span>
 </button>
-<button onclick="exitPresentation()" class="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 text-xs border border-neutral-700 font-bold">
+<button onclick="exitPresentation()" class="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs border border-slate-700 font-bold">
 Exit Mode
 </button>
 </div>
 </div>
-<div id="stage-song-pills" class="flex-none bg-neutral-900/80 border-b border-neutral-800 px-3 py-2 flex space-x-2 overflow-x-auto"></div>
-<div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-neutral-950 flex flex-col justify-between">
+<div id="stage-song-pills" class="flex-none bg-slate-900/80 border-b border-slate-800 px-3 py-2 flex space-x-2 overflow-x-auto"></div>
+<div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-950 flex flex-col justify-between">
 <div class="space-y-6 max-w-4xl mx-auto w-full">
-<div class="flex flex-row justify-between items-center gap-2 pb-4 border-b border-neutral-800">
+<div class="flex flex-row justify-between items-center gap-2 pb-4 border-b border-slate-800">
 <div>
 <h2 id="stage-song-title" class="text-2xl sm:text-4xl font-extrabold text-white">Song Title</h2>
-<p id="stage-song-singer" class="text-xs sm:text-sm text-neutral-400 font-semibold mt-1">Artist</p>
+<p id="stage-song-singer" class="text-xs sm:text-sm text-slate-400 font-semibold mt-1">Artist</p>
 </div>
-<div class="flex items-center space-x-1.5 bg-neutral-900 p-1.5 rounded-2xl border border-neutral-800 shadow-md">
-<span class="text-[11px] font-bold text-neutral-400 px-1">Key:</span>
+<div class="flex items-center space-x-1.5 bg-slate-900 p-1.5 rounded-2xl border border-slate-800 shadow-md">
+<span class="text-[11px] font-bold text-slate-400 px-1">Key:</span>
 <span id="stage-song-key" class="text-xs sm:text-sm font-extrabold text-white w-7 text-center">C</span>
-<button onclick="adjustStageKey(-1)" class="w-7 h-7 bg-neutral-800 rounded-lg font-bold text-white hover:bg-neutral-700 flex items-center justify-center text-sm">-</button>
-<button onclick="adjustStageKey(1)" class="w-7 h-7 bg-neutral-800 rounded-lg font-bold text-white hover:bg-neutral-700 flex items-center justify-center text-sm">+</button>
+<button onclick="adjustStageKey(-1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-white hover:bg-slate-700 flex items-center justify-center text-sm">-</button>
+<button onclick="adjustStageKey(1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-white hover:bg-slate-700 flex items-center justify-center text-sm">+</button>
 </div>
 </div>
 <div id="stage-lyrics-box" class="py-2 overflow-x-auto min-h-[220px]"></div>
 </div>
 </div>
-<div class="flex-none bg-neutral-900 border-t border-neutral-800 p-3 sm:p-4 backdrop-blur-2xl">
+<div class="flex-none bg-slate-900 border-t border-slate-800 p-3 sm:p-4 backdrop-blur-2xl">
 <div class="max-w-4xl mx-auto flex items-center justify-between">
-<button onclick="navigateStageSong(-1)" id="stage-prev-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-neutral-700 bg-neutral-800 text-neutral-200 hover:bg-neutral-700">
+<button onclick="navigateStageSong(-1)" id="stage-prev-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700">
 <i data-lucide="chevron-left" class="w-4 h-4 stroke-[3]"></i>
 <span>Prev Song</span>
 </button>
-<span id="stage-track-counter" class="text-xs font-bold text-neutral-400">Track 1 of 3</span>
-<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-neutral-700 bg-neutral-800 text-neutral-200 hover:bg-neutral-700">
+<span id="stage-track-counter" class="text-xs font-bold text-slate-400">Track 1 of 3</span>
+<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700">
 <span>Next Song</span>
 <i data-lucide="chevron-right" class="w-4 h-4 stroke-[3]"></i>
 </button>
@@ -838,34 +398,34 @@ Exit Mode
 </div>
 
 <!-- SONG MODAL (ADD / EDIT) -->
-<div id="song-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden overflow-y-auto">
-<div class="bg-neutral-900 border border-neutral-700 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
-<div class="flex justify-between items-center border-b border-neutral-800 pb-4">
+<div id="song-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
+<div class="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
+<div class="flex justify-between items-center border-b border-slate-800 pb-4">
 <h3 id="song-modal-title" class="text-xl font-bold text-white">Add New Song</h3>
-<button onclick="closeSongModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+<button onclick="closeSongModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
 </div>
 <form onsubmit="saveSongForm(event)" class="space-y-4">
 <input type="hidden" id="edit-song-id">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-neutral-300">Song Title *</label>
-<input type="text" id="form-song-title" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<label class="text-xs font-semibold text-slate-300">Song Title *</label>
+<input type="text" id="form-song-title" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300">Singer / Artist</label>
-<input type="text" id="form-song-singer" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<label class="text-xs font-semibold text-slate-300">Singer / Artist</label>
+<input type="text" id="form-song-singer" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-neutral-300">Original Key</label>
-<select id="form-song-key" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<label class="text-xs font-semibold text-slate-300">Original Key</label>
+<select id="form-song-key" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
 <option value="C">Key of C</option><option value="C#">Key of C#</option><option value="D">Key of D</option><option value="D#">Key of D#</option><option value="E">Key of E</option><option value="F">Key of F</option><option value="F#">Key of F#</option><option value="G">Key of G</option><option value="G#">Key of G#</option><option value="A">Key of A</option><option value="A#">Key of A#</option><option value="B">Key of B</option>
 </select>
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300">Language (Auto-detected if left default)</label>
-<select id="form-song-language" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<label class="text-xs font-semibold text-slate-300">Language (Auto-detected if left default)</label>
+<select id="form-song-language" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
 <option value="Auto">Auto-Detect from Title/Lyrics</option>
 <option value="English">English</option>
 <option value="Tagalog">Tagalog</option>
@@ -875,82 +435,82 @@ Exit Mode
 <!-- Media Links -->
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-neutral-300 flex items-center space-x-1.5"><i data-lucide="youtube" class="w-3.5 h-3.5 text-neutral-400"></i><span>YouTube Video Link or ID</span></label>
-<input type="text" id="form-song-youtube" placeholder="https://youtube.com/watch?v=..." class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<label class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5"><i data-lucide="youtube" class="w-3.5 h-3.5 text-slate-400"></i><span>YouTube Video Link or ID</span></label>
+<input type="text" id="form-song-youtube" placeholder="https://youtube.com/watch?v=..." class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300 flex items-center space-x-1.5"><i data-lucide="disc" class="w-3.5 h-3.5 text-neutral-400"></i><span>Spotify Track Link or ID</span></label>
-<input type="text" id="form-song-spotify" placeholder="https://open.spotify.com/track/..." class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<label class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5"><i data-lucide="disc" class="w-3.5 h-3.5 text-slate-400"></i><span>Spotify Track Link or ID</span></label>
+<input type="text" id="form-song-spotify" placeholder="https://open.spotify.com/track/..." class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
 </div>
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
-<textarea id="form-song-lyrics" rows="8" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
+<label class="text-xs font-semibold text-slate-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
+<textarea id="form-song-lyrics" rows="8" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
 </div>
-<div class="flex justify-end space-x-3 pt-4 border-t border-neutral-800">
-<button type="button" onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-neutral-800 text-neutral-300 text-xs font-semibold">Cancel</button>
-<button type="submit" class="btn-gradient-bw px-6 py-2 rounded-xl text-neutral-950 font-extrabold text-xs shadow-lg">Save Song</button>
+<div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
+<button type="button" onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+<button type="submit" class="btn-gradient-bw px-6 py-2 rounded-xl text-slate-950 font-extrabold text-xs shadow-lg">Save Song</button>
 </div>
 </form>
 </div>
 </div>
 
 <!-- LINEUP MODAL -->
-<div id="lineup-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md hidden overflow-y-auto">
-<div class="bg-neutral-900 border border-neutral-700 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
-<div class="flex justify-between items-center border-b border-neutral-800 pb-4">
+<div id="lineup-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
+<div class="bg-slate-900 border border-slate-700 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
+<div class="flex justify-between items-center border-b border-slate-800 pb-4">
 <h3 id="lineup-modal-title" class="text-xl font-bold text-white">Create Service Lineup</h3>
-<button onclick="closeLineupModal()" class="text-neutral-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+<button onclick="closeLineupModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
 </div>
 <form onsubmit="saveLineupForm(event)" class="space-y-4">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-neutral-300">Lineup Title *</label>
-<input type="text" id="form-lineup-title" required placeholder="e.g. Sunday Worship" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white font-medium">
+<label class="text-xs font-semibold text-slate-300">Lineup Title *</label>
+<input type="text" id="form-lineup-title" required placeholder="e.g. Sunday Worship" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300">Service Date *</label>
-<input type="date" id="form-lineup-date" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white font-medium">
+<label class="text-xs font-semibold text-slate-300">Service Date *</label>
+<input type="date" id="form-lineup-date" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
 </div>
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300">Worship Leader</label>
-<input type="text" id="form-lineup-leader" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white font-medium">
+<label class="text-xs font-semibold text-slate-300">Worship Leader</label>
+<input type="text" id="form-lineup-leader" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
 </div>
 <div>
-<label class="text-xs font-semibold text-neutral-300">Service Notes / Theme</label>
-<input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-neutral-950 border border-neutral-800 text-sm text-white font-medium">
+<label class="text-xs font-semibold text-slate-300">Service Notes / Theme</label>
+<input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
 </div>
 <div class="space-y-3 pt-2">
 <label class="text-xs font-bold text-white uppercase tracking-wider">Select Songs for Lineup</label>
-<div id="lineup-songs-checkboxes" class="max-h-48 overflow-y-auto space-y-1.5 p-2 rounded-xl bg-neutral-950 border border-neutral-800"></div>
-<div class="mt-3 rounded-xl bg-neutral-950/70 border border-neutral-800 p-3 space-y-2">
+<div id="lineup-songs-checkboxes" class="max-h-48 overflow-y-auto space-y-1.5 p-2 rounded-xl bg-slate-950 border border-slate-800"></div>
+<div class="mt-3 rounded-xl bg-slate-950/70 border border-slate-800 p-3 space-y-2">
 <div class="flex items-center justify-between gap-2">
 <span class="text-xs font-bold text-white uppercase tracking-wider">Selected song order</span>
-<span class="text-[10px] text-neutral-400">Use arrows to arrange</span>
+<span class="text-[10px] text-slate-400">Use arrows to arrange</span>
 </div>
 <div id="lineup-selected-order" class="space-y-2"></div>
 </div>
 </div>
-<div class="flex justify-end space-x-3 pt-4 border-t border-neutral-800">
-<button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-neutral-800 text-neutral-300 text-xs font-semibold">Cancel</button>
-<button id="lineup-submit-btn" type="submit" class="btn-gradient-bw px-6 py-2 rounded-xl text-neutral-950 font-extrabold text-xs shadow-lg">Create Lineup</button>
+<div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
+<button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+<button id="lineup-submit-btn" type="submit" class="btn-gradient-bw px-6 py-2 rounded-xl text-slate-950 font-extrabold text-xs shadow-lg">Create Lineup</button>
 </div>
 </form>
 </div>
 </div>
 
 <!-- MOBILE BOTTOM NAVIGATION -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-neutral-950/95 backdrop-blur-2xl border-t border-neutral-800 px-6 py-2 flex justify-around items-center shadow-2xl">
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-2xl border-t border-slate-800 px-6 py-2 flex justify-around items-center shadow-2xl">
 <button onclick="switchTab('home')" id="bm-home" class="flex flex-col items-center py-1 px-3 text-white">
 <i data-lucide="home" class="w-5 h-5"></i>
 <span class="text-[10px] font-bold mt-1">Home</span>
 </button>
-<button onclick="switchTab('songs')" id="bm-songs" class="flex flex-col items-center py-1 px-3 text-neutral-400">
+<button onclick="switchTab('songs')" id="bm-songs" class="flex flex-col items-center py-1 px-3 text-slate-400">
 <i data-lucide="book-open" class="w-5 h-5"></i>
 <span class="text-[10px] font-bold mt-1">Song Bank</span>
 </button>
-<button onclick="switchTab('lineup')" id="bm-lineup" class="flex flex-col items-center py-1 px-3 text-neutral-400">
+<button onclick="switchTab('lineup')" id="bm-lineup" class="flex flex-col items-center py-1 px-3 text-slate-400">
 <i data-lucide="calendar" class="w-5 h-5"></i>
 <span class="text-[10px] font-bold mt-1">Lineups</span>
 </button>
@@ -998,7 +558,7 @@ function setSyncStatus(message, state = 'normal') {
     if (!el) return;
     el.textContent = message;
     el.title = message;
-    el.className = state === 'error' ? 'text-red-300' : state === 'ok' ? 'text-emerald-300' : 'text-neutral-200';
+    el.className = state === 'error' ? 'text-red-300' : state === 'ok' ? 'text-emerald-300' : 'text-slate-200';
 }
 
 function saveLocalBackup() {
@@ -1115,13 +675,13 @@ function switchTab(tab) {
         const nav = document.getElementById(`nav-${t}`);
         if (nav) {
             nav.className = t === tab 
-                ? 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-bw font-bold text-neutral-950 shadow-md' 
-                : 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-neutral-400 hover:text-white hover:bg-neutral-800';
+                ? 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-bw font-bold text-slate-950 shadow-md' 
+                : 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80';
         }
         
         const bm = document.getElementById(`bm-${t}`);
         if (bm) {
-            bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-white' : 'flex flex-col items-center py-1 px-3 text-neutral-400';
+            bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-white' : 'flex flex-col items-center py-1 px-3 text-slate-400';
         }
     });
     
@@ -1189,14 +749,14 @@ function openMediaModal(songId, type) {
         const ytId = getYouTubeId(song.youtube);
         if (!ytId) return alert('No valid YouTube link configured for this song.');
         titleEl.textContent = `${song.title} - YouTube`;
-        iconBg.className = 'p-2 rounded-xl bg-neutral-800 text-white';
+        iconBg.className = 'p-2 rounded-xl bg-slate-800 text-white';
         icon.setAttribute('data-lucide', 'youtube');
         container.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
     } else if (type === 'spotify') {
         const spId = getSpotifyTrackId(song.spotify);
         if (!spId) return alert('No valid Spotify link configured for this song.');
         titleEl.textContent = `${song.title} - Spotify`;
-        iconBg.className = 'p-2 rounded-xl bg-neutral-800 text-white';
+        iconBg.className = 'p-2 rounded-xl bg-slate-800 text-white';
         icon.setAttribute('data-lucide', 'disc');
         container.innerHTML = `<iframe class="w-full h-full rounded-2xl" src="https://open.spotify.com/embed/track/${spId}?utm_source=generator&theme=0" frameborder="0" allowfullscreen="" loading="lazy"></iframe>`;
     }
@@ -1256,11 +816,11 @@ function renderLyricsHTML(text, semitones = 0, showChords = true) {
         const { hasChords, chords, lyrics } = parseLine(line);
         let chordHtml = '';
         if (showChords && hasChords) {
-            chordHtml = `<div class="flex flex-wrap items-center gap-x-1 gap-y-1 font-bold text-neutral-200 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
-            chords.trim().split(/\s+/).filter(Boolean).map(chord => `<span class="inline-flex bg-neutral-800 border border-neutral-700 px-1.5 py-0.5 rounded text-white">${chord}</span>`).join('') +
+            chordHtml = `<div class="flex flex-wrap items-center gap-x-1 gap-y-1 font-bold text-slate-200 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
+            chords.trim().split(/\s+/).filter(Boolean).map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded text-white">${chord}</span>`).join('') +
             `</div>`;
         }
-        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap break-words text-neutral-100 font-sans tracking-wide text-sm sm:text-base">${lyrics || (hasChords ? '' : line)}</div></div>`;
+        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap break-words text-slate-100 font-sans tracking-wide text-sm sm:text-base">${lyrics || (hasChords ? '' : line)}</div></div>`;
     }).join('');
 }
 
@@ -1268,20 +828,20 @@ function renderHome() {
     const grid = document.getElementById('home-lineups-grid');
     if (!grid) return;
     grid.innerHTML = lineups.slice(0, 3).map(l => {
-        const songPills = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean).map((s, idx) => `<span class="text-xs px-2 py-0.5 rounded bg-neutral-800 text-neutral-200 border border-neutral-700">${idx+1}. ${s.title}</span>`).join('');
+        const songPills = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean).map((s, idx) => `<span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">${idx+1}. ${s.title}</span>`).join('');
         return `
-        <div class="rounded-2xl border border-neutral-800 bg-neutral-900/90 backdrop-blur-xl p-5 flex flex-col justify-between shadow-xl">
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/90 backdrop-blur-xl p-5 flex flex-col justify-between shadow-xl">
         <div class="space-y-3">
         <div class="flex justify-between items-start">
-        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-neutral-800 border border-neutral-700 text-white">${l.date}</span>
-        <span class="text-xs text-neutral-400"><i data-lucide="user" class="w-3.5 h-3.5 inline text-neutral-300"></i> ${l.leader || 'Team'}</span>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-white">${l.date}</span>
+        <span class="text-xs text-slate-300"><i data-lucide="user" class="w-3.5 h-3.5 inline text-slate-300"></i> ${l.leader || 'Team'}</span>
         </div>
         <h4 class="font-bold text-lg text-white">${l.title}</h4>
-        <p class="text-xs text-neutral-400 line-clamp-2">${l.notes || ''}</p>
-        <div class="space-y-1 pt-2"><p class="text-[11px] font-semibold uppercase tracking-wider text-neutral-400">Tracklist:</p><div class="flex flex-wrap gap-1.5">${songPills}</div></div>
+        <p class="text-xs text-slate-300 line-clamp-2">${l.notes || ''}</p>
+        <div class="space-y-1 pt-2"><p class="text-[11px] font-semibold uppercase tracking-wider text-slate-300">Tracklist:</p><div class="flex flex-wrap gap-1.5">${songPills}</div></div>
         </div>
-        <div class="pt-5 mt-4 border-t border-neutral-800">
-        <button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl btn-gradient-bw font-extrabold text-neutral-950 text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
+        <div class="pt-5 mt-4 border-t border-slate-800">
+        <button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl btn-gradient-bw font-extrabold text-slate-950 text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
         <i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch Presentation</span>
         </button>
         </div>
@@ -1298,9 +858,9 @@ function handleGlobalSearch(query) {
     const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()));
     document.getElementById('global-search-count').innerText = `Search Results (${matches.length})`;
     grid.innerHTML = matches.map(s => `
-    <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-neutral-900 border border-neutral-800 hover:border-neutral-600 cursor-pointer flex justify-between items-center">
-    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-neutral-400">${s.singer} • Key: <span class="text-white font-bold">${s.originalKey}</span></p></div>
-    <span class="text-xs px-3 py-1.5 rounded-lg bg-neutral-800 text-white font-medium border border-neutral-700">View</span>
+    <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-600 cursor-pointer flex justify-between items-center">
+    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-300">${s.singer} • Key: <span class="text-white font-bold">${s.originalKey}</span></p></div>
+    <span class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 text-white font-medium border border-slate-700">View</span>
     </div>`).join('');
     if (window.lucide) lucide.createIcons();
 }
@@ -1344,7 +904,7 @@ function renderSongsBank() {
         return matchesLang && matchesSearch;
     });
 
-    list.innerHTML = filtered.length === 0 ? `<div class="p-12 text-center text-neutral-300 glass-panel rounded-2xl">No songs found in this category.</div>` : filtered.map(s => {
+    list.innerHTML = filtered.length === 0 ? `<div class="p-12 text-center text-slate-300 glass-panel rounded-2xl">No songs found in this category.</div>` : filtered.map(s => {
         const semitones = songTranspositions[s.id] || 0;
         const currentKey = transposeChord(s.originalKey, semitones);
         const isExpanded = expandedSongId === s.id;
@@ -1359,56 +919,56 @@ function renderSongsBank() {
         <!-- Header row -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="flex-1 cursor-pointer flex items-center space-x-3" onclick="toggleSongExpand('${s.id}')">
-            <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-white text-neutral-950' : 'bg-neutral-800 text-white'}">
+            <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-white text-slate-950' : 'bg-slate-800 text-white'}">
                 <i data-lucide="music" class="w-4 h-4"></i>
             </div>
             <div>
                 <div class="flex items-center space-x-2">
                     <h3 class="text-base font-bold text-white">${s.title}</h3>
-                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-neutral-800 text-neutral-300 border border-neutral-700">${resolvedLang}</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-800 text-slate-200 border border-slate-700">${resolvedLang}</span>
                 </div>
-                <p class="text-xs text-neutral-400 font-medium">${s.singer || 'Unknown Artist'}</p>
+                <p class="text-xs text-slate-300 font-medium">${s.singer || 'Unknown Artist'}</p>
             </div>
             </div>
 
             <div class="flex items-center space-x-2 self-end sm:self-center">
-            <div class="flex items-center bg-neutral-950 border border-neutral-800 rounded-xl px-2.5 py-1 space-x-1.5">
-            <span class="text-[11px] font-bold text-neutral-400">Key:</span>
+            <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-2.5 py-1 space-x-1.5">
+            <span class="text-[11px] font-bold text-slate-300">Key:</span>
             <span class="text-xs font-extrabold text-white w-5 text-center">${currentKey}</span>
-            <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-neutral-800 text-white font-bold text-xs hover:bg-neutral-700">-</button>
-            <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-neutral-800 text-white font-bold text-xs hover:bg-neutral-700">+</button>
+            <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-white font-bold text-xs hover:bg-slate-700">-</button>
+            <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-white font-bold text-xs hover:bg-slate-700">+</button>
             </div>
-            <button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
-            <button onclick="deleteSong('${s.id}')" class="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-            <button onclick="toggleSongExpand('${s.id}')" class="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-300 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
+            <button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
+            <button onclick="deleteSong('${s.id}')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+            <button onclick="toggleSongExpand('${s.id}')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
             </div>
         </div>
 
         <!-- EXPLICIT MEDIA BUTTONS WITH FULL LABELS & ICONS -->
-        <div class="flex flex-wrap gap-2 pt-1 border-t border-neutral-800">
+        <div class="flex flex-wrap gap-2 pt-1 border-t border-slate-800">
             ${hasYt ? `
-            <button onclick="openMediaModal('${s.id}', 'youtube')" class="btn-gradient-dark px-3 py-1.5 rounded-xl text-neutral-200 font-bold text-xs flex items-center space-x-2">
+            <button onclick="openMediaModal('${s.id}', 'youtube')" class="btn-gradient-dark px-3 py-1.5 rounded-xl text-slate-100 font-bold text-xs flex items-center space-x-2">
                 <span>Watch on Youtube</span>
                 <i data-lucide="youtube" class="w-4 h-4 text-white"></i>
             </button>` : `
-            <button onclick="openSongModal('${s.id}')" class="px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-500 text-xs flex items-center space-x-2">
+            <button onclick="openSongModal('${s.id}')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-xs flex items-center space-x-2">
                 <span>Add Youtube Link</span>
                 <i data-lucide="youtube" class="w-3.5 h-3.5 opacity-50"></i>
             </button>`}
 
             ${hasSp ? `
-            <button onclick="openMediaModal('${s.id}', 'spotify')" class="btn-gradient-dark px-3 py-1.5 rounded-xl text-neutral-200 font-bold text-xs flex items-center space-x-2">
+            <button onclick="openMediaModal('${s.id}', 'spotify')" class="btn-gradient-dark px-3 py-1.5 rounded-xl text-slate-100 font-bold text-xs flex items-center space-x-2">
                 <span>Listen to Spotify</span>
                 <i data-lucide="disc" class="w-4 h-4 text-white"></i>
             </button>` : `
-            <button onclick="openSongModal('${s.id}')" class="px-3 py-1.5 rounded-xl bg-neutral-900 border border-neutral-800 text-neutral-500 text-xs flex items-center space-x-2">
+            <button onclick="openSongModal('${s.id}')" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-xs flex items-center space-x-2">
                 <span>Add Spotify Link</span>
                 <i data-lucide="disc" class="w-3.5 h-3.5 opacity-50"></i>
             </button>`}
         </div>
 
         </div>
-        ${isExpanded ? `<div class="p-4 sm:p-6 border-t border-neutral-800 bg-neutral-950/95 overflow-x-auto">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
+        ${isExpanded ? `<div class="p-4 sm:p-6 border-t border-slate-800 bg-slate-950/95 overflow-x-auto">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
         </div>`;
     }).join('');
     if (window.lucide) lucide.createIcons();
@@ -1438,16 +998,16 @@ function renderLineupsView() {
     container.innerHTML = lineups.map(l => {
         const lineupSongs = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
         return `
-        <div class="p-4 sm:p-5 rounded-2xl bg-neutral-900/90 border border-neutral-800 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 min-w-0 shadow-lg">
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 min-w-0 shadow-lg">
         <div class="min-w-0 flex-1 break-words">
-        <span class="text-xs font-bold text-neutral-300">${l.date}</span> <span class="text-neutral-600">•</span> <span class="text-xs text-neutral-400">${l.leader || 'Team'}</span>
+        <span class="text-xs font-bold text-slate-200">${l.date}</span> <span class="text-slate-500">•</span> <span class="text-xs text-slate-300">${l.leader || 'Team'}</span>
         <h4 class="font-bold text-white text-lg mt-0.5">${l.title}</h4>
-        <p class="text-xs text-neutral-400 mt-1">${lineupSongs.length} ${lineupSongs.length === 1 ? 'song' : 'songs'} in setlist</p>
+        <p class="text-xs text-slate-300 mt-1">${lineupSongs.length} ${lineupSongs.length === 1 ? 'song' : 'songs'} in setlist</p>
         </div>
         <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0">
-        <button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl btn-gradient-bw font-extrabold text-neutral-950 text-xs flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
-        <button onclick="editLineup('${l.id}')" title="Edit lineup" class="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-200"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
-        <button onclick="deleteLineup('${l.id}')" title="Delete lineup" class="p-2 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-neutral-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+        <button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl btn-gradient-bw font-extrabold text-slate-950 text-xs flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
+        <button onclick="editLineup('${l.id}')" title="Edit lineup" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+        <button onclick="deleteLineup('${l.id}')" title="Delete lineup" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
         </div>
         </div>`;
     }).join('');
@@ -1480,7 +1040,7 @@ function renderStage() {
         const s = songs.find(x => x.id === sId);
         if (!s) return '';
         const active = idx === currentStageSongIdx;
-        return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'btn-gradient-bw text-neutral-950 shadow-md' : 'bg-neutral-900 border border-neutral-800 text-neutral-300'}">${idx+1}. ${s.title}</button>`;
+        return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'btn-gradient-bw text-slate-950 shadow-md' : 'bg-slate-900 border border-slate-800 text-slate-300'}">${idx+1}. ${s.title}</button>`;
     }).join('');
 
     const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
@@ -1513,7 +1073,7 @@ function adjustStageKey(delta) {
 function toggleStageChords() {
     showStageChords = !showStageChords;
     const btn = document.getElementById('stage-chords-btn');
-    btn.className = showStageChords ? 'px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-neutral-800 border-neutral-600 text-white' : 'px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-neutral-900 border-neutral-800 text-neutral-400';
+    btn.className = showStageChords ? 'px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-slate-800 border-slate-600 text-white' : 'px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-slate-900 border-slate-800 text-slate-300';
     btn.innerHTML = `<i data-lucide="eye" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Chords On' : 'Chords Off'}</span>`;
     renderStage();
 }
@@ -1584,14 +1144,14 @@ function renderLineupSongSelection() {
     const selected = new Set(lineupDraftSongIds);
 
     const songChoices = songs.map(s => `
-        <label class="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 text-xs cursor-pointer hover:border-neutral-600 transition min-w-0">
-            <span class="min-w-0 flex-1 break-words"><span class="font-bold text-neutral-200">${escapeHTML(s.title)}</span><span class="text-neutral-400"> (${escapeHTML(s.singer || 'Unknown artist')})</span></span>
+        <label class="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs cursor-pointer hover:border-slate-600 transition min-w-0">
+            <span class="min-w-0 flex-1 break-words"><span class="font-bold text-slate-200">${escapeHTML(s.title)}</span><span class="text-slate-300"> (${escapeHTML(s.singer || 'Unknown artist')})</span></span>
             <input type="checkbox" name="lineup-song" value="${escapeHTML(s.id)}" ${selected.has(s.id) ? 'checked' : ''}
                 onchange="toggleLineupSong('${escapeHTML(s.id)}', this.checked)"
-                class="rounded bg-neutral-950 border-neutral-700 text-white focus:ring-white shrink-0">
+                class="rounded bg-slate-950 border-slate-700 text-white focus:ring-white shrink-0">
         </label>`).join('');
 
-    container.innerHTML = songChoices || '<p class="text-xs text-neutral-400 p-2">No songs in song bank yet.</p>';
+    container.innerHTML = songChoices || '<p class="text-xs text-slate-300 p-2">No songs in song bank yet.</p>';
     renderLineupSelectedOrder();
     if (window.lucide) lucide.createIcons();
 }
@@ -1607,7 +1167,7 @@ function renderLineupSelectedOrder() {
     if (!container) return;
 
     if (!lineupDraftSongIds.length) {
-        container.innerHTML = '<p class="text-xs text-neutral-400 py-2">No songs selected yet. Select songs above to build your setlist.</p>';
+        container.innerHTML = '<p class="text-xs text-slate-300 py-2">No songs selected yet. Select songs above to build your setlist.</p>';
         return;
     }
 
@@ -1615,13 +1175,13 @@ function renderLineupSelectedOrder() {
         const song = songs.find(item => item.id === id);
         if (!song) return '';
         return `
-          <div class="flex items-center gap-2 p-2 rounded-lg bg-neutral-900 border border-neutral-800 min-w-0">
-            <span class="w-6 h-6 shrink-0 rounded-md bg-neutral-800 text-white flex items-center justify-center text-xs font-bold">${index + 1}</span>
-            <span class="min-w-0 flex-1 text-xs font-semibold text-neutral-200 break-words">${escapeHTML(song.title)}</span>
+          <div class="flex items-center gap-2 p-2 rounded-lg bg-slate-900 border border-slate-800 min-w-0">
+            <span class="w-6 h-6 shrink-0 rounded-md bg-slate-800 text-white flex items-center justify-center text-xs font-bold">${index + 1}</span>
+            <span class="min-w-0 flex-1 text-xs font-semibold text-slate-200 break-words">${escapeHTML(song.title)}</span>
             <div class="flex items-center gap-1 shrink-0">
-              <button type="button" onclick="moveLineupSong(${index}, -1)" ${index === 0 ? 'disabled' : ''} class="w-8 h-8 rounded-lg bg-neutral-800 text-white disabled:opacity-35">↑</button>
-              <button type="button" onclick="moveLineupSong(${index}, 1)" ${index === lineupDraftSongIds.length - 1 ? 'disabled' : ''} class="w-8 h-8 rounded-lg bg-neutral-800 text-white disabled:opacity-35">↓</button>
-              <button type="button" onclick="removeLineupSong('${escapeHTML(id)}')" class="w-8 h-8 rounded-lg bg-neutral-800 text-neutral-400">×</button>
+              <button type="button" onclick="moveLineupSong(${index}, -1)" ${index === 0 ? 'disabled' : ''} class="w-8 h-8 rounded-lg bg-slate-800 text-white disabled:opacity-35">↑</button>
+              <button type="button" onclick="moveLineupSong(${index}, 1)" ${index === lineupDraftSongIds.length - 1 ? 'disabled' : ''} class="w-8 h-8 rounded-lg bg-slate-800 text-white disabled:opacity-35">↓</button>
+              <button type="button" onclick="removeLineupSong('${escapeHTML(id)}')" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300">×</button>
             </div>
           </div>`;
     }).join('');

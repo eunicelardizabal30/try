@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239551796",
+      "title": "Goodness of God",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nG    Gsus4 G    Gsus4\n \n[Verse 1]\n             G\nI love you, Lord\n           C          G\nFor your mercy never fails me\nD/F#   Em              C              D\nAll my days, I’ve been held in your hands\n                        Em      C\nFrom the moment that I wake up\n            G    D/F#  Em\nUntil I lay my head\n        C            D          G\nI will sing of the goodness of God\n \n[Chorus] IKAY TAPAT SA HABANG BUHAY\nC                             G\n   All my life you have been faithful\nC                            G      D\n   All my life you have been so, so good\nC                               G D/F# Em\n   With every breath that I am able\n         C           D          G\nI will sing of the goodness of God\n \n[Verse 2]\n             G\nI love your voice\n          C                  G\nYou have led me through the fire\n    D/F#    Em            C             D\nIn darkest night you are close like no other\n                    Em      C\nI’ve known you as a father\n                  G   D/F#  Em\nI’ve known you as a friend\n         C            D          G\nI have lived in the goodness of God\n\n \n[Bridge]\nG/B                   C\n   Your goodness is running after,\n      D            G\nIt’s running after me\nG/B                  C\n   Your goodness is running after,\n      D            G\nIt’s running after me\n        G/B                     C\nWith my life laid down, I’m surrendered now\n   D              Em\nI give you everything\nG/B                  C\n   Your goodness is running after,\n      D            G\nIt’s running after me",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239540791",
       "title": "God will make a way",
       "singer": "",
@@ -462,5 +473,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:52:22.280Z"
+  "updatedAt": "2026-11-09T15:52:33.099Z"
 }

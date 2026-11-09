@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239234255",
+      "title": "Diyos Ka sa amin / Walang Katulad Mo",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD# G# D# G# (2x)\n[Verse 1]\n   D#            G#\nO Diyos, Ikaw ang tunay na\n  A#           D#\nDakila sa mundo\n         G#\nIkaw ang Haring\n     A#         Cm\nnagmahal ng tulad ko\n A#\nGinawa Mo'ng lahat\n         Fm       D#\nPag-ibig Mo ay tapat at\n  A#\nwagas\n[Verse 2]\n   D#\nO Diyos,\n       G#\nwala ng papantay\n  A#         D#\nsa kabutihan Mo\n           G#      A#\nAng Ngalan Mo'y itataas\n      Cm\nsa buhay ko\n  A#\nSundin ang loob Mo\n  Fm       D#     A#\nIparinig ang nais Mo\n\n\n[Chorus]\n    D#                   G#    A#\nSa lahat ng panahon, Diyos Ka sa amin\n      D#          G#           A#\nSa lahat ng oras, nariyan para samin\n   Cm       A#      G#   D#\nPanginoong Hesus, purihin Ka\n    Fm        D#    A#           D#\nDakilain Ka sa buhay ko   (Aming Ama)\nD# G# D# G#\n\n[Instrumental]\n                G# (intsead of D#) Gm Cm A# Fm Gm G# A#-C\n(Aming Ama)\n\n\n\n\n(Modulated Chorus)\n    F        Am          A#     C\nSa lahat ng panahon, Diyos Ka sa amin\n    F      Am      A#         C\nSa lahat ng oras, nariyan para samin\n Dm         C      A#     Am\nPanginoong Hesus, Purihin ka!\n Gm          F  A#   C\nDakilain Ka sa buhay Ko\n\n\n   F    Am        A#     C\nDi nagbabago, Diyos Ka sa amin\n  F        Am      A#        C\nTanging sandigan, nariyan para samin\n  Dm        C      A#   Am\nPanginoong Hesus, maghari Ka\n Gm          F   A#    C\nDakilain ka sa buhay ko\n Gm          F   A#    C\nDakilain ka sa buhay ko\n Gm          F   A#    C\nDakilain ka sa buhay ko\n      F \nAming Ama\n\n[Transition to Walang Katulad Mo]\nF        C/E    Bb/D   C\nWalang katulad Mo\nGm7                   C\nBinago Mo ang himig ng puso ko\nF        C/E          Eb      Dm\nNoon, ngayon at magpakailan pa man\nGm7       C           F\nO Dios, walang katulad mo",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239207734",
       "title": "Di ka nagkulang",
       "singer": "",
@@ -264,5 +275,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:46:49.259Z"
+  "updatedAt": "2026-11-09T15:47:16.169Z"
 }

@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238295198",
+      "title": "Araw Araw",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\n D       D \nWooh oh, Wooh oh oh\n Em      G \nWooh oh, Wooh oh oh\n D/F#    Bm \nWooh oh, Wooh oh oh \n Em      G \nWooh oh, Wooh oh oh\n\n[Verse 1]\n D \nAraw-araw kasiyahan\n D \nAraw-araw kagalakan\n G \nAraw-araw oh Diyos\n D \nAraw-araw oh Diyos\n               \n[Verse 2]\n D \nAraw-araw sasamahan\n D \nAraw-araw di iiwan\n G \nAraw-araw oh Diyos\n D \nAraw-araw oh Diyos\n\n[Chorus]\n Bm               A \nAnomang maging panahon\n D/F#            G \nAnomang pagkakataon\n Bm                  E/G# \nAnomang maging sitwasyon\n Em \nIka’y pupurihin\n G \nIkaw at Ikaw pa rin\n             \n\n[Interlude]              \n\n D \nWala Kang katulad\n D \nLa la la Kang katulad\n Em \n(Wala Kang katulad)\n G \n(La la la Kang katulad)\n\n D \nWala Kang katulad\n D \nLa la la Kang katulad\n Em \n(Wala Kang katulad)\n G \n(La la la Kang katulad)\n                \n[Bridge 2]\n\n D/F# \nWala Kang katulad\n D/F# \nLa la la Kang katulad\n Em \n(Wala Kang katulad)\n G \n(La la la Kang katulad)\n\n D/F# \nWala Kang katulad\n D/F# \nLa la la Kang katulad\n Em \n(Wala Kang katulad)\n G \n(La la la Kang katulad)\n\n[Chorus]\n\n  D              \n[End]",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238247380",
       "title": "Ang lahat ay magsasaya",
       "singer": "",
@@ -33,5 +44,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:31:11.730Z"
+  "updatedAt": "2026-11-09T15:31:36.404Z"
 }

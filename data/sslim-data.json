@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238247380",
+      "title": "Ang lahat ay magsasaya",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD Bm C G A\nD Bm C Bb F C G C#m A D\n \n[Verse]\nD\nDakilang biyaya\nD\nKami'y pinalaya\nD                       G\nMula sa bihag ng kasalanan\nD\nPinatawad\nD                  G\nPinagpala ng lubusan\n \n[Pre-Chorus]\nEm                           A\nDi mapipigil ang pagsamba sa Iyo\nEm                    A\nHesus, dakila Kang totoo\n \n[Chorus]\nD\nAng lahat ay magsasaya\nBm\nHesus, papupurihan Ka\n \nC                    G     A\nIkaw lamang ang aming pag-asa\nD\nAng lahat ay magsasabi\nBm\nAng lahat ay luluhod\nC                     G        A\nHesus, Ikaw lamang ang Panginoon\n \n[Adlib]\nD Bm C\nEm F#m G A Bm  Bb",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238201358",
       "title": "Ako ay Masaya/Masayang Tunay",
       "singer": "",
@@ -34,5 +45,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-09T15:30:08.743Z"
+  "updatedAt": "2026-11-09T15:30:48.528Z"
 }

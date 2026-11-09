@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239529479",
+      "title": "God is here",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro\nD\nWoah, Oh Oh, Woah Oh Oh\n \nVerse1\nD                                                         G    D\nOpen our eyes Lord, we want to see You\nA                                                              G          Em\nOpen our hearts Lord, we want to know You\nD                                                          G    D\nOpen our ears Lord, we need to hear You\n                       A                             D\nJesus be revealed, Jesus be revealed\n\nChorus\n              D                   A                   Bm              D\nGod is here, God is here, God is here, He is able\n                    D                 G                    Bm         A\nWe draw near, to see Jesus’ face to face\n               D                   A                    Bm             D\nGod is here, God is here, God is here, He is faithful\n                  F#m             Bm             G                 D\nWe draw near, to see Jesus, Oh Jesus be revealed\n \nVerse2\nD                                                   G    D\nOpen the gates Lord, reveal Your glory\nA                                                           G          Em\nOpen the nations, establish Your Kingdom\nD                                                       G      D\nOpen the Heavens, pour out Your Spirit\n                      A                               D\nJesus be revealed, Jesus be revealed\n\nBridge\nG                    Bm\nHoly, we cry holy\n       Em          G        A\nHallelujah, God is here\nG                    Bm\nHoly, we cry holy\n        Em        G          D\nHallelujah, God is here",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239517569",
       "title": "Glory",
       "singer": "",
@@ -440,5 +451,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:51:58.659Z"
+  "updatedAt": "2026-11-09T15:52:11.350Z"
 }

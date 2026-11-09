@@ -10,9 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SSLIM Music">
 <meta name="theme-color" content="#020617">
-<link rel="manifest" href="./manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
-<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="manifest" href='data:application/manifest+json,{"name":"SSLIM Music Team","short_name":"SSLIM Music","start_url":".","display":"standalone","background_color":"#020617","theme_color":"#020617","icons":[{"src":"https://placehold.co/192x192/020617/38bdf8?text=SSLIM","sizes":"192x192","type":"image/png"},{"src":"https://placehold.co/512x512/020617/38bdf8?text=SSLIM","sizes":"512x512","type":"image/png"}]}'>
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -139,7 +137,7 @@ SSLIM Worship
 <span>SSLIM Music Portal</span>
 </span>
 <h2 class="text-2xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-SSLIM Worship Ministry.
+Elevate Worship Ministry.
 </h2>
 <p class="text-slate-300 text-xs sm:text-base leading-relaxed">
 Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
@@ -459,46 +457,8 @@ let showStageChords = true;
 
 // PWA Installation State
 let deferredPrompt = null;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true;
-
-function showInstallBanner() {
-    const banner = document.getElementById('pwa-install-banner');
-    if (!banner || isStandalone || localStorage.getItem('sslim_pwa_dismissed') === 'true') return;
-    banner.classList.remove('hidden');
-    const button = banner.querySelector('button[onclick="triggerPWAInstall()"]');
-    const hint = banner.querySelector('p');
-    if (isIOS) {
-        if (button) button.textContent = 'How to Install';
-        if (hint) hint.textContent = 'Safari Share → Add to Home Screen';
-    } else if (!deferredPrompt) {
-        if (button) button.textContent = 'Install Help';
-        if (hint) hint.textContent = 'Browser menu → Install app';
-    }
-}
-window.addEventListener('beforeinstallprompt', event => {
-    event.preventDefault();
-    deferredPrompt = event;
-    if (!isStandalone && localStorage.getItem('sslim_pwa_dismissed') !== 'true') {
-        showInstallBanner();
-        const button = document.querySelector('#pwa-install-banner button[onclick="triggerPWAInstall()"]');
-        const hint = document.querySelector('#pwa-install-banner p');
-        if (button) button.textContent = 'Install';
-        if (hint) hint.textContent = 'Tap to install SSLIM Worship';
-    }
-});
-window.addEventListener('appinstalled', () => {
-    deferredPrompt = null;
-    dismissPWAInstall();
-});
-if ('serviceWorker' in navigator && window.isSecureContext) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(error =>
-            console.error('SSLIM service worker registration failed:', error));
-    });
-}
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
 function renderFormattedLyrics(text, semitones = 0, showChords = true) {
     if (!text) return '';
@@ -515,20 +475,22 @@ function renderFormattedLyrics(text, semitones = 0, showChords = true) {
     }).join('') + `</div>`;
 }
 
-async function triggerPWAInstall() {
+function triggerPWAInstall() {
     if (deferredPrompt) {
         deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        if (choice && choice.outcome === 'accepted') dismissPWAInstall();
-        deferredPrompt = null;
-        return;
-    }
-    if (isIOS) {
-        alert('To install SSLIM Worship on iPhone/iPad:\n\n1. Open this website in Safari (not an in-app browser).\n2. Tap the Share button.\n3. Choose “Add to Home Screen”.\n4. Tap Add.');
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                dismissPWAInstall();
+            }
+            deferredPrompt = null;
+        });
+    } else if (isIOS) {
+        alert('To install on iPhone / iPad:\n\n1. Tap the Share icon (bottom of screen)\n2. Scroll down and tap "Add to Home Screen"');
     } else {
-        alert('To install SSLIM Worship:\n\n1. Open this website in Chrome or another supported browser.\n2. Open the browser menu (⋮).\n3. Choose “Install app” or “Add to Home screen”.\n\nIf the option is missing, make sure the website uses HTTPS and reload it after deployment.');
+        alert('To install this app on your phone:\n\n1. Open your browser menu (⋮ or ⋯)\n2. Tap "Add to Home Screen" or "Install App"');
     }
 }
+
 function dismissPWAInstall() {
     localStorage.setItem('sslim_pwa_dismissed', 'true');
     const banner = document.getElementById('pwa-install-banner');
@@ -1019,20 +981,18 @@ function renderSongsBank() {
     if (window.lucide) lucide.createIcons();
 }
 
-// App startup
-window.addEventListener('load', async () => {
-    try {
-        await loadSharedData();
-        renderHome();
-        if (window.lucide) lucide.createIcons();
-        startSharedSync();
-    } catch (error) {
-        console.error('SSLIM app startup error:', error);
+// Check mobile PWA Installation support
+window.onload = async () => {
+    await loadSharedData();
+    renderHome();
+    if (window.lucide) lucide.createIcons();
+    startSharedSync();
+    
+    // Auto show install banner on mobile browsers
+    if (!isStandalone && !localStorage.getItem('sslim_pwa_dismissed')) {
+        setTimeout(showInstallBanner, 1000);
     }
-    if (!isStandalone && localStorage.getItem('sslim_pwa_dismissed') !== 'true') {
-        setTimeout(showInstallBanner, 900);
-    }
-});
+};
 </script>
 </body>
 </html>

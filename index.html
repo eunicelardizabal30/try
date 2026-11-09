@@ -129,29 +129,14 @@ SSLIM Worship
 <span>SSLIM Music Portal</span>
 </span>
 <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-SSLIM Worship Ministry.
+Elevate Worship Ministry.
 </h2>
 <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
 Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
 </p>
 
-<!-- Home Search Mode Selector -->
+<!-- Home Search Bar -->
 <div class="pt-2 space-y-3 max-w-xl">
-<div class="flex items-center space-x-2 bg-slate-950/80 p-1 rounded-xl border border-blue-900/40 text-xs font-semibold w-fit">
-<button type="button" onclick="setHomeSearchMode('songs')" id="search-mode-songs" class="px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 flex items-center space-x-1">
-<i data-lucide="book-open" class="w-3.5 h-3.5"></i>
-<span>Song Bank</span>
-</button>
-<button type="button" onclick="setHomeSearchMode('youtube')" id="search-mode-youtube" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center space-x-1">
-<i data-lucide="youtube" class="w-3.5 h-3.5 text-red-400"></i>
-<span>YouTube</span>
-</button>
-<button type="button" onclick="setHomeSearchMode('spotify')" id="search-mode-spotify" class="px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center space-x-1">
-<i data-lucide="disc" class="w-3.5 h-3.5 text-emerald-400"></i>
-<span>Spotify</span>
-</button>
-</div>
-
 <div class="relative flex items-center">
 <i data-lucide="search" id="home-search-icon" class="absolute left-4 w-5 h-5 text-cyan-400"></i>
 <input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-950/80 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow-inner text-sm sm:text-base font-medium">
@@ -413,6 +398,19 @@ let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
 { id: 's3', title: 'Build My Life', singer: 'Housefires', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' }
 ];
 
+// Curated Online Worship Catalog for YouTube / Spotify search
+const MEDIA_CATALOG = [
+  { title: 'Way Maker', singer: 'Sinach', youtube: 'QM8jQHE5AAk', spotify: '1BxfuPKuaBlyZgBg5aZaB1' },
+  { title: 'Goodness of God', singer: 'Bethel Music / Jenn Johnson', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW' },
+  { title: 'Build My Life', singer: 'Housefires / Pat Barrett', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW' },
+  { title: '10,000 Reasons (Bless The Lord)', singer: 'Matt Redman', youtube: 'XtwIT8JelxI', spotify: '0Z1q24hL8U4K4f3F8J68zW' },
+  { title: 'Reckless Love', singer: 'Cory Asbury', youtube: '6xx0d3R2LoU', spotify: '0uN5f2G17R3q1F7g2sK4M2' },
+  { title: 'What A Beautiful Name', singer: 'Hillsong Worship', youtube: 'r5L6v8h0m8I', spotify: '6W0293N0z7e9K3n0m8I6bW' },
+  { title: 'Oceans (Where Feet May Fail)', singer: 'Hillsong UNITED', youtube: 'dy9nwe9_xzw', spotify: '0x1q59A083uQ22M054fM3v' },
+  { title: 'Graves Into Gardens', singer: 'Elevation Worship', youtube: 'KwX1f2X6d2E', spotify: '0vM005fB08v8H5n3m8I6bW' },
+  { title: 'Holy Forever', singer: 'Chris Tomlin', youtube: 'Hcn1Xmvh1hU', spotify: '4x3n0m8I6bW005fB08v8H5' }
+];
+
 // Initial Seed Lineups
 let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
 { id: 'l1', date: '2025-02-16', leader: 'Sarah Jenkins', title: 'Sunday Morning Worship', notes: 'Focus on God\'s faithfulness.', songIds: ['s1', 's2', 's3'], transpositions: {} }
@@ -420,7 +418,6 @@ let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
 
 let songTranspositions = {};
 let activeTabState = 'home';
-let homeSearchMode = 'songs';
 let expandedSongId = null;
 let editingLineupId = null;
 let lineupDraftSongIds = [];
@@ -476,79 +473,13 @@ function handleGlobalSearch(query) {
     if (!query.trim()) { container.classList.add('hidden'); return; }
     container.classList.remove('hidden');
 
-    if (homeSearchMode === 'songs') {
-        const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()));
-        countEl.innerText = `Song Bank Matches (${matches.length})`;
-        grid.innerHTML = matches.map(s => `
-        <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
-        <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
-        <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
-        </div>`).join('');
-    } else if (homeSearchMode === 'youtube') {
-        const ytId = getYouTubeId(query);
-        countEl.innerText = `YouTube Preview & Tools`;
-        if (ytId) {
-            grid.innerHTML = `
-            <div class="p-4 rounded-2xl bg-slate-900/80 border border-red-500/30 flex flex-col space-y-3 col-span-1 md:col-span-2">
-            <div class="flex justify-between items-center">
-                <span class="text-xs font-bold text-red-400 flex items-center space-x-1"><i data-lucide="youtube" class="w-4 h-4"></i><span>Direct Video Found</span></span>
-                <button onclick="quickAddMediaSong('${query}', '')" class="px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center space-x-1">
-                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                    <span>Add to Song Bank</span>
-                </button>
-            </div>
-            <div class="aspect-video w-full rounded-xl overflow-hidden border border-slate-800">
-                <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}" frameborder="0" allowfullscreen></iframe>
-            </div>
-            </div>`;
-        } else {
-            const searchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(query + ' worship');
-            grid.innerHTML = `
-            <div class="p-5 rounded-2xl bg-slate-900/80 border border-red-500/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 col-span-1 md:col-span-2">
-            <div>
-                <h4 class="font-bold text-white">Search YouTube for "${query}"</h4>
-                <p class="text-xs text-slate-400">Open external YouTube search or paste a video URL/ID above</p>
-            </div>
-            <div class="flex items-center space-x-2">
-                <button onclick="quickAddMediaSong('${query}', '')" class="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center space-x-1 whitespace-nowrap">
-                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                    <span>Add to Song Bank</span>
-                </button>
-                <a href="${searchUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center space-x-1.5 whitespace-nowrap">
-                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i><span>Search YouTube</span>
-                </a>
-            </div>
-            </div>`;
-        }
-    } else if (homeSearchMode === 'spotify') {
-        const spId = getSpotifyTrackId(query);
-        countEl.innerText = `Spotify Preview & Tools`;
-        if (spId) {
-            grid.innerHTML = `
-            <div class="p-4 rounded-2xl bg-slate-900/80 border border-emerald-500/30 flex flex-col space-y-3 col-span-1 md:col-span-2">
-            <div class="flex justify-between items-center">
-                <span class="text-xs font-bold text-emerald-400 flex items-center space-x-1"><i data-lucide="disc" class="w-4 h-4"></i><span>Track Embed Ready</span></span>
-                <button onclick="quickAddMediaSong('', '${query}')" class="px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center space-x-1">
-                    <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                    <span>Add to Song Bank</span>
-                </button>
-            </div>
-            <iframe class="w-full h-24 rounded-xl" src="https://open.spotify.com/embed/track/${spId}?theme=0" frameborder="0" allowfullscreen></iframe>
-            </div>`;
-        } else {
-            grid.innerHTML = `
-            <div class="p-5 rounded-2xl bg-slate-900/80 border border-emerald-500/30 flex justify-between items-center col-span-1 md:col-span-2">
-            <div>
-                <h4 class="font-bold text-white">Paste a Spotify Track Link or ID</h4>
-                <p class="text-xs text-slate-400">e.g. https://open.spotify.com/track/1BxfuPKuaBlyZgBg5aZaB1</p>
-            </div>
-            <button onclick="quickAddMediaSong('', '${query}')" class="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold flex items-center space-x-1 whitespace-nowrap">
-                <i data-lucide="plus" class="w-3.5 h-3.5"></i>
-                <span>Add to Song Bank</span>
-            </button>
-            </div>`;
-        }
-    }
+    const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()) || s.lyrics.toLowerCase().includes(query.toLowerCase()));
+    countEl.innerText = `Song Bank Matches (${matches.length})`;
+    grid.innerHTML = matches.length === 0 ? `<div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm">No matching songs found in your Song Bank.</div>` : matches.map(s => `
+    <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
+    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
+    <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
+    </div>`).join('');
 
     if (window.lucide) lucide.createIcons();
 }

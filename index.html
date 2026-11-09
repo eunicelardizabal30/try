@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SSLIM Music">
 <meta name="theme-color" content="#020617">
-<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%23020617\",\"theme_color\":\"%23020617\",\"icons\":[{\"src\":\"https://placehold.co/192x192/020617/38bdf8?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/020617/38bdf8?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
+<link rel="manifest" href='data:application/manifest+json,{"name":"SSLIM Music Team","short_name":"SSLIM Music","start_url":".","display":"standalone","background_color":"#020617","theme_color":"#020617","icons":[{"src":"https://placehold.co/192x192/020617/38bdf8?text=SSLIM","sizes":"192x192","type":"image/png"},{"src":"https://placehold.co/512x512/020617/38bdf8?text=SSLIM","sizes":"512x512","type":"image/png"}]}'>
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -62,7 +62,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.6); }
 </style>
 </head>
-<body class="bg-mountain-atmosphere text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-20 md:pb-8">
+<body class="bg-mountain-atmosphere text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-28 md:pb-8 break-words">
 
 <!-- Subtle Ambient Glow Orbs -->
 <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
@@ -87,23 +87,23 @@ body {
 </div>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/70 border-b border-blue-900/30 shadow-2xl">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-<div class="flex items-center space-x-3 cursor-pointer group" onclick="switchTab('home')">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300">
-<i data-lucide="mountain" class="w-5 h-5 text-white"></i>
+<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/80 border-b border-blue-900/30 shadow-2xl">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+<div class="flex items-center space-x-2.5 cursor-pointer group min-w-0" onclick="switchTab('home')">
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
+<i data-lucide="mountain" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
 </div>
-<div>
-<div class="flex items-center space-x-2">
-<h1 class="text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent">
+<div class="min-w-0">
+<div class="flex items-center space-x-1.5 flex-wrap">
+<h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent truncate">
 SSLIM Worship
 </h1>
-<span class="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold border bg-cyan-500/10 border-cyan-400/30 text-cyan-300 shadow-sm">
-<i data-lucide="wifi" class="w-3 h-3 text-cyan-400"></i>
-<span id="sync-status">Connecting…</span>
+<span class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold border bg-cyan-500/10 border-cyan-400/30 text-cyan-300 shadow-sm">
+<i data-lucide="wifi" class="w-2.5 h-2.5 text-cyan-400"></i>
+<span id="sync-status">Connected</span>
 </span>
 </div>
-<p class="text-[10px] text-cyan-400/90 tracking-widest uppercase font-bold">Music Team Portal</p>
+<p class="text-[9px] sm:text-[10px] text-cyan-400/90 tracking-widest uppercase font-bold truncate">Music Team Portal</p>
 </div>
 </div>
 
@@ -126,28 +126,28 @@ SSLIM Worship
 </header>
 
 <!-- MAIN VIEWS CONTAINER -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+<main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-6">
 
 <!-- HOME TAB -->
-<div id="tab-home" class="space-y-8">
-<div class="relative rounded-3xl overflow-hidden border border-blue-500/30 bg-gradient-to-br from-slate-900/90 via-blue-950/40 to-slate-950 p-6 sm:p-10 backdrop-blur-xl shadow-2xl">
-<div class="max-w-2xl relative z-10 space-y-4">
-<span class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold uppercase tracking-wider shadow-sm">
+<div id="tab-home" class="space-y-6 sm:space-y-8">
+<div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-blue-500/30 bg-gradient-to-br from-slate-900/90 via-blue-950/40 to-slate-950 p-5 sm:p-10 backdrop-blur-xl shadow-2xl">
+<div class="max-w-2xl relative z-10 space-y-3 sm:space-y-4">
+<span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-sm">
 <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
 <span>SSLIM Music Portal</span>
 </span>
-<h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+<h2 class="text-2xl sm:text-5xl font-black text-white tracking-tight leading-tight">
 Elevate Worship Ministry.
 </h2>
-<p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+<p class="text-slate-300 text-xs sm:text-base leading-relaxed">
 Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
 </p>
 
 <!-- Home Search Bar -->
 <div class="pt-2 space-y-3 max-w-xl">
 <div class="relative flex items-center">
-<i data-lucide="search" id="home-search-icon" class="absolute left-4 w-5 h-5 text-cyan-400"></i>
-<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-950/80 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow-inner text-sm sm:text-base font-medium">
+<i data-lucide="search" id="home-search-icon" class="absolute left-3.5 w-4 h-4 sm:w-5 sm:h-5 text-cyan-400"></i>
+<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-10 sm:pl-12 pr-4 py-3 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow-inner text-xs sm:text-base font-medium">
 </div>
 </div>
 </div>
@@ -182,13 +182,13 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 </div>
 
 <!-- SONGS BANK TAB -->
-<div id="tab-songs" class="space-y-6 hidden">
-<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-2xl glass-panel">
+<div id="tab-songs" class="space-y-4 sm:space-y-6 hidden">
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl glass-panel">
 <div class="flex-1 relative">
-<i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400"></i>
-<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, or lyrics..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-blue-900/40 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 font-medium">
+<i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400"></i>
+<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs..." class="w-full pl-9 pr-3 py-2 sm:py-2.5 rounded-xl bg-slate-950/80 border border-blue-900/40 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 font-medium">
 </div>
-<button onclick="openSongModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
+<button onclick="openSongModal()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
 <i data-lucide="plus" class="w-4 h-4"></i>
 <span>Add Song</span>
 </button>
@@ -396,21 +396,21 @@ Exit Mode
 </div>
 
 <!-- PWA MOBILE INSTALLATION BANNER MODAL -->
-<div id="pwa-install-banner" class="fixed bottom-16 md:bottom-6 left-4 right-4 max-w-md mx-auto z-50 glass-panel rounded-2xl p-4 shadow-2xl border border-cyan-500/40 flex items-center justify-between gap-3 hidden animate-fadeIn">
+<div id="pwa-install-banner" class="fixed bottom-16 md:bottom-6 left-3 right-3 sm:left-4 sm:right-4 max-w-md mx-auto z-50 glass-panel rounded-2xl p-3.5 sm:p-4 shadow-2xl border border-cyan-500/40 flex items-center justify-between gap-2 hidden animate-fadeIn">
 <div class="flex items-center space-x-3 min-w-0">
-<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan-500/20">
-<i data-lucide="download" class="w-5 h-5 text-white"></i>
+<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan-500/20">
+<i data-lucide="download" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
 </div>
 <div class="min-w-0">
 <h4 class="text-xs sm:text-sm font-bold text-white truncate">Install SSLIM App</h4>
-<p class="text-[11px] text-slate-300 truncate">Add to your home screen for quick access</p>
+<p class="text-[10px] sm:text-[11px] text-slate-300 truncate">Tap to install on your mobile home screen</p>
 </div>
 </div>
-<div class="flex items-center space-x-2 flex-shrink-0">
-<button onclick="triggerPWAInstall()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs shadow-md shadow-blue-500/30 whitespace-nowrap">
+<div class="flex items-center space-x-1.5 flex-shrink-0">
+<button onclick="triggerPWAInstall()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-xs shadow-md shadow-blue-500/30 whitespace-nowrap">
 Install
 </button>
-<button onclick="dismissPWAInstall()" class="p-1 rounded-lg text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+<button onclick="dismissPWAInstall()" class="p-1.5 rounded-lg text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
 </div>
 </div>
 
@@ -460,19 +460,19 @@ let deferredPrompt = null;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    showInstallBanner();
-});
-
-function showInstallBanner() {
-    if (isStandalone || localStorage.getItem('sslim_pwa_dismissed')) return;
-    const banner = document.getElementById('pwa-install-banner');
-    if (banner) {
-        banner.classList.remove('hidden');
-        if (window.lucide) lucide.createIcons();
-    }
+function renderFormattedLyrics(text, semitones = 0, showChords = true) {
+    if (!text) return '';
+    const transposed = transposeContent(text, semitones);
+    return `<div class="overflow-x-auto max-w-full pb-2">` + transposed.split('\n').map(line => {
+        const { hasChords, chords, lyrics } = parseLine(line);
+        let chordHtml = '';
+        if (showChords && hasChords) {
+            chordHtml = `<div class="whitespace-pre font-bold text-cyan-400 text-xs sm:text-sm tracking-wide select-none min-h-[1.25rem]">` +
+            chords.split(/(\S+)/).map(p => p.trim() ? `<span class="bg-cyan-500/10 border border-cyan-400/30 px-1 py-0.5 rounded text-cyan-300 mr-0.5 inline-block">${p}</span>` : p).join('') +
+            `</div>`;
+        }
+        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap sm:whitespace-pre text-slate-100 font-sans tracking-wide text-xs sm:text-base break-words">${lyrics || (hasChords ? '' : line)}</div></div>`;
+    }).join('') + `</div>`;
 }
 
 function triggerPWAInstall() {
@@ -941,7 +941,7 @@ function renderSongsBank() {
 
     const filtered = songs.filter(s => s.title.toLowerCase().includes(search) || s.singer.toLowerCase().includes(search));
 
-    list.innerHTML = filtered.length === 0 ? `<div class="p-12 text-center text-slate-400">No songs found.</div>` : filtered.map(s => {
+    list.innerHTML = filtered.length === 0 ? `<div class="p-8 sm:p-12 text-center text-slate-400 text-xs sm:text-sm">No songs found.</div>` : filtered.map(s => {
         const semitones = songTranspositions[s.id] || 0;
         const currentKey = transposeChord(s.originalKey, semitones);
         const isExpanded = expandedSongId === s.id;
@@ -950,291 +950,47 @@ function renderSongsBank() {
 
         return `
         <div class="rounded-2xl transition-all overflow-hidden ${isExpanded ? 'border border-cyan-400/50 bg-slate-900/90 shadow-2xl ring-1 ring-cyan-500/30' : 'glass-panel-interactive shadow-lg'}">
-        <div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex-1 cursor-pointer flex items-center space-x-3" onclick="toggleSongExpand('${s.id}')">
-        <div class="p-2.5 rounded-xl ${isExpanded ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'}"><i data-lucide="music" class="w-4 h-4"></i></div>
-        <div><h3 class="text-base font-bold text-white">${s.title}</h3><p class="text-xs text-cyan-300/80 font-medium">${s.singer}</p></div>
+        <div class="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex-1 cursor-pointer flex items-center space-x-3 min-w-0" onclick="toggleSongExpand('${s.id}')">
+        <div class="p-2 sm:p-2.5 rounded-xl ${isExpanded ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'} flex-shrink-0"><i data-lucide="music" class="w-4 h-4"></i></div>
+        <div class="min-w-0 flex-1"><h3 class="text-sm sm:text-base font-bold text-white truncate">${s.title}</h3><p class="text-[11px] sm:text-xs text-cyan-300/80 font-medium truncate">${s.singer}</p></div>
         </div>
-        <div class="flex items-center space-x-2">
-        ${hasYt ? `<button onclick="openMediaModal('${s.id}', 'youtube')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Watch on YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></button>` : `<button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/40 text-slate-600 hover:text-red-400 transition" title="Add YouTube link"><i data-lucide="youtube" class="w-4 h-4"></i></button>`}
-        ${hasSp ? `<button onclick="openMediaModal('${s.id}', 'spotify')" class="p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition" title="Listen on Spotify"><i data-lucide="disc" class="w-4 h-4"></i></button>` : `<button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/40 text-slate-600 hover:text-emerald-400 transition" title="Add Spotify link"><i data-lucide="disc" class="w-4 h-4"></i></button>`}
+        <div class="flex items-center justify-between sm:justify-end space-x-1.5 sm:space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-800/80">
+        <div class="flex items-center space-x-1">
+        ${hasYt ? `<button onclick="openMediaModal('${s.id}', 'youtube')" class="p-1.5 sm:p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Watch on YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></button>` : ''}
+        ${hasSp ? `<button onclick="openMediaModal('${s.id}', 'spotify')" class="p-1.5 sm:p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition" title="Listen on Spotify"><i data-lucide="disc" class="w-4 h-4"></i></button>` : ''}
+        </div>
 
-        <div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2.5 py-1 space-x-1.5">
-        <span class="text-[11px] font-bold text-slate-400">Key:</span>
+        <div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2 py-1 space-x-1">
+        <span class="text-[10px] sm:text-[11px] font-bold text-slate-400">Key:</span>
         <span class="text-xs font-extrabold text-cyan-300 w-5 text-center">${currentKey}</span>
         <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 font-bold text-xs hover:bg-slate-700">-</button>
         <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 font-bold text-xs hover:bg-slate-700">+</button>
         </div>
-        <button onclick="openSongModal('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
-        <button onclick="deleteSong('${s.id}')" class="p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-        <button onclick="toggleSongExpand('${s.id}')" class="p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
+        
+        <div class="flex items-center space-x-1">
+        <button onclick="openSongModal('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
+        <button onclick="deleteSong('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+        <button onclick="toggleSongExpand('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
         </div>
         </div>
-        ${isExpanded ? `<div class="p-4 sm:p-6 border-t border-blue-900/40 bg-slate-950/80 overflow-x-auto">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
+        </div>
+        ${isExpanded ? `<div class="p-3.5 sm:p-6 border-t border-blue-900/40 bg-slate-950/80 overflow-x-auto">${renderFormattedLyrics(s.lyrics, semitones, true)}</div>` : ''}
         </div>`;
     }).join('');
     if (window.lucide) lucide.createIcons();
 }
 
-function toggleSongExpand(id) {
-    expandedSongId = expandedSongId === id ? null : id;
-    renderSongsBank();
-}
-
-function changeKey(id, delta) {
-    songTranspositions[id] = (songTranspositions[id] || 0) + delta;
-    renderSongsBank();
-}
-
-function deleteSong(id) {
-    if (confirm('Delete this song?')) {
-        songs = songs.filter(s => s.id !== id);
-        saveData();
-        renderSongsBank();
-    }
-}
-
-// Lineups Renderer
-function renderLineupsView() {
-    const container = document.getElementById('lineups-view-container');
-    if (!container) return;
-    container.innerHTML = lineups.map(l => {
-        const lineupSongs = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
-        return `
-        <div class="p-5 rounded-2xl bg-slate-900/50 border border-blue-900/40 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div>
-        <span class="text-xs font-bold text-cyan-400">${l.date}</span> <span class="text-slate-500">•</span> <span class="text-xs text-slate-400">${l.leader || 'Team'}</span>
-        <h4 class="font-bold text-white text-lg mt-0.5">${l.title}</h4>
-        <p class="text-xs text-slate-400 mt-1">${lineupSongs.length} songs in playlist</p>
-        </div>
-        <div class="flex items-center space-x-2">
-        <button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
-        <button onclick="editLineup('${l.id}')" title="Edit lineup" class="p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
-        <button onclick="deleteLineup('${l.id}')" title="Delete lineup" class="p-2 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-        </div>
-        </div>`;
-    }).join('');
-    if (window.lucide) lucide.createIcons();
-}
-
-function deleteLineup(id) {
-    if (confirm('Delete lineup?')) {
-        lineups = lineups.filter(l => l.id !== id);
-        saveData();
-        renderLineupsView();
-    }
-}
-
-// Presentation Stage Mode
-function startPresentation(lineupId, songIdx) {
-    currentStageLineup = lineups.find(l => l.id === lineupId);
-    if (!currentStageLineup) return;
-    currentStageSongIdx = songIdx;
-    stageTranspositions = currentStageLineup.transpositions || {};
-    document.getElementById('presentation-modal').classList.remove('hidden');
-    renderStage();
-}
-
-function renderStage() {
-    if (!currentStageLineup) return;
-    document.getElementById('stage-lineup-title').innerText = currentStageLineup.title;
-    document.getElementById('stage-lineup-leader').innerText = `Leader: ${currentStageLineup.leader || 'Team'}`;
-
-    document.getElementById('stage-song-pills').innerHTML = currentStageLineup.songIds.map((sId, idx) => {
-        const s = songs.find(x => x.id === sId);
-        if (!s) return '';
-        const active = idx === currentStageSongIdx;
-        return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white' : 'bg-slate-900 border border-slate-800 text-slate-400'}">${idx+1}. ${s.title}</button>`;
-    }).join('');
-
-    const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
-    const song = songs.find(s => s.id === currentSongId);
-    if (!song) return;
-
-    const semitones = stageTranspositions[currentSongId] || 0;
-    document.getElementById('stage-song-title').innerText = song.title;
-    document.getElementById('stage-song-singer').innerText = song.singer;
-    document.getElementById('stage-song-key').innerText = transposeChord(song.originalKey, semitones);
-    document.getElementById('stage-lyrics-box').innerHTML = renderLyricsHTML(song.lyrics, semitones, showStageChords);
-    document.getElementById('stage-track-counter').innerText = `Track ${currentStageSongIdx + 1} of ${currentStageLineup.songIds.length}`;
-
-    document.getElementById('stage-prev-btn').disabled = currentStageSongIdx === 0;
-    document.getElementById('stage-next-btn').disabled = currentStageSongIdx === currentStageLineup.songIds.length - 1;
-    if (window.lucide) lucide.createIcons();
-}
-
-function navigateStageSong(delta) {
-    currentStageSongIdx += delta;
-    renderStage();
-}
-
-function adjustStageKey(delta) {
-    const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
-    stageTranspositions[currentSongId] = (stageTranspositions[currentSongId] || 0) + delta;
-    renderStage();
-}
-
-function toggleStageChords() {
-    showStageChords = !showStageChords;
-    const btn = document.getElementById('stage-chords-btn');
-    btn.className = showStageChords ? 'px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-cyan-500/20 border-cyan-400 text-cyan-300' : 'px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-slate-800 border-slate-700 text-slate-400';
-    btn.innerHTML = `<i data-lucide="eye" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Chords On' : 'Chords Off'}</span>`;
-    renderStage();
-}
-
-function exitPresentation() {
-    document.getElementById('presentation-modal').classList.add('hidden');
-}
-
-// Modals management
-function openSongModal(id = null) {
-    document.getElementById('edit-song-id').value = id || '';
-    if (id) {
-        const s = songs.find(x => x.id === id);
-        document.getElementById('song-modal-title').innerText = 'Edit Song';
-        document.getElementById('form-song-title').value = s.title;
-        document.getElementById('form-song-singer').value = s.singer;
-        document.getElementById('form-song-key').value = s.originalKey;
-        document.getElementById('form-song-tempo').value = s.tempo || '';
-        document.getElementById('form-song-youtube').value = s.youtube || '';
-        document.getElementById('form-song-spotify').value = s.spotify || '';
-        document.getElementById('form-song-lyrics').value = s.lyrics;
-    } else {
-        document.getElementById('song-modal-title').innerText = 'Add New Song';
-        document.getElementById('form-song-title').value = '';
-        document.getElementById('form-song-singer').value = '';
-        document.getElementById('form-song-key').value = 'C';
-        document.getElementById('form-song-tempo').value = '';
-        document.getElementById('form-song-youtube').value = '';
-        document.getElementById('form-song-spotify').value = '';
-        document.getElementById('form-song-lyrics').value = '';
-    }
-    document.getElementById('song-modal').classList.remove('hidden');
-}
-
-function closeSongModal() { document.getElementById('song-modal').classList.add('hidden'); }
-
-function saveSongForm(e) {
-    e.preventDefault();
-    const id = document.getElementById('edit-song-id').value;
-    const data = {
-        title: document.getElementById('form-song-title').value,
-        singer: document.getElementById('form-song-singer').value,
-        originalKey: document.getElementById('form-song-key').value,
-        tempo: document.getElementById('form-song-tempo').value,
-        youtube: document.getElementById('form-song-youtube').value,
-        spotify: document.getElementById('form-song-spotify').value,
-        lyrics: document.getElementById('form-song-lyrics').value
-    };
-    if (id) {
-        songs = songs.map(s => s.id === id ? { ...s, ...data } : s);
-    } else {
-        songs.unshift({ id: 's_' + Date.now(), ...data, createdAt: new Date().toISOString().split('T')[0] });
-    }
-    saveData();
-    closeSongModal();
-    renderSongsBank();
-}
-
-function renderLineupSongSelection() {
-    const container = document.getElementById('lineup-songs-checkboxes');
-    if (!container) return;
-    const selected = new Set(lineupDraftSongIds);
-
-    const songChoices = songs.map(s => `
-        <label class="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs cursor-pointer hover:border-cyan-500/40 transition">
-            <span class="min-w-0"><span class="font-bold text-slate-200">${s.title}</span><span class="text-slate-400"> (${s.singer || 'Unknown artist'})</span></span>
-            <input type="checkbox" name="lineup-song" value="${s.id}" ${selected.has(s.id) ? 'checked' : ''}
-                onchange="toggleLineupSong('${s.id}', this.checked)"
-                class="rounded bg-slate-950 border-slate-700 text-cyan-500 focus:ring-cyan-400">
-        </label>`).join('');
-
-    container.innerHTML = songChoices || '<p class="text-xs text-slate-500 p-2">No songs in song bank yet.</p>';
-    if (window.lucide) lucide.createIcons();
-}
-
-function toggleLineupSong(id, checked) {
-    if (checked && !lineupDraftSongIds.includes(id)) lineupDraftSongIds.push(id);
-    if (!checked) lineupDraftSongIds = lineupDraftSongIds.filter(songId => songId !== id);
-    renderLineupSongSelection();
-}
-
-function openLineupModal() {
-    editingLineupId = null;
-    lineupDraftSongIds = [];
-    document.getElementById('lineup-modal-title').innerText = 'Create Service Lineup';
-    document.getElementById('lineup-submit-btn').innerText = 'Create Lineup';
-    document.getElementById('form-lineup-title').value = '';
-    document.getElementById('form-lineup-date').value = new Date().toISOString().split('T')[0];
-    document.getElementById('form-lineup-leader').value = '';
-    document.getElementById('form-lineup-notes').value = '';
-    renderLineupSongSelection();
-    document.getElementById('lineup-modal').classList.remove('hidden');
-}
-
-function editLineup(id) {
-    const lineup = lineups.find(item => item.id === id);
-    if (!lineup) return;
-
-    editingLineupId = id;
-    lineupDraftSongIds = [...(lineup.songIds || [])].filter(songId => songs.some(s => s.id === songId));
-    document.getElementById('lineup-modal-title').innerText = 'Edit Service Lineup';
-    document.getElementById('lineup-submit-btn').innerText = 'Save Changes';
-    document.getElementById('form-lineup-title').value = lineup.title || '';
-    document.getElementById('form-lineup-date').value = lineup.date || '';
-    document.getElementById('form-lineup-leader').value = lineup.leader || '';
-    document.getElementById('form-lineup-notes').value = lineup.notes || '';
-    renderLineupSongSelection();
-    document.getElementById('lineup-modal').classList.remove('hidden');
-}
-
-function closeLineupModal() {
-    document.getElementById('lineup-modal').classList.add('hidden');
-    editingLineupId = null;
-}
-
-function saveLineupForm(e) {
-    e.preventDefault();
-    if (lineupDraftSongIds.length === 0) {
-        alert('Select at least one song.');
-        return;
-    }
-
-    const data = {
-        title: document.getElementById('form-lineup-title').value.trim(),
-        date: document.getElementById('form-lineup-date').value,
-        leader: document.getElementById('form-lineup-leader').value.trim(),
-        notes: document.getElementById('form-lineup-notes').value.trim(),
-        songIds: [...lineupDraftSongIds]
-    };
-
-    if (editingLineupId) {
-        lineups = lineups.map(lineup => lineup.id === editingLineupId
-            ? { ...lineup, ...data, transpositions: lineup.transpositions || {} }
-            : lineup);
-    } else {
-        lineups.unshift({
-            id: 'l_' + Date.now(),
-            ...data,
-            transpositions: {}
-        });
-    }
-
-    saveData();
-    closeLineupModal();
-    renderLineupsView();
-}
-
-// Initialize on load
+// Check mobile PWA Installation support
 window.onload = async () => {
     await loadSharedData();
     renderHome();
     if (window.lucide) lucide.createIcons();
     startSharedSync();
     
-    // Check for iOS / Mobile PWA Installation banner display
-    if (isIOS && !isStandalone && !localStorage.getItem('sslim_pwa_dismissed')) {
-        setTimeout(showInstallBanner, 1500);
+    // Auto show install banner on mobile browsers
+    if (!isStandalone && !localStorage.getItem('sslim_pwa_dismissed')) {
+        setTimeout(showInstallBanner, 1000);
     }
 };
 </script>

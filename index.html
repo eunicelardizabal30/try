@@ -524,11 +524,11 @@ const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', '
 let activeLanguageFilter = 'All';
 
 let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
-{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
-{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
-{ id: 's3', title: 'Build My Life', singer: 'Housefires', language: 'English', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' },
-{ id: 's4', title: 'Salamat Musikero', singer: 'Malayang Pilipino', language: 'Tagalog', originalKey: 'D', tempo: 'Mid (74 BPM)', youtube: '', spotify: '', lyrics: '[D] Salamat sa Iyo, Oh [Bm] Panginoong Hesus\n[G] Sa biyaya\'t pagpapala Mo sa [A] aming buhay\n\n[D] Ikaw ang dahilan ng [F#m] aming pag-awit\n[G] Pupurihin Ka sa [A] habang panahon' },
-{ id: 's5', title: 'Dahil Sa Iyo', singer: 'Musikatha', language: 'Tagalog', originalKey: 'E', tempo: 'Slow (65 BPM)', youtube: '', spotify: '', lyrics: '[E] Dahil sa Iyo, may [C#m] pag-asa ako\n[F#m] Ikaw ang liwanag sa [B] aking mundo' }
+{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[Chorus]\n[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[Verse 1]\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
+{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[Verse 1]\n[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[Chorus]\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
+{ id: 's3', title: 'Build My Life', singer: 'Housefires', language: 'English', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[Verse 1]\n[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' },
+{ id: 's4', title: 'Salamat Musikero', singer: 'Malayang Pilipino', language: 'Tagalog', originalKey: 'D', tempo: 'Mid (74 BPM)', youtube: '', spotify: '', lyrics: '[Chorus]\n[D] Salamat sa Iyo, Oh [Bm] Panginoong Hesus\n[G] Sa biyaya\'t pagpapala Mo sa [A] aming buhay\n\n[Bridge]\n[D] Ikaw ang dahilan ng [F#m] aming pag-awit\n[G] Pupurihin Ka sa [A] habang panahon' },
+{ id: 's5', title: 'Dahil Sa Iyo', singer: 'Musikatha', language: 'Tagalog', originalKey: 'E', tempo: 'Slow (65 BPM)', youtube: '', spotify: '', lyrics: '[Verse 1]\n[E] Dahil sa Iyo, may [C#m] pag-asa ako\n[F#m] Ikaw ang liwanag sa [B] aking mundo' }
 ];
 
 let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
@@ -771,53 +771,101 @@ function closeMediaModal() {
     document.getElementById('media-modal').classList.add('hidden');
 }
 
-function transposeChord(chord, semitones) {
-    if (!chord || semitones === 0) return chord;
-    if (chord.includes('/')) {
-        const parts = chord.split('/');
-        return `${transposeChord(parts[0], semitones)}/${transposeChord(parts[1], semitones)}`;
+// INTELLIGENT CHORD IDENTIFICATION & TRANSPOSITION ENGINE
+function isSectionLabel(content) {
+    const trimmed = content.trim();
+    const sectionKeywords = /^(chorus|verse|bridge|intro|outro|pre-chorus|prechorus|interlude|instrumental|tag|ending|refrain|hook)(\s*\d*)?/i;
+    return sectionKeywords.test(trimmed);
+}
+
+function transposeSingleChordToken(token, semitones) {
+    if (!token || semitones === 0) return token;
+    // Handle hyphenated chords like C-D
+    if (token.includes('-')) {
+        return token.split('-').map(part => transposeSingleChordToken(part, semitones)).join('-');
     }
-    const match = chord.match(/^([A-G][#b]?)(.*)/);
-    if (!match) return chord;
+    // Handle slash chords like C/G or Dmin7/F#
+    if (token.includes('/')) {
+        const parts = token.split('/');
+        return `${transposeSingleChordToken(parts[0], semitones)}/${transposeSingleChordToken(parts[1], semitones)}`;
+    }
+    // Match root note (e.g., C, C#, Db, F) and suffix (e.g., min7, maj7, m, sus4, 7, etc.)
+    const match = token.match(/^([A-G][#b]?)(.*)/);
+    if (!match) return token;
     const flatToSharp = { 'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#' };
     const root = flatToSharp[match[1]] || match[1];
     const idx = CHROMATIC.indexOf(root);
-    if (idx === -1) return chord;
+    if (idx === -1) return token;
     let newIdx = (idx + semitones) % 12;
     if (newIdx < 0) newIdx += 12;
     return CHROMATIC[newIdx] + match[2];
 }
 
+function transposeChord(chord, semitones) {
+    if (!chord || semitones === 0) return chord;
+    const trimmed = chord.trim();
+    if (isSectionLabel(trimmed)) {
+        return trimmed; // Leave section labels like [Chorus] completely untouched by transposition
+    }
+    return transposeSingleChordToken(trimmed, semitones);
+}
+
 function transposeContent(text, semitones) {
     if (!text) return text;
     if (semitones === 0) return text;
-    return text.replace(/\[([^\]]+)\]/g, (whole, c) => `[${transposeChord(c.trim(), semitones)}]`);
+    return text.replace(/\[([^\]]+)\]/g, (whole, c) => `[${transposeChord(c, semitones)}]`);
 }
 
 function parseLine(line) {
-    if (!line.includes('[')) return { hasChords: false, chords: '', lyrics: line };
+    if (!line.includes('[')) return { hasChords: false, chords: '', lyrics: line, isHeader: false };
+    
+    // Check if the entire line/token represents a section header like [Chorus] or [Verse 1]
+    const trimmedLine = line.trim();
+    if (trimmedLine.startsWith('[') && trimmedLine.endsWith(']')) {
+        const inner = trimmedLine.slice(1, -1);
+        if (isSectionLabel(inner)) {
+            return { hasChords: false, chords: '', lyrics: line, isHeader: true };
+        }
+    }
+
     let chordLine = '', lyricLine = '', currentIndex = 0;
     const regex = /\[([^\]]+)\]/g;
     let match;
+    let hasActualChords = false;
+
     while ((match = regex.exec(line)) !== null) {
-        const chord = match[1], matchIndex = match.index;
-        lyricLine += line.slice(currentIndex, matchIndex);
-        while (chordLine.length < lyricLine.length) chordLine += ' ';
-        chordLine += chord;
+        const content = match[1];
+        const matchIndex = match.index;
+        
+        if (isSectionLabel(content)) {
+            // Keep inline section tags intact inside lyric flow without treating them as chords
+            lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
+        } else {
+            hasActualChords = true;
+            lyricLine += line.slice(currentIndex, matchIndex);
+            while (chordLine.length < lyricLine.length) chordLine += ' ';
+            chordLine += content;
+        }
         currentIndex = regex.lastIndex;
     }
     lyricLine += line.slice(currentIndex);
-    return { hasChords: true, chords: chordLine, lyrics: lyricLine };
+
+    return { hasChords: hasActualChords, chords: chordLine, lyrics: lyricLine, isHeader: false };
 }
 
 function renderLyricsHTML(text, semitones = 0, showChords = true) {
     if (!text) return '';
     const transposed = transposeContent(text, semitones);
     return transposed.split('\n').map(line => {
-        const { hasChords, chords, lyrics } = parseLine(line);
+        const { hasChords, chords, lyrics, isHeader } = parseLine(line);
+        
+        if (isHeader) {
+            return `<div class="pt-3 pb-1"><span class="inline-block px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs sm:text-sm font-extrabold text-white tracking-wider uppercase">${line.trim().replace(/^\[|\]$/g, '')}</span></div>`;
+        }
+
         let chordHtml = '';
         if (showChords && hasChords) {
-            chordHtml = `<div class="flex flex-wrap items-center gap-x-1 gap-y-1 font-bold text-slate-200 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
+            chordHtml = `<div class="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-bold text-slate-200 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
             chords.trim().split(/\s+/).filter(Boolean).map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded text-white">${chord}</span>`).join('') +
             `</div>`;
         }

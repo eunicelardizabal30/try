@@ -125,6 +125,15 @@ html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 body { overflow-wrap: anywhere; word-break: break-word; }
 img, iframe, video, svg { max-width: 100%; }
 input, select, textarea, button { max-width: 100%; }
+button { touch-action: manipulation; }
+#songs-bank-list > div, #lineups-view-container > div { min-width: 0; }
+#stage-lyrics-box { overflow-wrap: anywhere; }
+#stage-lyrics-box .whitespace-pre-wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 420px) {
+  #presentation-modal .stage-controls, #presentation-modal button { min-height: 34px; }
+  #stage-song-title { white-space: normal; overflow-wrap: anywhere; }
+  #stage-song-pills { max-width: 100%; }
+}
 .min-w-0 { min-width: 0 !important; }
 .break-words { overflow-wrap: anywhere; word-break: break-word; }
 </style>
@@ -445,7 +454,7 @@ Exit
 </div>
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
+<label class="text-xs font-semibold text-slate-300">Lyrics & Chords (use [G] You are [C] here; add [Verse], [Chorus], [Bridge] section labels)</label>
 <textarea id="form-song-lyrics" rows="6" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
 </div>
 <div class="flex justify-end space-x-3 pt-3 border-t border-slate-800">
@@ -499,6 +508,29 @@ Exit
 </div>
 </form>
 </div>
+</div>
+
+<!-- ADD SONG TO LINEUP CHOOSER -->
+<div id="add-lineup-choice-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md hidden">
+  <div class="bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl w-full max-w-md p-4 sm:p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div>
+        <h3 class="text-base sm:text-lg font-bold text-white">Add Song to Lineup</h3>
+        <p id="add-lineup-song-title" class="text-xs text-slate-400 mt-1"></p>
+      </div>
+      <button type="button" onclick="closeAddLineupChoice()" class="text-slate-400 hover:text-white p-1" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <button type="button" onclick="chooseCreateNewLineup()" class="w-full btn-gradient-bw px-4 py-3 rounded-xl text-slate-950 font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2">
+      <i data-lucide="plus" class="w-4 h-4"></i><span>Create a New Lineup</span>
+    </button>
+    <div class="space-y-2">
+      <p class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Or add to an existing lineup</p>
+      <div id="add-lineup-existing-list" class="space-y-2"></div>
+    </div>
+    <div class="flex justify-end pt-2 border-t border-slate-800">
+      <button type="button" onclick="closeAddLineupChoice()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+    </div>
+  </div>
 </div>
 
 <!-- MOBILE BOTTOM NAVIGATION -->
@@ -840,11 +872,13 @@ function parseLine(line) {
         if (isSectionLabel(content)) {
             // Keep inline section tags intact inside lyric flow without treating them as chords
             lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
-        } else {
+        } else if (isChordToken(content)) {
             hasActualChords = true;
             lyricLine += line.slice(currentIndex, matchIndex);
             while (chordLine.length < lyricLine.length) chordLine += ' ';
             chordLine += content;
+        } else {
+            lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
         }
         currentIndex = regex.lastIndex;
     }
@@ -1015,7 +1049,11 @@ function renderSongsBank() {
                 <i data-lucide="disc" class="w-3.5 h-3.5 opacity-50 flex-shrink-0"></i>
             </button>`}
         </div>
-
+        <div class="pt-1">
+            <button onclick="addSongToLineup('${s.id}')" class="btn-gradient-bw w-full sm:w-auto px-3 py-2 rounded-xl text-slate-950 font-extrabold text-[11px] sm:text-xs flex items-center justify-center gap-1.5">
+                <i data-lucide="list-plus" class="w-4 h-4"></i><span>Add to Lineup</span>
+            </button>
+        </div>
         </div>
         ${isExpanded ? `<div class="p-3.5 sm:p-6 border-t border-slate-800 bg-slate-950/95 overflow-x-auto min-w-0">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
         </div>`;
@@ -1101,6 +1139,11 @@ function renderStage() {
     document.getElementById('stage-song-singer').innerText = song.singer;
     document.getElementById('stage-song-key').innerText = transposeChord(song.originalKey, semitones);
     document.getElementById('stage-lyrics-box').innerHTML = renderLyricsHTML(song.lyrics, semitones, showStageChords);
+    const chordButton = document.getElementById('stage-chords-btn');
+    if (chordButton) {
+        chordButton.setAttribute('aria-pressed', String(showStageChords));
+        chordButton.innerHTML = `<i data-lucide="${showStageChords ? 'eye' : 'eye-off'}" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Hide Chords' : 'Show Chords'}</span>`;
+    }
     document.getElementById('stage-track-counter').innerText = `${currentStageSongIdx + 1} of ${currentStageLineup.songIds.length}`;
 
     document.getElementById('stage-prev-btn').disabled = currentStageSongIdx === 0;
@@ -1122,8 +1165,14 @@ function adjustStageKey(delta) {
 function toggleStageChords() {
     showStageChords = !showStageChords;
     const btn = document.getElementById('stage-chords-btn');
-    btn.className = showStageChords ? 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-800 border-slate-600 text-white' : 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-900 border-slate-800 text-slate-300';
-    btn.innerHTML = `<i data-lucide="eye" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Chords' : 'No Chords'}</span>`;
+    if (btn) {
+        btn.setAttribute('aria-pressed', String(showStageChords));
+        btn.title = showStageChords ? 'Hide chords' : 'Show chords';
+        btn.className = showStageChords
+            ? 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-800 border-slate-600 text-white'
+            : 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-900 border-slate-800 text-slate-300';
+        btn.innerHTML = `<i data-lucide="${showStageChords ? 'eye' : 'eye-off'}" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Hide Chords' : 'Show Chords'}</span>`;
+    }
     renderStage();
 }
 
@@ -1255,9 +1304,61 @@ function toggleLineupSong(id, checked) {
     renderLineupSongSelection();
 }
 
-function openLineupModal() {
+let pendingLineupSongId = null;
+
+function addSongToLineup(songId) {
+    const song = songs.find(item => item.id === songId);
+    if (!song) return;
+    pendingLineupSongId = songId;
+    const title = document.getElementById('add-lineup-song-title');
+    if (title) title.innerText = song.title;
+
+    const list = document.getElementById('add-lineup-existing-list');
+    if (lineups.length) {
+        list.innerHTML = lineups.map(lineup => `
+          <button type="button" onclick="addSongToExistingLineup('${escapeHTML(lineup.id)}')" class="w-full text-left p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-500 transition flex items-center justify-between gap-3 min-w-0">
+            <span class="min-w-0 flex-1"><span class="block text-xs font-bold text-white truncate">${escapeHTML(lineup.title || 'Untitled Lineup')}</span><span class="block text-[10px] text-slate-400 mt-0.5">${(lineup.songIds || []).length} songs${lineup.date ? ' · ' + escapeHTML(lineup.date) : ''}</span></span>
+            <i data-lucide="list-plus" class="w-4 h-4 text-slate-300 flex-shrink-0"></i>
+          </button>`).join('');
+    } else {
+        list.innerHTML = '<p class="text-xs text-slate-400 p-3 rounded-xl bg-slate-950 border border-slate-800">You don’t have any saved lineups yet. Create a new one to get started.</p>';
+    }
+    document.getElementById('add-lineup-choice-modal').classList.remove('hidden');
+    if (window.lucide) lucide.createIcons();
+}
+
+function closeAddLineupChoice() {
+    const modal = document.getElementById('add-lineup-choice-modal');
+    if (modal) modal.classList.add('hidden');
+    pendingLineupSongId = null;
+}
+
+function chooseCreateNewLineup() {
+    const songId = pendingLineupSongId;
+    closeAddLineupChoice();
+    if (songId) openLineupModal(songId);
+}
+
+function addSongToExistingLineup(lineupId) {
+    const songId = pendingLineupSongId;
+    const lineup = lineups.find(item => item.id === lineupId);
+    if (!lineup || !songId) return;
+    if (!Array.isArray(lineup.songIds)) lineup.songIds = [];
+    if (lineup.songIds.includes(songId)) {
+        alert('This song is already in that lineup.');
+        return;
+    }
+    lineup.songIds.push(songId);
+    if (!lineup.transpositions) lineup.transpositions = {};
+    saveData();
+    closeAddLineupChoice();
+    renderLineupsView();
+    alert('Song added to "' + (lineup.title || 'Untitled Lineup') + '".');
+}
+
+function openLineupModal(preselectedSongId = null) {
     editingLineupId = null;
-    lineupDraftSongIds = [];
+    lineupDraftSongIds = preselectedSongId && songs.some(song => song.id === preselectedSongId) ? [preselectedSongId] : [];
     document.getElementById('lineup-modal-title').innerText = 'Create Service Lineup';
     document.getElementById('lineup-submit-btn').innerText = 'Create Lineup';
     document.getElementById('form-lineup-title').value = '';

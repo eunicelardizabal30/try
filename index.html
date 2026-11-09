@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSLIM Music Team App</title>
+<!-- PWA Web App Meta Tags -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SSLIM Music">
+<meta name="theme-color" content="#020617">
+<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%23020617\",\"theme_color\":\"%23020617\",\"icons\":[{\"src\":\"https://placehold.co/192x192/020617/38bdf8?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/020617/38bdf8?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
+
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Lucide Icons -->
@@ -387,6 +395,25 @@ Exit Mode
 </button>
 </div>
 
+<!-- PWA MOBILE INSTALLATION BANNER MODAL -->
+<div id="pwa-install-banner" class="fixed bottom-16 md:bottom-6 left-4 right-4 max-w-md mx-auto z-50 glass-panel rounded-2xl p-4 shadow-2xl border border-cyan-500/40 flex items-center justify-between gap-3 hidden animate-fadeIn">
+<div class="flex items-center space-x-3 min-w-0">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan-500/20">
+<i data-lucide="download" class="w-5 h-5 text-white"></i>
+</div>
+<div class="min-w-0">
+<h4 class="text-xs sm:text-sm font-bold text-white truncate">Install SSLIM App</h4>
+<p class="text-[11px] text-slate-300 truncate">Add to your home screen for quick access</p>
+</div>
+</div>
+<div class="flex items-center space-x-2 flex-shrink-0">
+<button onclick="triggerPWAInstall()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs shadow-md shadow-blue-500/30 whitespace-nowrap">
+Install
+</button>
+<button onclick="dismissPWAInstall()" class="p-1 rounded-lg text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
+</div>
+</div>
+
 <!-- JAVASCRIPT APP LOGIC -->
 <script>
 const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -427,6 +454,48 @@ let currentStageLineup = null;
 let currentStageSongIdx = 0;
 let stageTranspositions = {};
 let showStageChords = true;
+
+// PWA Installation State
+let deferredPrompt = null;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    showInstallBanner();
+});
+
+function showInstallBanner() {
+    if (isStandalone || localStorage.getItem('sslim_pwa_dismissed')) return;
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) {
+        banner.classList.remove('hidden');
+        if (window.lucide) lucide.createIcons();
+    }
+}
+
+function triggerPWAInstall() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+                dismissPWAInstall();
+            }
+            deferredPrompt = null;
+        });
+    } else if (isIOS) {
+        alert('To install on iPhone / iPad:\n\n1. Tap the Share icon (bottom of screen)\n2. Scroll down and tap "Add to Home Screen"');
+    } else {
+        alert('To install this app on your phone:\n\n1. Open your browser menu (⋮ or ⋯)\n2. Tap "Add to Home Screen" or "Install App"');
+    }
+}
+
+function dismissPWAInstall() {
+    localStorage.setItem('sslim_pwa_dismissed', 'true');
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.classList.add('hidden');
+}
 
 // Shared cloud storage & synchronization settings
 const SHARED_API_URL = 'https://sslim.eunicelardizabal30.workers.dev';
@@ -1162,6 +1231,11 @@ window.onload = async () => {
     renderHome();
     if (window.lucide) lucide.createIcons();
     startSharedSync();
+    
+    // Check for iOS / Mobile PWA Installation banner display
+    if (isIOS && !isStandalone && !localStorage.getItem('sslim_pwa_dismissed')) {
+        setTimeout(showInstallBanner, 1500);
+    }
 };
 </script>
 </body>

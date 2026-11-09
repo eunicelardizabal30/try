@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238547683",
+      "title": "Awit ng Pagsamba",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD\n \n[Verse]\n    D    A/C#   Bm\nKay buti Mo  Panginoon\n  Em         A      A/G\nDakila Ka sa buhay Ko\n   F#m          Bm\nSa labis na pag-ibig Mo\n   C        Asus4  A\nAy naligtas ako\n      G          F#m\nHindi man karapat-dapat\n     G         F#,\nAy Iyong pinatawad\n \n        Em      D/F#   G\nAt binigyan Mo pa ng tinig\n     Em  D/F#  G\nTinuruan Mong umawit\n        Em      F#m     G   \nKaya ngayon ang puso’t isip ko\n  C        Asus4  A\nIisang sinasambit\n \n[Chorus]\n         D      D/F#   G   A\nAng pagpupuri’t pasa - salamat\n       D    D/F#   G   A\nAy sa Iyo lamang nararapat\n          F#m   Bm     F#m    Bm7\nAng tunay na awit ng pagsamba’y\n    Em   F#m      G   A\nSa Iyo lamang   iaa - lay...\n D\nHesus",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238435761",
       "title": "Awesome in this place (Mighty God)",
       "singer": "",
@@ -88,5 +99,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:34:19.891Z"
+  "updatedAt": "2026-11-09T15:35:49.012Z"
 }

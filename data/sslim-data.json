@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238408020",
+      "title": "Awesome in this place",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: D  G (repeat)\n \nVerse 1:\nD\n   Here in this house of the great king\nBm7                                            G\n   We come together now to worship him\nD\n   This house is built on Christ our rock\n                      Bm7-A-Bm7\n   Cannot be shaken\n                        G\n   Cannot be shaken\n \nPre-Chorus:\nD               G                            D              G\n   God is awesome in this place\nD              G                               Asus4     A\n   Sense his presence as we sing his praise\n                   Bm                Asus4\n   There is power for a miracles\n                   Bm                                  G\n   Set the captives free and the broken heart\n\nChorus\nD         G\n   God is awesome\nD          G\n   He’s so awesome\nD         G-A                              D\n   God is awesome in this place( x2)\n\nBridge:\n   (G D)\n   G\n   I’ve found where I be-long\n   I'm a living stone\n   In this house\n       \tD\n   I will grow",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238377925",
       "title": "As the deer",
       "singer": "",
@@ -66,5 +77,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:32:59.016Z"
+  "updatedAt": "2026-11-09T15:33:29.339Z"
 }

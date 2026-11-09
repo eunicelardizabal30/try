@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239302521",
+      "title": "El Shadai",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Chorus]\n     Dm           G\nEl Shaddai, El Shaddai,\n     C         F\nEl-Elyon na Adonia,\n       Bb                   E/D\nAge to age You're still the same,\n       Am    Bm       C#m/A\nBy the power of the name.\n     Dm           G\nEl Shaddai, El Shaddai,\n     C        F\nErkamka na Adonai,\n         Bb                 E/D\nWe will praise and lift You high,\n     Am\nEl Shaddai.\n \n[Verse 1]\n              Dm                   G\nThrough your love and through the ram,\n               C         F\nYou saved the son of Abraham;\n             Bb           E/D\nThrough the power of your hand,\n           Am     Bm      C#m/A\nTurned the sea into dry land.\n        Dm              G\nTo the outcast on her knees,\n              C              F\nYou were the God who really sees,\n             Bb\nAnd by Your might,\n               E/D     Am\nYou set Your children free\n\n\n\n[Verse 2]\n             Dm                   G\nThrough the years You've made it clear,\n          C                  F\nThat the time of Christ was near,\n             Bb            E/D\nThough the people couldn't see\n       Am    Bm      C#m/A\nWhat Messiah ought to be.\n             Dm                 G\nThough Your Word contained the plan,\n            C            F\nThey just could not understand\n            Bb             E/D\nYour most awesome work was done\n              Am             \nThrough the frailty of Your Son.",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239290704",
       "title": "Draw me close to you",
       "singer": "",
@@ -297,5 +308,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:48:12.109Z"
+  "updatedAt": "2026-11-09T15:48:23.705Z"
 }

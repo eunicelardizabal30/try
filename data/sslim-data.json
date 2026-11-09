@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238711449",
+      "title": "Because of who You are",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse :\n  F               Gm7             F Gm7\nBecause of who You are I give You glory\n  F               Dm7            Gm7 C\nBecause of who You are I give You praise\n  Bb               C        A7\nBecause of who You are I will lift my voice\n         Dm7\n     and say\n       Gm7        C               Dm7   G7\nLord I worship You because of who You are\n       Gm7          C               F\nLord I worship You because of who You are\n\nRefrain : \n\n  F    Bbmaj7        Am\nJehovah Jireh my provider\n                  Bb             Cm  -  F\nJehovah Nissi Lord You reign in victory\n       Bbmaj7       A7        Dm7\nJehovah Shalom my Prince of Peace\n       Gm7                          C                    Dm\nAnd I worship You because of who You are\n\n\nVerse\nF               C/E         Eb       Gm7      Csus C   \n Prince of Peace   Counselor merciful  Son of God\nF             C/E         Eb               Gm7         BbC\n Lord of hosts   Conqueror coming King and Ever Living God\n\nChorus\n     F Fsus F      Dm7   C \nI extol    You Lord I extol You\n        Bb               F/A\nYou are high above the earth\n       Gm7                  BbC\nAll creation shouts Your worth\nC    F Fsus F       Bb   C  \nI extol    You Lord I extol You\nC BbAm7  Gm7 F/A  Bb   C  BbF F\n My  Je- ho- vah  I extol You",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238692914",
       "title": "Be unto your name",
       "singer": "",
@@ -121,5 +132,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:38:14.357Z"
+  "updatedAt": "2026-11-09T15:38:32.792Z"
 }

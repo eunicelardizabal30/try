@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239673798",
+      "title": "Here i am to worship",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\nD            A                  Em          G       D       A           G\nLight of the world, you stepped down into darkness, open my eyes, let me see\nD           A         Em     G         D         A              G\nBeauty that made this heart adore you, hope of a life spent with you\n\n[Chorus]\n                D                    A                    D/F#                 G\nAnd here I am to worship Here I am to bow down Here I am to say that you're my God\n                 D                  A                  D/F#          G\nYou're altogether lovely, altogether worthy, altogether wonderful to me\n[Verse 2]\nD           A         Em       G      D           A       G\nKing of all days O so highly exalted, glorious in Heaven a-bove\nD          A           Em           G     D              A          G\nHumbly you came to the earth you created, all for love's sake became poor\n\n[Bridge]\n     A     D/F#     G               A      D/F#  G\nI'll never know how much it cost to see my sin upon that cross\n     A     D/F#     G               A      D/F#  G\nI'll never know how much it cost to see my sin upon that cross\n\n\n[Call]\nD                         A           Bm\nCall upon the name of the Lord and be saved\nD                         A           Bm    G\nCall upon the name of the Lord and be saved",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239662612",
       "title": "Heart of worship",
       "singer": "",
@@ -550,5 +561,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:54:23.746Z"
+  "updatedAt": "2026-11-09T15:54:35.095Z"
 }

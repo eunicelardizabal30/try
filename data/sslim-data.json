@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239580616",
+      "title": "Halina’t sama-sama",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "D           F#m\nHalina’t sama-sama\n  G           A   (G - A)\nPurihin natin Siya\n  D           F#m\nHalina’t sama-sama\n G           A   (G - A)\nAwitan natin Siya\n G             F#m\nIpalakpak ang inyong kamay\nG        F#m\nItaas at ikaway\n Em          A\nLahat ay magsabing\n         D\nDiyos ay buhay",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239563305",
       "title": "Great is the Lord",
       "singer": "",
@@ -484,5 +495,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:52:44.589Z"
+  "updatedAt": "2026-11-09T15:53:01.910Z"
 }

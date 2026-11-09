@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239495767",
+      "title": "Friend of God",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro:\nE F#m7 A\nVerse:\nE                                                          C#m7\nWho am I that You are mindful of me\n                 F#m7                    E\nThat You hear me when I call \nE                                                        C#m7\nIs it true that You are thinking of me \n                 F#m7               D\nHow You love me it's amazing \nChorus:\nE\nI am a friend of God \nC#m7\nI am a friend of God\nF#m7                                                 E \nI am a friend of God He calls me friend \nBridge:\nA            \nGod almighty \nG#m\nLord of glory \nF#m7                          A (B if going to Chorus)                       \nYou have called me friend",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239473960",
       "title": "For You alone",
       "singer": "",
@@ -407,5 +418,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:51:15.932Z"
+  "updatedAt": "2026-11-09T15:51:37.068Z"
 }

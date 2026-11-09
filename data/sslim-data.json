@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239207734",
+      "title": "Di ka nagkulang",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\nD\nIkaw lang ang pag-asa ko\nDmaj7\nTanging ikaw ang buhay ko,\nEm\nHesus\nEm - Eb - D - c#m\nKahit akong nangangamba Bastat ikay kasama \nG              D D7\npanatag na\n\nEm - Eb - D - c#m\nKahit may suliranin man\npalagi kong aawitan\nG              D D7\nikaw lamang\n\n[Chorus]\n          G     A     F#m   Bm\nKahit kailan di ka nagkulang\nG               A            D D7\nBiyaya mo sa aki'y laging laan\n          G     A        F#m   Bm\npag-ibig mo sa aki'y walang hanggan\nEm      A              D\ninibig mo ako noon pa man\n\n[Verse 2]\nD\nKaya't ika'y sasambahin\nDmj7                         Em\npaligid man ay magdilim Hesus\nEm - Eb - D - Db\nKahit ako'y nangangamba\nbasta't ikaw ay kasama\nG        D D7\npanatag na",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239194646",
       "title": "Di ako magsasawang purihin ka",
       "singer": "",
@@ -253,5 +264,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:46:35.826Z"
+  "updatedAt": "2026-11-09T15:46:49.259Z"
 }

@@ -1,20 +1,5 @@
 {
   "songs": [],
-  "lineups": [
-    {
-      "id": "l_1794222606901",
-      "title": "Sample",
-      "date": "2026-11-09",
-      "leader": "Sample",
-      "notes": "Sample",
-      "songIds": [
-        "s1",
-        "s2"
-      ],
-      "transpositions": {
-        "s2": 0
-      }
-    }
-  ],
-  "updatedAt": "2026-11-09T11:13:31.393Z"
+  "lineups": [],
+  "updatedAt": "2026-11-09T11:18:08.293Z"
 }

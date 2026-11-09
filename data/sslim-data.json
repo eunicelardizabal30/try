@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238377925",
+      "title": "As the deer",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\n \nC      G/B          Am       Em\nAs the deer panteth for the water\n       F            G     C  \nSo my soul longeth after Thee\nC    G/B           Am     Em\nYou alone are my heart's desire\n       F            G      C\nAnd I long to worship Thee.\n \n \n[Chorus]\n \nAm                 F          C/E\nYou alone are my strength my shield\n   F   Em/c         Dm       E\nTo You alone may my spirit yield\nC    G/B           Am     Em\nYou alone are my heart's desire\n       F       G      C    \nAnd I long to worship Thee\n \n \n[Verse 2]\n \nC      G/B          Am       Em\nI love you more than gold or silver\n       F        G     C \nOnly You can satisfy\nC    G/B           Am     Em\nYou alone are the real joy giver\n       F         G      C\nAnd the apple of my eye\n\n\n[Verse 3]\n \nC      G/B          Am       Em\nYou're my friend and you are my brother\n       F        G     C \nEven though you are a king\nC    G/B           Am     Em\nI love you more than any other\n       F         G      C\nSo much more than anything",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238328396",
       "title": "Araw araw Magpupuri",
       "singer": "",
@@ -55,5 +66,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:32:09.540Z"
+  "updatedAt": "2026-11-09T15:32:59.016Z"
 }

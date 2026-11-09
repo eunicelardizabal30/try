@@ -127,7 +127,7 @@ Search through song lyrics, manage real-time key transpositions, and build servi
 </div>
 <button onclick="openSongModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>Add Song</span>
+<span>+ Add Song</span>
 </button>
 </div>
 <div id="songs-bank-list" class="space-y-3"></div>
@@ -145,7 +145,7 @@ Search through song lyrics, manage real-time key transpositions, and build servi
 </div>
 <button onclick="openLineupModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>Create New Lineup</span>
+<span>+ Create New Lineup</span>
 </button>
 </div>
 <div id="lineups-view-container" class="space-y-8"></div>
@@ -536,8 +536,53 @@ return CHROMATIC[newIdx] + match[2];
 }
 
 function transposeContent(text, semitones) {
-if (!text || semitones === 0) return text;
-return text.replace(/\[([^\]]+)\]/g, (_, c) => `[${transposeChord(c.trim(), semitones)}]`);
+if (!text) return text;
+// Normalize chord rows printed above lyrics into inline chord markers first.
+const normalized = normalizeChordRows(text);
+if (semitones === 0) return normalized;
+return normalized.replace(/\[([^\]]+)\]/g, (_, c) => `[${transposeChord(c.trim(), semitones)}]`);
+}
+
+// Common chord-sheet notation: G, F#m7, Cadd9, G/B, Bb/D, Dsus4, etc.
+function isChordToken(token) {
+const clean = String(token || '').replace(/[|,;]/g, '').trim();
+return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|omit|no|2|4|5|6|7|9|11|13|b5|#5|b9|#9|b13|\+|°|ø|-|\(.*\)))*(?:\/(?:[A-G](?:#|b)?))?$/.test(clean)
+    || /^(?:N\.C\.|NC)$/i.test(clean);
+}
+
+function isChordOnlyLine(line) {
+const tokens = String(line || '').trim().split(/\s+/).filter(Boolean);
+return tokens.length > 0 && tokens.every(isChordToken);
+}
+
+function chordLineToInline(chordLine, lyricLine) {
+const tokens = [...String(chordLine || '').matchAll(/\S+/g)].filter(m => isChordToken(m[0]));
+let result = String(lyricLine || '');
+tokens.sort((a, b) => b.index - a.index).forEach(token => {
+    const position = Math.min(token.index, result.length);
+    const chord = token[0].replace(/[|,;]/g, '');
+    result = result.slice(0, position) + '[' + chord + ']' + result.slice(position);
+});
+return result;
+}
+
+function normalizeChordRows(text) {
+const lines = String(text || '').replace(/\r/g, '').split('\n');
+const output = [];
+for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    if (isChordOnlyLine(line)) {
+        let next = i + 1;
+        while (next < lines.length && !lines[next].trim()) next++;
+        if (next < lines.length && !isChordOnlyLine(lines[next]) && !/\[[^\]]+\]/.test(lines[next])) {
+            output.push(chordLineToInline(line, lines[next]));
+            i = next;
+            continue;
+        }
+    }
+    output.push(line);
+}
+return output.join('\n');
 }
 
 function parseLine(line) {
@@ -778,25 +823,6 @@ function searchSongOnGoogle() {
     document.getElementById('song-import-status').textContent = 'Google search opened in a new tab. Copy the lyrics or chord sheet from a source you are permitted to use, then paste it here.';
 }
 
-function isChordToken(token) {
-    return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|2|4|5|6|7|9|11|13|\+|°|ø|-)*)?(?:\/(?:[A-G](?:#|b)?))?$/.test(token.replace(/[|,;]/g, '')) || /^(?:N\.C\.|NC)$/i.test(token);
-}
-
-function isChordOnlyLine(line) {
-    const tokens = line.trim().split(/\s+/).filter(Boolean);
-    return tokens.length > 0 && tokens.every(isChordToken);
-}
-
-function chordLineToInline(chordLine, lyricLine) {
-    const tokens = [...chordLine.matchAll(/\S+/g)].filter(m => isChordToken(m[0]));
-    let result = lyricLine;
-    // Insert from right to left so earlier character positions remain valid.
-    tokens.sort((a, b) => b.index - a.index).forEach(token => {
-        const position = Math.min(token.index, result.length);
-        result = result.slice(0, position) + '[' + token[0].replace(/[|,;]/g, '') + ']' + result.slice(position);
-    });
-    return result;
-}
 
 function formatImportedSongText(rawText, mode) {
     const lines = String(rawText || '').replace(/\r/g, '').split('\n');

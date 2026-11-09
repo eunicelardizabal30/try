@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794239440462",
+      "title": "For the LORD is my tower",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Chords: D G D-Bm C A\nChorus:\n                                   D\nFor the Lord is my tower\n                                        G\nAnd He gives me the power\n                D                       Bm                   C                         A\nTo tear down the works of the enemy\n                         D\nIn a difficult hour\n                                      G\nHe will crush the devourer\n                            D\nAnd bring the powers of darkness\nA                         D\nUnderneath my feeta",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794239422419",
       "title": "For all you’ve done",
       "singer": "",
@@ -374,5 +385,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:50:23.733Z"
+  "updatedAt": "2026-11-09T15:50:42.207Z"
 }

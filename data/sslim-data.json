@@ -1,6 +1,17 @@
 {
   "songs": [
     {
+      "id": "s_1794238435761",
+      "title": "Awesome in this place (Mighty God)",
+      "singer": "",
+      "originalKey": "C",
+      "tempo": "",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\n \nE                              A\nAs I come into Your presence, past the gates of praise\nE                                 A\nInto Your sanctuary, ‘til we're standing face to face\n   B\nI look upon Your countenance\n           A                E\nI see the fullness of Your grace\n           F#m - G#m            B\nAnd I can only bow down and say\n \n \n[Chorus]\n \n         E                            F#m\nYou are awesome in this place, mighty God\n         B                           E  B\nYou are awesome in this place, Abba Father\n         E               G#m      A                F#m\nYou are worthy of all praise, to You our lives we raise\n         B                             E\nYou are awesome in this place, mighty God",
+      "createdAt": "2026-11-09"
+    },
+    {
       "id": "s_1794238408020",
       "title": "Awesome in this place",
       "singer": "",
@@ -77,5 +88,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-09T15:33:29.339Z"
+  "updatedAt": "2026-11-09T15:33:57.363Z"
 }

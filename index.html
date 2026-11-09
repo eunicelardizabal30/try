@@ -4,122 +4,59 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SSLIM Music Team App</title>
-<!-- PWA Web App Meta Tags -->
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="SSLIM Music">
-<meta name="theme-color" content="#020617">
-<link rel="manifest" href="./manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
-<link rel="apple-touch-icon" href="./icons/icon-192.png">
-
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- Lucide Icons -->
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
-body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-.font-mono { 
-    font-family: 'JetBrains Mono', monospace; 
-}
-
-/* Mountain & Ambient Atmosphere Background */
-.bg-mountain-atmosphere {
-    background: radial-gradient(circle at 50% 0%, rgba(30, 58, 138, 0.35) 0%, rgba(15, 23, 42, 0.95) 70%),
-                linear-gradient(180deg, #020617 0%, #090d16 100%);
-}
-
-/* Glassmorphism utility card effects */
-.glass-panel {
-    background: rgba(15, 23, 42, 0.65);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-}
-
-.glass-panel-interactive {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(59, 130, 246, 0.18);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-panel-interactive:hover {
-    background: rgba(30, 41, 59, 0.75);
-    border-color: rgba(56, 189, 248, 0.45);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px -10px rgba(56, 189, 248, 0.15);
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;850&family=JetBrains+Mono:wght@400;600&display=swap');
+body { font-family: 'Inter', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
 /* Custom scrollbar for song reader & lists */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
-::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.3); border-radius: 9999px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.6); }
+::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(59, 130, 246, 0.5); }
 </style>
 </head>
-<body class="bg-mountain-atmosphere text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-slate-950 relative pb-28 md:pb-8 break-words">
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-indigo-500 selection:text-white relative pb-20 md:pb-8">
 
-<!-- Subtle Ambient Glow Orbs -->
-<div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent rounded-full blur-3xl pointer-events-none -z-10"></div>
-<div class="fixed top-1/3 right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
-
-<!-- VISIBLE SUBTLE MOUNTAIN BACKGROUND VECTOR SILHOUETTE -->
-<div class="fixed bottom-0 left-0 right-0 w-full overflow-hidden pointer-events-none -z-10 opacity-30 select-none">
-    <svg class="w-full h-44 sm:h-64 lg:h-80 object-cover object-bottom" viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-        <!-- Distant Mountain Range Layer -->
-        <path d="M0,224 L80,208 C160,192 320,160 480,181.3 C640,203 800,277 960,266.7 C1120,256 1280,160 1360,112 L1440,64 L1440,320 L1360,320 C1280,320 1120,320 960,320 C800,320 640,320 480,320 C320,320 160,320 80,320 L0,320 Z" fill="#1e293b" fill-opacity="0.5"/>
-        <!-- Mid-ground Mountain Peaks Layer -->
-        <path d="M0,288 L60,266.7 C120,245 240,203 360,208 C480,213 600,267 720,261.3 C840,256 960,192 1080,170.7 C1200,149 1320,171 1380,181.3 L1440,192 L1440,320 L1380,320 C1320,320 1200,320 1080,320 C960,320 840,320 720,320 C600,320 480,320 360,320 C240,320 120,320 60,320 L0,320 Z" fill="#0f172a" fill-opacity="0.8"/>
-        <!-- Foreground Peak Outline Accent -->
-        <path d="M0,160 L120,210 L280,140 L440,240 L600,130 L800,230 L980,110 L1180,220 L1340,140 L1440,180 L1440,320 L0,320 Z" fill="url(#mountain-grad)" fill-opacity="0.4"/>
-        <defs>
-            <linearGradient id="mountain-grad" x1="720" y1="110" x2="720" y2="320" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#38bdf8" stop-opacity="0.3"/>
-                <stop offset="0.8" stop-color="#020617" stop-opacity="0.9"/>
-            </linearGradient>
-        </defs>
-    </svg>
-</div>
+<!-- Ambient background glows -->
+<div class="fixed top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="fixed bottom-10 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
 <!-- HEADER -->
-<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/80 border-b border-blue-900/30 shadow-2xl">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
-<div class="flex items-center space-x-2.5 cursor-pointer group min-w-0" onclick="switchTab('home')">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-300 flex-shrink-0">
-<i data-lucide="mountain" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
+<header class="sticky top-0 z-40 backdrop-blur-xl bg-slate-900/80 border-b border-blue-900/40 shadow-xl">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/20">
+<i data-lucide="music" class="w-5 h-5 text-white"></i>
 </div>
-<div class="min-w-0">
-<div class="flex items-center space-x-1.5 flex-wrap">
-<h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-cyan-300 bg-clip-text text-transparent truncate">
-SSLIM Worship
+<div>
+<div class="flex items-center space-x-2">
+<h1 class="text-lg font-bold bg-gradient-to-r from-white via-slate-200 to-cyan-300 bg-clip-text text-transparent">
+SSLIM Music Team
 </h1>
-<span class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold border bg-cyan-500/10 border-cyan-400/30 text-cyan-300 shadow-sm">
-<i data-lucide="wifi" class="w-2.5 h-2.5 text-cyan-400"></i>
-<span id="sync-status">Connected</span>
+<span class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[10px] font-bold border bg-cyan-500/10 border-cyan-400/40 text-cyan-300">
+<i data-lucide="wifi" class="w-3 h-3 text-cyan-400"></i>
+<span id="sync-status">Connecting…</span>
 </span>
 </div>
-<p class="text-[9px] sm:text-[10px] text-cyan-400/90 tracking-widest uppercase font-bold truncate">Music Team Portal</p>
+<p class="text-[10px] text-blue-400 tracking-wider uppercase font-semibold">Worship & Chord Portal</p>
 </div>
 </div>
 
 <!-- Desktop Nav -->
-<nav class="hidden md:flex items-center space-x-1 bg-slate-900/80 p-1.5 rounded-2xl border border-blue-900/40 shadow-inner">
-<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-500/20">
+<nav class="hidden md:flex items-center space-x-1 bg-slate-900/60 p-1.5 rounded-xl border border-blue-900/30">
+<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all bg-blue-600 text-white shadow-lg shadow-blue-600/30">
 <i data-lucide="home" class="w-4 h-4"></i>
 <span>Home</span>
 </button>
-<button onclick="switchTab('songs')" id="nav-songs" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/60">
+<button onclick="switchTab('songs')" id="nav-songs" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
 <i data-lucide="book-open" class="w-4 h-4"></i>
 <span>Songs Bank</span>
 </button>
-<button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/60">
+<button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
 <i data-lucide="calendar" class="w-4 h-4"></i>
 <span>Lineups</span>
 </button>
@@ -128,28 +65,26 @@ SSLIM Worship
 </header>
 
 <!-- MAIN VIEWS CONTAINER -->
-<main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
 
 <!-- HOME TAB -->
-<div id="tab-home" class="space-y-6 sm:space-y-8">
-<div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-blue-500/30 bg-gradient-to-br from-slate-900/90 via-blue-950/40 to-slate-950 p-5 sm:p-10 backdrop-blur-xl shadow-2xl">
-<div class="max-w-2xl relative z-10 space-y-3 sm:space-y-4">
-<span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-sm">
-<i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
-<span>SSLIM Music Portal</span>
+<div id="tab-home" class="space-y-8">
+<div class="relative rounded-3xl overflow-hidden border border-blue-500/20 bg-gradient-to-b from-blue-900/30 to-slate-900/60 p-6 sm:p-10 backdrop-blur-md shadow-2xl">
+<div class="max-w-2xl relative z-10 space-y-4">
+<span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-wider">
+<i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+<span>SSLIM Worship Portal</span>
 </span>
-<h2 class="text-2xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-SSLIM Worship Ministry.
+<h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+Ready for Worship Ministry.
 </h2>
-<p class="text-slate-300 text-xs sm:text-base leading-relaxed">
-Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
+<p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+Search through song lyrics, manage real-time key transpositions, and build service lineups seamlessly.
 </p>
-
-<!-- Home Search Bar -->
-<div class="pt-2 space-y-3 max-w-xl">
+<div class="pt-2 relative max-w-xl">
 <div class="relative flex items-center">
-<i data-lucide="search" id="home-search-icon" class="absolute left-3.5 w-4 h-4 sm:w-5 sm:h-5 text-cyan-400"></i>
-<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-10 sm:pl-12 pr-4 py-3 rounded-xl sm:rounded-2xl bg-slate-950/80 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow-inner text-xs sm:text-base font-medium">
+<i data-lucide="search" class="absolute left-4 w-5 h-5 text-blue-400"></i>
+<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-slate-900/90 border border-blue-500/40 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 shadow-inner text-sm sm:text-base">
 </div>
 </div>
 </div>
@@ -169,12 +104,12 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div class="flex items-center justify-between">
 <div>
 <h3 class="text-xl font-bold text-white flex items-center space-x-2">
-<i data-lucide="calendar" class="w-5 h-5 text-cyan-400"></i>
+<i data-lucide="calendar" class="w-5 h-5 text-blue-400"></i>
 <span>Recent Lineups</span>
 </h3>
 <p class="text-xs text-slate-400">Scheduled service setlists</p>
 </div>
-<button onclick="switchTab('lineup')" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center space-x-1">
+<button onclick="switchTab('lineup')" class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center space-x-1">
 <span>View All</span>
 <i data-lucide="chevron-right" class="w-4 h-4"></i>
 </button>
@@ -184,15 +119,15 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 </div>
 
 <!-- SONGS BANK TAB -->
-<div id="tab-songs" class="space-y-4 sm:space-y-6 hidden">
-<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl glass-panel">
+<div id="tab-songs" class="space-y-6 hidden">
+<div class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 backdrop-blur-xl">
 <div class="flex-1 relative">
-<i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-cyan-400"></i>
-<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs..." class="w-full pl-9 pr-3 py-2 sm:py-2.5 rounded-xl bg-slate-950/80 border border-blue-900/40 text-xs sm:text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50 font-medium">
+<i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-blue-400"></i>
+<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, or lyrics..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-950/70 border border-blue-900/40 text-sm text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-400/50">
 </div>
-<button onclick="openSongModal()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
+<button onclick="openSongModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all whitespace-nowrap">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>Add Song</span>
+<span>+ Add Song</span>
 </button>
 </div>
 <div id="songs-bank-list" class="space-y-3"></div>
@@ -203,14 +138,14 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 <div>
 <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
-<i data-lucide="calendar" class="w-6 h-6 text-cyan-400"></i>
+<i data-lucide="calendar" class="w-6 h-6 text-blue-400"></i>
 <span>Worship Lineups</span>
 </h2>
 <p class="text-xs text-slate-400">Organize service setlists and launch full presentation mode</p>
 </div>
-<button onclick="openLineupModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 flex items-center justify-center space-x-2 transition-all">
+<button onclick="openLineupModal()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-semibold text-xs sm:text-sm shadow-lg shadow-blue-500/20 flex items-center justify-center space-x-2 transition-all">
 <i data-lucide="plus" class="w-4 h-4"></i>
-<span>Create New Lineup</span>
+<span>+ Create New Lineup</span>
 </button>
 </div>
 <div id="lineups-view-container" class="space-y-8"></div>
@@ -218,55 +153,37 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 
 </main>
 
-<!-- MEDIA EMBED MODAL (YOUTUBE / SPOTIFY) -->
-<div id="media-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden">
-<div class="bg-slate-900 border border-blue-500/30 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-4">
-<div class="flex justify-between items-center border-b border-slate-800 pb-3">
-<div class="flex items-center space-x-2">
-<div id="media-modal-icon-bg" class="p-2 rounded-xl bg-red-500/20 text-red-400">
-<i id="media-modal-icon" data-lucide="youtube" class="w-5 h-5"></i>
-</div>
-<h3 id="media-modal-title" class="text-lg font-bold text-white">Media Preview</h3>
-</div>
-<button onclick="closeMediaModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
-</div>
-<div id="media-embed-container" class="w-full aspect-video rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800">
-<!-- Dynamic iframe injected via JS -->
-</div>
-</div>
-</div>
-
 <!-- STAGE PRESENTATION FULLSCREEN OVERLAY -->
 <div id="presentation-modal" class="fixed inset-0 z-50 bg-slate-950 flex flex-col overflow-hidden hidden">
-<div class="flex-none bg-slate-900/90 border-b border-blue-900/50 p-3 sm:p-4 flex items-center justify-between gap-2 backdrop-blur-2xl">
+<div class="flex-none bg-slate-900/90 border-b border-blue-900/50 p-3 sm:p-4 flex items-center justify-between gap-2 backdrop-blur-xl">
 <div class="flex items-center space-x-2.5 min-w-0">
-<span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0 shadow-lg shadow-cyan-400/50"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0"></span>
 <div class="min-w-0">
 <h3 id="stage-lineup-title" class="text-sm sm:text-lg font-bold text-white truncate">Service Title</h3>
 <p id="stage-lineup-leader" class="text-[11px] text-slate-400 truncate">Leader</p>
 </div>
 </div>
 <div class="flex items-center space-x-2 flex-shrink-0">
-<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-3 py-1.5 rounded-xl border text-xs font-bold flex items-center space-x-1.5 bg-cyan-500/20 border-cyan-400 text-cyan-300">
+<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-cyan-500/20 border-cyan-400 text-cyan-300">
 <i data-lucide="eye" class="w-3.5 h-3.5"></i>
 <span>Chords On</span>
 </button>
-<button onclick="exitPresentation()" class="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs border border-red-500/30 font-bold">
+<button onclick="exitPresentation()" class="p-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs border border-red-500/30 font-semibold">
 Exit Mode
 </button>
 </div>
 </div>
-<div id="stage-song-pills" class="flex-none bg-slate-900/60 border-b border-slate-800/80 px-3 py-2 flex space-x-2 overflow-x-auto"></div>
+<div id="stage-song-pills" class="flex-none bg-slate-900/50 border-b border-slate-800/80 px-3 py-2 flex space-x-2 overflow-x-auto"></div>
 <div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-950 flex flex-col justify-between">
 <div class="space-y-6 max-w-4xl mx-auto w-full">
 <div class="flex flex-row justify-between items-center gap-2 pb-4 border-b border-slate-800/80">
 <div>
-<h2 id="stage-song-title" class="text-2xl sm:text-4xl font-extrabold text-white">Song Title</h2>
-<p id="stage-song-singer" class="text-xs sm:text-sm text-cyan-300 font-semibold mt-1">Artist</p>
+<h2 id="stage-song-title" class="text-xl sm:text-3xl font-extrabold text-white">Song Title</h2>
+<p id="stage-song-singer" class="text-xs sm:text-sm text-cyan-300 font-medium">Artist</p>
 </div>
-<div class="flex items-center space-x-1.5 bg-slate-900 p-1.5 rounded-2xl border border-blue-800/80 shadow-md">
-<span class="text-[11px] font-bold text-slate-400 px-1">Key:</span>
-<span id="stage-song-key" class="text-xs sm:text-sm font-extrabold text-cyan-300 w-7 text-center">C</span>
+<div class="flex items-center space-x-1 bg-slate-900 p-1.5 rounded-xl border border-blue-800/80">
+<span class="text-[11px] font-semibold text-slate-400 px-1">Key:</span>
+<span id="stage-song-key" class="text-xs sm:text-sm font-bold text-cyan-300 w-6 text-center">C</span>
 <button onclick="adjustStageKey(-1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-cyan-300 hover:bg-slate-700 flex items-center justify-center text-sm">-</button>
 <button onclick="adjustStageKey(1)" class="w-7 h-7 bg-slate-800 rounded-lg font-bold text-cyan-300 hover:bg-slate-700 flex items-center justify-center text-sm">+</button>
 </div>
@@ -274,14 +191,14 @@ Exit Mode
 <div id="stage-lyrics-box" class="py-2 overflow-x-auto min-h-[220px]"></div>
 </div>
 </div>
-<div class="flex-none bg-slate-900/90 border-t border-slate-800 p-3 sm:p-4 backdrop-blur-2xl">
+<div class="flex-none bg-slate-900/90 border-t border-slate-800 p-3 sm:p-4 backdrop-blur-xl">
 <div class="max-w-4xl mx-auto flex items-center justify-between">
-<button onclick="navigateStageSong(-1)" id="stage-prev-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-blue-500/40 bg-blue-600/30 text-blue-200 hover:bg-blue-600/40">
+<button onclick="navigateStageSong(-1)" id="stage-prev-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-blue-500/40 bg-blue-600/30 text-blue-200">
 <i data-lucide="chevron-left" class="w-4 h-4 stroke-[3]"></i>
 <span>Prev Song</span>
 </button>
-<span id="stage-track-counter" class="text-xs font-bold text-slate-400">Track 1 of 3</span>
-<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-cyan-500/40 bg-cyan-600/30 text-cyan-200 hover:bg-cyan-600/40">
+<span id="stage-track-counter" class="text-xs font-semibold text-slate-400">Track 1 of 3</span>
+<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-4 py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1.5 border-cyan-500/40 bg-cyan-600/30 text-cyan-200">
 <span>Next Song</span>
 <i data-lucide="chevron-right" class="w-4 h-4 stroke-[3]"></i>
 </button>
@@ -291,7 +208,7 @@ Exit Mode
 
 <!-- SONG MODAL (ADD / EDIT) -->
 <div id="song-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
-<div class="bg-slate-900/95 border border-blue-500/30 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
+<div class="bg-slate-900 border border-blue-500/30 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
 <div class="flex justify-between items-center border-b border-slate-800 pb-4">
 <h3 id="song-modal-title" class="text-xl font-bold text-white">Add New Song</h3>
 <button onclick="closeSongModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -300,43 +217,51 @@ Exit Mode
 <input type="hidden" id="edit-song-id">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-slate-300">Song Title *</label>
-<input type="text" id="form-song-title" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<label class="text-xs font-medium text-slate-300">Song Title *</label>
+<input type="text" id="form-song-title" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Singer / Artist</label>
-<input type="text" id="form-song-singer" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<label class="text-xs font-medium text-slate-300">Singer / Artist</label>
+<input type="text" id="form-song-singer" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
 </div>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-slate-300">Original Key</label>
-<select id="form-song-key" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<label class="text-xs font-medium text-slate-300">Original Key</label>
+<select id="form-song-key" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
 <option value="C">Key of C</option><option value="C#">Key of C#</option><option value="D">Key of D</option><option value="D#">Key of D#</option><option value="E">Key of E</option><option value="F">Key of F</option><option value="F#">Key of F#</option><option value="G">Key of G</option><option value="G#">Key of G#</option><option value="A">Key of A</option><option value="A#">Key of A#</option><option value="B">Key of B</option>
 </select>
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Tempo / Style</label>
-<input type="text" id="form-song-tempo" placeholder="e.g. Slow (68 BPM)" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 font-medium">
+<label class="text-xs font-medium text-slate-300">Tempo / Style</label>
+<input type="text" id="form-song-tempo" placeholder="e.g. Slow (68 BPM)" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-400">
 </div>
 </div>
-<!-- Media Links Inputs -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="rounded-2xl border border-blue-800/50 bg-slate-950/70 p-4 space-y-3">
+<div class="flex items-center justify-between gap-3 flex-wrap">
 <div>
-<label class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5"><i data-lucide="youtube" class="w-3.5 h-3.5 text-red-400"></i><span>YouTube Video Link or ID</span></label>
-<input type="text" id="form-song-youtube" placeholder="https://youtube.com/watch?v=..." class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-400/50 font-medium">
+<h4 class="text-sm font-bold text-white flex items-center gap-2"><i data-lucide="search" class="w-4 h-4 text-cyan-300"></i> Find this song online</h4>
+<p class="text-[11px] text-slate-400 mt-1">Search Google for lyrics and chords, then bring the text you are allowed to use into the importer below.</p>
+</div>
+<button type="button" onclick="searchSongOnGoogle()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-2"><i data-lucide="external-link" class="w-3.5 h-3.5"></i> Search Google</button>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-medium text-slate-300" for="song-import-text">Paste lyrics or a chord sheet</label>
+<textarea id="song-import-text" rows="5" placeholder="Paste the song text here…
+For best chord alignment, use inline chords like [G]Amazing [D]Grace, or chord lines directly above lyrics." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
+<div class="flex flex-wrap gap-2">
+<button type="button" onclick="importSongText('lyrics')" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-semibold">Import lyrics only</button>
+<button type="button" onclick="importSongText('chords')" class="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold">Import lyrics + chords</button>
+</div>
+<p id="song-import-status" class="text-[11px] text-slate-500">Google results open in a new tab. Copy the text from a source you have permission to use, return here, and paste it above. Importing does not save the song until you click Save Song.</p>
+</div>
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5"><i data-lucide="disc" class="w-3.5 h-3.5 text-emerald-400"></i><span>Spotify Track Link or ID</span></label>
-<input type="text" id="form-song-spotify" placeholder="https://open.spotify.com/track/..." class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-400/50 font-medium">
-</div>
-</div>
-<div>
-<label class="text-xs font-semibold text-slate-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
+<label class="text-xs font-medium text-slate-300">Lyrics & Chords (e.g., [G] You are [C] here)</label>
 <textarea id="form-song-lyrics" rows="8" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-cyan-400"></textarea>
 </div>
 <div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
-<button type="button" onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+<button type="button" onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-medium">Cancel</button>
 <button type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold shadow-lg shadow-blue-500/20">Save Song</button>
 </div>
 </form>
@@ -345,99 +270,67 @@ Exit Mode
 
 <!-- LINEUP MODAL -->
 <div id="lineup-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
-<div class="bg-slate-900/95 border border-blue-500/30 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
+<div class="bg-slate-900 border border-blue-500/30 rounded-3xl w-full max-w-2xl p-6 shadow-2xl space-y-6 my-8">
 <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-<h3 id="lineup-modal-title" class="text-xl font-bold text-white">Create Service Lineup</h3>
+<h3 class="text-xl font-bold text-white">Create Service Lineup</h3>
 <button onclick="closeLineupModal()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
 </div>
 <form onsubmit="saveLineupForm(event)" class="space-y-4">
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div>
-<label class="text-xs font-semibold text-slate-300">Lineup Title *</label>
-<input type="text" id="form-lineup-title" required placeholder="e.g. Sunday Worship" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
+<label class="text-xs font-medium text-slate-300">Lineup Title *</label>
+<input type="text" id="form-lineup-title" required placeholder="e.g. Sunday Worship" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white">
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Service Date *</label>
-<input type="date" id="form-lineup-date" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
+<label class="text-xs font-medium text-slate-300">Service Date *</label>
+<input type="date" id="form-lineup-date" required class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white">
 </div>
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Worship Leader</label>
-<input type="text" id="form-lineup-leader" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
+<label class="text-xs font-medium text-slate-300">Worship Leader</label>
+<input type="text" id="form-lineup-leader" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white">
 </div>
 <div>
-<label class="text-xs font-semibold text-slate-300">Service Notes / Theme</label>
-<input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white font-medium">
+<label class="text-xs font-medium text-slate-300">Service Notes / Theme</label>
+<input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white">
 </div>
 <div class="space-y-3 pt-2">
 <label class="text-xs font-bold text-cyan-300 uppercase tracking-wider">Select Songs for Lineup</label>
 <div id="lineup-songs-checkboxes" class="max-h-48 overflow-y-auto space-y-1.5 p-2 rounded-xl bg-slate-950 border border-slate-800"></div>
 </div>
 <div class="flex justify-end space-x-3 pt-4 border-t border-slate-800">
-<button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
-<button id="lineup-submit-btn" type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold shadow-lg shadow-blue-500/20">Create Lineup</button>
+<button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-medium">Cancel</button>
+<button type="submit" class="px-6 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-xs font-bold">Create Lineup</button>
 </div>
 </form>
 </div>
 </div>
 
 <!-- MOBILE BOTTOM NAVIGATION -->
-<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/90 backdrop-blur-2xl border-t border-blue-900/40 px-6 py-2 flex justify-around items-center shadow-2xl">
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-2xl border-t border-blue-900/40 px-6 py-2 flex justify-around items-center">
 <button onclick="switchTab('home')" id="bm-home" class="flex flex-col items-center py-1 px-3 text-cyan-400">
 <i data-lucide="home" class="w-5 h-5"></i>
-<span class="text-[10px] font-bold mt-1">Home</span>
+<span class="text-[10px] font-semibold mt-1">Home</span>
 </button>
 <button onclick="switchTab('songs')" id="bm-songs" class="flex flex-col items-center py-1 px-3 text-slate-400">
 <i data-lucide="book-open" class="w-5 h-5"></i>
-<span class="text-[10px] font-bold mt-1">Song Bank</span>
+<span class="text-[10px] font-semibold mt-1">Song Bank</span>
 </button>
 <button onclick="switchTab('lineup')" id="bm-lineup" class="flex flex-col items-center py-1 px-3 text-slate-400">
 <i data-lucide="calendar" class="w-5 h-5"></i>
-<span class="text-[10px] font-bold mt-1">Lineups</span>
+<span class="text-[10px] font-semibold mt-1">Lineups</span>
 </button>
-</div>
-
-<!-- PWA MOBILE INSTALLATION BANNER MODAL -->
-<div id="pwa-install-banner" class="fixed bottom-16 md:bottom-6 left-3 right-3 sm:left-4 sm:right-4 max-w-md mx-auto z-50 glass-panel rounded-2xl p-3.5 sm:p-4 shadow-2xl border border-cyan-500/40 flex items-center justify-between gap-2 hidden animate-fadeIn">
-<div class="flex items-center space-x-3 min-w-0">
-<div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-cyan-500/20">
-<i data-lucide="download" class="w-4 h-4 sm:w-5 sm:h-5 text-white"></i>
-</div>
-<div class="min-w-0">
-<h4 class="text-xs sm:text-sm font-bold text-white truncate">Install SSLIM App</h4>
-<p class="text-[10px] sm:text-[11px] text-slate-300 truncate">Tap to install on your mobile home screen</p>
-</div>
-</div>
-<div class="flex items-center space-x-1.5 flex-shrink-0">
-<button onclick="triggerPWAInstall()" class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-xs shadow-md shadow-blue-500/30 whitespace-nowrap">
-Install
-</button>
-<button onclick="dismissPWAInstall()" class="p-1.5 rounded-lg text-slate-400 hover:text-white"><i data-lucide="x" class="w-4 h-4"></i></button>
-</div>
 </div>
 
 <!-- JAVASCRIPT APP LOGIC -->
 <script>
 const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
-// Initial Seed Songs updated with YouTube / Spotify media references
+// Initial Seed Songs
 let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
-{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
-{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
-{ id: 's3', title: 'Build My Life', singer: 'Housefires', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' }
-];
-
-// Curated Online Worship Catalog for YouTube / Spotify search
-const MEDIA_CATALOG = [
-  { title: 'Way Maker', singer: 'Sinach', youtube: 'QM8jQHE5AAk', spotify: '1BxfuPKuaBlyZgBg5aZaB1' },
-  { title: 'Goodness of God', singer: 'Bethel Music / Jenn Johnson', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW' },
-  { title: 'Build My Life', singer: 'Housefires / Pat Barrett', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW' },
-  { title: '10,000 Reasons (Bless The Lord)', singer: 'Matt Redman', youtube: 'XtwIT8JelxI', spotify: '0Z1q24hL8U4K4f3F8J68zW' },
-  { title: 'Reckless Love', singer: 'Cory Asbury', youtube: '6xx0d3R2LoU', spotify: '0uN5f2G17R3q1F7g2sK4M2' },
-  { title: 'What A Beautiful Name', singer: 'Hillsong Worship', youtube: 'r5L6v8h0m8I', spotify: '6W0293N0z7e9K3n0m8I6bW' },
-  { title: 'Oceans (Where Feet May Fail)', singer: 'Hillsong UNITED', youtube: 'dy9nwe9_xzw', spotify: '0x1q59A083uQ22M054fM3v' },
-  { title: 'Graves Into Gardens', singer: 'Elevation Worship', youtube: 'KwX1f2X6d2E', spotify: '0vM005fB08v8H5n3m8I6bW' },
-  { title: 'Holy Forever', singer: 'Chris Tomlin', youtube: 'Hcn1Xmvh1hU', spotify: '4x3n0m8I6bW005fB08v8H5' }
+{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', originalKey: 'G', tempo: 'Slow (68 BPM)', lyrics: '[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
+{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', originalKey: 'A', tempo: 'Mid (70 BPM)', lyrics: '[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
+{ id: 's3', title: 'Build My Life', singer: 'Housefires', originalKey: 'G', tempo: 'Mid (68 BPM)', lyrics: '[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' }
 ];
 
 // Initial Seed Lineups
@@ -448,8 +341,6 @@ let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
 let songTranspositions = {};
 let activeTabState = 'home';
 let expandedSongId = null;
-let editingLineupId = null;
-let lineupDraftSongIds = [];
 
 // Presentation Stage state
 let currentStageLineup = null;
@@ -457,85 +348,7 @@ let currentStageSongIdx = 0;
 let stageTranspositions = {};
 let showStageChords = true;
 
-// PWA Installation State
-let deferredPrompt = null;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true;
-
-function showInstallBanner() {
-    const banner = document.getElementById('pwa-install-banner');
-    if (!banner || isStandalone || localStorage.getItem('sslim_pwa_dismissed') === 'true') return;
-    banner.classList.remove('hidden');
-    const button = banner.querySelector('button[onclick="triggerPWAInstall()"]');
-    const hint = banner.querySelector('p');
-    if (isIOS) {
-        if (button) button.textContent = 'How to Install';
-        if (hint) hint.textContent = 'Safari Share → Add to Home Screen';
-    } else if (!deferredPrompt) {
-        if (button) button.textContent = 'Install Help';
-        if (hint) hint.textContent = 'Browser menu → Install app';
-    }
-}
-window.addEventListener('beforeinstallprompt', event => {
-    event.preventDefault();
-    deferredPrompt = event;
-    if (!isStandalone && localStorage.getItem('sslim_pwa_dismissed') !== 'true') {
-        showInstallBanner();
-        const button = document.querySelector('#pwa-install-banner button[onclick="triggerPWAInstall()"]');
-        const hint = document.querySelector('#pwa-install-banner p');
-        if (button) button.textContent = 'Install';
-        if (hint) hint.textContent = 'Tap to install SSLIM Worship';
-    }
-});
-window.addEventListener('appinstalled', () => {
-    deferredPrompt = null;
-    dismissPWAInstall();
-});
-if ('serviceWorker' in navigator && window.isSecureContext) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(error =>
-            console.error('SSLIM service worker registration failed:', error));
-    });
-}
-
-function renderFormattedLyrics(text, semitones = 0, showChords = true) {
-    if (!text) return '';
-    const transposed = transposeContent(text, semitones);
-    return `<div class="overflow-x-auto max-w-full pb-2">` + transposed.split('\n').map(line => {
-        const { hasChords, chords, lyrics } = parseLine(line);
-        let chordHtml = '';
-        if (showChords && hasChords) {
-            chordHtml = `<div class="whitespace-pre font-bold text-cyan-400 text-xs sm:text-sm tracking-wide select-none min-h-[1.25rem]">` +
-            chords.split(/(\S+)/).map(p => p.trim() ? `<span class="bg-cyan-500/10 border border-cyan-400/30 px-1 py-0.5 rounded text-cyan-300 mr-0.5 inline-block">${p}</span>` : p).join('') +
-            `</div>`;
-        }
-        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap sm:whitespace-pre text-slate-100 font-sans tracking-wide text-xs sm:text-base break-words">${lyrics || (hasChords ? '' : line)}</div></div>`;
-    }).join('') + `</div>`;
-}
-
-async function triggerPWAInstall() {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const choice = await deferredPrompt.userChoice;
-        if (choice && choice.outcome === 'accepted') dismissPWAInstall();
-        deferredPrompt = null;
-        return;
-    }
-    if (isIOS) {
-        alert('To install SSLIM Worship on iPhone/iPad:\n\n1. Open this website in Safari (not an in-app browser).\n2. Tap the Share button.\n3. Choose “Add to Home Screen”.\n4. Tap Add.');
-    } else {
-        alert('To install SSLIM Worship:\n\n1. Open this website in Chrome or another supported browser.\n2. Open the browser menu (⋮).\n3. Choose “Install app” or “Add to Home screen”.\n\nIf the option is missing, make sure the website uses HTTPS and reload it after deployment.');
-    }
-}
-function dismissPWAInstall() {
-    localStorage.setItem('sslim_pwa_dismissed', 'true');
-    const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.classList.add('hidden');
-}
-
-// Shared cloud storage & synchronization settings
+// Shared cloud storage settings. Paste your deployed Cloudflare Worker URL here.
 const SHARED_API_URL = 'https://sslim.eunicelardizabal30.workers.dev';
 const SYNC_INTERVAL_MS = 10000;
 let sharedFileSha = null;
@@ -553,55 +366,12 @@ function setSyncStatus(message, state = 'normal') {
     el.className = state === 'error' ? 'text-red-300' : state === 'ok' ? 'text-emerald-300' : 'text-cyan-300';
 }
 
-function setHomeSearchMode(mode) {
-    homeSearchMode = mode;
-    ['songs', 'youtube', 'spotify'].forEach(m => {
-        const btn = document.getElementById(`search-mode-${m}`);
-        if (btn) {
-            btn.className = m === mode
-                ? 'px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 flex items-center space-x-1'
-                : 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white flex items-center space-x-1';
-        }
-    });
-
-    const input = document.getElementById('global-search');
-    if (input) {
-        if (mode === 'songs') input.placeholder = 'Search songs, artists, or lyrics...';
-        if (mode === 'youtube') input.placeholder = 'Search YouTube videos or paste link/ID...';
-        if (mode === 'spotify') input.placeholder = 'Search Spotify tracks or paste link/ID...';
-        handleGlobalSearch(input.value);
-    }
-}
-
-function handleGlobalSearch(query) {
-    const container = document.getElementById('global-search-results-container');
-    const grid = document.getElementById('global-search-grid');
-    const countEl = document.getElementById('global-search-count');
-    if (!query.trim()) { container.classList.add('hidden'); return; }
-    container.classList.remove('hidden');
-
-    const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()) || s.lyrics.toLowerCase().includes(query.toLowerCase()));
-    countEl.innerText = `Song Bank Matches (${matches.length})`;
-    grid.innerHTML = matches.length === 0 ? `<div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800 text-slate-400 text-sm">No matching songs found in your Song Bank.</div>` : matches.map(s => `
-    <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
-    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
-    <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
-    </div>`).join('');
-
-    if (window.lucide) lucide.createIcons();
-}
-
-function quickAddMediaSong(ytLink, spLink) {
-    openSongModal();
-    if (ytLink) document.getElementById('form-song-youtube').value = ytLink;
-    if (spLink) document.getElementById('form-song-spotify').value = spLink;
-}
-
 function saveLocalBackup() {
     localStorage.setItem('sslim_songs', JSON.stringify(songs));
     localStorage.setItem('sslim_lineups', JSON.stringify(lineups));
 }
 
+// Keep the existing saveData() calls throughout the app; each now queues a cloud save.
 function saveData() {
     saveLocalBackup();
     syncDirty = true;
@@ -630,11 +400,11 @@ function refreshVisibleView() {
     if (activeTabState === 'home') renderHome();
     if (activeTabState === 'songs') renderSongsBank();
     if (activeTabState === 'lineup') renderLineupsView();
-    if (window.lucide) lucide.createIcons();
+    lucide.createIcons();
 }
 
 function isEditingOrPresenting() {
-    return ['song-modal', 'lineup-modal', 'presentation-modal', 'media-modal'].some(id => {
+    return ['song-modal', 'lineup-modal', 'presentation-modal'].some(id => {
         const el = document.getElementById(id);
         return el && !el.classList.contains('hidden');
     });
@@ -693,7 +463,7 @@ async function pushSharedData() {
         if (response.status === 409) {
             await loadSharedData({ silent: true });
             syncDirty = false;
-            throw new Error('Another user updated the shared file. Reloaded latest version.');
+            throw new Error('Another user updated the shared file at the same time. The latest shared copy has been loaded; please reapply your change and save again.');
         }
         if (!response.ok) throw new Error(result.error || `Cloud save failed (HTTP ${response.status}).`);
         sharedFileSha = result.sha || sharedFileSha;
@@ -728,311 +498,429 @@ function startSharedSync() {
     });
 }
 
-// Navigation Tab Switcher
 function switchTab(tab) {
-    activeTabState = tab;
-    ['home', 'songs', 'lineup'].forEach(t => {
-        const target = document.getElementById(`tab-${t}`);
-        if (target) target.classList.add('hidden');
-        
-        const nav = document.getElementById(`nav-${t}`);
-        if (nav) {
-            nav.className = t === tab 
-                ? 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-md shadow-blue-500/20' 
-                : 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-400 hover:text-slate-200 hover:bg-slate-800/60';
-        }
-        
-        const bm = document.getElementById(`bm-${t}`);
-        if (bm) {
-            bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-cyan-400' : 'flex flex-col items-center py-1 px-3 text-slate-400';
-        }
-    });
-    
-    const activeEl = document.getElementById(`tab-${tab}`);
-    if (activeEl) activeEl.classList.remove('hidden');
-    
-    if (tab === 'home') renderHome();
-    if (tab === 'songs') renderSongsBank();
-    if (tab === 'lineup') renderLineupsView();
-    if (window.lucide) lucide.createIcons();
+activeTabState = tab;
+['home', 'songs', 'lineup'].forEach(t => {
+document.getElementById(`tab-${t}`).classList.add('hidden');
+const nav = document.getElementById(`nav-${t}`);
+if (nav) {
+nav.className = t === tab ? 'flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium bg-blue-600 text-white shadow-lg shadow-blue-600/30' : 'flex items-center space-x-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-slate-200 hover:bg-slate-800/50';
 }
-
-// Helper functions to parse YouTube & Spotify URLs
-function getYouTubeId(urlOrId) {
-    if (!urlOrId) return null;
-    const str = String(urlOrId).trim();
-    if (str.length === 11 && !str.includes('/') && !str.includes('.')) return str;
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = str.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
+const bm = document.getElementById(`bm-${t}`);
+if (bm) {
+bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-cyan-400' : 'flex flex-col items-center py-1 px-3 text-slate-400';
 }
-
-function getSpotifyTrackId(urlOrId) {
-    if (!urlOrId) return null;
-    const str = String(urlOrId).trim();
-    if (str.includes('spotify.com/track/')) {
-        const parts = str.split('track/');
-        return parts[1] ? parts[1].split('?')[0] : null;
-    }
-    if (!str.includes('/') && !str.includes('.')) return str;
-    return null;
-}
-
-function openMediaModal(songId, type) {
-    const song = songs.find(s => s.id === songId);
-    if (!song) return;
-
-    const container = document.getElementById('media-embed-container');
-    const titleEl = document.getElementById('media-modal-title');
-    const iconBg = document.getElementById('media-modal-icon-bg');
-    const icon = document.getElementById('media-modal-icon');
-
-    if (type === 'youtube') {
-        const ytId = getYouTubeId(song.youtube);
-        if (!ytId) return alert('No valid YouTube link or ID configured for this song.');
-        titleEl.textContent = `${song.title} - YouTube`;
-        iconBg.className = 'p-2 rounded-xl bg-red-500/20 text-red-400';
-        icon.setAttribute('data-lucide', 'youtube');
-        container.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-    } else if (type === 'spotify') {
-        const spId = getSpotifyTrackId(song.spotify);
-        if (!spId) return alert('No valid Spotify link or ID configured for this song.');
-        titleEl.textContent = `${song.title} - Spotify`;
-        iconBg.className = 'p-2 rounded-xl bg-emerald-500/20 text-emerald-400';
-        icon.setAttribute('data-lucide', 'disc');
-        container.innerHTML = `<iframe class="w-full h-full rounded-2xl" src="https://open.spotify.com/embed/track/${spId}?utm_source=generator&theme=0" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-    }
-
-    if (window.lucide) lucide.createIcons();
-    document.getElementById('media-modal').classList.remove('hidden');
-}
-
-function closeMediaModal() {
-    document.getElementById('media-embed-container').innerHTML = '';
-    document.getElementById('media-modal').classList.add('hidden');
+});
+document.getElementById(`tab-${tab}`).classList.remove('hidden');
+if (tab === 'home') renderHome();
+if (tab === 'songs') renderSongsBank();
+if (tab === 'lineup') renderLineupsView();
 }
 
 // Transposition helpers
 function transposeChord(chord, semitones) {
-    if (!chord || semitones === 0) return chord;
-    if (chord.includes('/')) {
-        const parts = chord.split('/');
-        return `${transposeChord(parts[0], semitones)}/${transposeChord(parts[1], semitones)}`;
-    }
-    const match = chord.match(/^([A-G][#b]?)(.*)/);
-    if (!match) return chord;
-    const flatToSharp = { 'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#' };
-    const root = flatToSharp[match[1]] || match[1];
-    const idx = CHROMATIC.indexOf(root);
-    if (idx === -1) return chord;
-    let newIdx = (idx + semitones) % 12;
-    if (newIdx < 0) newIdx += 12;
-    return CHROMATIC[newIdx] + match[2];
+if (!chord || semitones === 0) return chord;
+if (chord.includes('/')) {
+const parts = chord.split('/');
+return `${transposeChord(parts[0], semitones)}/${transposeChord(parts[1], semitones)}`;
 }
-
-const SECTION_LABELS = new Set([
-    'verse', 'intro', 'chorus', 'bridge', 'pre-chorus', 'pre chorus', 'ending', 'prelude'
-]);
-
-function isSectionLabel(value) {
-    return SECTION_LABELS.has(String(value || '').trim().toLowerCase().replace(/\s+/g, ' '));
+const match = chord.match(/^([A-G][#b]?)(.*)/);
+if (!match) return chord;
+const flatToSharp = { 'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#' };
+const root = flatToSharp[match[1]] || match[1];
+const idx = CHROMATIC.indexOf(root);
+if (idx === -1) return chord;
+let newIdx = (idx + semitones) % 12;
+if (newIdx < 0) newIdx += 12;
+return CHROMATIC[newIdx] + match[2];
 }
 
 function transposeContent(text, semitones) {
-    if (!text) return text;
-    const normalized = normalizeChordRows(text);
-    if (semitones === 0) return normalized;
-    return normalized.replace(/\[([^\]]+)\]/g, (whole, c) => {
-        const chord = c.trim();
-        return isSectionLabel(chord) ? whole : `[${transposeChord(chord, semitones)}]`;
-    });
-}
-
-function isChordToken(token) {
-    const clean = String(token || '').replace(/[|,;]/g, '').trim();
-    if (isSectionLabel(clean)) return false;
-    return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|omit|no|2|4|5|6|7|9|11|13|b5|#5|b9|#9|b13|\+|°|ø|-|\(.*\)))*(?:\/(?:[A-G](?:#|b)?))?$/.test(clean)
-        || /^(?:N\.C\.|NC)$/i.test(clean);
-}
-
-function isChordOnlyLine(line) {
-    const tokens = String(line || '').trim().split(/\s+/).filter(Boolean);
-    return tokens.length > 0 && tokens.every(isChordToken);
-}
-
-function chordLineToInline(chordLine, lyricLine) {
-    const tokens = [...String(chordLine || '').matchAll(/\S+/g)].filter(m => isChordToken(m[0]));
-    let result = String(lyricLine || '');
-    tokens.sort((a, b) => b.index - a.index).forEach(token => {
-        const position = Math.min(token.index, result.length);
-        const chord = token[0].replace(/[|,;]/g, '');
-        result = result.slice(0, position) + '[' + chord + ']' + result.slice(position);
-    });
-    return result;
-}
-
-function normalizeChordRows(text) {
-    const lines = String(text || '').replace(/\r/g, '').split('\n');
-    const output = [];
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        if (isChordOnlyLine(line)) {
-            let next = i + 1;
-            while (next < lines.length && !lines[next].trim()) next++;
-            if (next < lines.length && !isChordOnlyLine(lines[next]) && !/\[[^\]]+\]/.test(lines[next])) {
-                output.push(chordLineToInline(line, lines[next]));
-                i = next;
-                continue;
-            }
-        }
-        output.push(line);
-    }
-    return output.join('\n');
+if (!text || semitones === 0) return text;
+return text.replace(/\[([^\]]+)\]/g, (_, c) => `[${transposeChord(c.trim(), semitones)}]`);
 }
 
 function parseLine(line) {
-    if (!line.includes('[')) return { hasChords: false, chords: '', lyrics: line };
-    let chordLine = '', lyricLine = '', currentIndex = 0;
-    const regex = /\[([^\]]+)\]/g;
-    let match;
-    while ((match = regex.exec(line)) !== null) {
-        const chord = match[1], matchIndex = match.index;
-        lyricLine += line.slice(currentIndex, matchIndex);
-        while (chordLine.length < lyricLine.length) chordLine += ' ';
-        chordLine += chord;
-        currentIndex = regex.lastIndex;
-    }
-    lyricLine += line.slice(currentIndex);
-    return { hasChords: true, chords: chordLine, lyrics: lyricLine };
+if (!line.includes('[')) return { hasChords: false, chords: '', lyrics: line };
+let chordLine = '', lyricLine = '', currentIndex = 0;
+const regex = /\[([^\]]+)\]/g;
+let match;
+while ((match = regex.exec(line)) !== null) {
+const chord = match[1], matchIndex = match.index;
+lyricLine += line.slice(currentIndex, matchIndex);
+while (chordLine.length < lyricLine.length) chordLine += ' ';
+chordLine += chord;
+currentIndex = regex.lastIndex;
+}
+lyricLine += line.slice(currentIndex);
+return { hasChords: true, chords: chordLine, lyrics: lyricLine };
 }
 
 function renderLyricsHTML(text, semitones = 0, showChords = true) {
-    if (!text) return '';
-    const transposed = transposeContent(text, semitones);
-    return transposed.split('\n').map(line => {
-        const { hasChords, chords, lyrics } = parseLine(line);
-        let chordHtml = '';
-        if (showChords && hasChords) {
-            chordHtml = `<div class="whitespace-pre font-bold text-cyan-400 text-xs sm:text-sm tracking-wide select-none min-h-[1.25rem]">` +
-            chords.split(/(\S+)/).map(p => p.trim() ? `<span class="bg-cyan-500/10 border border-cyan-400/30 px-1 py-0.5 rounded text-cyan-300 mr-0.5">${p}</span>` : p).join('') +
-            `</div>`;
-        }
-        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre text-slate-100 font-sans tracking-wide text-sm sm:text-base">${lyrics || (hasChords ? '' : line)}</div></div>`;
-    }).join('');
+if (!text) return '';
+const transposed = transposeContent(text, semitones);
+return transposed.split('\n').map(line => {
+const { hasChords, chords, lyrics } = parseLine(line);
+let chordHtml = '';
+if (showChords && hasChords) {
+chordHtml = `<div class="whitespace-pre font-bold text-cyan-400 text-xs sm:text-sm tracking-wide select-none min-h-[1.25rem]">` +
+chords.split(/(\S+)/).map(p => p.trim() ? `<span class="bg-cyan-500/10 border border-cyan-400/30 px-1 py-0.5 rounded text-cyan-300 mr-0.5">${p}</span>` : p).join('') +
+`</div>`;
+}
+return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre text-slate-100 font-sans tracking-wide text-sm sm:text-base">${lyrics || (hasChords ? '' : line)}</div></div>`;
+}).join('');
 }
 
 // Home View Renderer
 function renderHome() {
-    const grid = document.getElementById('home-lineups-grid');
-    if (!grid) return;
-    grid.innerHTML = lineups.slice(0, 3).map(l => {
-        const songPills = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean).map((s, idx) => `<span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">${idx+1}. ${s.title}</span>`).join('');
-        return `
-        <div class="rounded-2xl border border-blue-900/40 bg-slate-900/50 backdrop-blur-xl p-5 flex flex-col justify-between shadow-xl">
-        <div class="space-y-3">
-        <div class="flex justify-between items-start">
-        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-400/30 text-blue-300">${l.date}</span>
-        <span class="text-xs text-slate-400"><i data-lucide="user" class="w-3.5 h-3.5 inline text-cyan-400"></i> ${l.leader || 'Team'}</span>
-        </div>
-        <h4 class="font-bold text-lg text-white">${l.title}</h4>
-        <p class="text-xs text-slate-400 line-clamp-2">${l.notes || ''}</p>
-        <div class="space-y-1 pt-2"><p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Tracklist:</p><div class="flex flex-wrap gap-1.5">${songPills}</div></div>
-        </div>
-        <div class="pt-5 mt-4 border-t border-slate-800/60">
-        <button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
-        <i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch Presentation</span>
-        </button>
-        </div>
-        </div>`;
-    }).join('');
-    if (window.lucide) lucide.createIcons();
+const grid = document.getElementById('home-lineups-grid');
+grid.innerHTML = lineups.slice(0, 3).map(l => {
+const songPills = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean).map((s, idx) => `<span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700">${idx+1}. ${s.title}</span>`).join('');
+return `
+<div class="rounded-2xl border border-blue-900/40 bg-slate-900/50 backdrop-blur-xl p-5 flex flex-col justify-between shadow-xl">
+<div class="space-y-3">
+<div class="flex justify-between items-start">
+<span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-400/30 text-blue-300">${l.date}</span>
+<span class="text-xs text-slate-400"><i data-lucide="user" class="w-3.5 h-3.5 inline text-blue-400"></i> ${l.leader || 'Team'}</span>
+</div>
+<h4 class="font-bold text-lg text-white">${l.title}</h4>
+<p class="text-xs text-slate-400 line-clamp-2">${l.notes || ''}</p>
+<div class="space-y-1 pt-2"><p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Tracklist:</p><div class="flex flex-wrap gap-1.5">${songPills}</div></div>
+</div>
+<div class="pt-5 mt-4 border-t border-slate-800/60">
+<button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-medium text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
+<i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch Presentation</span>
+</button>
+</div>
+</div>`;
+}).join('');
+lucide.createIcons();
 }
 
 function handleGlobalSearch(query) {
-    const container = document.getElementById('global-search-results-container');
-    const grid = document.getElementById('global-search-grid');
-    if (!query.trim()) { container.classList.add('hidden'); return; }
-    container.classList.remove('hidden');
-    const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()));
-    document.getElementById('global-search-count').innerText = `Search Results (${matches.length})`;
-    grid.innerHTML = matches.map(s => `
-    <div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
-    <div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
-    <span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
-    </div>`).join('');
-    if (window.lucide) lucide.createIcons();
+const container = document.getElementById('global-search-results-container');
+const grid = document.getElementById('global-search-grid');
+if (!query.trim()) { container.classList.add('hidden'); return; }
+container.classList.remove('hidden');
+const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()));
+document.getElementById('global-search-count').innerText = `Search Results (${matches.length})`;
+grid.innerHTML = matches.map(s => `
+<div onclick="alertSongLyrics('${s.id}')" class="p-4 rounded-2xl bg-slate-900/60 border border-blue-900/40 hover:border-blue-500/50 cursor-pointer flex justify-between items-center">
+<div><h4 class="font-bold text-white">${s.title}</h4><p class="text-xs text-slate-400">${s.singer} • Key: <span class="text-cyan-400 font-bold">${s.originalKey}</span></p></div>
+<span class="text-xs px-3 py-1.5 rounded-lg bg-blue-600/20 text-blue-300 font-medium">View</span>
+</div>`).join('');
+lucide.createIcons();
 }
 
 function alertSongLyrics(id) {
-    const s = songs.find(x => x.id === id);
-    if (s) {
-        alert(`${s.title} (${s.originalKey})\n\n` + s.lyrics.replace(/\[[^\]]+\]/g, ''));
-    }
+const s = songs.find(x => x.id === id);
+if (s) {
+alert(`${s.title} (${s.originalKey})\n\n` + s.lyrics.replace(/\[[^\]]+\]/g, ''));
+}
 }
 
-// Songs Bank Renderer updated with YouTube & Spotify action buttons
+// Songs Bank Renderer
 function renderSongsBank() {
-    const searchInput = document.getElementById('song-bank-search');
-    const search = searchInput ? searchInput.value.toLowerCase() : '';
-    const list = document.getElementById('songs-bank-list');
-    if (!list) return;
+const search = document.getElementById('song-bank-search').value.toLowerCase();
+const list = document.getElementById('songs-bank-list');
+const filtered = songs.filter(s => s.title.toLowerCase().includes(search) || s.singer.toLowerCase().includes(search));
 
-    const filtered = songs.filter(s => s.title.toLowerCase().includes(search) || s.singer.toLowerCase().includes(search));
-
-    list.innerHTML = filtered.length === 0 ? `<div class="p-8 sm:p-12 text-center text-slate-400 text-xs sm:text-sm">No songs found.</div>` : filtered.map(s => {
-        const semitones = songTranspositions[s.id] || 0;
-        const currentKey = transposeChord(s.originalKey, semitones);
-        const isExpanded = expandedSongId === s.id;
-        const hasYt = !!getYouTubeId(s.youtube);
-        const hasSp = !!getSpotifyTrackId(s.spotify);
-
-        return `
-        <div class="rounded-2xl transition-all overflow-hidden ${isExpanded ? 'border border-cyan-400/50 bg-slate-900/90 shadow-2xl ring-1 ring-cyan-500/30' : 'glass-panel-interactive shadow-lg'}">
-        <div class="p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex-1 cursor-pointer flex items-center space-x-3 min-w-0" onclick="toggleSongExpand('${s.id}')">
-        <div class="p-2 sm:p-2.5 rounded-xl ${isExpanded ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'} flex-shrink-0"><i data-lucide="music" class="w-4 h-4"></i></div>
-        <div class="min-w-0 flex-1"><h3 class="text-sm sm:text-base font-bold text-white truncate">${s.title}</h3><p class="text-[11px] sm:text-xs text-cyan-300/80 font-medium truncate">${s.singer}</p></div>
-        </div>
-        <div class="flex items-center justify-between sm:justify-end space-x-1.5 sm:space-x-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-800/80">
-        <div class="flex items-center space-x-1">
-        ${hasYt ? `<button onclick="openMediaModal('${s.id}', 'youtube')" class="p-1.5 sm:p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Watch on YouTube"><i data-lucide="youtube" class="w-4 h-4"></i></button>` : ''}
-        ${hasSp ? `<button onclick="openMediaModal('${s.id}', 'spotify')" class="p-1.5 sm:p-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-emerald-400 transition" title="Listen on Spotify"><i data-lucide="disc" class="w-4 h-4"></i></button>` : ''}
-        </div>
-
-        <div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2 py-1 space-x-1">
-        <span class="text-[10px] sm:text-[11px] font-bold text-slate-400">Key:</span>
-        <span class="text-xs font-extrabold text-cyan-300 w-5 text-center">${currentKey}</span>
-        <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 font-bold text-xs hover:bg-slate-700">-</button>
-        <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 font-bold text-xs hover:bg-slate-700">+</button>
-        </div>
-        
-        <div class="flex items-center space-x-1">
-        <button onclick="openSongModal('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="Edit song"><i data-lucide="edit" class="w-4 h-4"></i></button>
-        <button onclick="deleteSong('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 text-red-400 transition" title="Delete song"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
-        <button onclick="toggleSongExpand('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 transition" title="View lyrics"><i data-lucide="eye" class="w-4 h-4"></i></button>
-        </div>
-        </div>
-        </div>
-        ${isExpanded ? `<div class="p-3.5 sm:p-6 border-t border-blue-900/40 bg-slate-950/80 overflow-x-auto">${renderFormattedLyrics(s.lyrics, semitones, true)}</div>` : ''}
-        </div>`;
-    }).join('');
-    if (window.lucide) lucide.createIcons();
+list.innerHTML = filtered.length === 0 ? `<div class="p-12 text-center text-slate-400">No songs found.</div>` : filtered.map(s => {
+const semitones = songTranspositions[s.id] || 0;
+const currentKey = transposeChord(s.originalKey, semitones);
+const isExpanded = expandedSongId === s.id;
+return `
+<div class="rounded-2xl border transition-all overflow-hidden ${isExpanded ? 'border-cyan-400/50 bg-slate-900/90 shadow-2xl' : 'border-blue-900/40 bg-slate-900/50 shadow-lg'}">
+<div class="p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex-1 cursor-pointer flex items-center space-x-3" onclick="toggleSongExpand('${s.id}')">
+<div class="p-2 rounded-xl ${isExpanded ? 'bg-cyan-500/20 text-cyan-300' : 'bg-slate-800 text-slate-400'}"><i data-lucide="music" class="w-4 h-4"></i></div>
+<div><h3 class="text-base font-bold text-white">${s.title}</h3><p class="text-xs text-blue-300">${s.singer}</p></div>
+</div>
+<div class="flex items-center space-x-2">
+<div class="flex items-center bg-slate-950/90 border border-blue-800/60 rounded-xl px-2 py-1 space-x-1.5">
+<span class="text-[11px] text-slate-400">Key:</span>
+<span class="text-xs font-bold text-cyan-300 w-5 text-center">${currentKey}</span>
+<button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 text-xs">-</button>
+<button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-cyan-300 text-xs">+</button>
+</div>
+<button onclick="openSongModal('${s.id}')" class="p-1.5 rounded-xl bg-slate-800 text-slate-300"><i data-lucide="edit" class="w-4 h-4"></i></button>
+<button onclick="deleteSong('${s.id}')" class="p-1.5 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+<button onclick="toggleSongExpand('${s.id}')" class="p-1.5 rounded-xl bg-slate-800 text-slate-400"><i data-lucide="eye" class="w-4 h-4"></i></button>
+</div>
+</div>
+${isExpanded ? `<div class="p-4 sm:p-6 border-t border-blue-900/40 bg-slate-950/70 overflow-x-auto">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
+</div>`;
+}).join('');
+lucide.createIcons();
 }
 
-// App startup
-window.addEventListener('load', async () => {
-    try {
-        await loadSharedData();
-        renderHome();
-        if (window.lucide) lucide.createIcons();
-        startSharedSync();
-    } catch (error) {
-        console.error('SSLIM app startup error:', error);
+function toggleSongExpand(id) {
+expandedSongId = expandedSongId === id ? null : id;
+renderSongsBank();
+}
+
+function changeKey(id, delta) {
+songTranspositions[id] = (songTranspositions[id] || 0) + delta;
+renderSongsBank();
+}
+
+function deleteSong(id) {
+if (confirm('Delete this song?')) {
+songs = songs.filter(s => s.id !== id);
+saveData();
+renderSongsBank();
+}
+}
+
+// Lineups Renderer
+function renderLineupsView() {
+const container = document.getElementById('lineups-view-container');
+container.innerHTML = lineups.map(l => {
+const lineupSongs = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
+return `
+<div class="p-5 rounded-2xl bg-slate-900/50 border border-blue-900/40 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<span class="text-xs font-bold text-cyan-400">${l.date}</span> <span class="text-slate-500">•</span> <span class="text-xs text-slate-400">${l.leader || 'Team'}</span>
+<h4 class="font-bold text-white text-lg mt-0.5">${l.title}</h4>
+<p class="text-xs text-slate-400 mt-1">${lineupSongs.length} songs in playlist</p>
+</div>
+<div class="flex items-center space-x-2">
+<button onclick="startPresentation('${l.id}', 0)" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center space-x-1.5"><i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch</span></button>
+<button onclick="deleteLineup('${l.id}')" class="p-2 rounded-xl bg-red-500/10 text-red-400"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+</div>
+</div>`;
+}).join('');
+lucide.createIcons();
+}
+
+function deleteLineup(id) {
+if (confirm('Delete lineup?')) {
+lineups = lineups.filter(l => l.id !== id);
+saveData();
+renderLineupsView();
+}
+}
+
+// Presentation Stage Mode
+function startPresentation(lineupId, songIdx) {
+currentStageLineup = lineups.find(l => l.id === lineupId);
+if (!currentStageLineup) return;
+currentStageSongIdx = songIdx;
+stageTranspositions = currentStageLineup.transpositions || {};
+document.getElementById('presentation-modal').classList.remove('hidden');
+renderStage();
+}
+
+function renderStage() {
+if (!currentStageLineup) return;
+document.getElementById('stage-lineup-title').innerText = currentStageLineup.title;
+document.getElementById('stage-lineup-leader').innerText = `Leader: ${currentStageLineup.leader || 'Team'}`;
+
+// Pills
+document.getElementById('stage-song-pills').innerHTML = currentStageLineup.songIds.map((sId, idx) => {
+const s = songs.find(x => x.id === sId);
+if (!s) return '';
+const active = idx === currentStageSongIdx;
+return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white' : 'bg-slate-900 border border-slate-800 text-slate-400'}">${idx+1}. ${s.title}</button>`;
+}).join('');
+
+const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
+const song = songs.find(s => s.id === currentSongId);
+if (!song) return;
+
+const semitones = stageTranspositions[currentSongId] || 0;
+document.getElementById('stage-song-title').innerText = song.title;
+document.getElementById('stage-song-singer').innerText = song.singer;
+document.getElementById('stage-song-key').innerText = transposeChord(song.originalKey, semitones);
+document.getElementById('stage-lyrics-box').innerHTML = renderLyricsHTML(song.lyrics, semitones, showStageChords);
+document.getElementById('stage-track-counter').innerText = `Track ${currentStageSongIdx + 1} of ${currentStageLineup.songIds.length}`;
+
+document.getElementById('stage-prev-btn').disabled = currentStageSongIdx === 0;
+document.getElementById('stage-next-btn').disabled = currentStageSongIdx === currentStageLineup.songIds.length - 1;
+lucide.createIcons();
+}
+
+function navigateStageSong(delta) {
+currentStageSongIdx += delta;
+renderStage();
+}
+
+function adjustStageKey(delta) {
+const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
+stageTranspositions[currentSongId] = (stageTranspositions[currentSongId] || 0) + delta;
+renderStage();
+}
+
+function toggleStageChords() {
+showStageChords = !showStageChords;
+const btn = document.getElementById('stage-chords-btn');
+btn.className = showStageChords ? 'px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-cyan-500/20 border-cyan-400 text-cyan-300' : 'px-2.5 py-1.5 rounded-xl border text-xs font-semibold flex items-center space-x-1 bg-slate-800 border-slate-700 text-slate-400';
+btn.innerHTML = `<i data-lucide="eye" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Chords On' : 'Chords Off'}</span>`;
+renderStage();
+}
+
+function exitPresentation() {
+document.getElementById('presentation-modal').classList.add('hidden');
+}
+
+// Song lookup and text importer. Google search opens externally; the app does not scrape or copy lyrics from websites.
+function searchSongOnGoogle() {
+    const title = document.getElementById('form-song-title').value.trim();
+    const singer = document.getElementById('form-song-singer').value.trim();
+    if (!title) {
+        alert('Enter the song title first, then search Google.');
+        document.getElementById('form-song-title').focus();
+        return;
     }
-    if (!isStandalone && localStorage.getItem('sslim_pwa_dismissed') !== 'true') {
-        setTimeout(showInstallBanner, 900);
+    const query = [title, singer, 'lyrics chords'].filter(Boolean).join(' ');
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+    window.open(url, '_blank', 'noopener,noreferrer');
+    document.getElementById('song-import-status').textContent = 'Google search opened in a new tab. Copy the lyrics or chord sheet from a source you are permitted to use, then paste it here.';
+}
+
+function isChordToken(token) {
+    return /^(?:[A-G](?:#|b)?)(?:(?:maj|min|m|M|dim|aug|sus|add|2|4|5|6|7|9|11|13|\+|°|ø|-)*)?(?:\/(?:[A-G](?:#|b)?))?$/.test(token.replace(/[|,;]/g, '')) || /^(?:N\.C\.|NC)$/i.test(token);
+}
+
+function isChordOnlyLine(line) {
+    const tokens = line.trim().split(/\s+/).filter(Boolean);
+    return tokens.length > 0 && tokens.every(isChordToken);
+}
+
+function chordLineToInline(chordLine, lyricLine) {
+    const tokens = [...chordLine.matchAll(/\S+/g)].filter(m => isChordToken(m[0]));
+    let result = lyricLine;
+    // Insert from right to left so earlier character positions remain valid.
+    tokens.sort((a, b) => b.index - a.index).forEach(token => {
+        const position = Math.min(token.index, result.length);
+        result = result.slice(0, position) + '[' + token[0].replace(/[|,;]/g, '') + ']' + result.slice(position);
+    });
+    return result;
+}
+
+function formatImportedSongText(rawText, mode) {
+    const lines = String(rawText || '').replace(/\r/g, '').split('\n');
+    const output = [];
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        if (mode === 'chords' && isChordOnlyLine(line) && i + 1 < lines.length && lines[i + 1].trim()) {
+            output.push(chordLineToInline(line, lines[i + 1]));
+            i++;
+            continue;
+        }
+        if (mode === 'lyrics' && isChordOnlyLine(line)) continue;
+        let cleaned = line;
+        if (mode === 'lyrics') cleaned = cleaned.replace(/\[[^\]]+\]/g, '').replace(/\s{2,}/g, ' ').trimEnd();
+        output.push(cleaned);
     }
+    return output.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+
+function importSongText(mode) {
+    const raw = document.getElementById('song-import-text').value.trim();
+    if (!raw) {
+        alert('Paste the song text into the import box first.');
+        return;
+    }
+    const formatted = formatImportedSongText(raw, mode);
+    if (!formatted) {
+        alert('No usable song text was found.');
+        return;
+    }
+    const lyricsField = document.getElementById('form-song-lyrics');
+    if (lyricsField.value.trim() && !confirm('Replace the lyrics currently in the song editor with the imported text?')) return;
+    lyricsField.value = formatted;
+    document.getElementById('song-import-status').textContent = mode === 'lyrics'
+        ? 'Imported lyrics only. Chord symbols were removed.'
+        : 'Imported lyrics with chord markers. Chord lines above lyrics were converted to the app’s [G] chord format where possible.';
+    lyricsField.focus();
+}
+
+// Modals management
+function openSongModal(id = null) {
+document.getElementById('edit-song-id').value = id || '';
+document.getElementById('song-import-text').value = '';
+document.getElementById('song-import-status').textContent = 'Google results open in a new tab. Copy text from a source you have permission to use, return here, and paste it above.';
+if (id) {
+const s = songs.find(x => x.id === id);
+document.getElementById('song-modal-title').innerText = 'Edit Song';
+document.getElementById('form-song-title').value = s.title;
+document.getElementById('form-song-singer').value = s.singer;
+document.getElementById('form-song-key').value = s.originalKey;
+document.getElementById('form-song-tempo').value = s.tempo || '';
+document.getElementById('form-song-lyrics').value = s.lyrics;
+} else {
+document.getElementById('song-modal-title').innerText = 'Add New Song';
+document.getElementById('form-song-title').value = '';
+document.getElementById('form-song-singer').value = '';
+document.getElementById('form-song-key').value = 'C';
+document.getElementById('form-song-tempo').value = '';
+document.getElementById('form-song-lyrics').value = '';
+}
+document.getElementById('song-modal').classList.remove('hidden');
+}
+function closeSongModal() { document.getElementById('song-modal').classList.add('hidden'); }
+
+function saveSongForm(e) {
+e.preventDefault();
+const id = document.getElementById('edit-song-id').value;
+const data = {
+title: document.getElementById('form-song-title').value,
+singer: document.getElementById('form-song-singer').value,
+originalKey: document.getElementById('form-song-key').value,
+tempo: document.getElementById('form-song-tempo').value,
+lyrics: document.getElementById('form-song-lyrics').value
+};
+if (id) {
+songs = songs.map(s => s.id === id ? { ...s, ...data } : s);
+} else {
+songs.unshift({ id: 's_' + Date.now(), ...data, createdAt: new Date().toISOString().split('T')[0] });
+}
+saveData();
+closeSongModal();
+renderSongsBank();
+}
+
+function openLineupModal() {
+document.getElementById('form-lineup-title').value = '';
+document.getElementById('form-lineup-date').value = new Date().toISOString().split('T')[0];
+document.getElementById('form-lineup-leader').value = '';
+document.getElementById('form-lineup-notes').value = '';
+document.getElementById('lineup-songs-checkboxes').innerHTML = songs.map(s => `
+<label class="flex items-center justify-between p-2 rounded-lg bg-slate-900 border border-slate-800 text-xs cursor-pointer">
+<span>${s.title} (${s.singer})</span>
+<input type="checkbox" name="lineup-song" value="${s.id}" class="rounded bg-slate-950 border-slate-700 text-cyan-500">
+</label>`).join('');
+document.getElementById('lineup-modal').classList.remove('hidden');
+}
+function closeLineupModal() { document.getElementById('lineup-modal').classList.add('hidden'); }
+
+function saveLineupForm(e) {
+e.preventDefault();
+const songIds = Array.from(document.querySelectorAll('input[name="lineup-song"]:checked')).map(el => el.value);
+if (songIds.length === 0) { alert('Select at least one song.'); return; }
+lineups.unshift({
+id: 'l_' + Date.now(),
+title: document.getElementById('form-lineup-title').value,
+date: document.getElementById('form-lineup-date').value,
+leader: document.getElementById('form-lineup-leader').value,
+notes: document.getElementById('form-lineup-notes').value,
+songIds,
+transpositions: {}
 });
+saveData();
+closeLineupModal();
+renderLineupsView();
+}
+
+// Initialize on load
+window.onload = async () => {
+// Load the shared copy before drawing the first screen; localStorage remains a fallback.
+await loadSharedData();
+renderHome();
+lucide.createIcons();
+startSharedSync();
+};
 </script>
 </body>
 </html>

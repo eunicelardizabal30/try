@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446206511",
+      "title": "Papuri kay Yahweh",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nE Esus2 E Esus2\n \n[Verse 1]\nE\nUmaawit, Nagpupuri\nEsus2\nNagdiriwang ang lahat\nA\nPapuri Kay Yahweh\nE2\n(Yahweh Yahweh)\n \n[Verse 2]\nE\nLumalapit sa presensya Mo\nEsus2\nNagpupugay ang lahat\nA\nPapuri Kay Yahweh\nEsus2\n(Yahweh Yahweh)\n \n[Pre-Chorus]\nF#m7    G#m7\nSa lahat ng oras, sa bawat araw\nF#m7    B\nPinupuri at sinasamba\n \n[Chorus]\nE       B\nlkaw ang tunay na Diyos\nA\nHari ng mga hari\nA       B  C#m      B  A        B\nTapat kailanman, di nagbabago\nE       B\nlkaw ang tunay na Diyos\nA\nHari ng mga hari\nA       B  C#m      B  A        B\nTapat kailanman, di nagbabago\nB\nSi Yahweh ang ating Diyos\n\n\n\n[Bridge]\nE\nPagpapala'y bumubuhos na\nE\n(Yahweh, Yahweh)\nE\nSa ngalan Niya's may kagalingan\nE\n(Yahweh, Yahweh)\nF#m7    G#m7\nSa Kanya'y may tagumpay\nF#m7    G#m7\n(Yahweh, Yahweh)\nF#m7    G#m7\nlsigaw ng lahat ng nilalang\nA       B\n(Yahweh, Yahweh)"
+    },
+    {
       "id": "s_1794446193009",
       "title": "OPEN THE EYES",
       "singer": "",
@@ -1058,5 +1068,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:16:34.131Z"
+  "updatedAt": "2026-11-12T01:16:47.589Z"
 }

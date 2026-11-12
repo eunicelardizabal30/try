@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445634884",
+      "title": "I give you my heart",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\nD            Bm      G D    A\nThis is my desire to honour You\nBm                D               C     A\nLord with all my heart I worship You\nD              Bm\nAll I have within me\n  G    D   A\nI give You praise\nBm          D           C     A\nAll that I adore is in You\n \n[Chorus]\nD                     A\n  Lord I give You my heart\n               Em\nI give You my soul\n  G        A     D\nI live for You alone\n                     Asus4\nEvery breath that I take\n                  Em\nEvery moment I'm awake\n     G         A       D   A\nLord have Your way in me"
+    },
+    {
       "id": "s_1794445620900",
       "title": "I give You glory",
       "singer": "",
@@ -648,5 +658,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:07:02.171Z"
+  "updatedAt": "2026-11-12T01:07:15.495Z"
 }

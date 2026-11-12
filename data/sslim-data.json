@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445693323",
+      "title": "I speak Jesus",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: C Am F\nVerse1\nC\nI just want to speak the Name of Jesus\nAm\nOver every heart and every mind\nF\nI know there is peace within Your presence\n            C\nI speak Jesus\nVerse2\nC\nI just want to speak the Name of Jesus\nAm\n‘til every dark addiction starts to break\nF\nDeclaring there is hope and there is freedom\n          C\nI speak Jesus\n \nChorus\n                         G\nYour name is power\n                         F\nYour name is healing\n                         C\nYour name is life\n                         G\nBreak every stronghold\n                         F\nShine through the shadows\n                         C\nBurn like a fire\n\nVerse3\nC\nI just want to speak the Name of Jesus\nAm\nOver fear and all anxiety\nF\nTo every soul held captive by depression\n     \t   C\nI speak Jesus\n \nBridge\n      C\nShout Jesus from the mountains\nAnd Jesus in the streets\nAm\nJesus in the darkness over every enemy\nF\nJesus for my family\n                \t                     C\nI speak the holy name Jesus\n \nOutro\nC\nI just want to speak the Name of Jesus\nAm\nOver every heart and every mind\nF\nCause I know there is peace within Your presence\n   \t       C\nI speak Jesus"
+    },
+    {
       "id": "s_1794445678959",
       "title": "I sing praises to Your name",
       "singer": "",
@@ -688,5 +698,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:07:59.950Z"
+  "updatedAt": "2026-11-12T01:08:14.693Z"
 }

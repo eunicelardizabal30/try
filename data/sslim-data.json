@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446124847",
+      "title": "Ngiti/I love this family/Beloved",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Ngiti]\n\nA                                      Bm\nSMILE YOU LOOKS SO BEAUTIFUL\nE                                        A\nSMILE YOU LOOKS SO WONDERFUL\nD\nSMILE MY SISTER\nE\nSMILE MY BROTHER\n      C#m                           Bm\nIN EVERYTHING GIVE THANKS TO THE LORD\nA                               Bm\nSMILE MY SISTER, SMILE MY BROTHER\nD                                        E                          A\nIN EVERYTHING GIVE THANKS TO THE LORD\n \n(the rest is the same as above)\n \n[I love this family of God]\n    C      \tF   \t              C\nI love this family of God\n   C       \tF        \t         C\tC7\nSo closely knitted into one\n      \t         F\t             G\nYou have taken me into your heart\n           Em    \t          Am\nAnd I’m so glad to be a part\n     Dm   \t      G  \tC\nOf this great family\n \n \n[Beloved]\nC                     \t                    G\nBeloved, let us love one another\nFor love is of God and every one that loveth\n    C\nIs born of God and knoweth God\n           \t            C7\nHe that loveth not,\n           \t                           F\nKnoweth not God, for God is love\n   G                   \t                 C\nBeloved, let us love one another"
+    },
+    {
       "id": "s_1794446114021",
       "title": "My Redeemer lives",
       "singer": "",
@@ -998,5 +1008,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:15:15.094Z"
+  "updatedAt": "2026-11-12T01:15:25.699Z"
 }

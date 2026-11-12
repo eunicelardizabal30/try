@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445727333",
+      "title": "Ikaw ang Diyos Ikaw ang Hari",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "G              C            G\nNilikha mo ang langit at lupa\n             G              C\nAng lahat ay nalikha\n                 Am                  D\nDahil sa iyong mga salita\n\n        C                    D              Bm           Em\nNgunit higit ma r'yan ang nasa isip Mo\n             C                Am\nNang ako ay nalikha\n                   F                  D\nSa wangis at larawan mo\n\n        G          C\nNarito kami ngayon\n              G\nSa iyong harapan\nG                     C\nSumasamba nagpupuri\n       Am                 D\nSa iyong kabanalan\n     C                          D             Bm       Em\nLahat nang mga labi ay magsasabi\n                 C\nIkaw ang Diyos\n                       Am\nLahat nang tuhod\n       F                D\nSa iyo ay luluhod\n\n                   D7\nIkaw ang Diyos\nB7              Em\nIkaw ang Hari\n            C             D                   G\nPanginoon sa habang panahon\n                    D7\nIkaw ang Diyos\nB7              Em\nIkaw ang Hari\n                 C          D                   G\nMaghari ka magpakailanpaman"
+    },
+    {
       "id": "s_1794445704354",
       "title": "I Stand in awe of You",
       "singer": "",
@@ -708,5 +718,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:08:24.938Z"
+  "updatedAt": "2026-11-12T01:08:48.293Z"
 }

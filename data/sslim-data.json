@@ -216,7 +216,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=LKgEDYLd30E&list=RDLKgEDYLd30E&start_radio=1",
       "spotify": "",
       "lyrics": "[Intro]\nA C#m D E\n \n[Verse 1]\n            A      C#m\nTimes of refreshing\n              D      E\nHere in Your presence\n            A      F#m7\nNo greater blessing\n                G E\nThan being with You\n \n \n[Chorus]\n              C#m7   F#m7\nMy soul is restored\n    F#m      B/D#  Bm\nMy mind is renewed\n                   C#m7 F#m7 Bm\nThere's no greater joy Lord\n      E          A\nThan being with You"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T05:52:38.890Z"
+  "updatedAt": "2026-11-12T05:52:50.972Z"
 }

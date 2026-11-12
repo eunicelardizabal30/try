@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446017367",
+      "title": "Let there be joy (Children of Zion)",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro:\nG D C-Bm-Am-G C D G D\nVerse:\nG     D              C-Bm-Am-G\nWe are Your peo-ple O God\n  C                           D                   G\nWashed by the blood of the Lamb\nG            D            C-Bm-Am-G\nClothed in Your righteousness\nC            D               G\nIn Your favor we stand\nG     D         C-Bm-Am-G\nWe love exalting Your name\nC                 D      G\nLifting up holy hands\nG         D           C-Bm-Am-G\nPraise to our mighty God\n      C                 D         G\nJehovah the great I AM\n\nChorus:\n                        C                D                    Bm                   Em\nLet there be joy in the house of the Lord\n                        C                      D                      G\nLet there be praise To the God of our salvation\n                         C                     D           Bm              Em \nLet there be singing and shouting Dancing in celebration\nC                     D\nChildren of Zion\nG\nRejoice!"
+    },
+    {
       "id": "s_1794446005831",
       "title": "Langit",
       "singer": "",
@@ -908,5 +918,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:13:26.488Z"
+  "updatedAt": "2026-11-12T01:13:38.382Z"
 }

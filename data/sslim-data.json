@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446149956",
+      "title": "Oh the Glory",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro\nC   G\n\nVerse\nG              Em\nJesus all glorious\nC               D\nCreate in us a temple\nEm                 Bm\nCalled as living stones\n              C        D\nWhere You're enthroned\nG                 Em\nAs You rose from death in power\n    C                D    \nSo rise within our worship\nEm             Bm\nRise upon our praise\n             C                  G\nAnd let the hand that saw You raised\nC                G    Em\nClothe us in Your glory\nAm                D\nDraw us by Your grace\n\nChorus\n       G              C\nO the glory of Your presence\n         Am               D\nWe Your temple give You reverence\n    G.               Dm-G\nSo arise from Your rest\n        C               Am\nAnd be blessed by our praise\n       G    Em.   Am.   D.    Em.    Cm\nAs we glory in Your embrace\n        G     Em.     Am    D       C      G \nAs Your presence now fills this place"
+    },
+    {
       "id": "s_1794446136879",
       "title": "Nothing is impossible",
       "singer": "",
@@ -1018,5 +1028,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:15:37.557Z"
+  "updatedAt": "2026-11-12T01:15:50.397Z"
 }

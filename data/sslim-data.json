@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446114021",
+      "title": "My Redeemer lives",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: E7 A7(2x)\n[Verse] \nE7        A7\nI know He Rescued my soul\nE7        A7\nHis Blood covered my sin \n     E7    A7       E7     A7\nI believe      I believe\nE7            A7\nMy shame He's taken away \nE7          A7\n My pain is healed in His name\n     E7    A7       E7     A7\nI believe      I believe \n  \n[Pre-Chorus]\nBsus\n    I'll raise a banner\nA5                  Bsus          B\n 'Cause my Lord has conquered the grave \n  \n[Chorus]\n     E      A          C#m7   Bsus\nMy Redeemer lives my Redeemer lives\n     E      A          C#m7   Bsus\nMy Redeemer lives my Redeemer lives\n \n[Bridge] \nD\nYou lift my burdens \nA/C#\n    I'll rise with You\n    E/B             F#m7\nI'm dancing on this mountaintop\n   E/G#             Bsus    B\nTo see Your Kingdom come"
+    },
+    {
       "id": "s_1794446104222",
       "title": "My life is in You Lord",
       "singer": "",
@@ -988,5 +998,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:15:05.285Z"
+  "updatedAt": "2026-11-12T01:15:15.094Z"
 }

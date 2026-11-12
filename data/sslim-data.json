@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446424553",
+      "title": "This is the day(Rejoice in the LORD)",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\nD                        \nThis is the day that the Lord has made\nG        \nI will rejoice and be glad in it\nD                         \nOh, this is the day that the Lord has made\nG       \nI will rejoice and be glad in it\n \n[Chorus]\n   D            G       D            G\nRejoice in the Lord, Rejoice in the Lord\n \n[Verse 2]\nD                \nCelebrate the presence of the Lord\nG       \nFor He is worthy to be praised\nD               \nCelebrate the presence of the Lord\nG     \nFor He is worthy to be praised"
+    },
+    {
       "id": "s_1794446415889",
       "title": "This is the day",
       "singer": "",
@@ -1268,5 +1278,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:20:16.471Z"
+  "updatedAt": "2026-11-12T01:20:25.463Z"
 }

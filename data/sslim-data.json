@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446183983",
+      "title": "One way",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD  Bm7  A  G\n \n[Verse 1]\nD\n  I lay my life down at your feet\nBm7\n  'Coz you're the only one I need\nA                                    G\n  I turn to you and you were always there\nD\n  In troubled times it's you I seek\nBm\n  I put you first, that's all I need\nA                          G\n  I humble all I am on to you\n \n[Chorus]\nD         A\n  One way, Jesus\nBm7                       G\n  You're the only one that I could live for\nD         A\n  One way, Jesus\nBm7                       C\n  You're the only one that I could live for\n \n[Instrumental]\nBm7  G  Bm7  G\n \n[Verse 2]\nD\n  You are always, always there\nBm7\n  Every how and every where\nA                                    G\n  Your grace abounds so deeply within me\nD\n  You will never ever change\nBm7\n  Yesterday, today the same\nA                               G\n  Forever 'til forever meets no end\n \n\n\n\n\n[Bridge]\nD                      A\nYou are the way, the truth and the life\n    Bm7              G\nWe live by faith and not by sight\n      Bm7      A              G    G\nFor you, we're living all for you\nD                      A\nYou are the way, the truth and the life\n    Bm7              G\nWe live by faith and not by sight\n      Bm7      A              G   G\nFor you, we're living all for you\nD                      A\nYou are the way, the truth and the life\n    Bm7              G\nWe live by faith and not by sight\n      Bm7      A              G   G\nFor you, we're living all for you\nD                      A\nYou are the way, the truth and the life\n    Bm7              G\nWe live by faith and not by sight\n      Bm7      A              G   G\nFor you, we're living all for you\n \n[Chorus]\nD         A\n  One way, Jesus\nBm7                       G\n  You're the only one that I could live for\nD         A\n  One way, Jesus\nBm7                       G\n  You're the only one that I could live for\nD         A\n  One way, Jesus\nBm7                       G\n  You're the only one that I could live for\nD         A\n  One way, Jesus\nBm7                       G                G    D\n  You're the only one that I could live for"
+    },
+    {
       "id": "s_1794446158649",
       "title": "One day",
       "singer": "",
@@ -1038,5 +1048,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:15:59.116Z"
+  "updatedAt": "2026-11-12T01:16:24.470Z"
 }

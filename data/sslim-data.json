@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445827154",
+      "title": "Jesus at the center",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Jesus at the center"
+    },
+    {
       "id": "s_1794445816123",
       "title": "Itataas Kita",
       "singer": "",
@@ -788,5 +798,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:10:17.196Z"
+  "updatedAt": "2026-11-12T01:10:28.139Z"
 }

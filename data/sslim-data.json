@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446415889",
+      "title": "This is the day",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nC    Em     D    G     \n\n[Verse 1]\nC                 Em                 D\nThis is the day You've made\nG       C                    Em             D            G\nI'll rejoice and be glad with all that I am\nC                  Em               D   \nThis is the day You've made\nG       C                     Em       D\nI'll rejoice and be glad in You\n\n[Pre-chorus]\n                Em                      D\nThere's a supernatural praise\n            C                       G/B\nRising up in my heart up in my heart\n    Em                                  D            C\nA sound that has to be made O Lord\n\n[Chorus]\n              C      Em     D\nSo my heart will sing\nG               C   Em            D     G\nYou are good You are good\n                C     Em   D\nAnd with everything\nG         C      Em      D          G\nI will praise I will praise\n\n[Verse 2]\nC                  Em                D\nThis is the day You've made\nG                   C                Em            D               G\nAnd Your mercies are new Your promises true\nC                 Em                D\nThis is the day You've made\nG        C                    Em      D\nI'll rejoice and be glad in You\n\n[Bridge]\nC (Em)\nThis is the day You've made\nC (Em)\nSo I will give You praise\nD (F#m)\nWhatever comes my way I'll rejoice in You"
+    },
+    {
       "id": "s_1794446407940",
       "title": "The Spirit of the Lord",
       "singer": "",
@@ -1258,5 +1268,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:20:09.255Z"
+  "updatedAt": "2026-11-12T01:20:16.471Z"
 }

@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446308728",
+      "title": "So you would come",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\n \nC                   Em   F                G\nBefore the world began, You were on his mind\nF                  Em        F             G\nAnd every tear you cry, is precious in his eyes\n  F                   Em      E             Am\nBecause of his great love, he gave his only son\nDm              G                  C\nEverything was done, so you would come\n \n \n[Verse 2]\n \nC               Em           F                 G\nNothing you can do, could make him love you more\n      F                 Em         F                  G\nand nothing that you've done, could make him close the door\n   F                  Em      E             Am\nBecause of his great love, he gave his only son\nDm              G                 C\nEverything was done, so you would come\n \n \n[Verse 3]\n \n             F  G   Em                 Am\nCome to the Father, though your gift is small\nF                 Em          F                 G\nBroken hearts, broken lives, He will take them all\nF                 G          Em           Am\nThe power of the word, the power of His blood\nDm              G                  C\nEverything was done, so you would come"
+    },
+    {
       "id": "s_1794446298650",
       "title": "Siyasatin mo Hesus",
       "singer": "",
@@ -1158,5 +1168,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:18:20.247Z"
+  "updatedAt": "2026-11-12T01:18:30.206Z"
 }

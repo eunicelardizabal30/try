@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446226204",
+      "title": "Praise",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro\nF#m  D       A          E\n\n\n\nVerse1\n      A\nI'll praise in the valley\n D             A\nPraise on the mountain\n      E\nI'll praise when I'm sure\n D               A\nPraise when I'm doubting\n      A\nI'll praise when outnumbered\n D           A\nPraise when surrounded\n       E                D\nCause praise is the waters\n            A\nMy enemies drown in\n\nPrechorus\n    E\nAs long as I'm breathing\nD\nI've got a reason to\n\nChorus\nF#m  D       A          E\nPra-ise the Lord oh my soul\nF#m  D       A          E\nPra-ise the Lord oh my soul\n\nF#m\nI won’t be quiet\n D\nMy God is alive\nA           E\nHow could I keep it inside\n\nVerse2\n      A\nI'll praise when I feel it\n      D            A\nI'll praise when I don't\n      E               D\nI'll praise 'cause I know\n                 A\nYou're still in control\n          A\nCause my praise is a weapon\n      D           A\nIt's more than a sound\n    E                 D\nMy praise is the shout\n                     A\nThat brings Jericho down\n\nBridge\n      A\nI'll praise cause You're sovereign\nBm\nPraise cause You reign\nC#m\nPraise cause You rose\n       D\nAnd defeated the grave\n     A\nI'll praise cause You're faithful\nBm\nPraise cause You're true\nC#m\nPraise cause there's nobody\nD\nGreater than You"
+    },
+    {
       "id": "s_1794446216327",
       "title": "Power Presence Glory",
       "singer": "",
@@ -1078,5 +1088,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:16:57.193Z"
+  "updatedAt": "2026-11-12T01:17:07.274Z"
 }

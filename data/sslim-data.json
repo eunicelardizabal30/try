@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446076907",
+      "title": "Mercy is falling",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\n \n  A       D\nMercy is falling \n    F#m            E\nIs falling - is falling \n  A        D\nMercy, it falls \n          F#m          E\nLike the sweet spring rain \n  A       D\nMercy is falling \n     F#m          E   A\nIs falling all over me \n \n \n[Chorus]\n \n A\nHey-oh \n     D          E\nI receive your mercy \n A\nHey-oh \n     D        E\nI receive your grace \n A\nHey-oh \n        D       E    A\nI will dance forevermore"
+    },
+    {
       "id": "s_1794446065348",
       "title": "May galak - Handog",
       "singer": "",
@@ -958,5 +968,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:14:26.381Z"
+  "updatedAt": "2026-11-12T01:14:38.090Z"
 }

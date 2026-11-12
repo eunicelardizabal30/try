@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446407940",
+      "title": "The Spirit of the Lord",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: D-Bm-G-A\nVerse: \nD-Bm-G-A\nThe spirit of the Lord is great and mighty\nD-Bm-G-A\nThe spirit of the Lord is my victory\nD-Bm-G-A\nThe spirit of the Lord is great and mighty\nG-A-D\nGreat and mighty in me\n\nChorus 1:\nG-A-F#m-Bm-\nGreater is He that is in me\nEm-A-D\nThan he that is in the world\nG-A-F#m-Bm-\nI am more than a conqueror\nEm\nBy the power of his word\nA\nOf his word\n\nChorus 2:\nG-A-F#m-Bm-\nIn the name of Jesus\nEm-A-D\nI can do anything\nG-A-F#m-Bm-\nBy the power of his spirit\nEm\nThrough the one\nA\nWho strengthens me, strengthens me"
+    },
+    {
       "id": "s_1794446396819",
       "title": "The LORD reigns",
       "singer": "",
@@ -1248,5 +1258,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:19:58.092Z"
+  "updatedAt": "2026-11-12T01:20:09.255Z"
 }

@@ -546,7 +546,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=wL9ppzrZ_ms&list=RDwL9ppzrZ_ms&start_radio=1",
       "spotify": "",
       "lyrics": "C         Em7\nJehovah Jireh, my Provider\n        F           Dm7       G\nYou are more than enough for me\n        C                Em7\nJehovah Rapha, You're my Healer\n        F            Dm7       G\nBy Your stripes I've been set free\n        Am                   Em7\nJehovah Shamma, You are with me\n   E            Am\nTo supply all I need\n       Dm7       G\nYou're more than enough\nEm7        Am\nMore than enough\nDm7        G         C\nMore than enough for me"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T06:02:11.418Z"
+  "updatedAt": "2026-11-12T06:02:57.789Z"
 }

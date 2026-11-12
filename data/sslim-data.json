@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445859606",
+      "title": "Jesus, we enthrone you",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse:]\nE                            C#m\nJesus, we enthrone You\nA                                    E\nWe proclaim You are king\nC#m                              G#m\nStanding here in the midst of us\nA                     F#m              B\nWe raise You up with our praise\n\n[Chorus:]\nA                 B              C#m\nAnd as we worship, build your throne\nA                 B              E – C#m\nAnd as we worship, build your throne\nA                 B              G#m – C#m\nAnd as we worship, build your throne\n                    A                B               E\nCome Lord Jesus and take Your place"
+    },
+    {
       "id": "s_1794445847236",
       "title": "Jesus is Alive",
       "singer": "",
@@ -808,5 +818,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:10:48.602Z"
+  "updatedAt": "2026-11-12T01:11:00.026Z"
 }

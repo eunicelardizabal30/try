@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445941123",
+      "title": "Kamangha mangha Oh Diyos",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nA  D  A\n \n[VERSE I]\n \n    D            G\nOh Diyos, labis akong namamangha\n  Em            A   Em        D\nDahil kay ganda ng iyong nilikha\n    D             G\nMundo'y puno ng iyong pagpapalala\n    EM              A\nSa'yong salita nagmula\n \n \n[VERSE II]\n \n   D             G\nMasdan ang buong sandaigdigan\n   Em           A    Em     D\nGanda'y sadyang di mapapantayan\n    D              G\nMasdan maging ang hangin at ulan\n   Em                 A\nLikha ng Makapangyarihan\n \n \n[Chorus]\n              D\nKamangha-mangha oh Diyos\n         G\n Kapangyarihan Mong taglay\n    Em                 A                A7\nWalng makalulupig at walang papantay\n           D\nSa ngalan Mo oh Diyos\n   G\nKami'y magsasaysay \n            EM          A          D\nWalang hanggang papuri ang aming alay"
+    },
+    {
       "id": "s_1794445922209",
       "title": "Kamangha mangha",
       "singer": "",
@@ -838,5 +848,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:12:03.342Z"
+  "updatedAt": "2026-11-12T01:12:21.955Z"
 }

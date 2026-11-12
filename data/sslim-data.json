@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445804995",
+      "title": "Itataas itatanghal isisigaw",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse 1:\n     A  \t  C#m       D\nItataas ang ngalan Mo Hesus \n        E   \nKailanpaman\n  \t A\t  F#m/E\nItatanghal kadakilaan Mo\n\n\nG             \tE\n\n\nSadyang walang hanggan\n      A\nIsisigaw! (Whoo!)\nC#m           \tD              \nKapangyarihan Mo, wala nang \nC#m\npapantay\n\n\nD       \t C#m    \n\n\nKaluwalhatian Mo, Hesus\nF#m-Bm   C#m     \tD\n\n\nItataas, itatanghal, isisigaw\n\n\nE       \tA - E\nMagpakailanman\n\n\nChorus:\n\n\nA  C#m        \tD    \tE\nItataas, itatanghal, isisigaw, Hesus! (3x)\nBm   \tA    \t   F#m     \tE\nItataas, itatanghal, isisigaw, \n           A\nMagpakailanman"
+    },
+    {
       "id": "s_1794445792091",
       "title": "In the presence of Jehovah",
       "singer": "",
@@ -768,5 +778,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:09:53.486Z"
+  "updatedAt": "2026-11-12T01:10:06.090Z"
 }

@@ -556,7 +556,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=HXip3WshDog&list=RDHXip3WshDog&start_radio=1",
       "spotify": "",
       "lyrics": "[Verse]\n \n  A       D\nMercy is falling \n    F#m            E\nIs falling - is falling \n  A        D\nMercy, it falls \n          F#m          E\nLike the sweet spring rain \n  A       D\nMercy is falling \n     F#m          E   A\nIs falling all over me \n \n \n[Chorus]\n \n A\nHey-oh \n     D          E\nI receive your mercy \n A\nHey-oh \n     D        E\nI receive your grace \n A\nHey-oh \n        D       E    A\nI will dance forevermore"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T06:02:57.789Z"
+  "updatedAt": "2026-11-12T06:03:12.588Z"
 }

@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446658755",
+      "title": "Worthy of it All",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse:\nA B\nAll the saints and angels\nA B\nThey bow before Your throne\nA B E\nAll the elders cast their crowns\nA B E\nBefore the Lamb of God and sing\n\nChorus:\n                  E\nYou are worthy of it all\n                  B\nYou are worthy of it all, Jesus\n          A\nFor from You are all things\n          B\nAnd to You are all things\n                                E\nYou deserve the glory\n\nBridge:\nE                                                                G#m\nDay and night, night and day… Let incense arise\nC#m                                                             A\nDay and night, night and day… Let incense arise\nE                                                                 G#m\nDay and night, night and day… Let incense arise\nF#m                                                             A\nDay and night, night and day… Let incense arise\n\n[Tag]\n \nRepeat 2 Times\n \n    E\nI exalt thee\n    B\nI exalt thee\n    A         B     E\nI exalt thee,   oh Lord"
+    },
+    {
       "id": "s_1794446651019",
       "title": "Worthy is the Lamb",
       "singer": "",
@@ -1478,5 +1488,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:24:12.885Z"
+  "updatedAt": "2026-11-12T01:24:20.139Z"
 }

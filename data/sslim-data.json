@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445770231",
+      "title": "In moments like these",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\n \n      C           Am      Dm          G7\nIn moments like these, I sing out a song\n   Dm          G7         C   G7\nI sing out a love song to Je-sus\n      C           Am      Dm          G7\nIn moments like these, I lift up my hands\n   Dm          G7         C    C7\nI lift up my hands to the Lord\n \n \n[Chorus]\n \n        F   G        C  C7\nSinging I love you Lord\n        F   G        C  C7\nSinging I love you Lord\n        F   G  Am    F   C   G   C\nSinging I love you, Lord I love you"
+    },
+    {
       "id": "s_1794445760705",
       "title": "In Jesus Name",
       "singer": "",
@@ -738,5 +748,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:09:21.677Z"
+  "updatedAt": "2026-11-12T01:09:31.964Z"
 }

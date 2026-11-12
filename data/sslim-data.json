@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446526496",
+      "title": "Wala kang Katulad (Awitin ko man)",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\n \n D        A\nAwitin ko man\n         Bm        A\nLahat ng awit sa mundo\n      G         Em\nAy di kayang ilarawan\n        A\nAng Kadakilaan mo\n       G              A\nKulang ang lahat ng tula\n         F#m          Bm\nKulang maging mga salita\n      C\nUpang ihayag\n             A\nAng kabutihan mo\n \n \n[Chorus]\n \n            D       F#m\nWala kang katulad\n          G         A\nWala nang hihigit sayo\n            D       F#m\nWala kang katulad\n          G          A\nWala nang papantay sayo\n         F#m           Bm\nIkaw ang Diyos noon pa man\n          F#m          Bm\nMaging ngayon at kailanman\n\n          G\nSa habang panahon\n  A         D\nWala kang katulad\n\n\nEnding\n\n(Bm)\n\n(G Gm D)"
+    },
+    {
       "id": "s_1794446516527",
       "title": "Victor's Crown",
       "singer": "",
@@ -1368,5 +1378,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:21:57.365Z"
+  "updatedAt": "2026-11-12T01:22:08.107Z"
 }

@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446320702",
+      "title": "Spirit of the sovereign LORD",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\nAm                             Am\nSpirit of the sovereign Lord, come and make Your presence known.\n  F         G           Am\nReveal the glory of the living God.\n \n[Chorus]\n          F               G     Am\nLet the weight of Your glory cover us,\n         F            G     Am\nLet the life of Your river flow.\n         F            G       Am\nLet the truth of Your kingdom reign in us.\n         F               G\nLet the weight of Your glory, \n         F               G    Am\nLet the weight of Your glory fall.\n \n[Bridge]\n    F       G        D\nWe do not seek Your hand,\n   F       G        C\nWe only seek Your face.\nF             C\n  We want to know You,\nF             C\n  We want to see You.\n   G         D             Esus  E\nReveal Your glory in this place."
+    },
+    {
       "id": "s_1794446308728",
       "title": "So you would come",
       "singer": "",
@@ -1168,5 +1178,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:18:30.206Z"
+  "updatedAt": "2026-11-12T01:18:41.826Z"
 }

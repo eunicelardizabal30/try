@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446516527",
+      "title": "Victor's Crown",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD   A   E   Bm D   A   E\n[Verse 1]\n        A\nYou are always fighting for us\n         F#m\nHeaven's angels all around\n     Bm\nMy delight is found in knowing\n         Esus              E\nThat You wear the Victor's crown\nF#m                            E/G#\nYou're my help and my defender\n          A\nYou're my Saviour and my friend\n        Bm                 Bm/A\nBy Your grace I live and breathe\n         Esus   E\nTo worship You\n[Verse 2]\n       A\nAt the mention of Your greatness\n        F#m\nIn Your Name I will bow down\n        Bm\nIn Your presence fear is silent\n        Esus              E\nFor You wear the Victor's crown\n         F#m                    E/G#\nLet Your glory fill this temple\n         A\nLet Your power overflow\n        Bm                Bm/A\nBy Your grace I live and breathe\n        Esus   E\nTo worship You\n[Chorus]\n     D  E  A\nHallelu -  jah\n         D        A\nYou have overcome\n         E        Bm\nYou have overcome\n     D  E  F#m\nHallelu -  jah\n               Bm      E     \nJesus You have overcome the world\n\n[Instrumental]\nD   A   E   Bm D   A   E\n[Verse 3]\n       A\nYou are ever interceding\n      F#m\nAs the lost become the found\n       Bm\nYou can never be defeated\n       Esus              E\nFor You wear the Victor's crown\n       F#m               E/G#\nYou are Jesus the Messiah\n          A\nYou're the Hope of all the world\n       Bm                 Bm/A\nBy Your grace I live and breathe\n        Esus   E\nTo worship You\n[Bridge]\nD                       A\n Every high thing must come down\nE                        Bm\n Every stronghold shall be broken\nD                 A\n You wear the Victor's crown\nE\nYou overcome, You overcome\n[Verse 4]\n      F#m                        E/G#\nAt the cross the work was finished\n        A\nYou were buried in the ground\n       Bm\nBut the grave could not contain You\n       D                A      A\nFor You wear the Victor's crown\n\n(Chorus)\n(Bridge)\n\nEnding: D"
+    },
+    {
       "id": "s_1794446508755",
       "title": "Turn it up",
       "singer": "",
@@ -1358,5 +1368,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:21:50.153Z"
+  "updatedAt": "2026-11-12T01:21:57.365Z"
 }

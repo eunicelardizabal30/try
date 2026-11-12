@@ -626,7 +626,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=0H7RKgRTyps&list=RD0H7RKgRTyps&start_radio=1",
       "spotify": "",
       "lyrics": "Verse1\nE\n  You know that I love You\nC#m\n  You know that I want to\nB\n  Know You so much more\nA\nMore than I have before\n\nPrechorus\nA        B\nKing of majesty\n       C#m\nI have one desire\n        B       C#m      A\nJust to be with You my Lord\n        B       C#m      A\nJust to be with You my Lord\n\nChorus\nE      A           B      A  \nJesus You are the Saviour of\n    E   C#m    B\nMy soul\nA       E        C#m\nAnd forever and ever\n      B       A          E\nI'll give my praises to You\n\nVerse2\nE\n  These words are from my heart\nC#m\n  These words are not made up\nB\n  I will live for You\nA\nI am devoted to You"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T06:05:11.272Z"
+  "updatedAt": "2026-11-12T06:05:23.701Z"
 }

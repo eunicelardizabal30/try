@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445985983",
+      "title": "Kinauuhawan kita",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "C            Em   Am            \nKinauuhawan kita, aking Panginoon\n    Dm               G                 C\nHanap-hanap ng kaluluwa ko'y Ikaw\nF                      G\nDamdamin ma'y nasasaktan\n            Em           Am\nHindi pa rin ito makahahadlang\n         Dm          D               G\nsa pagdulog ko'y may kagalakan\n \n   C              Em\nWala akong ibang nais\n    Am           A\nKundi ang makita Ka\n     Dm           G            Em          A\nKaluwalhatian Mo'y maranasan tuwina\nDm          F        Em             Am\nPupurihin Kita habang nabubuhay\n    Dm            G\nDakilain Ka, o Diyos\n               F          C\nSambahin Ka....."
+    },
+    {
       "id": "s_1794445973316",
       "title": "Katulad ng mga agila",
       "singer": "",
@@ -878,5 +888,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:12:54.330Z"
+  "updatedAt": "2026-11-12T01:13:07.027Z"
 }

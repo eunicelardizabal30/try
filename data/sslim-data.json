@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445741254",
+      "title": "Ikaw ang Tunay na Diyos",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Ikaw ang tunay na Diyos - Key of D\n[Intro]\nD   Bm   G   A\n \n[Verse]\nD              Bm\nPupurihin ka O Diyos\nG - Em             A\nAng aming alay ay pagsamba\nD               Bm\nKaluwalhatian buong karangalan\nG             Em\nKapangyarihan Mo'y Walang\nA\nkatulad\n \n \n[Chorus]\n \nD\nIkaw ang tunay na Diyos\nBm\nIkay walang katulad\nG         Em\nIkay nag-iisa\nA\nIkaw lamang wala nang iba\nD\nSayo ang aming awit\nBm\nDinggin aming tinig\nG     Em                    A\nIsisigaw sa buong mundo\n\n[Ending]\nA                  D\nKadakilaan mo\nG - A                   D\nKapangyarihan mo\nG - A                   D\nKaluwalhatian mo"
+    },
+    {
       "id": "s_1794445727333",
       "title": "Ikaw ang Diyos Ikaw ang Hari",
       "singer": "",
@@ -718,5 +728,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:08:48.293Z"
+  "updatedAt": "2026-11-12T01:09:01.656Z"
 }

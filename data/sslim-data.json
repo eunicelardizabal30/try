@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445620900",
+      "title": "I give You glory",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro: \nAm C Dm\nAm C Dm\n\nVerse:\n                  C                              G\nOh, how beautiful are You, Lord \n                  Am                   F\nIt's Your words It's Your love \n                  C                            G\nOh, how glorious are You, Lord \n                  Am                          F\nIt's Your power It was Your cross \n\nPre-Chorus\n          C                              G                      Am                                 F\nThat saved me and rescued me Just a moment there Set me free \n\n[Chorus]\n                    C\nI give You glory, glory \n                    G\nI give You glory, glory \n                   Am\nI give You glory, glory\n  F\n Jesus\n                    C\n I give You glory, glory\n                    G\n I give You glory, glory\n                   Am\n I give You glory, glory\n  F\n Jesus \nF                            G                       Am                    C\nWith a crown of thorns, you became my King forever \n          F                            G                       Am                    C\nAnd with a crown of thorns, you became my King forever\n         F                            G                       Am                    C\n And with a crown of thorns, you became my King forever \n\n          C         \t            G                        Am                                   F\nThat saved me and rescued me Just a moment there Set me free \nSayo ang karangalan ang kaluwalhatian ang kapangyarihan Hesus"
+    },
+    {
       "id": "s_1794445595888",
       "title": "I am a new creation",
       "singer": "",
@@ -638,5 +648,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:06:41.346Z"
+  "updatedAt": "2026-11-12T01:07:02.171Z"
 }

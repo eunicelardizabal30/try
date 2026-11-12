@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446452370",
+      "title": "Through it all",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\nG          D/F#      Em\nYou are forever in my life\n   Cmaj7               D\nYou see me through the seasons\nG      D/F#    Em\nCover me with Your hands\n   Cmaj7             D\nAnd lead me in Your righteousness\n\n[Pre-Chorus]\n   Bm         C\nAnd I look to You\n   Bm         C D\nAnd I wait on You\n\n[Chorus]\n    G\nI’ll sing to You Lord\n  Cmaj7\nA hymn of love\n        D       Em       C D\nFor Your faithfulness to me\n   G               Cmaj7\nI’m carried in everlasting arms\n      D/F#   G      C D\nYou’ll never let me go\n\n[Bridge]\nG    Em   C    D\nHalleluia Halleluia\nG    Em   C    D\nHalleluia Halleluia\nG    Em   C    D\nHalleluia Halleluia\nG    Em   C    D\nHalleluia Halleluia"
+    },
+    {
       "id": "s_1794446442337",
       "title": "This kingdom",
       "singer": "",
@@ -1288,5 +1298,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:20:43.636Z"
+  "updatedAt": "2026-11-12T01:20:53.333Z"
 }

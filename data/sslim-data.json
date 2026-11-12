@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445595888",
+      "title": "I am a new creation",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD G D G\nD G D G\n\n[Verse]\nD        G           D            G\n I am a new creation, no more in condemnation\nD              A              D A\n Here in the grace of God I sta-nd.\nD            G           D               G\n My heart is overflowing, my love just keeps on growing,\nD              A              D\n Here in the grace of God I stand.\n\n[Chorus]\n            G  A        D                G  A        D\nAnd I will pra-ise You Lord, yes I will pra-ise You Lord,\n            Bm      G                 Asus4 A\nAnd I will sing of all that You have done.\nD             G            D            G\n A joy that knows no limit, a lightness in my spirit,\nD              A              D   A\n Here in the grace of God I stand.\n\n[Outro]\nD              A              D   Bm\n Here in the grace of God I stand.\nEm             A              D   Bm\n Here in the grace of God I stand.\nEm             A              D\n Here in the grace of God I stand."
+    },
+    {
       "id": "s_1794239726498",
       "title": "How great thou art",
       "singer": "",
@@ -628,5 +638,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-10T06:02:08.807Z"
+  "updatedAt": "2026-11-12T01:06:41.346Z"
 }

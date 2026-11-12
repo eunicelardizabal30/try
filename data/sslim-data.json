@@ -536,7 +536,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=iayBMb76_KE&list=RDiayBMb76_KE&start_radio=1",
       "spotify": "",
       "lyrics": "Chorus:\n       D                                      Bm\nMy life is in You, Lord My strength is in You, Lord\n        G               Em\nMy hope is in You, Lord\n       A\nIn You, it's in You\nVerse:\n          G                        A               D              Bm\nI will praise You with all of my life\n          G                        A               D              Bm\nI will praise You with all of my strength\n          A              D             Bm             Em\nWith all of my life, with all of my strength\nG                             A\nAll my hope is in You\nEnding\n       G               A           D\nIn You, it's in You My life"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T06:01:54.079Z"
+  "updatedAt": "2026-11-12T06:02:11.418Z"
 }

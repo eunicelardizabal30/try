@@ -376,7 +376,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=t6b8XeV93lk&list=RDt6b8XeV93lk&start_radio=1",
       "spotify": "",
       "lyrics": "[Chorus]\n \nD             G\nSing, shout, clap your hands\n      A7               D\nGive praise unto Your Maker\nD              G              A\nMake a joyful noise unto the Lord"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T05:56:50.675Z"
+  "updatedAt": "2026-11-12T05:57:11.393Z"
 }

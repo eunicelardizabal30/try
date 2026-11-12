@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794497128249",
+      "title": "Napakabuti mo",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Napakabuti Mo, aking Diyos, Ama\n\nIyong nilikha, luluwalhatiin Ka\n\nNapakabuti Mo, 'di Ka nagbabago\n\nNoon, ngayon, kailan pa man\n\nSa buhay ko'y tapat (napakabuti Mo)"
+    },
+    {
       "id": "s_1794446688182",
       "title": "You are God alone",
       "singer": "",
@@ -1515,5 +1525,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T15:23:17.965Z"
+  "updatedAt": "2026-11-12T15:25:29.485Z"
 }

@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446499249",
+      "title": "Tulad ng Agila",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[INTRO]\nD Em  A. D\n\n[VERSE:]\n  D                       G        \nKatulad ng mga agila tayo ay lilipad\n    D               G         A\nHindi mapapagod ating mga pakpak\n  G           A     F#m      Bm \nTayo'y magdadala ng buhay at sigla\n    G          A                D   D7       \nSa mga anak ng Diyos na nanghihina\n\n\n\n[CHORUS:]\n       G   A        F#m   Bm \nHalika na    humayo na\n     G    A          D    D7\nIpahayag    tagumpay Niya\n       G   A         F#m   Bm \nHalika na    at magdala\n       G    A\nKalakasan sa presensiya Niya\n\n\n[VERSE:]\n D                             G          \nIto ang panahon di na uso ang mag-backslide\n D                           G        A\nIto ang panahon ng pagbabalik loob sa Kanya\nG         A      F#m              Bm \nSama-sama na mag-apoy sa ngalan Niya\n      G             A           D D7\nAng gawa ng diyablo ay tupukin na"
+    },
+    {
       "id": "s_1794446488631",
       "title": "Tribes",
       "singer": "",
@@ -1338,5 +1348,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:21:29.381Z"
+  "updatedAt": "2026-11-12T01:21:40.366Z"
 }

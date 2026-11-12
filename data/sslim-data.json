@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446677866",
+      "title": "Yeshua",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nF    C     G\n \n[Verse]\n      Am               F\nMy beloved is the most beautiful\n      C             G\nAmong thousands and thousands\n      Am               F\nMy beloved is the most beautiful\n      C             G\nAmong thousands and thousands\n      Am               F\nMy beloved is the most beautiful\n      C             G\nAmong thousands and thousands\n \n[Chorus]\nF                        G  Am          Em\nYeshu hu oo oo ah, ha aa aa aa, ah aa aa aa\nF                        G  Am          Em\nYeshu hu oo oo ah, ha aa aa aa, ah aa aa aa\n\n\n[Bridge]\n    F\nFor yours is the kingdom\n               G\nYours is the power\nAm                 Em\nYours in the glory forever Amen"
+    },
+    {
       "id": "s_1794446669534",
       "title": "YAHWEH will manifest himself",
       "singer": "",
@@ -1498,5 +1508,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:24:30.892Z"
+  "updatedAt": "2026-11-12T01:24:39.049Z"
 }

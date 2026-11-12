@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446330310",
+      "title": "Stay Amazed",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro\nE   G#m   C#m   A\n\nVerse\n    C#m                      A\nYou are enthroned above the heavens\n                     E      B\nThe earth and all creation bow before You\n    C#m                            A\nYou are crowned with strength and glory\n                  E                  B\nThe angels crying Holy all surround You\nC#m               A\nForever You will stand\n     G#m             A  -  B\nYour Kingdom has no end\n\nVerse2\n    C#m                A\nYou are loving beyond measure \n                       E        B\nYour presence is the treasure I am seeking \n    C#m                  A\nYou are an all-consuming ﬁre \n            E                  B\nI am Your desire, and You are mine \nC#m               A          G#m             A  - B\nForever You will stand, Your kingdom has no end\n\nChorus\n       E           B\nO Holy God I stay amazed\n        C#m                                 A  - B\nYou are so much more than words could ever say\n       E                 B\nO Holy God I pour out my praise\n       C#m                       A\nOn the One Who never ceases to amaze me\n\nBridge\nE    B      C#m    A      \nI'm pouring out my praise on You\nE    B      C#m    A  \nI'm pouring out my love on You\nE    B      C#m    A  \nI'm pouring out my praise on You\nE    B       A  \nI'm pouring out"
+    },
+    {
       "id": "s_1794446320702",
       "title": "Spirit of the sovereign LORD",
       "singer": "",
@@ -1178,5 +1188,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:18:41.826Z"
+  "updatedAt": "2026-11-12T01:18:51.197Z"
 }

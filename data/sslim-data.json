@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446621080",
+      "title": "When i look into Your holiness",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse1\n        G            Bm    C       D\nWhen I look into Your holiness\n       G             Bm    C       D\nWhen I gaze into Your loveliness\n              G            Bm\nWhen all the things that surround\n        C              Am       D\nBecome shadows in the light of You\n\nVerse2\n        G                Bm        C       D\nWhen I found the joy of reaching Your heart\n        G                Bm        C       D\nWhen my will becomes enthroned in Your Love\n              G            Bm\nWhen all the things that surround\n        C             Am       D\nBecome shadows in the light of You\n\nChorus\nD          C      D\nI worship You\n          Bm      Em\nI worship You\n     Am             D\nThe reason I live\n               G    Am    Bm\nIs to worship You\n           C     D\nI worship You\n          Bm   Em\nI worship You\n     Am            D\nThe reason I live\n              G\nIs to worship You"
+    },
+    {
       "id": "s_1794446611879",
       "title": "What a beautiful Name",
       "singer": "",
@@ -1438,5 +1448,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:23:32.757Z"
+  "updatedAt": "2026-11-12T01:23:42.607Z"
 }

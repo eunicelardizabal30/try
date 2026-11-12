@@ -10,7 +10,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="SSLIM Music">
 <meta name="theme-color" content="#0f172a">
-<link rel="manifest" href="data:application/manifest+json;utf8,{\"name\":\"SSLIM%20Music%20Team\",\"short_name\":\"SSLIM%20Music\",\"start_url\":\".\",\"display\":\"standalone\",\"background_color\":\"%23F5F5F5\",\"theme_color\":\"%230f172a\",\"icons\":[{\"src\":\"https://placehold.co/192x192/0f172a/ffffff?text=SSLIM\",\"sizes\":\"192x192\",\"type\":\"image/png\"},{\"src\":\"https://placehold.co/512x512/0f172a/ffffff?text=SSLIM\",\"sizes\":\"512x512\",\"type\":\"image/png\"}]}">
+<link rel="manifest" href="data:application/manifest+json;utf8,{"name":"SSLIM%20Music%20Team","short_name":"SSLIM%20Music","start_url":".","display":"standalone","background_color":"%23F5F5F5","theme_color":"%230f172a","icons":[{"src":"https://placehold.co/192x192/0f172a/ffffff?text=SSLIM","sizes":"192x192","type":"image/png"},{"src":"https://placehold.co/512x512/0f172a/ffffff?text=SSLIM","sizes":"512x512","type":"image/png"}]}">
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -367,7 +367,7 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div class="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
 <button onclick="toggleStageChords()" id="stage-chords-btn" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-800 border-slate-600 text-white">
 <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-<span>Chords</span>
+<span>Hide Chords</span>
 </button>
 <button onclick="exitPresentation()" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] sm:text-xs border border-slate-700 font-bold">
 Exit
@@ -556,15 +556,37 @@ const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', '
 let activeLanguageFilter = 'All';
 
 let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
-{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[Chorus]\n[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[Verse 1]\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
-{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[Verse 1]\n[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[Chorus]\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
-{ id: 's3', title: 'Build My Life', singer: 'Housefires', language: 'English', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[Verse 1]\n[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' },
-{ id: 's4', title: 'Salamat Musikero', singer: 'Malayang Pilipino', language: 'Tagalog', originalKey: 'D', tempo: 'Mid (74 BPM)', youtube: '', spotify: '', lyrics: '[Chorus]\n[D] Salamat sa Iyo, Oh [Bm] Panginoong Hesus\n[G] Sa biyaya\'t pagpapala Mo sa [A] aming buhay\n\n[Bridge]\n[D] Ikaw ang dahilan ng [F#m] aming pag-awit\n[G] Pupurihin Ka sa [A] habang panahon' },
-{ id: 's5', title: 'Dahil Sa Iyo', singer: 'Musikatha', language: 'Tagalog', originalKey: 'E', tempo: 'Slow (65 BPM)', youtube: '', spotify: '', lyrics: '[Verse 1]\n[E] Dahil sa Iyo, may [C#m] pag-asa ako\n[F#m] Ikaw ang liwanag sa [B] aking mundo' }
+{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[Chorus]
+[G] You are here, moving in our [D] midst
+I worship [A] You, I worship [Bm] You
+
+[Verse 1]
+[G] Way Maker, Miracle Worker, Promise [D] Keeper
+Light in the darkness, my [A] God, that is who You [Bm] are' },
+{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[Verse 1]
+[A] I love You Lord, Oh Your mercy [D] never fails [A] me
+[E/G#] All my [F#m] days, I've been [D] held in Your [E] hands
+
+[Chorus]
+[D] All my life You have been [A] faithful
+[D] All my life You have been [A] so, so [E] good' },
+{ id: 's3', title: 'Build My Life', singer: 'Housefires', language: 'English', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[Verse 1]
+[G] Worthy of every [C/G] song we could ever sing
+[G/B] Worthy of all the [C] praise we could ever bring' },
+{ id: 's4', title: 'Salamat Musikero', singer: 'Malayang Pilipino', language: 'Tagalog', originalKey: 'D', tempo: 'Mid (74 BPM)', youtube: '', spotify: '', lyrics: '[Chorus]
+[D] Salamat sa Iyo, Oh [Bm] Panginoong Hesus
+[G] Sa biyaya't pagpapala Mo sa [A] aming buhay
+
+[Bridge]
+[D] Ikaw ang dahilan ng [F#m] aming pag-awit
+[G] Pupurihin Ka sa [A] habang panahon' },
+{ id: 's5', title: 'Dahil Sa Iyo', singer: 'Musikatha', language: 'Tagalog', originalKey: 'E', tempo: 'Slow (65 BPM)', youtube: '', spotify: '', lyrics: '[Verse 1]
+[E] Dahil sa Iyo, may [C#m] pag-asa ako
+[F#m] Ikaw ang liwanag sa [B] aking mundo' }
 ];
 
 let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
-{ id: 'l1', date: '2025-02-16', leader: 'Sarah Jenkins', title: 'Sunday Morning Worship', notes: 'Focus on God\'s faithfulness.', songIds: ['s1', 's2', 's3'], transpositions: {} }
+{ id: 'l1', date: '2025-02-16', leader: 'Sarah Jenkins', title: 'Sunday Morning Worship', notes: 'Focus on God's faithfulness.', songIds: ['s1', 's2', 's3'], transpositions: {} }
 ];
 
 let songTranspositions = {};
@@ -810,18 +832,26 @@ function isSectionLabel(content) {
     return sectionKeywords.test(trimmed);
 }
 
+function isChordToken(token) {
+    if (!token) return false;
+    const trimmed = token.trim();
+    if (isSectionLabel(trimmed)) return false;
+    const chordRegex = /^([A-G][#b]?[a-zA-Z0-9susadddimaug\/\-+]*)$/;
+    if (trimmed.includes('-') || trimmed.includes('/')) {
+        return trimmed.split(/[\-\/]/).every(part => chordRegex.test(part.trim()));
+    }
+    return chordRegex.test(trimmed);
+}
+
 function transposeSingleChordToken(token, semitones) {
     if (!token || semitones === 0) return token;
-    // Handle hyphenated chords like C-D
     if (token.includes('-')) {
         return token.split('-').map(part => transposeSingleChordToken(part, semitones)).join('-');
     }
-    // Handle slash chords like C/G or Dmin7/F#
     if (token.includes('/')) {
         const parts = token.split('/');
         return `${transposeSingleChordToken(parts[0], semitones)}/${transposeSingleChordToken(parts[1], semitones)}`;
     }
-    // Match root note (e.g., C, C#, Db, F) and suffix (e.g., min7, maj7, m, sus4, 7, etc.)
     const match = token.match(/^([A-G][#b]?)(.*)/);
     if (!match) return token;
     const flatToSharp = { 'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#' };
@@ -836,8 +866,8 @@ function transposeSingleChordToken(token, semitones) {
 function transposeChord(chord, semitones) {
     if (!chord || semitones === 0) return chord;
     const trimmed = chord.trim();
-    if (isSectionLabel(trimmed)) {
-        return trimmed; // Leave section labels like [Chorus] completely untouched by transposition
+    if (isSectionLabel(trimmed) || !isChordToken(trimmed)) {
+        return trimmed;
     }
     return transposeSingleChordToken(trimmed, semitones);
 }
@@ -851,7 +881,6 @@ function transposeContent(text, semitones) {
 function parseLine(line) {
     if (!line.includes('[')) return { hasChords: false, chords: '', lyrics: line, isHeader: false };
     
-    // Check if the entire line/token represents a section header like [Chorus] or [Verse 1]
     const trimmedLine = line.trim();
     if (trimmedLine.startsWith('[') && trimmedLine.endsWith(']')) {
         const inner = trimmedLine.slice(1, -1);
@@ -869,16 +898,13 @@ function parseLine(line) {
         const content = match[1];
         const matchIndex = match.index;
         
-        if (isSectionLabel(content)) {
-            // Keep inline section tags intact inside lyric flow without treating them as chords
+        if (isSectionLabel(content) || !isChordToken(content)) {
             lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
-        } else if (isChordToken(content)) {
+        } else {
             hasActualChords = true;
             lyricLine += line.slice(currentIndex, matchIndex);
             while (chordLine.length < lyricLine.length) chordLine += ' ';
             chordLine += content;
-        } else {
-            lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
         }
         currentIndex = regex.lastIndex;
     }
@@ -890,7 +916,8 @@ function parseLine(line) {
 function renderLyricsHTML(text, semitones = 0, showChords = true) {
     if (!text) return '';
     const transposed = transposeContent(text, semitones);
-    return transposed.split('\n').map(line => {
+    return transposed.split('
+').map(line => {
         const { hasChords, chords, lyrics, isHeader } = parseLine(line);
         
         if (isHeader) {
@@ -951,7 +978,9 @@ function handleGlobalSearch(query) {
 function alertSongLyrics(id) {
     const s = songs.find(x => x.id === id);
     if (s) {
-        alert(`${s.title} (${s.originalKey})\n\n` + s.lyrics.replace(/\[[^\]]+\]/g, ''));
+        alert(`${s.title} (${s.originalKey})
+
+` + s.lyrics.replace(/\[[^\]]+\]/g, ''));
     }
 }
 
@@ -1380,11 +1409,13 @@ function editLineup(id) {
     document.getElementById('form-lineup-title').value = lineup.title || '';
     document.getElementById('form-lineup-date').value = lineup.date || '';
     document.getElementById('form-lineup-leader').value = lineup.leader || '';
-    document.getElementById('form-lineup-notes').value = lineup.notes || '';
+    document.getElementById('form-lineup-notes').value = altTextClean(lineup.notes || '');
     renderLineupSongSelection();
     document.getElementById('lineup-modal').classList.add('hidden');
     document.getElementById('lineup-modal').classList.remove('hidden');
 }
+
+function altTextClean(val) { return val; }
 
 function closeLineupModal() {
     document.getElementById('lineup-modal').classList.add('hidden');

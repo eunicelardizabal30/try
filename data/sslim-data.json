@@ -656,7 +656,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "Tagalog",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=VR1Rf7r4jTo&list=RDVR1Rf7r4jTo&start_radio=1",
       "spotify": "",
       "lyrics": "[Verse]\n    D           C#m/A              Bm\nKatapatan Mo o Diyos tunay at Dakila\n        G          Em                A\nAng pag-ibig Mo’y wagas at walang kapantay\n          D             Am - D7\nSa aming puso, sa aming buhay\n   G                   Gm\nPapuri’t pagsamba’y iaalay\n   D    A/C#     Bm              Em\nBukas, noon, ngayon, magpakailanman\n   A        D\nLuwalhatiin ka\n\n[Chorus]\n    G         Em          Am    D\nPanginoon, kaybuti Mo sa akin\n  G               Em          Am     D\nIkaw lamang ang tangi kong sasambahin\n  C       D         Bm E\nAawitan kita at pupurihin\n       Am   Bm   C   D           G   G7\nPanginoon, kaybuti Mo sa akin\n   C       D         Bm Em\nAawitan Kita at pupurihin\n       Am   Bm   C   D           G   G7\nPanginoon kay buti Mo sa akin"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T06:06:06.981Z"
+  "updatedAt": "2026-11-12T06:06:28.978Z"
 }

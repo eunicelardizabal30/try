@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446567461",
+      "title": "Walang mahirap",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\n            C           Cma7\nHigit sa aking kailangan\n               F\nHigit sa aking karanasan\n           Am       G      F\nHigit sa aking isipin ay kaya Mong gawin\n            C         Cma7            F\nHigit sa aking kalakasan, ni minsan ay hindi nagkulang\n           Am     G   F\nHigit sa aking isipin ay kaya Mong gawin\n \n \n[Pre-Chorus]\n \nDm                Em\nbawat araw ko ay hawak Mo\nF                       G\ndi mangagamba sa piling Mo\n \n \n[Chorus 1]\n \nC      G/B      Am\nWalang mahirap Sa'yo\nF       G       C  C7\nWalang mahirap Sa'yo\n  F         G      Em           Am\nIkaw ang Panginoon na makapangyarihan\nDm        G      C\nWalang mahirap Sa'yo\n\n[Ending]\nDm        G \nWalang mahirap\nEm        Am\nWalang mahirap\nDm        G      C\nWalang mahirap Sa'yo"
+    },
+    {
       "id": "s_1794446557216",
       "title": "Walang hanggang sasambahin",
       "singer": "",
@@ -1398,5 +1408,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:22:37.949Z"
+  "updatedAt": "2026-11-12T01:22:48.786Z"
 }

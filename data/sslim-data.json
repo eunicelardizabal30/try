@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445847236",
+      "title": "Jesus is Alive",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Chorus]\n      Eb          Bb\nHallelujah, Jesus is alive\nDb\nDeath has lost its vict'ry\n          C\nAnd the grave has been denied\nFm\nJesus lives forever\n \nFm   Gm Ab Gm Fm Fm  Gm Ab     Bb\nHe's ALIVE, He's ALIVE\n\n\n[Chorus 2]\n               Eb\nHe's the Alpha and Omega\n        Bb\nThe first and last is He\n        Bbm\nThe curse of sin is broken\n                Csus   C\nWe have perfect liberty\n        Fm\nThe Lamb of God is risen\n \nFm   Gm Ab Gm Fm Fm  Gm Ab     Bb\nHe's A--    LI---     VE, He's A--   LI---VE\n(LAST TIME)\nEb               Ab Bb Eb              \nHAL-LE-  LUJAH, JESUS IS ALIVE"
+    },
+    {
       "id": "s_1794445827154",
       "title": "Jesus at the center",
       "singer": "",
@@ -798,5 +808,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:10:28.139Z"
+  "updatedAt": "2026-11-12T01:10:48.602Z"
 }

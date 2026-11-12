@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445780008",
+      "title": "In the presence",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\n      A      C#m        D       E\nIn the presence of a Holy God\n      A      C#m        D       E\nI bow down and I adore\n    A        C#m        D\nYou reveal the secrets of my heart \n          B         E\nI am shaken to the core\n      A      C#m        D       E\nIn the presence of a Holy God\n      A      C#m        D       E\nThere's new meaning now to grace\n      A      C#m        D\nYou took all my sins upon Yourself\n            B         E\nI can only stand amazed!\n \n \n[Chorus]\n      A      C#m        D       E\nAnd I cry \"Holy, Holy, Holy God\n      A      C#m        D       E\nHow awesome is Your name\n      A      C#m        D\nHoly, Holy, Holy God\n       B               E\nHow majestic is Your reign\"\n         D\nAnd I am changed\n       Bm          E     A\nIn the presence of a Holy God\n \n \n[Verse 2]\n      A      C#m        D       E\nIn the presence of Your infinite might\n      A      C#m        D       E\nI’m so small and frail and week\n      A      C#m        D\nWhen I glimpse Your power and wisdom\n                       B         E\nLord, I have no words left to speak\n      A      C#m        D       E\nIn the presence of Your glory\n      A      C#m        D       E\nAll my crowns lie in the dust\n      A      C#m        D\nYou are righteous in Your judgments Lord\n              B         E\nYou are faithful true and just"
+    },
+    {
       "id": "s_1794445770231",
       "title": "In moments like these",
       "singer": "",
@@ -748,5 +758,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:09:31.964Z"
+  "updatedAt": "2026-11-12T01:09:40.804Z"
 }

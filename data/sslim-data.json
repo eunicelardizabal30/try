@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446442337",
+      "title": "This kingdom",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse 1]\n  G    D/F#                  Em         D\n Jesus,    God's righteousness revealed\n             C              Bm     \n The Son of Man, the Son of God\n              D\n His Kingdom comes_____\n  G    D/F#                  Em\n Jesus, redemption's sacrifice\n       Bm             C\n Now glorified, now justified\n              D\n His Kingdom comes________\n \n \n[Chorus]\n          G                    D/F#\n And this Kingdom will know no end\n           Em                    Bm\n And its Glory shall know no bounds\n          C            Bm\n For the majesty and power\n          Am              Dsus4  D\n Of this Kingdom's King has come.____\n            G\n And this Kingdoms reign\n           D/F#\n And this Kingdoms rule\n            Em                  Bm\n And this kingdom's power and authority\n C  Bm         Am7         D           G \n Je-sus,   God's righteousness revealed.\n  \n[Verse 2]\n  G    D/F#                  Em       D\n Jesus, the expression of God's love\n               C              Bm     \n The grace of God the word of God\n      Dsus4   D\n Revealed to us\n  G       D/F#              Em        D\n Jesus, God's holiness displayed\n           C             Bm\n Now glorified, now justified\n        D     D\n His Kingdom Comes."
+    },
+    {
       "id": "s_1794446424553",
       "title": "This is the day(Rejoice in the LORD)",
       "singer": "",
@@ -1278,5 +1288,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:20:25.463Z"
+  "updatedAt": "2026-11-12T01:20:43.636Z"
 }

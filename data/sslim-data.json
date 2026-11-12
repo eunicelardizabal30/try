@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445816123",
+      "title": "Itataas Kita",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nG Am7 Bm C\nG Am7 C D\n\n[Chorus]\nG D/F#  Em D\nItataas Kita,\nC D     G G7\nItataas Kita\nC         D\nSa buhay ko,\nBm         Em\nSa puso ko\nAm7   F    D\nItataas Kita\n\n\n\n[Verse]\nG                 D/F#            Em  D\nHabang may hininga, Sayo ako ay sasamba\nC                 D            G  G7\nHabang mayroong lakas, pupurihin Kita\nC            D    Bm          Em\nPanginoong Hesus, minamahal Kita\nC                     Am7              D\nTunay na Diyos, pag-ibig Mo’y kahanga-hanga﻿"
+    },
+    {
       "id": "s_1794445804995",
       "title": "Itataas itatanghal isisigaw",
       "singer": "",
@@ -778,5 +788,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:10:06.090Z"
+  "updatedAt": "2026-11-12T01:10:17.196Z"
 }

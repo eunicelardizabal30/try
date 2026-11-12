@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446480142",
+      "title": "Trading my sorrows",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Verse]\nD    G         Bm      A\n I'm  Trading my sor-rows \nD    G         Bm   A/C#\n I'm  trading my shame\nD    G             Bm   A                   D     G   Bm  A\n I'm  laying them down for the joy of the lord\nD    G         Bm      A\n I'm  trading my sick-ness\nD    G         Bm    A/C#\n I'm  Trading my pain\nD    G             Bm   A                  D      G   Bm  A\n I'm  laying them down for the joy of the lord\n \n[Chorus]\n D     G          Bm    A\nYes Lord Yes Lord Yes Yes Lord\n D     G          Bm    A/C#\nYes Lord Yes Lord Yes Yes   Lord\n D     G          Bm    A         D     G   Bm    A\nYes Lord Yes Lord Yes Yes Lord A-men\n \n[Bridge]\n       D          G                 Bm        A\nI am pressed but not crushed perse-cuted not abandoned\nD        G                Bm      A\n Struck down but not de-stroyed\n        D            G                  Bm           A\nI am blessed beyond the curse for his promise will endure \n           D     G            Bm          A\nthat his joy's gonna be my strength \n                      Asus      A\nthough the sorrow may last for the night \n     C                       G\nHis joy comes with the morn-ing"
+    },
+    {
       "id": "s_1794446468988",
       "title": "To You Alone",
       "singer": "",
@@ -1318,5 +1328,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:21:10.222Z"
+  "updatedAt": "2026-11-12T01:21:21.309Z"
 }

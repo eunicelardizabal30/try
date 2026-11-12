@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446536705",
+      "title": "Wala Kang katulad (Itataas)",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "D           D/C#      Bm       Bm/A\nWala Kang katulad, walang gaya Mo \n G            G/F#         Em         A\nIkaw lang ang Diyos na sinasambang lubos \n    Bm             A           G              G/F#\nSa paglipas ng panahon Ikaw pa rin hanggang ngayon \n    Em        E7         A\nAt magpakailanma’y Panginoon \n \n \n[CHORUS]\n \n     G A      F#m Bm           Em A       D\nItataas, ihahayag,   pangalan Mo’y  itatanyag \n           G  A    F#m Bm\nAng pagsamba’y  iaalay \nEm        A        D\nPanginoon,  Ikaw lamang \n \n \n[VERSE 2]\n \nD   D/C#      Bm            Bm/A\nAng Salita Mo ang kailangan ko \nG               G/F#         Em    A\nSiya ang aking buhay, ang aking gabay \n  Bm         A      G        G/F#\nHindi kumukupas, hindi nagmamaliw \n Em         E7       A\nIsip ko ngayo’y binabago"
+    },
+    {
       "id": "s_1794446526496",
       "title": "Wala kang Katulad (Awitin ko man)",
       "singer": "",
@@ -1378,5 +1388,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:22:08.107Z"
+  "updatedAt": "2026-11-12T01:22:18.132Z"
 }

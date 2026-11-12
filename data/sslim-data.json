@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446241343",
+      "title": "Pupurihin Ka sa awit",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\n D  G  Em  A \n \n \n[Verse 1]\n D               G \nWalang hanggang katapatan\n Em      A       D \nSa buhay ko'y lagi mo'ng laan\n D                G \nNarito dahil sa biyaya mo\n Em      A        D \nHabang buhay nagpupuri sa'yo\n\n\n[Chorus]\n G                            F#/D \nPupurihin ka sa awit, itataas ang aking tinig\n Em                 D.             G      A \nItatanghal sa buhay ko'y tanging ikaw, o diyos\n G \nHigit pa sa kalangitan\n F#/D \nAng iyong kaluwalhatian\n Em                     A \nKadakilaan mo'y di mapapantayan\n \n[Bridge]\n D              Em   F#m   Em     Bm \nHesus sa'yo ang kapurihan, kaluwalhatian\n G            A \nNgayon at magpakailanman\n D              Em    F#/D      Em     Bm \nHesus sa'yo ang karangalan, kapangyarihan\n          A         \nNgayon at magpakailanman"
+    },
+    {
       "id": "s_1794446226204",
       "title": "Praise",
       "singer": "",
@@ -1088,5 +1098,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:17:07.274Z"
+  "updatedAt": "2026-11-12T01:17:22.437Z"
 }

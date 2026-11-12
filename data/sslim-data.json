@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445792091",
+      "title": "In the presence of Jehovah",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "G    C                         F\nIn and out of situations, that tug of war at me\n               G    C                       F\nall day long I struggle, for answers that I need\n                         Dm       G                             C     Am\nbut then I come into his presence,  and all my questions become clear\n                    D                          Dm    G\nand for that sacred moment, no doubts can interfere\n \n \nChorus (Band comes in)\n \n       C             Em - A7\nIn the presence of Jehovah\n      Dm     G            C    F\nGod almighty,   Prince of pe - ace\n         C                  Em - A7\ntroubles vanish, hearts are mended\n       Dm       G        C     Ab\nin the presence   of the King\n \n \n \nVerse 2\n                          Ab/Db            /F           Gb      /Ab\nThrough His love the Lord provided, a place for us to rest\n                    Ab/Db             /F        Gb      Bm  /Bb\na place to find the answers, in the hour of distress\n                      Ebm     Ab                         Db     Bbm\nnow there's never any reason, for you to give up in dispair\n                   Ebsus                                  Ebm  Ab\njust slip away and breathe His name, he will surely meet you there\n\nChorus 2\n \n       Db             Fm - Bb7\nIn the presence of Jehovah\n      Ebm     Ab            Db    Gb/Db\nGod almighty,   Prince of pe - ace\n         Db                  Fm - Bb7\ntroubles vanish, hearts are mended\n       Ebm        Ab     Db    A\nin the presence   of the King\n\nChorus 3\n \n       D             F#m - B7\nIn the presence of Jehovah\n      Em     A            D    G\nGod almighty,   Prince of pe - ace\n         D                  F#m - B7\ntroubles vanish, hearts are mended\n       Em       A        D\nin the presence   of the King\n\n\nChorus 4 with ending\n \n       D             F#m - B7\nIn the presence of Jehovah\n      Em     A            D    G\nGod almighty,   Prince of pe - ace\n         D                  F#m - B7\ntroubles vanish, hearts are mended\n       Em       A        Bm   E\nin the presence   of the King\n       Em       A        Bm   E\nin the presence   of the King\n       Em       A        D\nin the presence   of the King"
+    },
+    {
       "id": "s_1794445780008",
       "title": "In the presence",
       "singer": "",
@@ -758,5 +768,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:09:40.804Z"
+  "updatedAt": "2026-11-12T01:09:53.486Z"
 }

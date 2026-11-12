@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446288314",
+      "title": "Sing shout clap your hands",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Chorus]\n \nD             G\nSing, shout, clap your hands\n      A7               D\nGive praise unto Your Maker\nD              G              A\nMake a joyful noise unto the Lord"
+    },
+    {
       "id": "s_1794446277778",
       "title": "Shout to the Lord",
       "singer": "",
@@ -1138,5 +1148,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:17:58.869Z"
+  "updatedAt": "2026-11-12T01:18:09.392Z"
 }

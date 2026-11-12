@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445760705",
+      "title": "In Jesus Name",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD C D C D C D\n\n[Verse 1]\n                             G                          Em7\nGod is fighting for us, God is on our side\n                     Bm                                    D\nHe has overcome, Yes he has overcome\n                              G                                      Em7\nWe will not be shaken, we will not be moved\n                            D\nJesus You are here\n\n[Verse 2]\n                          G                                   Em7\nCarrying our burdens, covering our shame\n                      Bm                                  D\nHe has overcome, Yes he has overcome\n                            G                                     Em7\nWe will not be shaken, we will not be moved\n                          D\nJesus You are here\n\n[Chorus]\n          A                       G\nI will live, I will not die\n                  D                           Bm                    C\nThe resurrection power of Christ alive in me\n                    G                   D\nAnd I am free in Jesus Name\n          A                      G\nI will live, I will not die\n                 D                         Bm                     C\nI will declare and lift You high, Christ revealed\n                    G                        D     C    D\nAnd I am healed in Jesus Name\n\nInstrumental\nG A Bm D\nG A Bm D\nG A Bm D\nG A Bm D\n \n[Bridge]\n                       \tG                                       \tA\nGod is fighting for us, pushing back the darkness\n                        \tBm                \t                  F#m\nLighting up the Kingdom that cannot be shaken\n                        \tG                          \tA\nIn the Name of Jesus, enemy's defeated\n                      \tBm                    \tD\nAnd we will shout it out, shout it out"
+    },
+    {
       "id": "s_1794445741254",
       "title": "Ikaw ang Tunay na Diyos",
       "singer": "",
@@ -728,5 +738,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:09:01.656Z"
+  "updatedAt": "2026-11-12T01:09:21.677Z"
 }

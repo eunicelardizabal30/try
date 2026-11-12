@@ -286,7 +286,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "English",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=rO3LSo_W_no&list=RDrO3LSo_W_no&start_radio=1",
       "spotify": "",
       "lyrics": "[Verse 1]\nC  G\nThe Lord reigneth, the Lord reigneth,\n               Em7         Am\nBlessed be the name of the Lord.\nD       Am7      D\nFor the Lord our God\n   Am7  D    Am7         Cmaj7 Bm G\nOm-nipo-tent reigneth in maj -- es-ty.\n \n[Verse 2]\nC  G\nThe Lord reigneth, the Lord reigneth,\n               Em7         Am\nBlessed be the name of the Lord.\nD Am7         D         Am7     D\nO come let us sing unto God our King\n    Am7         Cmaj7 Bm G\nWho reigneth in maj -- es-ty."
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T05:54:06.876Z"
+  "updatedAt": "2026-11-12T05:54:32.815Z"
 }

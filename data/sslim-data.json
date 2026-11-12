@@ -366,7 +366,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "Tagalog",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=uwBVumesRTw&list=RDuwBVumesRTw&start_radio=1",
       "spotify": "",
       "lyrics": "G                  Bm\nSIYASATIN MO JESUS ANG PUSO KO\n       C                       G   D\nSA KASALANANG NAGAWA LABAN SA IYO\n   G           Bm             C\nMAGTATAPAT,  SUMASAMO, DUMUDULOG\n     G/C#               D\nSA HARAP NG BANAL MONG TRONO\n  G           C            D\nLUMALAPIT, DI MAN KARAPAT-DAPAT\n        G          Dm      G\nSA KABANALAN MO, BIYAYA, KAAWAAN\n     CM7\nKAPATAWARAN SAIYO,\n     Cm         D         G\nAY MAKAMTAN KO OH AKING JESUS"
     },
@@ -1501,5 +1501,5 @@
     }
   ],
   "lineups": [],
-  "updatedAt": "2026-11-12T05:56:31.667Z"
+  "updatedAt": "2026-11-12T05:56:50.675Z"
 }

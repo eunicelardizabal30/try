@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446460844",
+      "title": "Times of refreshing",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nA C#m D E\n \n[Verse 1]\n            A      C#m\nTimes of refreshing\n              D      E\nHere in Your presence\n            A      F#m7\nNo greater blessing\n                G E\nThan being with You\n \n \n[Chorus]\n              C#m7   F#m7\nMy soul is restored\n    F#m      B/D#  Bm\nMy mind is renewed\n                   C#m7 F#m7 Bm\nThere's no greater joy Lord\n      E          A\nThan being with You"
+    },
+    {
       "id": "s_1794446452370",
       "title": "Through it all",
       "singer": "",
@@ -1298,5 +1308,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:20:53.333Z"
+  "updatedAt": "2026-11-12T01:21:01.795Z"
 }

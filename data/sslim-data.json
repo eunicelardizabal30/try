@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445973316",
+      "title": "Katulad ng mga agila",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\n G  Am  D\n \n[Verse 1]\n G               C         D\nTulad ng agila tayo ay lilipad\nG                 C         D\nHindi mapapagod ating mga pakpak\n  C       D        Bm      Em\nTayo’y magdadala ng buhay at sigla\n    Am          D            G\nSa mga anak ng Diyos na nanghihina\n \n \n[Chorus]\n   C    D   Bm    Em\nHalika na, humayo na\n     Am     D     G    G7\nIpahayag ang tagumpay Niya\nC    D   Bm    Em\nHalika na at magdala\n     Am          D         G\nMagbigay kalakasan sa presensiya Niya\n \n \n[Verse 2]\n      G             C               D\nIto ang panahon, di na uso ang magback-slide\n     G              C               D\nIto ang panahon ng pagbabalik loob sa Kanya\n      C       D        Bm      Em\nSama-sama na mag-apoy sa ngalan Niya\n     Am             D         G  G7\nat ang gawa ng diyablo ay tutupukin na"
+    },
+    {
       "id": "s_1794445963758",
       "title": "Katapatan mo o Diyos",
       "singer": "",
@@ -868,5 +878,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:12:44.377Z"
+  "updatedAt": "2026-11-12T01:12:54.330Z"
 }

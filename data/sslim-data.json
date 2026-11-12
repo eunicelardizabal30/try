@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794445647980",
+      "title": "I love to be in Your presence",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Verse:\n   D                               G                                D                         A\nI love to be in your presence with your people singing praises\n   D                               G                      D                 A              D\nI love to stand and rejoice lift my hands and raise my voice.\nChorus:\n        G                        F#m/D\nYou set my feet to dancing\n        G                         F#m/D\nYou fill my heart with song;\n        C               G                 A\nYou give me reason to rejoice, rejoice"
+    },
+    {
       "id": "s_1794445634884",
       "title": "I give you my heart",
       "singer": "",
@@ -658,5 +668,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:07:15.495Z"
+  "updatedAt": "2026-11-12T01:07:28.975Z"
 }

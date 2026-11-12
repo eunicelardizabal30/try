@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446259384",
+      "title": "Sapat na at higit pa",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD   G  D   G  D   G  D   G\n \n[Verse]\n        D\n‘Di mangangamba sa kawalan\n     Bm\nPagpapala mo’y laging laan\n       G             D/F#\n‘Di matatakot sa panganib\n        Em              A\n‘Pagkat naririyan ka palagi\n        D\n‘Di matitinag sa pagsubok\n        Bm\nAng pagsama mo’y tiyak at lubos\n       G             D/F#\n‘Di mapipigil sa pag-awit\n        Em7\n‘Pagkat ikaw ay mabuti\n        C\n‘Pagkat ikaw ay mabuti\n \n[Chorus]\n      D                        D/F#\nIkaw ang aking pastol hindi magkukulang\n      G      Asus  A\nSapat na at higit pa\n   D                    D/F#\nBiyaya mo’y sagana at umaapaw\n      G      Asus    A\nSapat na at higit pa\n     Bm                 F#m\nSapat na sa lahat kong pangangailangan\n     Bm                 F#m\nHigit pa sa lahat kong inaasahan\n   G                     D/F#\nWala na ngang mahihiling pa\n                    Em7\n‘Pagkat ika’y sapat na\n            Asus    A                 D\nIka’y sapat na at higit pa"
+    },
+    {
       "id": "s_1794446250362",
       "title": "Salamat Salamat",
       "singer": "",
@@ -1108,5 +1118,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:17:31.043Z"
+  "updatedAt": "2026-11-12T01:17:40.392Z"
 }

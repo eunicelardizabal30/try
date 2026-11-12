@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446052567",
+      "title": "Malaya",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "[Intro]\nD\n \n \n[Verse]\n   D                             C - G\nMalaya, malayang malayang malaya\n   D                             F - G\nMalaya, malayang malayang malaya\n \n   D                             C - G\nMalaya, malayang malayang malaya\n   D                             Em – D/F# - G – A\nMalaya, malayang malayang malaya\n \n \n[Chorus]\n     G              A\nAng Diyos sa buhay ko'y gumawa\n    F#m          Bm\nnaranasan ang Kanyang himala\n     Em                  A        D\nSa sakit at karamdaman ako'y pinalaya\nEm – D/F# - G           A\n  Ang  kasalanan at ang kalungkutan\n     F#m          Bm\nAy pinawi Niya ng lubusan\n        Em                  A        G – D/F# - Em - D\nKapangyarihan ng Diyos ay aking naranasan\n \n \n[Bridge]\n   G                F#m           Bm\nMalayang sumigaw, malayang sumayaw\nPage 1/2\n  Em             A   Bm\nMalayang lumundag, malayang lumipad\n   G                F#m           Bm\nMalayang sumigaw, malayang sumayaw\n        Em                  A        G – D/F# - Em - D\nKapangyarihan ng Diyos ay aking naranasan\n \n \n[Ending]\n        Em                  A        G – D/F# - Em - D\nKapangyarihan ng Diyos ay aking naranasan\n \n \n[Outro]\nD"
+    },
+    {
       "id": "s_1794446040153",
       "title": "Magnificent",
       "singer": "",
@@ -938,5 +948,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:14:01.001Z"
+  "updatedAt": "2026-11-12T01:14:14.062Z"
 }

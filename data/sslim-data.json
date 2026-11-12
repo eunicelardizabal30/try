@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446630262",
+      "title": "With all i am",
+      "singer": "",
+      "originalKey": "C",
+      "language": "English",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "Intro\nF#m E D F#m E D Esus E\n\nVerse1\nA                           C#m\nInto Your hands\n                      F#m            E     D            E        A\nI commit again with all I am, for You, Lord\n                      C#m\nYou hold my world\n                        F#m         E          D          E Bm       E     \nIn the palm of Your hand And I am Yours forever\nChorus\n                 A-C#m-D\nJesus, I believe in You\n                      C#m      D\nJesus I belong to You\n                      C#m    Bm\nYou're the reason that I live\n                      E\nThe reason that I sing\n     A (F#m if going to intro)\nWith all I am\n\nVerse2\nA                           C#m\nI'll walk with You\n                        F#m                  E              D            E        A\nWherever You go Through tears and joy I'll trust in You\n                                       C#m\nAnd I will live\n                         F#m                     E        D        E   Bm  E\nIn all of Your ways And Your promises, forever\nBridge\n            A\nI will worship\n           Bm-A        E\nI will wor-ship You\nEnding\nD       E      F#m\nWith all I am\nD       E      D    Dm    A\nWith all I am"
+    },
+    {
       "id": "s_1794446621080",
       "title": "When i look into Your holiness",
       "singer": "",
@@ -1448,5 +1458,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:23:42.607Z"
+  "updatedAt": "2026-11-12T01:23:51.610Z"
 }

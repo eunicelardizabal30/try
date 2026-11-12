@@ -1,6 +1,16 @@
 {
   "songs": [
     {
+      "id": "s_1794446298650",
+      "title": "Siyasatin mo Hesus",
+      "singer": "",
+      "originalKey": "C",
+      "language": "Tagalog",
+      "youtube": "",
+      "spotify": "",
+      "lyrics": "G                  Bm\nSIYASATIN MO JESUS ANG PUSO KO\n       C                       G   D\nSA KASALANANG NAGAWA LABAN SA IYO\n   G           Bm             C\nMAGTATAPAT,  SUMASAMO, DUMUDULOG\n     G/C#               D\nSA HARAP NG BANAL MONG TRONO\n  G           C            D\nLUMALAPIT, DI MAN KARAPAT-DAPAT\n        G          Dm      G\nSA KABANALAN MO, BIYAYA, KAAWAAN\n     CM7\nKAPATAWARAN SAIYO,\n     Cm         D         G\nAY MAKAMTAN KO OH AKING JESUS"
+    },
+    {
       "id": "s_1794446288314",
       "title": "Sing shout clap your hands",
       "singer": "",
@@ -1148,5 +1158,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T01:18:09.392Z"
+  "updatedAt": "2026-11-12T01:18:20.247Z"
 }

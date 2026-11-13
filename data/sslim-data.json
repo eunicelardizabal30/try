@@ -676,7 +676,7 @@
       "singer": "",
       "originalKey": "C",
       "language": "Tagalog",
-      "youtube": "",
+      "youtube": "https://www.youtube.com/watch?v=auYXxWheFdc&list=RDauYXxWheFdc&start_radio=1",
       "spotify": "",
       "lyrics": "[Verse]\n D             A            Bm          A\nNarito kami nagpapakumbaba\n    G                         Em         A\nSumasamba sa iisang Diyos\n   D                      A\nHinahanap namin\n Bm                             A\nKariktan ng iyong mukha\n   G                    Em               A\nSumasamo sa'yong pagkilos\n \n[Bridge]\n           G                      F#m              Bm\nAt sa himig na hain aming dalangin\nEm                       A\nKami'y katagpuin\n \n[Chorus]\n                  D\nIparanas mo sa'min\n          Em                      A\nAng iyong kapangyarihan\n                   D                         Em\nIpamalas mo sa'min ang iyong\n                  A\nkal'walhatian\n                   F#m                 G\nHanggang aming kalul'way\n             F#m              G\nMapuspos ng lubusan\n          F#m               F#                 Bm\nAt sa'ming kalagitnaa'y bumaba\n                      E\nAng kalangitan\n    G                A             D\nDakila ang 'yong ngalan"
     },
@@ -1526,5 +1526,5 @@
       "transpositions": {}
     }
   ],
-  "updatedAt": "2026-11-12T15:33:28.711Z"
+  "updatedAt": "2026-11-13T02:12:09.614Z"
 }

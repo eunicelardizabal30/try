@@ -1510,21 +1510,6 @@
       "createdAt": "2026-11-09"
     }
   ],
-  "lineups": [
-    {
-      "id": "l_1794497385936",
-      "title": "Salamat Lord 😅",
-      "date": "2026-11-15",
-      "leader": "Bebe",
-      "notes": "Paaral po nung slow version ng salamat salamat. Thank you",
-      "songIds": [
-        "s_1794446005831",
-        "s_1794446250362",
-        "s_1794239207734",
-        "s_1794497128249"
-      ],
-      "transpositions": {}
-    }
-  ],
-  "updatedAt": "2026-11-13T02:13:22.666Z"
+  "lineups": [],
+  "updatedAt": "2026-11-15T02:58:12.421Z"
 }

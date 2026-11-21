@@ -195,6 +195,10 @@ Music Team
 <i data-lucide="book-open" class="w-4 h-4"></i>
 <span>Song Bank</span>
 </button>
+<button onclick="switchTab('bible')" id="nav-bible" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
+<i data-lucide="book-open-check" class="w-4 h-4"></i>
+<span>Bible</span>
+</button>
 <button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
 <i data-lucide="calendar" class="w-4 h-4"></i>
 <span>Lineups</span>
@@ -338,6 +342,42 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 </button>
 </div>
 <div id="lineups-view-container" class="space-y-4 sm:space-y-8"></div>
+</div>
+
+<!-- BIBLE TAB -->
+<div id="tab-bible" class="hidden animate-fade-in space-y-5 sm:space-y-6">
+  <div class="pt-1 flex items-start gap-3">
+    <div class="w-11 h-11 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0"><i data-lucide="book-open-check" class="w-6 h-6 text-white"></i></div>
+    <div class="min-w-0"><h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">Bible</h2><p class="text-[11px] sm:text-sm text-slate-300 mt-1">Berean Standard Bible (BSB) · Public domain · No API key required</p></div>
+  </div>
+  <div class="rounded-2xl border border-slate-700 bg-slate-900/90 p-4 sm:p-5 space-y-3 shadow-xl">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div><h3 class="font-bold text-white text-sm">Offline Bible library</h3><p class="text-xs text-slate-400 mt-1">The Bible is read from a JSON file stored with this website. No API account or key is used.</p></div>
+      <span id="bible-connection-status" class="text-[10px] px-2 py-1 rounded-full bg-amber-950/70 border border-amber-800 text-amber-200">Loading Bible…</span>
+    </div>
+    <div id="bible-library-help" class="text-xs text-slate-300 leading-relaxed">Looking for <code class="text-slate-100">bible-bsb.json</code> beside this HTML file…</div>
+    <div class="flex flex-wrap gap-2">
+      <button type="button" onclick="document.getElementById('bible-file-input').click()" class="rounded-xl px-4 py-2.5 text-xs font-extrabold bg-slate-800 border border-slate-600 text-white">Load Bible JSON file</button>
+      <a href="https://raw.githubusercontent.com/malexander-ogletree/ScriptureDesk/main/bible-bsb.json" target="_blank" rel="noopener" class="rounded-xl px-4 py-2.5 text-xs font-bold border border-slate-700 bg-slate-950 text-slate-200">Download free BSB Bible data</a>
+      <input id="bible-file-input" type="file" accept=".json,application/json" class="hidden" onchange="loadBibleFile(event)">
+    </div>
+    <p class="text-[10px] leading-relaxed text-slate-500">For your hosted website, upload the downloaded file into the same folder as this HTML and name it <code>bible-bsb.json</code>. For local use, select the JSON file above. Text: Berean Standard Bible (BSB), dedicated to the public domain by its publisher.</p>
+  </div>
+  <div class="rounded-2xl border border-slate-700 bg-slate-900/90 p-4 sm:p-5 space-y-4 shadow-xl">
+    <div class="space-y-1"><h3 class="font-bold text-white">Find a Scripture</h3><p class="text-xs text-slate-400">Search a reference (John 3:16, Psalm 23, Romans 8:28) or a word/phrase (grace, worship, faith).</p></div>
+    <form onsubmit="searchBible(event)" class="flex flex-col sm:flex-row gap-2"><input id="bible-search-input" type="search" placeholder="Enter a verse reference or keyword…" class="min-w-0 flex-1 rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-500"><button type="submit" class="btn-gradient-bw rounded-xl px-5 py-3 text-sm font-extrabold text-slate-950 flex items-center justify-center gap-2"><i data-lucide="search" class="w-4 h-4"></i>Search</button></form>
+    <div id="bible-search-status" class="text-xs text-slate-400" aria-live="polite">Load the BSB Bible data to begin searching.</div>
+    <div id="bible-search-results" class="space-y-3"></div>
+    <div id="bible-reader" class="hidden rounded-xl border border-slate-700 bg-slate-950 p-4 sm:p-5 space-y-3"></div>
+    <div class="border-t border-slate-800 pt-3 space-y-2">
+      <h4 class="text-xs font-bold text-slate-200">Browse by book and chapter</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-[1fr_120px_auto] gap-2">
+        <select id="bible-book-select" onchange="updateBibleChapterOptions()" class="min-w-0 rounded-xl bg-slate-950 border border-slate-700 px-3 py-2.5 text-sm text-white"><option value="">Select a book</option></select>
+        <select id="bible-chapter-select" class="rounded-xl bg-slate-950 border border-slate-700 px-3 py-2.5 text-sm text-white"><option value="1">Chapter 1</option></select>
+        <button type="button" onclick="readSelectedBibleChapter()" class="rounded-xl px-4 py-2.5 text-xs font-extrabold btn-gradient-bw text-slate-950">Read chapter</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- TUNER TAB -->
@@ -570,6 +610,10 @@ Exit
 <i data-lucide="book-open" class="w-5 h-5"></i>
 <span class="text-[10px] font-bold mt-1">Song Bank</span>
 </button>
+<button onclick="switchTab('bible')" id="bm-bible" class="flex flex-col items-center py-1 px-3 text-slate-400">
+<i data-lucide="book-open-check" class="w-5 h-5"></i>
+<span class="text-[10px] font-bold mt-1">Bible</span>
+</button>
 <button onclick="switchTab('lineup')" id="bm-lineup" class="flex flex-col items-center py-1 px-3 text-slate-400">
 <i data-lucide="calendar" class="w-5 h-5"></i>
 <span class="text-[10px] font-bold mt-1">Lineups</span>
@@ -601,12 +645,13 @@ let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
 let songTranspositions = {};
 let activeTabState = 'home';
 let expandedSongId = null;
+let showSongBankChords = true;
 let editingLineupId = null;
 let lineupDraftSongIds = [];
 
 let currentStageLineup = null;
 let currentStageSongIdx = 0;
-let stageTranspositions = {};
+// Song Bank and Live Presentation share songTranspositions by song ID.
 let showStageChords = true;
 
 const SHARED_API_URL = 'https://sslim.eunicelardizabal30.workers.dev';
@@ -732,7 +777,7 @@ function startSharedSync() {
 
 function switchTab(tab) {
     activeTabState = tab;
-    ['home', 'songs', 'lineup', 'tuner'].forEach(t => {
+    ['home', 'songs', 'lineup', 'bible', 'tuner'].forEach(t => {
         const target = document.getElementById(`tab-${t}`);
         if (target) target.classList.add('hidden');
         
@@ -755,6 +800,7 @@ function switchTab(tab) {
     if (tab === 'home') renderHome();
     if (tab === 'songs') renderSongsBank();
     if (tab === 'lineup') renderLineupsView();
+    if (tab === 'bible') renderBibleTab();
     if (window.lucide) lucide.createIcons();
 }
 
@@ -834,108 +880,417 @@ function closeMediaModal() {
     document.getElementById('media-modal').classList.add('hidden');
 }
 
-// INTELLIGENT CHORD IDENTIFICATION & TRANSPOSITION ENGINE
-function isSectionLabel(content) {
-    const trimmed = content.trim();
-    const sectionKeywords = /^(chorus|verse|bridge|intro|outro|pre-chorus|prechorus|interlude|instrumental|tag|ending|refrain|hook)(\s*\d*)?/i;
-    return sectionKeywords.test(trimmed);
+// SMART CHORD IDENTIFIER + TRANSPOSITION ENGINE
+// Supports bracketed inline chords ([G] You are [D] here), standalone chord
+// rows (G  D  Em  C), slash chords, extensions, and section headings.
+const CHORD_ROOT_RE = '[A-G](?:#|b)?';
+const CHORD_TOKEN_RE = new RegExp(
+    '^' + CHORD_ROOT_RE +
+    '(?:(?:maj|min|m|M|dim|aug|sus2|sus4|sus|add\\d+|\\+|°|ø))?' +
+    '(?:6|7|9|11|13)?' +
+    '(?:M)?' +
+    '(?:(?:add\\d+|sus\\d*|[#b](?:5|9|11|13)|(?:omit|no)\\d+))*' +
+    '(?:/' + CHORD_ROOT_RE + ')?$', 'i'
+);
+
+function normalizeSectionLabel(value) {
+    return String(value || '').trim().replace(/^\[|\]$/g, '').replace(/\s+/g, ' ');
+}
+
+function isSectionLabel(value) {
+    const label = normalizeSectionLabel(value);
+    return /^(?:intro|verse|chorus|pre[- ]?chorus|bridge|interlude|instrumental|outro|tag|ending|refrain|hook|vamp|coda)(?:\s*\d+)?(?:\s*[:.-].*)?$/i.test(label);
+}
+
+function isChordToken(value) {
+    const token = String(value || '').trim().replace(/[|,;]$/, '');
+    if (!token || isSectionLabel(token)) return false;
+    return CHORD_TOKEN_RE.test(token);
 }
 
 function transposeSingleChordToken(token, semitones) {
-    if (!token || semitones === 0) return token;
-    // Handle hyphenated chords like C-D
-    if (token.includes('-')) {
-        return token.split('-').map(part => transposeSingleChordToken(part, semitones)).join('-');
-    }
-    // Handle slash chords like C/G or Dmin7/F#
-    if (token.includes('/')) {
-        const parts = token.split('/');
-        return `${transposeSingleChordToken(parts[0], semitones)}/${transposeSingleChordToken(parts[1], semitones)}`;
-    }
-    // Match root note (e.g., C, C#, Db, F) and suffix (e.g., min7, maj7, m, sus4, 7, etc.)
-    const match = token.match(/^([A-G][#b]?)(.*)/);
+    const shift = Number(semitones) || 0;
+    if (!shift || !isChordToken(token)) return token;
+    const noteMap = { C:0, 'B#':0, 'C#':1, Db:1, D:2, 'D#':3, Eb:3,
+        E:4, Fb:4, 'E#':5, F:5, 'F#':6, Gb:6, G:7, 'G#':8, Ab:8,
+        A:9, 'A#':10, Bb:10, B:11, Cb:11 };
+    const preferFlats = /(?:[A-G]b|\/(?:[A-G]b))/.test(token);
+    const sharpNames = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+    const flatNames  = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+    const match = String(token).match(/^([A-G](?:#|b)?)(.*?)(?:\/([A-G](?:#|b)?))?$/i);
     if (!match) return token;
-    const flatToSharp = { 'Db': 'C#', 'Eb': 'D#', 'Gb': 'F#', 'Ab': 'G#', 'Bb': 'A#' };
-    const root = flatToSharp[match[1]] || match[1];
-    const idx = CHROMATIC.indexOf(root);
-    if (idx === -1) return token;
-    let newIdx = (idx + semitones) % 12;
-    if (newIdx < 0) newIdx += 12;
-    return CHROMATIC[newIdx] + match[2];
+    const transposeNote = note => {
+        const normalized = note.charAt(0).toUpperCase() + note.slice(1);
+        const index = noteMap[normalized];
+        if (index === undefined) return note;
+        return (preferFlats ? flatNames : sharpNames)[((index + shift) % 12 + 12) % 12];
+    };
+    return transposeNote(match[1]) + match[2] + (match[3] ? '/' + transposeNote(match[3]) : '');
 }
 
 function transposeChord(chord, semitones) {
-    if (!chord || semitones === 0) return chord;
-    const trimmed = chord.trim();
-    if (isSectionLabel(trimmed)) {
-        return trimmed; // Leave section labels like [Chorus] completely untouched by transposition
-    }
-    return transposeSingleChordToken(trimmed, semitones);
+    const token = String(chord || '').trim();
+    return isChordToken(token) ? transposeSingleChordToken(token, semitones) : token;
 }
 
-function transposeContent(text, semitones) {
-    if (!text) return text;
-    if (semitones === 0) return text;
-    return text.replace(/\[([^\]]+)\]/g, (whole, c) => `[${transposeChord(c, semitones)}]`);
+function detectStandaloneChordRow(line) {
+    const raw = String(line || '').trim();
+    if (!raw || isSectionLabel(raw)) return null;
+    // Accept common progression separators: spaces, bars, commas, and hyphen,
+    // en dash, em dash, or minus characters (e.g. "Em – D/F# - G – A").
+    // A complete row must still consist only of chord symbols so lyric text is
+    // never mistaken for a chord progression.
+    const normalized = raw.replace(/[–—−-]/g, ' ');
+    const tokens = normalized.split(/[\s|,;]+/).map(t => t.trim()).filter(Boolean);
+    if (!tokens.length || !tokens.every(isChordToken)) return null;
+    return tokens;
 }
 
-function parseLine(line) {
-    if (!line.includes('[')) return { hasChords: false, chords: '', lyrics: line, isHeader: false };
-    
-    // Check if the entire line/token represents a section header like [Chorus] or [Verse 1]
-    const trimmedLine = line.trim();
-    if (trimmedLine.startsWith('[') && trimmedLine.endsWith(']')) {
-        const inner = trimmedLine.slice(1, -1);
-        if (isSectionLabel(inner)) {
-            return { hasChords: false, chords: '', lyrics: line, isHeader: true };
-        }
+function parseLine(line, semitones = 0) {
+    const source = String(line ?? '');
+    const trimmed = source.trim();
+    if (!trimmed) return { hasChords:false, chords:[], lyrics:'', isHeader:false, chordOnly:false };
+
+    const unwrapped = normalizeSectionLabel(trimmed);
+    if (isSectionLabel(unwrapped)) {
+        return { hasChords:false, chords:[], lyrics:unwrapped, isHeader:true, chordOnly:false };
     }
 
-    let chordLine = '', lyricLine = '', currentIndex = 0;
-    const regex = /\[([^\]]+)\]/g;
-    let match;
-    let hasActualChords = false;
-
-    while ((match = regex.exec(line)) !== null) {
-        const content = match[1];
-        const matchIndex = match.index;
-        
-        if (isSectionLabel(content)) {
-            // Keep inline section tags intact inside lyric flow without treating them as chords
-            lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
-        } else if (isChordToken(content)) {
-            hasActualChords = true;
-            lyricLine += line.slice(currentIndex, matchIndex);
-            while (chordLine.length < lyricLine.length) chordLine += ' ';
-            chordLine += content;
-        } else {
-            lyricLine += line.slice(currentIndex, matchIndex) + `[${content}]`;
+    const matches = [...source.matchAll(/\[([^\]]+)\]/g)];
+    if (matches.length) {
+        let lyrics = '';
+        let cursor = 0;
+        const chords = [];
+        for (const match of matches) {
+            lyrics += source.slice(cursor, match.index);
+            const token = match[1].trim();
+            if (isChordToken(token)) chords.push(transposeChord(token, semitones));
+            else lyrics += match[0];
+            cursor = match.index + match[0].length;
         }
-        currentIndex = regex.lastIndex;
+        lyrics += source.slice(cursor);
+        return { hasChords:chords.length > 0, chords, lyrics, isHeader:false, chordOnly:!lyrics.trim() && chords.length > 0 };
     }
-    lyricLine += line.slice(currentIndex);
 
-    return { hasChords: hasActualChords, chords: chordLine, lyrics: lyricLine, isHeader: false };
+    const rowChords = detectStandaloneChordRow(source);
+    if (rowChords) {
+        return { hasChords:true, chords:rowChords.map(chord => transposeChord(chord, semitones)), lyrics:'', isHeader:false, chordOnly:true };
+    }
+    return { hasChords:false, chords:[], lyrics:source, isHeader:false, chordOnly:false };
 }
 
 function renderLyricsHTML(text, semitones = 0, showChords = true) {
     if (!text) return '';
-    const transposed = transposeContent(text, semitones);
-    return transposed.split('\n').map(line => {
-        const { hasChords, chords, lyrics, isHeader } = parseLine(line);
-        
-        if (isHeader) {
-            return `<div class="pt-3 pb-1"><span class="inline-block px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs sm:text-sm font-extrabold text-white tracking-wider uppercase">${line.trim().replace(/^\[|\]$/g, '')}</span></div>`;
+    return String(text).split(/\r?\n/).map(line => {
+        const parsed = parseLine(line, semitones);
+        if (parsed.isHeader) {
+            return `<div class="pt-4 pb-1.5"><span class="inline-block px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs sm:text-sm font-extrabold text-white tracking-wider uppercase">${escapeHTML(parsed.lyrics)}</span></div>`;
         }
-
-        let chordHtml = '';
-        if (showChords && hasChords) {
-            chordHtml = `<div class="flex flex-wrap items-center gap-x-1.5 gap-y-1 font-bold text-slate-200 text-xs sm:text-sm select-none min-h-[1.25rem]">` +
-            chords.trim().split(/\s+/).filter(Boolean).map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-1.5 py-0.5 rounded text-white">${chord}</span>`).join('') +
-            `</div>`;
+        if (parsed.chordOnly) {
+            if (!showChords) return '';
+            return `<div class="flex flex-wrap items-center gap-1.5 py-1 font-bold text-slate-200 text-xs sm:text-sm select-none">${parsed.chords.map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-2 py-1 rounded text-white">${escapeHTML(chord)}</span>`).join('')}</div>`;
         }
-        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap break-words text-slate-100 font-sans tracking-wide text-xs sm:text-base">${lyrics || (hasChords ? '' : line)}</div></div>`;
+        const chordHtml = showChords && parsed.hasChords
+            ? `<div class="flex flex-wrap items-center gap-1.5 py-1 font-bold text-slate-200 text-xs sm:text-sm select-none">${parsed.chords.map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-2 py-1 rounded text-white">${escapeHTML(chord)}</span>`).join('')}</div>`
+            : '';
+        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap break-words text-slate-100 font-sans tracking-wide text-xs sm:text-base">${escapeHTML(parsed.lyrics)}</div></div>`;
     }).join('');
+}
+
+// --- Offline Berean Standard Bible reader and song-to-Scripture context matcher ---
+let bibleData = null;
+let bibleLastSearch = '';
+let bibleDataLoading = false;
+let bibleCurrentBook = null;
+let bibleCurrentChapter = 1;
+
+const BIBLE_BOOKS = [
+  ['GEN','Genesis',['gen','ge','gn']],['EXO','Exodus',['exo','ex','exod']],['LEV','Leviticus',['lev','le']],
+  ['NUM','Numbers',['num','nu']],['DEU','Deuteronomy',['deut','deu','dt']],['JOS','Joshua',['josh','jos']],
+  ['JDG','Judges',['judg','jdg']],['RUT','Ruth',['rut','ru']],['1SA','1 Samuel',['1 samuel','1 sam','1sa']],
+  ['2SA','2 Samuel',['2 samuel','2 sam','2sa']],['1KI','1 Kings',['1 kings','1 kgs','1ki']],['2KI','2 Kings',['2 kings','2 kgs','2ki']],
+  ['1CH','1 Chronicles',['1 chronicles','1 chron','1ch']],['2CH','2 Chronicles',['2 chronicles','2 chron','2ch']],
+  ['EZR','Ezra',['ezra','ezr']],['NEH','Nehemiah',['neh','ne']],['EST','Esther',['esth','est']],
+  ['JOB','Job',['job']],['PSA','Psalms',['psalm','psalms','ps']],['PRO','Proverbs',['prov','pro']],
+  ['ECC','Ecclesiastes',['eccles','ecc']],['SNG','Song of Solomon',['song of solomon','song of songs','songs','sos']],
+  ['ISA','Isaiah',['isa','is']],['JER','Jeremiah',['jer','je']],['LAM','Lamentations',['lam']],
+  ['EZK','Ezekiel',['ezek','ezk']],['DAN','Daniel',['dan','da']],['HOS','Hosea',['hos']],
+  ['JOL','Joel',['joel','jol']],['AMO','Amos',['amos','amo']],['OBA','Obadiah',['obad','oba']],
+  ['JON','Jonah',['jon']],['MIC','Micah',['mic']],['NAM','Nahum',['nah','nam']],['HAB','Habakkuk',['hab']],
+  ['ZEP','Zephaniah',['zeph','zep']],['HAG','Haggai',['hag']],['ZEC','Zechariah',['zech','zec']],['MAL','Malachi',['mal']],
+  ['MAT','Matthew',['matt','mat']],['MRK','Mark',['mark','mrk']],['LUK','Luke',['luke','luk']],
+  ['JHN','John',['john','jn']],['ACT','Acts',['acts','act']],['ROM','Romans',['rom']],
+  ['1CO','1 Corinthians',['1 corinthians','1 cor','1co']],['2CO','2 Corinthians',['2 corinthians','2 cor','2co']],
+  ['GAL','Galatians',['gal']],['EPH','Ephesians',['eph']],['PHP','Philippians',['philippians','phil','php']],
+  ['COL','Colossians',['col']],['1TH','1 Thessalonians',['1 thessalonians','1 thess','1th']],
+  ['2TH','2 Thessalonians',['2 thessalonians','2 thess','2th']],['1TI','1 Timothy',['1 timothy','1 tim','1ti']],
+  ['2TI','2 Timothy',['2 timothy','2 tim','2ti']],['TIT','Titus',['tit']],['PHM','Philemon',['philem','phm']],
+  ['HEB','Hebrews',['heb']],['JAS','James',['james','jas']],['1PE','1 Peter',['1 peter','1 pet','1pe']],
+  ['2PE','2 Peter',['2 peter','2 pet','2pe']],['1JN','1 John',['1 john','1jn']],['2JN','2 John',['2 john','2jn']],
+  ['3JN','3 John',['3 john','3jn']],['JUD','Jude',['jude','jud']],['REV','Revelation',['revelation','rev']]
+];
+const BIBLE_BOOK_BY_CODE = Object.fromEntries(BIBLE_BOOKS.map(b=>[b[0],{code:b[0],name:b[1],aliases:[b[1].toLowerCase(),...b[2]]}]));
+
+const SONG_SCRIPTURE_TOPICS = [
+  {topic:'Worship and praise', terms:['worship','praise','sing','song','glory','honor','magnify','exalt','hallelujah','holy','adoration'], refs:[['Psalm 95:1-6','A call to worship the Lord with joyful praise.'],['Psalm 100:1-5','A song of thanksgiving and praise.'],['John 4:23-24','Worship that comes from the spirit and truth.']]},
+  {topic:'Faith and trust', terms:['faith','trust','believe','confidence','depend','surrender','lean on','unshaken'], refs:[['Proverbs 3:5-6','Trusting God and acknowledging Him in every path.'],['Hebrews 11:1','The biblical description of faith.'],['Isaiah 41:10','God’s promise to strengthen and uphold His people.']]},
+  {topic:'God’s faithfulness', terms:['faithful','faithfulness','never fail','never forsake','promise','steadfast','constant','unchanging'], refs:[['Lamentations 3:22-23','God’s mercies are renewed and His faithfulness is great.'],['Deuteronomy 7:9','God is faithful and keeps His covenant.'],['2 Timothy 2:13','God remains faithful.']]},
+  {topic:'Grace and mercy', terms:['grace','mercy','forgive','forgiveness','compassion','undeserved','redeem','redemption'], refs:[['Ephesians 2:8-9','Salvation is by grace through faith.'],['Psalm 103:8-12','The Lord is merciful and gracious.'],['Titus 3:4-7','God saves according to His mercy.']]},
+  {topic:'Love of God', terms:['love','beloved','loved','loving','heart','compassion','everlasting love'], refs:[['1 John 4:7-12','God’s love is revealed through Christ.'],['Romans 8:38-39','Nothing can separate believers from God’s love.'],['John 3:16-17','God’s love and the gift of His Son.']]},
+  {topic:'Hope and encouragement', terms:['hope','future','tomorrow','waiting','strength','weary','encourage','persevere'], refs:[['Romans 15:13','God fills His people with joy, peace, and hope.'],['Isaiah 40:28-31','The Lord renews the strength of those who wait on Him.'],['Hebrews 6:19','Hope as an anchor for the soul.']]},
+  {topic:'God’s presence', terms:['presence','here with me','with us','never alone','near','abide','dwell','walk with'], refs:[['Psalm 23:4','God’s presence in the darkest valley.'],['Matthew 28:20','Jesus promises to be with His disciples.'],['Psalm 139:7-10','No place is beyond God’s presence.']]},
+  {topic:'Peace', terms:['peace','still','quiet','rest','fear','anxious','calm','storm'], refs:[['Philippians 4:6-7','God’s peace guards hearts and minds.'],['John 14:27','The peace Jesus gives.'],['Psalm 46:1-3','God is refuge and strength.']]},
+  {topic:'Healing and restoration', terms:['heal','healing','restore','restoration','broken','wounds','comfort','sorrow'], refs:[['Psalm 147:3','The Lord heals the brokenhearted.'],['Jeremiah 17:14','A prayer for healing and salvation.'],['Isaiah 61:1-3','Good news, comfort, and restoration.']]},
+  {topic:'Jesus and salvation', terms:['jesus','savior','saviour','cross','calvary','blood','salvation','redeemer','lamb of god'], refs:[['John 1:29','Jesus is identified as the Lamb of God.'],['Romans 10:9-13','The promise of salvation through the Lord.'],['1 Peter 2:24','Christ bore our sins on the cross.']]},
+  {topic:'Light and guidance', terms:['light','darkness','lamp','guide','path','way','lead me','direction'], refs:[['John 8:12','Jesus is the light of the world.'],['Psalm 119:105','God’s word as a lamp and light.'],['Psalm 27:1','The Lord is light and salvation.']]},
+  {topic:'Victory in God', terms:['victory','overcome','conquer','triumph','battle','freedom','stronger'], refs:[['Romans 8:37','More than conquerors through Christ.'],['1 Corinthians 15:57','Victory through Jesus Christ.'],['1 John 5:4-5','Faith overcomes the world.']]}
+];
+
+function getSongTopicMatches(song) {
+  const cleanLyrics = String(song.lyrics || '').replace(/\[[^\]]+\]/g, ' ').replace(/\([^)]*\)/g, ' ');
+  const text = `${song.title || ''} ${cleanLyrics}`.toLowerCase().replace(/[^a-z0-9\s']/g, ' ');
+  const scored = SONG_SCRIPTURE_TOPICS.map(item => {
+    let score = 0;
+    const hits = [];
+    item.terms.forEach(term => {
+      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp(`\\b${escaped}\\b`, 'g');
+      const count = (text.match(re) || []).length;
+      if (count) { score += Math.min(count, 3); hits.push(term); }
+    });
+    return {...item, score, hits};
+  }).filter(x => x.score > 0).sort((a,b) => b.score-a.score);
+  return scored.slice(0, 3);
+}
+function normalizeBibleText(text) { return String(text || '').replace(/\s+/g,' ').trim(); }
+function bibleBooksAvailable() { return BIBLE_BOOKS.filter(b => bibleData && Array.isArray(bibleData[b[0]])); }
+function getBibleBook(code) { return BIBLE_BOOK_BY_CODE[code]; }
+function bibleVerse(code, chapter, verse) {
+  const book = bibleData && bibleData[code];
+  const row = book && book[chapter-1];
+  return row && row[verse-1] !== undefined ? normalizeBibleText(row[verse-1]) : '';
+}
+function parseBibleReference(query) {
+  const q = String(query || '').trim().toLowerCase().replace(/[.]/g,'').replace(/\s+/g,' ');
+  const candidates = Object.values(BIBLE_BOOK_BY_CODE).flatMap(b=>b.aliases.map(a=>({book:b,alias:a}))).sort((a,b)=>b.alias.length-a.alias.length);
+  for (const item of candidates) {
+    const escaped = item.alias.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const re = new RegExp('^'+escaped+'\\s+(\\d+)(?::(\\d+)(?:\\s*[-–—]\\s*(\\d+))?)?$','i');
+    const m=q.match(re);
+    if (m) return {book:item.book,chapter:Number(m[1]),start:m[2]?Number(m[2]):1,end:m[3]?Number(m[3]):(m[2]?Number(m[2]):null),isChapter:!m[2]};
+  }
+  return null;
+}
+function formatBibleRef(book, chapter, verse) { return `${book.name} ${chapter}:${verse}`; }
+function getBibleReferenceContent(reference) {
+  if (!bibleData) return null;
+  const parsed=parseBibleReference(reference);
+  if (!parsed) return null;
+  const chapters=bibleData[parsed.book.code];
+  const chapter=chapters && chapters[parsed.chapter-1];
+  if (!chapter) return null;
+  const first=parsed.isChapter?1:parsed.start;
+  const last=parsed.isChapter?chapter.length:Math.min(parsed.end || parsed.start,chapter.length);
+  const verses=[];
+  for(let v=first;v<=last;v++){const text=bibleVerse(parsed.book.code,parsed.chapter,v);if(text)verses.push({number:v,text});}
+  if(!verses.length)return null;
+  return {book:parsed.book,chapter:parsed.chapter,verses,reference:parsed.isChapter?`${parsed.book.name} ${parsed.chapter}`:(first===last?formatBibleRef(parsed.book,parsed.chapter,first):`${parsed.book.name} ${parsed.chapter}:${first}-${last}`)};
+}
+function renderSongScriptureSuggestions(song) {
+  const topics=getSongTopicMatches(song);
+  const heading=`<div class="flex items-center gap-2"><i data-lucide="book-open-check" class="w-4 h-4 text-slate-200"></i><h4 class="text-sm font-extrabold text-white">Related Bible passages</h4><span class="text-[9px] rounded-full border border-slate-700 bg-slate-800 px-2 py-0.5 text-slate-300">Theme match</span></div>`;
+  if(!topics.length)return `<div class="mt-5 pt-4 border-t border-slate-800">${heading}<p class="text-xs text-slate-400 mt-2">No strong theme match was detected automatically. Search a keyword in the Bible tab to explore the song’s message.</p><button onclick="switchTab('bible')" class="mt-2 text-xs font-bold text-slate-200 underline underline-offset-2">Open Bible</button></div>`;
+  return `<div class="mt-5 pt-4 border-t border-slate-800 space-y-3">${heading}<p class="text-[11px] text-slate-400">Suggested from recurring words and themes in the lyrics. These are study suggestions, not a claim that the song quotes these passages directly.</p>${topics.map(topic=>`<div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-xs font-bold text-slate-100">${escapeHTML(topic.topic)}</span><span class="text-[9px] text-slate-500">${topic.score} theme match${topic.score===1?'':'es'}</span></div><div class="grid grid-cols-1 gap-2">${topic.refs.slice(0,2).map(ref=>{const passage=getBibleReferenceContent(ref[0]);const excerpt=passage?passage.verses.map(v=>`${v.number}. ${v.text}`).join(' '):ref[1];return `<button type="button" onclick="openBibleReference('${ref[0].replace(/'/g,"\\'")}')" class="text-left rounded-lg bg-slate-950 border border-slate-800 p-2.5 hover:border-slate-500 transition"><span class="block text-xs font-extrabold text-white">${escapeHTML(ref[0])}</span><span class="block text-[11px] text-slate-300 leading-relaxed mt-1">${escapeHTML(excerpt)}</span></button>`;}).join('')}</div></div>`).join('')}</div>`;
+}
+function setBibleStatus(text) { const el=document.getElementById('bible-search-status'); if(el)el.textContent=text; }
+function updateBibleConnectionStatus() {
+  const el=document.getElementById('bible-connection-status');
+  const help=document.getElementById('bible-library-help');
+  if(el){el.textContent=bibleData?'BSB loaded':'Bible file needed';el.className=bibleData?'text-[10px] px-2 py-1 rounded-full bg-emerald-950/70 border border-emerald-800 text-emerald-200':'text-[10px] px-2 py-1 rounded-full bg-amber-950/70 border border-amber-800 text-amber-200';}
+  if(help)help.textContent=bibleData?`Berean Standard Bible loaded (${bibleBooksAvailable().length} books available). Search and reading work without an API connection.`:'Could not find bible-bsb.json automatically. Download the free BSB JSON file, then upload it beside this HTML or use “Load Bible JSON file”.';
+}
+function populateBibleBookSelect() {
+  const select=document.getElementById('bible-book-select');
+  if(!select||!bibleData)return;
+  const books=bibleBooksAvailable();
+  select.innerHTML='<option value="">Select a book</option>'+books.map(b=>`<option value="${b[0]}">${escapeHTML(b[1])}</option>`).join('');
+  if(!bibleCurrentBook&&books.length)select.value=books[0][0];
+  else if(bibleCurrentBook)select.value=bibleCurrentBook;
+  updateBibleChapterOptions();
+}
+function updateBibleChapterOptions() {
+  const bookSelect=document.getElementById('bible-book-select');
+  const chapterSelect=document.getElementById('bible-chapter-select');
+  if(!bookSelect||!chapterSelect||!bibleData)return;
+  const code=bookSelect.value;
+  const chapters=(bibleData[code]||[]);
+  chapterSelect.innerHTML=chapters.map((_,i)=>`<option value="${i+1}">Chapter ${i+1}</option>`).join('');
+  chapterSelect.value=String(Math.min(Number(chapterSelect.value)||1,chapters.length||1));
+}
+function renderBibleTab() {
+  updateBibleConnectionStatus();
+  if(bibleData)populateBibleBookSelect();
+  else loadBibleData();
+}
+function normalizeBsbDataset(raw) {
+  // Accept either the compact BSB schema (books -> chapters -> verse strings)
+  // or a USFM-code keyed dataset. Convert both to the reader's internal shape.
+  if (raw && raw.GEN && raw.REV) return raw;
+  if (!raw || !Array.isArray(raw.books)) throw new Error('Expected a BSB JSON file containing a books array.');
+  const normalized = {};
+  const norm = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  for (const book of raw.books) {
+    const candidates = [book.name, book.id, book.abbrev, book.abbreviation].map(norm);
+    const match = BIBLE_BOOKS.find(([code, name, aliases]) => {
+      const names = [name, code, ...aliases].map(norm);
+      return candidates.some(candidate => candidate && names.includes(candidate));
+    });
+    if (!match) continue;
+    let chapters = book.chapters || [];
+    if (chapters.length && !Array.isArray(chapters[0])) {
+      chapters = chapters.map(ch => {
+        if (Array.isArray(ch.verses)) return ch.verses.map(v => typeof v === 'string' ? v : (v.text || ''));
+        return [];
+      });
+    }
+    normalized[match[0]] = chapters.map(ch => {
+      if (!Array.isArray(ch)) return [];
+      return ch.map(v => typeof v === 'string' ? v : (v && (v.text || v.content) || ''));
+    });
+  }
+  const missing = BIBLE_BOOKS.filter(b => !normalized[b[0]]);
+  if (missing.length) throw new Error(`BSB file is missing ${missing.length} books: ${missing.slice(0,5).map(b=>b[1]).join(', ')}.`);
+  return normalized;
+}
+
+async function loadBibleData() {
+  if(bibleData||bibleDataLoading)return;
+  bibleDataLoading=true;
+  setBibleStatus('Loading the free Berean Standard Bible text…');
+  try {
+    const response=await fetch('./bible-bsb.json',{cache:'force-cache'});
+    if(!response.ok)throw new Error(`File not found (${response.status})`);
+    const raw=await response.json();
+    bibleData=normalizeBsbDataset(raw);
+    updateBibleConnectionStatus();
+    populateBibleBookSelect();
+    setBibleStatus('Berean Standard Bible loaded. Search by verse reference or keyword.');
+    refreshSongScriptureDisplays();
+  } catch(err) {
+    console.warn('Automatic BSB load failed; use the file picker:',err);
+    updateBibleConnectionStatus();
+    setBibleStatus(`Automatic load failed (${err.message}). Choose bible-bsb.json with “Load Bible JSON file”. If opening the page directly from your computer, use a local web server for automatic loading.`);
+  } finally { bibleDataLoading=false; }
+}
+async function loadBibleFile(event) {
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  try {
+    setBibleStatus(`Reading ${file.name}…`);
+    const data=JSON.parse(await file.text());
+    // The supplied BSB file uses { books: [{ id, name, chapters: [[verseText]] }] },
+    // while older builds expected a GEN/EXO keyed object. Normalize both formats.
+    const normalized=normalizeBsbDataset(data);
+    const available=BIBLE_BOOKS.filter(b=>Array.isArray(normalized[b[0]])&&normalized[b[0]].length>0);
+    if(available.length!==66)throw new Error(`Expected all 66 books; found ${available.length}.`);
+    bibleData=normalized;
+    bibleCurrentBook='';
+    bibleCurrentChapter=1;
+    updateBibleConnectionStatus();
+    populateBibleBookSelect();
+    setBibleStatus(`Loaded ${file.name}: all 66 books are ready for reading and search.`);
+    refreshSongScriptureDisplays();
+  } catch(err) {
+    console.error('BSB Bible file load failed:',err);
+    setBibleStatus(`Could not load Bible file: ${err.message}`);
+  } finally {
+    // Permit selecting the same file again after correcting an issue.
+    if(event.target)event.target.value='';
+  }
+}
+function refreshSongScriptureDisplays() {
+  if(typeof renderSongsBank==='function')renderSongsBank();
+  if(typeof renderStage==='function'&&currentStageLineup)renderStage();
+}
+function renderBiblePassage(bookCode, chapterNumber, startVerse=1, endVerse=null) {
+  const book=getBibleBook(bookCode);
+  const chapters=bibleData&&bibleData[bookCode];
+  const chapter=chapters&&chapters[chapterNumber-1];
+  const reader=document.getElementById('bible-reader');
+  if(!book||!chapter||!reader){setBibleStatus('That Bible chapter could not be found.');return;}
+  const end=Math.min(endVerse||chapter.length,chapter.length);
+  const verses=[];
+  for(let v=Math.max(1,startVerse);v<=end;v++){const text=bibleVerse(bookCode,chapterNumber,v);if(text)verses.push(`<p class="text-sm leading-7 text-slate-100"><sup class="text-slate-500 font-bold mr-1">${v}</sup>${escapeHTML(text)}</p>`);}
+  bibleCurrentBook=bookCode;bibleCurrentChapter=chapterNumber;
+  reader.classList.remove('hidden');
+  reader.innerHTML=`<div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3"><div><h3 class="text-base font-extrabold text-white">${escapeHTML(book.name)} ${chapterNumber}${startVerse>1||endVerse?' · verses '+startVerse+'–'+end:''}</h3><p class="text-[10px] text-slate-500">Berean Standard Bible (BSB) · Public domain</p></div><div class="flex gap-2"><button type="button" onclick="navigateBibleChapter(-1)" class="rounded-lg px-3 py-1.5 bg-slate-800 border border-slate-700 text-xs text-white">Previous</button><button type="button" onclick="navigateBibleChapter(1)" class="rounded-lg px-3 py-1.5 bg-slate-800 border border-slate-700 text-xs text-white">Next</button></div></div><div class="space-y-1">${verses.join('')}</div>`;
+  setBibleStatus(`Displaying ${book.name} ${chapterNumber}.`);
+}
+function navigateBibleChapter(delta) {
+  if(!bibleData||!bibleCurrentBook)return;
+  const total=(bibleData[bibleCurrentBook]||[]).length;
+  let next=bibleCurrentChapter+delta, code=bibleCurrentBook;
+  if(next<1||next>total){
+    const idx=BIBLE_BOOKS.findIndex(b=>b[0]===code);
+    const nextBook=BIBLE_BOOKS[idx+delta];
+    if(!nextBook||!bibleData[nextBook[0]])return;
+    code=nextBook[0];next=delta>0?1:(bibleData[code]||[]).length;
+  }
+  renderBiblePassage(code,next);
+}
+function readSelectedBibleChapter() {
+  const code=document.getElementById('bible-book-select')?.value;
+  const chapter=Number(document.getElementById('bible-chapter-select')?.value||1);
+  if(code)renderBiblePassage(code,chapter);
+}
+function renderBibleSearchResult(ref, text) {
+  return `<button type="button" onclick="openBibleReference('${String(ref).replace(/'/g,"\\'")}')" class="w-full text-left rounded-xl border border-slate-800 bg-slate-950 p-3 hover:border-slate-500 transition"><span class="block text-xs font-extrabold text-white">${escapeHTML(ref)}</span><span class="block text-xs text-slate-300 leading-relaxed mt-1">${escapeHTML(text)}</span><span class="block text-[10px] text-slate-500 mt-2">Open passage</span></button>`;
+}
+async function searchBible(event) {
+  if(event)event.preventDefault();
+  const query=(document.getElementById('bible-search-input')?.value||'').trim();
+  if(!query)return;
+  bibleLastSearch=query;
+  const results=document.getElementById('bible-search-results');
+  const reader=document.getElementById('bible-reader');
+  if(!bibleData){setBibleStatus('Load bible-bsb.json first. Use the download link above, then select the file or upload it beside this HTML.');return;}
+  if(reader){reader.classList.add('hidden');reader.innerHTML='';}
+  if(results)results.innerHTML='';
+  const parsed=parseBibleReference(query);
+  if(parsed){
+    const passage=getBibleReferenceContent(query);
+    if(!passage){setBibleStatus(`No passage found for “${query}”. Check the book, chapter, and verse number.`);return;}
+    setBibleStatus(`Found ${passage.reference}.`);
+    renderBiblePassage(parsed.book.code,parsed.chapter,parsed.isChapter?1:parsed.start,parsed.isChapter?null:parsed.end);
+    return;
+  }
+  const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
+  const matches=[];
+  for(const [code,chapters] of Object.entries(bibleData)){
+    const book=getBibleBook(code);if(!book||!Array.isArray(chapters))continue;
+    for(let c=0;c<chapters.length;c++){
+      const verses=chapters[c]||[];
+      for(let v=0;v<verses.length;v++){
+        const text=normalizeBibleText(verses[v]);
+        const lower=text.toLowerCase();
+        const match=lower.includes(query.toLowerCase()) || (terms.length>1&&terms.every(t=>lower.includes(t)));
+        if(match)matches.push({ref:`${book.name} ${c+1}:${v+1}`,text});
+        if(matches.length>=40)break;
+      }
+      if(matches.length>=40)break;
+    }
+    if(matches.length>=40)break;
+  }
+  if(!matches.length){setBibleStatus(`No BSB verses found for “${query}”. Try a shorter keyword or phrase.`);return;}
+  setBibleStatus(`Showing ${matches.length}${matches.length===40?'+':''} result(s) for “${query}”.`);
+  if(results)results.innerHTML=matches.map(m=>renderBibleSearchResult(m.ref,m.text)).join('');
+}
+async function openBibleReference(reference) {
+  switchTab('bible');
+  const input=document.getElementById('bible-search-input');
+  if(input)input.value=reference;
+  if(!bibleData)await loadBibleData();
+  searchBible();
 }
 
 function renderHome() {
@@ -1086,7 +1441,16 @@ function renderSongsBank() {
             </button>
         </div>
         </div>
-        ${isExpanded ? `<div class="p-3.5 sm:p-6 border-t border-slate-800 bg-slate-950/95 overflow-x-auto min-w-0">${renderLyricsHTML(s.lyrics, semitones, true)}</div>` : ''}
+        ${isExpanded ? `<div class="p-3.5 sm:p-6 border-t border-slate-800 bg-slate-950/95 overflow-x-auto min-w-0">
+            <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[10px] sm:text-xs text-slate-400">Smart chord detection: bracketed chords + chord-only rows; section labels preserved</span>
+                <button type="button" onclick="toggleSongBankChords()" class="px-3 py-1.5 rounded-lg border text-[11px] font-bold ${showSongBankChords ? 'bg-slate-800 border-slate-600 text-white' : 'bg-slate-900 border-slate-800 text-slate-300'}" aria-pressed="${showSongBankChords}">
+                    ${showSongBankChords ? 'Hide Chords' : 'Show Chords'}
+                </button>
+            </div>
+            ${renderLyricsHTML(s.lyrics, semitones, showSongBankChords)}
+            ${renderSongScriptureSuggestions(s)}
+        </div>` : ''}
         </div>`;
     }).join('');
     if (window.lucide) lucide.createIcons();
@@ -1098,7 +1462,17 @@ function toggleSongExpand(id) {
 }
 
 function changeKey(id, delta) {
-    songTranspositions[id] = (songTranspositions[id] || 0) + delta;
+    songTranspositions[id] = (Number(songTranspositions[id]) || 0) + Number(delta);
+    lineups.forEach(lineup => {
+        if (Array.isArray(lineup.songIds) && lineup.songIds.includes(id)) {
+            lineup.transpositions = { ...(lineup.transpositions || {}), [id]: songTranspositions[id] };
+        }
+    });
+    renderSongsBank();
+}
+
+function toggleSongBankChords() {
+    showSongBankChords = !showSongBankChords;
     renderSongsBank();
 }
 
@@ -1142,9 +1516,14 @@ function deleteLineup(id) {
 
 function startPresentation(lineupId, songIdx) {
     currentStageLineup = lineups.find(l => l.id === lineupId);
+    showStageChords = true;
     if (!currentStageLineup) return;
     currentStageSongIdx = songIdx;
-    stageTranspositions = currentStageLineup.transpositions || {};
+    // Use one per-song transpose map in Song Bank and Live Presentation.
+    // Import legacy lineup shifts only if this song has no shared value yet.
+    Object.entries(currentStageLineup.transpositions || {}).forEach(([id, value]) => {
+        if (songTranspositions[id] === undefined) songTranspositions[id] = Number(value) || 0;
+    });
     document.getElementById('presentation-modal').classList.remove('hidden');
     renderStage();
 }
@@ -1165,11 +1544,11 @@ function renderStage() {
     const song = songs.find(s => s.id === currentSongId);
     if (!song) return;
 
-    const semitones = stageTranspositions[currentSongId] || 0;
+    const semitones = songTranspositions[currentSongId] || 0;
     document.getElementById('stage-song-title').innerText = song.title;
     document.getElementById('stage-song-singer').innerText = song.singer;
     document.getElementById('stage-song-key').innerText = transposeChord(song.originalKey, semitones);
-    document.getElementById('stage-lyrics-box').innerHTML = renderLyricsHTML(song.lyrics, semitones, showStageChords);
+    document.getElementById('stage-lyrics-box').innerHTML = renderLyricsHTML(song.lyrics, semitones, showStageChords) + renderSongScriptureSuggestions(song);
     const chordButton = document.getElementById('stage-chords-btn');
     if (chordButton) {
         chordButton.setAttribute('aria-pressed', String(showStageChords));
@@ -1189,7 +1568,10 @@ function navigateStageSong(delta) {
 
 function adjustStageKey(delta) {
     const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
-    stageTranspositions[currentSongId] = (stageTranspositions[currentSongId] || 0) + delta;
+    songTranspositions[currentSongId] = (Number(songTranspositions[currentSongId]) || 0) + Number(delta);
+    if (currentStageLineup) {
+        currentStageLineup.transpositions = { ...(currentStageLineup.transpositions || {}), [currentSongId]: songTranspositions[currentSongId] };
+    }
     renderStage();
 }
 

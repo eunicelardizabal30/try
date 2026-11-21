@@ -348,11 +348,11 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
 <div id="tab-bible" class="hidden animate-fade-in space-y-5 sm:space-y-6">
   <div class="pt-1 flex items-start gap-3">
     <div class="w-11 h-11 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0"><i data-lucide="book-open-check" class="w-6 h-6 text-white"></i></div>
-    <div class="min-w-0"><h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">Bible</h2></div>
+    <div class="min-w-0"><h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">Bible</h2><p class="text-[11px] sm:text-sm text-slate-300 mt-1">Berean Standard Bible (BSB) · Public domain · No API key required</p></div>
   </div>
   <div class="rounded-2xl border border-slate-700 bg-slate-900/90 p-4 sm:p-5 space-y-3 shadow-xl">
     <div class="flex flex-wrap items-center justify-between gap-2">
-      <div><h3 class="font-bold text-white text-sm">Offline Bible library</h3></div>
+      <div><h3 class="font-bold text-white text-sm">Offline Bible library</h3><p class="text-xs text-slate-400 mt-1">The Bible is read from a JSON file stored with this website. No API account or key is used.</p></div>
       <span id="bible-connection-status" class="text-[10px] px-2 py-1 rounded-full bg-amber-950/70 border border-amber-800 text-amber-200">Loading Bible…</span>
     </div>
     <div id="bible-library-help" class="text-xs text-slate-300 leading-relaxed">Looking for <code class="text-slate-100">bible-bsb.json</code> beside this HTML file…</div>
@@ -361,7 +361,7 @@ Access lyrics, manage real-time chord transpositions, build setlists, and launch
       <a href="https://raw.githubusercontent.com/malexander-ogletree/ScriptureDesk/main/bible-bsb.json" target="_blank" rel="noopener" class="rounded-xl px-4 py-2.5 text-xs font-bold border border-slate-700 bg-slate-950 text-slate-200">Download free BSB Bible data</a>
       <input id="bible-file-input" type="file" accept=".json,application/json" class="hidden" onchange="loadBibleFile(event)">
     </div>
-  
+    <p class="text-[10px] leading-relaxed text-slate-500">For your hosted website, upload the downloaded file into the same folder as this HTML and name it <code>bible-bsb.json</code>. For local use, select the JSON file above. Text: Berean Standard Bible (BSB), dedicated to the public domain by its publisher.</p>
   </div>
   <div class="rounded-2xl border border-slate-700 bg-slate-900/90 p-4 sm:p-5 space-y-4 shadow-xl">
     <div class="space-y-1"><h3 class="font-bold text-white">Find a Scripture</h3><p class="text-xs text-slate-400">Search a reference (John 3:16, Psalm 23, Romans 8:28) or a word/phrase (grace, worship, faith).</p></div>
@@ -552,11 +552,11 @@ Exit
 </div>
 <div>
 <label class="text-xs font-semibold text-slate-300">Worship Leader</label>
-<input type="text" id="form-lineup-leader" placeholder="e.g. Mikha" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
+<input type="text" id="form-lineup-leader" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
 </div>
 <div>
 <label class="text-xs font-semibold text-slate-300">Service Notes / Theme</label>
-<input type="text" id="form-lineup-notes" placeholder="e.g. Starts 9:45 AM" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
+<input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
 </div>
 <div class="space-y-2 sm:space-y-3 pt-1">
 <label class="text-xs font-bold text-white uppercase tracking-wider">Select Songs for Lineup</label>
@@ -1032,36 +1032,72 @@ const BIBLE_BOOKS = [
 const BIBLE_BOOK_BY_CODE = Object.fromEntries(BIBLE_BOOKS.map(b=>[b[0],{code:b[0],name:b[1],aliases:[b[1].toLowerCase(),...b[2]]}]));
 
 const SONG_SCRIPTURE_TOPICS = [
-  {topic:'Worship and praise', terms:['worship','praise','sing','song','glory','honor','magnify','exalt','hallelujah','holy','adoration'], refs:[['Psalm 95:1-6','A call to worship the Lord with joyful praise.'],['Psalm 100:1-5','A song of thanksgiving and praise.'],['John 4:23-24','Worship that comes from the spirit and truth.']]},
-  {topic:'Faith and trust', terms:['faith','trust','believe','confidence','depend','surrender','lean on','unshaken'], refs:[['Proverbs 3:5-6','Trusting God and acknowledging Him in every path.'],['Hebrews 11:1','The biblical description of faith.'],['Isaiah 41:10','God’s promise to strengthen and uphold His people.']]},
-  {topic:'God’s faithfulness', terms:['faithful','faithfulness','never fail','never forsake','promise','steadfast','constant','unchanging'], refs:[['Lamentations 3:22-23','God’s mercies are renewed and His faithfulness is great.'],['Deuteronomy 7:9','God is faithful and keeps His covenant.'],['2 Timothy 2:13','God remains faithful.']]},
-  {topic:'Grace and mercy', terms:['grace','mercy','forgive','forgiveness','compassion','undeserved','redeem','redemption'], refs:[['Ephesians 2:8-9','Salvation is by grace through faith.'],['Psalm 103:8-12','The Lord is merciful and gracious.'],['Titus 3:4-7','God saves according to His mercy.']]},
-  {topic:'Love of God', terms:['love','beloved','loved','loving','heart','compassion','everlasting love'], refs:[['1 John 4:7-12','God’s love is revealed through Christ.'],['Romans 8:38-39','Nothing can separate believers from God’s love.'],['John 3:16-17','God’s love and the gift of His Son.']]},
-  {topic:'Hope and encouragement', terms:['hope','future','tomorrow','waiting','strength','weary','encourage','persevere'], refs:[['Romans 15:13','God fills His people with joy, peace, and hope.'],['Isaiah 40:28-31','The Lord renews the strength of those who wait on Him.'],['Hebrews 6:19','Hope as an anchor for the soul.']]},
-  {topic:'God’s presence', terms:['presence','here with me','with us','never alone','near','abide','dwell','walk with'], refs:[['Psalm 23:4','God’s presence in the darkest valley.'],['Matthew 28:20','Jesus promises to be with His disciples.'],['Psalm 139:7-10','No place is beyond God’s presence.']]},
-  {topic:'Peace', terms:['peace','still','quiet','rest','fear','anxious','calm','storm'], refs:[['Philippians 4:6-7','God’s peace guards hearts and minds.'],['John 14:27','The peace Jesus gives.'],['Psalm 46:1-3','God is refuge and strength.']]},
-  {topic:'Healing and restoration', terms:['heal','healing','restore','restoration','broken','wounds','comfort','sorrow'], refs:[['Psalm 147:3','The Lord heals the brokenhearted.'],['Jeremiah 17:14','A prayer for healing and salvation.'],['Isaiah 61:1-3','Good news, comfort, and restoration.']]},
-  {topic:'Jesus and salvation', terms:['jesus','savior','saviour','cross','calvary','blood','salvation','redeemer','lamb of god'], refs:[['John 1:29','Jesus is identified as the Lamb of God.'],['Romans 10:9-13','The promise of salvation through the Lord.'],['1 Peter 2:24','Christ bore our sins on the cross.']]},
-  {topic:'Light and guidance', terms:['light','darkness','lamp','guide','path','way','lead me','direction'], refs:[['John 8:12','Jesus is the light of the world.'],['Psalm 119:105','God’s word as a lamp and light.'],['Psalm 27:1','The Lord is light and salvation.']]},
-  {topic:'Victory in God', terms:['victory','overcome','conquer','triumph','battle','freedom','stronger'], refs:[['Romans 8:37','More than conquerors through Christ.'],['1 Corinthians 15:57','Victory through Jesus Christ.'],['1 John 5:4-5','Faith overcomes the world.']]}
+  {topic:'Worship and adoration', terms:['worship','praise','adoration','hallelujah','magnify','exalt','glorify','worthy','worthiness','bow down','proclaim your greatness','purihin','sambahin','pupurihin','dakila ka'], refs:[['Psalm 95:1-6','A call to worship the Lord with joyful praise.'],['Psalm 100:1-5','Thanksgiving and praise to God.'],['John 4:23-24','Worship that comes from the spirit and truth.']]},
+  {topic:'God’s goodness and kindness', terms:['goodness','you are good','so good','kindness','good to me','kabutihan','napakabuti','buti mo','mabuti ka'], refs:[['Psalm 34:8','An invitation to taste and see that the Lord is good.'],['Psalm 23:6','God’s goodness and mercy follow His people.'],['James 1:17','Every good and perfect gift comes from above.']]},
+  {topic:'God’s faithfulness and promises', terms:['faithful','faithfulness','never fail','never forsake','kept your promise','promise keeper','steadfast','unchanging','tapat','katapatan','pangako mo','di nagbabago'], refs:[['Lamentations 3:22-23','God’s mercies are renewed and His faithfulness is great.'],['Deuteronomy 7:9','God is faithful and keeps His covenant.'],['2 Timothy 2:13','God remains faithful.']]},
+  {topic:'Trust, surrender and dependence', terms:['trust','believe','surrender','i give my life','i lay it down','depend on you','lean on','have your way','in your hands','sumasampalataya','ipagkatiwala','isuko','kalooban mo'], refs:[['Proverbs 3:5-6','Trusting God and acknowledging Him in every path.'],['Romans 12:1-2','Offering our lives to God and being transformed.'],['Psalm 37:5','Commit your way to the Lord and trust Him.']]},
+  {topic:'Hope and new beginnings', terms:['hope','new beginning','new life','future','tomorrow','waiting on you','my hope','pag asa','may pag asa','bagong buhay'], refs:[['Romans 15:13','God fills His people with joy, peace, and hope.'],['Isaiah 43:18-19','God declares that He is doing a new thing.'],['1 Peter 1:3','A living hope through the resurrection of Jesus.']]},
+  {topic:'God’s presence and nearness', terms:['your presence','you are here','with me','with us','never alone','near to me','abide','dwell','walk with me','presensya mo','kasama kita','narito ka'], refs:[['Psalm 23:4','God’s presence in the darkest valley.'],['Matthew 28:20','Jesus promises to be with His disciples.'],['Psalm 139:7-10','No place is beyond God’s presence.']]},
+  {topic:'Peace, rest and freedom from fear', terms:['peace','be still','still my soul','rest in you','no fear','fear not','calm the storm','kapayapaan','huwag matakot','pahinga'], refs:[['Philippians 4:6-7','God’s peace guards hearts and minds.'],['John 14:27','The peace Jesus gives.'],['Psalm 46:1-3','God is refuge and strength.']]},
+  {topic:'Healing, comfort and restoration', terms:['heal','healing','restore','restoration','brokenhearted','wounds','comfort me','make me whole','pagalingin','pag hilom','ibalik','pagaling'], refs:[['Psalm 147:3','The Lord heals the brokenhearted.'],['Jeremiah 17:14','A prayer for healing and salvation.'],['Isaiah 61:1-3','Good news, comfort, and restoration.']]},
+  {topic:'Jesus, the cross and salvation', terms:['jesus','savior','saviour','cross','calvary','precious blood','lamb of god','salvation','redeemer','redeemed','saved me','kaligtasan','tagapagligtas','dugo ni hesus'], refs:[['John 1:29','Jesus is identified as the Lamb of God.'],['Romans 10:9-13','The promise of salvation through the Lord.'],['1 Peter 2:24','Christ bore our sins on the cross.']]},
+  {topic:'Light, truth and guidance', terms:['light of the world','light in the darkness','your word is a lamp','guide me','lead me','show me the way','path','liwanag','ilaw sa dilim','akayin mo'], refs:[['John 8:12','Jesus is the light of the world.'],['Psalm 119:105','God’s word as a lamp and light.'],['Psalm 27:1','The Lord is light and salvation.']]},
+  {topic:'Victory and deliverance', terms:['victory','overcome','conquer','triumph','set me free','delivered','break every chain','freedom','tagumpay','pinalaya','kalayaan'], refs:[['Romans 8:37','More than conquerors through Christ.'],['1 Corinthians 15:57','Victory through Jesus Christ.'],['John 8:36','Those the Son sets free are free indeed.']]},
+  {topic:'Gratitude and thanksgiving', terms:['thank you','thankful','thanksgiving','grateful','salamat','pasasalamat','biyaya','blessings','blessed me'], refs:[['1 Thessalonians 5:16-18','Give thanks in every circumstance.'],['Psalm 103:1-5','Remember and bless the Lord for His benefits.'],['Colossians 3:15-17','Let gratitude shape the life of the believer.']]},
+  {topic:'God’s love and compassion', terms:['love of god','your love','everlasting love','unfailing love','you love me','mahal mo','pag ibig','iniibig','compassion'], refs:[['1 John 4:7-12','God’s love is revealed through Christ.'],['Romans 8:38-39','Nothing can separate believers from God’s love.'],['John 3:16-17','God’s love and the gift of His Son.']]},
+  {topic:'Holiness and becoming like Christ', terms:['holy','holiness','purify','cleanse my heart','make me more like you','sanctify','banal','linisin ang puso','maging banal'], refs:[['1 Peter 1:15-16','God calls His people to holiness.'],['Romans 12:1-2','A transformed life offered to God.'],['2 Corinthians 3:18','Being transformed into Christ’s image.']]},
+  {topic:'God as provider and shepherd', terms:['provider','provide','provision','enough for me','you sustain me','shepherd','daily bread','ikaw ang bahala','tugunin','tagapaglaan'], refs:[['Philippians 4:19','God supplies every need according to His riches.'],['Matthew 6:31-33','Trust the Father to provide what is needed.'],['Psalm 23:1-3','The Lord shepherds and cares for His people.']]},
+  {topic:'Wisdom and direction', terms:['wisdom','understand','teach me','show me','your will','decision','discern','karunungan','turuan mo','kalooban'], refs:[['James 1:5','Ask God for wisdom.'],['Psalm 32:8','God promises instruction and guidance.'],['Proverbs 16:9','The Lord establishes the steps of those who walk with Him.']]}
 ];
 
 function getSongTopicMatches(song) {
-  const cleanLyrics = String(song.lyrics || '').replace(/\[[^\]]+\]/g, ' ').replace(/\([^)]*\)/g, ' ');
-  const text = `${song.title || ''} ${cleanLyrics}`.toLowerCase().replace(/[^a-z0-9\s']/g, ' ');
+  // Score title phrases more strongly than lyric occurrences; chorus lines carry
+  // more weight than incidental words in a verse. Ignore chord labels and section tags.
+  const title = String(song.title || '').toLowerCase().replace(/[^a-z0-9ñáéíóú\s']/g, ' ').replace(/\s+/g, ' ').trim();
+  const rawLines = String(song.lyrics || '').split(/\r?\n/);
+  let section = 'verse';
+  const lyricParts = [];
+  for (const raw of rawLines) {
+    const label = raw.match(/^\s*\[([^\]]+)\]\s*$/);
+    if (label) { section = label[1].toLowerCase(); continue; }
+    const line = raw.replace(/\[[^\]]+\]/g, ' ').replace(/\([^)]*\)/g, ' ')
+      .toLowerCase().replace(/[^a-z0-9ñáéíóú\s']/g, ' ').replace(/\s+/g, ' ').trim();
+    if (line) lyricParts.push({text:line, weight:/chorus|refrain|bridge|tag/.test(section) ? 1.7 : 1});
+  }
+  const allLyrics = lyricParts.map(x=>x.text).join(' ');
   const scored = SONG_SCRIPTURE_TOPICS.map(item => {
     let score = 0;
     const hits = [];
-    item.terms.forEach(term => {
+    for (const rawTerm of item.terms) {
+      const term = rawTerm.toLowerCase();
       const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const re = new RegExp(`\\b${escaped}\\b`, 'g');
-      const count = (text.match(re) || []).length;
-      if (count) { score += Math.min(count, 3); hits.push(term); }
-    });
-    return {...item, score, hits};
-  }).filter(x => x.score > 0).sort((a,b) => b.score-a.score);
-  return scored.slice(0, 3);
+      const re = new RegExp(`(^|\\s)${escaped}(?=\\s|$)`, 'g');
+      const titleCount = (title.match(re) || []).length;
+      const lyricCount = (allLyrics.match(re) || []).length;
+      let lyricWeight = 0;
+      for (const part of lyricParts) lyricWeight += (part.text.match(re) || []).length * part.weight;
+      if (titleCount || lyricCount) {
+        // A distinctive phrase in the title is a strong signal; repeated chorus
+        // language is meaningful but capped so repetition cannot dominate.
+        score += titleCount * (term.includes(' ') ? 7 : 4.5);
+        score += Math.min(lyricWeight, 5) * (term.includes(' ') ? 2.2 : 1.35);
+        hits.push(rawTerm);
+      }
+    }
+    return {...item, score:Math.round(score*10)/10, hits};
+  }).filter(x => x.score >= 2.2).sort((a,b) => b.score-a.score);
+
+  // Return only distinct, well-supported themes. This avoids generic words such
+  // as “song”, “way”, “heart” or “good” forcing unrelated matches.
+  const selected = [];
+  for (const item of scored) {
+    if (selected.length >= 2) break;
+    if (selected.some(chosen => chosen.topic === item.topic)) continue;
+    selected.push(item);
+  }
+  return selected;
 }
+
 function normalizeBibleText(text) { return String(text || '').replace(/\s+/g,' ').trim(); }
 function bibleBooksAvailable() { return BIBLE_BOOKS.filter(b => bibleData && Array.isArray(bibleData[b[0]])); }
 function getBibleBook(code) { return BIBLE_BOOK_BY_CODE[code]; }
@@ -1100,7 +1136,7 @@ function renderSongScriptureSuggestions(song) {
   const topics=getSongTopicMatches(song);
   const heading=`<div class="flex items-center gap-2"><i data-lucide="book-open-check" class="w-4 h-4 text-slate-200"></i><h4 class="text-sm font-extrabold text-white">Related Bible passages</h4><span class="text-[9px] rounded-full border border-slate-700 bg-slate-800 px-2 py-0.5 text-slate-300">Theme match</span></div>`;
   if(!topics.length)return `<div class="mt-5 pt-4 border-t border-slate-800">${heading}<p class="text-xs text-slate-400 mt-2">No strong theme match was detected automatically. Search a keyword in the Bible tab to explore the song’s message.</p><button onclick="switchTab('bible')" class="mt-2 text-xs font-bold text-slate-200 underline underline-offset-2">Open Bible</button></div>`;
-  return `<div class="mt-5 pt-4 border-t border-slate-800 space-y-3">${heading}<p class="text-[11px] text-slate-400">Suggested from recurring words and themes in the lyrics. These are study suggestions, not a claim that the song quotes these passages directly.</p>${topics.map(topic=>`<div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-xs font-bold text-slate-100">${escapeHTML(topic.topic)}</span><span class="text-[9px] text-slate-500">${topic.score} theme match${topic.score===1?'':'es'}</span></div><div class="grid grid-cols-1 gap-2">${topic.refs.slice(0,2).map(ref=>{const passage=getBibleReferenceContent(ref[0]);const excerpt=passage?passage.verses.map(v=>`${v.number}. ${v.text}`).join(' '):ref[1];return `<button type="button" onclick="openBibleReference('${ref[0].replace(/'/g,"\\'")}')" class="text-left rounded-lg bg-slate-950 border border-slate-800 p-2.5 hover:border-slate-500 transition"><span class="block text-xs font-extrabold text-white">${escapeHTML(ref[0])}</span><span class="block text-[11px] text-slate-300 leading-relaxed mt-1">${escapeHTML(excerpt)}</span></button>`;}).join('')}</div></div>`).join('')}</div>`;
+  return `<div class="mt-5 pt-4 border-t border-slate-800 space-y-3">${heading}<p class="text-[11px] text-slate-400">Matched using the song title and lyric phrases, with extra weight for the chorus and bridge. These are study suggestions, not a claim that the song quotes these passages directly.</p>${topics.map(topic=>`<div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-xs font-bold text-slate-100">${escapeHTML(topic.topic)}</span><span class="text-[9px] text-slate-500">${topic.score} theme match${topic.score===1?'':'es'}</span></div><div class="grid grid-cols-1 gap-2">${topic.refs.slice(0,2).map(ref=>{const passage=getBibleReferenceContent(ref[0]);const excerpt=passage?passage.verses.map(v=>`${v.number}. ${v.text}`).join(' '):ref[1];return `<button type="button" onclick="openBibleReference('${ref[0].replace(/'/g,"\\'")}')" class="text-left rounded-lg bg-slate-950 border border-slate-800 p-2.5 hover:border-slate-500 transition"><span class="block text-xs font-extrabold text-white">${escapeHTML(ref[0])}</span><span class="block text-[11px] text-slate-300 leading-relaxed mt-1">${escapeHTML(excerpt)}</span></button>`;}).join('')}</div></div>`).join('')}</div>`;
 }
 function setBibleStatus(text) { const el=document.getElementById('bible-search-status'); if(el)el.textContent=text; }
 function updateBibleConnectionStatus() {

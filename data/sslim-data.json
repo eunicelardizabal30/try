@@ -1512,6 +1512,17 @@
   ],
   "lineups": [
     {
+      "id": "l_1795242393567",
+      "title": "Christmas Line up",
+      "date": "2026-12-20",
+      "leader": "Bio/Jolina",
+      "notes": "",
+      "songIds": [
+        "s_1794497128249"
+      ],
+      "transpositions": {}
+    },
+    {
       "id": "l_1795239281500",
       "title": "Nov 22, 2026",
       "date": "2026-11-22",
@@ -1522,8 +1533,10 @@
         "s_1794446076907",
         "s_1794445620900"
       ],
-      "transpositions": {}
+      "transpositions": {
+        "s_1794446621080": -1
+      }
     }
   ],
-  "updatedAt": "2026-11-21T06:18:44.998Z"
+  "updatedAt": "2026-11-21T06:26:38.241Z"
 }

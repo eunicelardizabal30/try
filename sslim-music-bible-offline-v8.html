@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSLIM Music Team App</title>
+<!-- PWA Web App Meta Tags -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SSLIM Music">
+<meta name="theme-color" content="#0f172a">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F5F5F5;
+}
+.font-mono { 
+    font-family: 'JetBrains Mono', monospace; 
+}
+
+/* Glassmorphism Dark Panels with High Legibility */
+.glass-panel {
+    background: rgba(15, 23, 42, 0.82);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Semi-Translucent Song Bank Cards */
+.song-card-glass {
+    background: rgba(15, 23, 42, 0.80);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.song-card-glass:hover {
+    background: rgba(30, 41, 59, 0.90);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.3);
+}
+
+.song-card-glass-expanded {
+    background: rgba(11, 15, 25, 0.96) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.45);
+}
+
+/* Interactive Filter Cards */
+.filter-card {
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-card:hover {
+    background: rgba(30, 41, 59, 0.88);
+    transform: translateY(-2px);
+}
+
+.filter-card-active {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22) 0%, rgba(30, 41, 59, 0.95) 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 8px 25px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark-Gray / White Gradient Accent Buttons */
+.btn-gradient-bw {
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 40%, #64748b 100%);
+    color: #0f172a;
+    box-shadow: 0 6px 20px -4px rgba(0, 0, 0, 0.25);
+    transition: all 0.25s ease;
+}
+
+.btn-gradient-bw:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #94a3b8 100%);
+    box-shadow: 0 8px 25px -2px rgba(0, 0, 0, 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-gradient-dark {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.25s ease;
+}
+
+.btn-gradient-dark:hover {
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Page switch fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.6); }
+
+/* Strict Mobile Responsiveness Safeguards */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+body { overflow-wrap: anywhere; word-break: break-word; }
+img, iframe, video, svg { max-width: 100%; }
+input, select, textarea, button { max-width: 100%; }
+button { touch-action: manipulation; }
+#songs-bank-list > div, #lineups-view-container > div { min-width: 0; }
+#stage-lyrics-box { overflow-wrap: anywhere; }
+#stage-lyrics-box .whitespace-pre-wrap { white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 420px) {
+  #presentation-modal .stage-controls, #presentation-modal button { min-height: 34px; }
+  #stage-song-title { white-space: normal; overflow-wrap: anywhere; }
+  #stage-song-pills { max-width: 100%; }
+}
+.min-w-0 { min-width: 0 !important; }
+.break-words { overflow-wrap: anywhere; word-break: break-word; }
+</style>
+</head>
+<body class="text-slate-100 min-h-screen selection:bg-slate-200 selection:text-slate-950 relative pb-24 md:pb-10">
+
+<!-- ALWAYS VISIBLE FULL-SCREEN MOUNTAIN BACKGROUND -->
+<div class="fixed inset-0 w-full h-full pointer-events-none -z-20 overflow-hidden select-none"
+     style="background-color: #080b12;">
+
+    <!-- HD Black & White Mountain Image -->
+    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+         style="
+            background-image: url('https://images.unsplash.com/photo-1689498608576-54fe1264f558?auto=format&fit=crop&w=2400&q=90');
+            filter: grayscale(100%);
+            opacity: 0.65;
+         ">
+    </div>
+
+    <!-- Dark Overlay for Text Readability -->
+    <div class="absolute inset-0"
+         style="background: linear-gradient(
+            to bottom,
+            rgba(2, 6, 23, 0.55),
+            rgba(2, 6, 23, 0.48),
+            rgba(2, 6, 23, 0.75)
+         );">
+    </div>
+</div>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/90 border-b border-slate-800 shadow-2xl">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-2.5 sm:space-x-3 cursor-pointer group min-w-0" onclick="switchTab('home')">
+<img src="./sslim-logo.png" alt="SSLIM Family logo" class="w-12 h-12 sm:w-14 sm:h-14 object-contain flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+<div class="min-w-0">
+<div class="flex items-center space-x-1.5 sm:space-x-2 min-w-0">
+<h1 class="text-base sm:text-lg font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent truncate">
+Music Team
+</h1>
+<span class="inline-flex items-center space-x-1 px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold border bg-slate-800 border-slate-700 text-slate-200 shadow-sm flex-shrink-0">
+<i data-lucide="wifi" class="w-2.5 h-2.5 text-slate-300"></i>
+<span id="sync-status" class="truncate max-w-[80px] sm:max-w-none">Connecting…</span>
+</span>
+</div>
+<p class="text-[9px] sm:text-[10px] text-slate-400 tracking-widest uppercase font-bold truncate">Music Team Portal</p>
+</div>
+</div>
+
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center space-x-1 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-inner">
+<button onclick="switchTab('home')" id="nav-home" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-bw font-bold text-slate-950 shadow-md">
+<i data-lucide="home" class="w-4 h-4"></i>
+<span>Home</span>
+</button>
+<button onclick="switchTab('songs')" id="nav-songs" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
+<i data-lucide="book-open" class="w-4 h-4"></i>
+<span>Song Bank</span>
+</button>
+<button onclick="switchTab('bible')" id="nav-bible" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
+<i data-lucide="book-open-check" class="w-4 h-4"></i>
+<span>Bible</span>
+</button>
+<button onclick="switchTab('lineup')" id="nav-lineup" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
+<i data-lucide="calendar" class="w-4 h-4"></i>
+<span>Lineups</span>
+</button>
+<button onclick="switchTab('tuner')" id="nav-tuner" class="flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80">
+<i data-lucide="audio-lines" class="w-4 h-4"></i>
+<span>Tuner</span>
+</button>
+</nav>
+</div>
+</header>
+
+<!-- MAIN VIEWS CONTAINER -->
+<main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-4 sm:pt-6">
+
+<!-- HOME TAB -->
+<div id="tab-home" class="space-y-6 sm:space-y-8 animate-fade-in">
+<div class="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-700/80 bg-slate-900/85 p-5 sm:p-10 backdrop-blur-xl shadow-2xl">
+<div class="max-w-2xl relative z-10 space-y-3 sm:space-y-4">
+<span class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-slate-200 text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-sm">
+<i data-lucide="sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-300"></i>
+<span>SSLIM Music Portal</span>
+</span>
+<h2 class="text-2xl sm:text-5xl font-black text-white tracking-tight leading-tight break-words">
+SSLIM Worship Ministry.
+</h2>
+<p class="text-slate-300 text-xs sm:text-base leading-relaxed break-words">
+Access lyrics, manage real-time chord transpositions, build setlists, and launch live presentation mode smoothly.
+</p>
+
+<!-- Home Search Bar -->
+<div class="pt-2 space-y-3 max-w-xl">
+<div class="relative flex items-center">
+<i data-lucide="search" id="home-search-icon" class="absolute left-3.5 sm:left-4 w-4 h-4 sm:w-5 sm:h-5 text-slate-400"></i>
+<input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search songs, artists, or lyrics..." class="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-slate-950 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner text-xs sm:text-base font-medium">
+</div>
+</div>
+</div>
+</div>
+
+<!-- Global Search Container -->
+<div id="global-search-results-container" class="space-y-4 hidden">
+<h3 class="text-base sm:text-lg font-bold text-slate-200 flex items-center space-x-2">
+<i data-lucide="search" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+<span id="global-search-count">Search Results</span>
+</h3>
+<div id="global-search-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4"></div>
+</div>
+
+<!-- Recent Lineups Section -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="text-lg sm:text-xl font-bold text-white flex items-center space-x-2 drop-shadow-sm">
+<i data-lucide="calendar" class="w-4 h-4 sm:w-5 sm:h-5 text-slate-300"></i>
+<span>Recent Lineups</span>
+</h3>
+<p class="text-[11px] sm:text-xs text-slate-300 font-medium">Scheduled service setlists</p>
+</div>
+<button onclick="switchTab('lineup')" class="text-xs font-bold text-slate-200 hover:text-white flex items-center space-x-1">
+<span>View All</span>
+<i data-lucide="chevron-right" class="w-4 h-4"></i>
+</button>
+</div>
+<div id="home-lineups-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6"></div>
+</div>
+</div>
+
+<!-- SONGS BANK TAB -->
+<div id="tab-songs" class="space-y-5 sm:space-y-6 hidden animate-fade-in">
+<!-- SONG BANK HEADER -->
+<div class="flex items-center justify-between gap-3 pt-1">
+<div class="min-w-0">
+<h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center space-x-2 truncate">
+<i data-lucide="music" class="w-6 h-6 sm:w-7 sm:h-7 text-slate-300 flex-shrink-0"></i>
+<span class="truncate">Song Bank</span>
+</h2>
+<p class="text-[11px] sm:text-sm text-slate-300 font-medium truncate">Browse, filter & manage lyrics</p>
+</div>
+<button onclick="openSongModal()" class="btn-gradient-bw px-3.5 sm:px-6 py-2 sm:py-3 rounded-xl sm:rounded-2xl text-slate-950 font-extrabold text-xs sm:text-sm shadow-xl flex items-center space-x-1.5 sm:space-x-2 transform active:scale-95 transition-all flex-shrink-0">
+<i data-lucide="plus-circle" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+<span class="hidden sm:inline">Add New Song</span>
+<span class="sm:hidden">Add</span>
+</button>
+</div>
+
+<!-- SEARCH & FILTER CARDS -->
+<div class="space-y-3 sm:space-y-4">
+<div class="relative flex items-center">
+<i data-lucide="search" class="absolute left-3.5 sm:left-4 w-4 h-4 sm:w-5 sm:h-5 text-slate-400"></i>
+<input type="text" id="song-bank-search" oninput="renderSongsBank()" placeholder="Search songs by title, artist, tag, or lyrics..." class="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-slate-950 border border-slate-800 text-xs sm:text-base text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-white/50 shadow-inner font-medium">
+</div>
+
+<!-- LANGUAGE FILTER CARDS -->
+<div class="grid grid-cols-2 gap-2.5 sm:gap-4">
+<div onclick="setLanguageFilter('English')" id="filter-card-english" class="filter-card p-3 sm:p-4 rounded-xl sm:rounded-2xl cursor-pointer flex items-center justify-between group min-w-0">
+<div class="flex items-center space-x-2 sm:space-x-3 min-w-0">
+<div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-slate-800 border border-slate-700 text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+<i data-lucide="globe" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+</div>
+<div class="min-w-0">
+<h4 class="text-xs sm:text-sm font-bold text-white truncate group-hover:text-slate-200">English</h4>
+<p class="text-[9px] sm:text-xs text-slate-400 truncate">Worship</p>
+</div>
+</div>
+<span id="badge-english-count" class="text-[10px] sm:text-xs font-extrabold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-slate-800 text-white border border-slate-700 flex-shrink-0 ml-1">0</span>
+</div>
+
+<div onclick="setLanguageFilter('Tagalog')" id="filter-card-tagalog" class="filter-card p-3 sm:p-4 rounded-xl sm:rounded-2xl cursor-pointer flex items-center justify-between group min-w-0">
+<div class="flex items-center space-x-2 sm:space-x-3 min-w-0">
+<div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-slate-800 border border-slate-700 text-white flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+<i data-lucide="heart-handshake" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+</div>
+<div class="min-w-0">
+<h4 class="text-xs sm:text-sm font-bold text-white truncate group-hover:text-slate-200">Tagalog</h4>
+<p class="text-[9px] sm:text-xs text-slate-400 truncate">Filipino</p>
+</div>
+</div>
+<span id="badge-tagalog-count" class="text-[10px] sm:text-xs font-extrabold px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-slate-800 text-white border border-slate-700 flex-shrink-0 ml-1">0</span>
+</div>
+</div>
+</div>
+
+<div id="songs-bank-list" class="space-y-3 pt-1"></div>
+</div>
+
+<!-- LINEUPS TAB -->
+<div id="tab-lineup" class="space-y-6 sm:space-y-8 hidden animate-fade-in">
+<div class="flex flex-row items-center justify-between gap-3">
+<div class="min-w-0">
+<h2 class="text-xl sm:text-2xl font-bold text-white flex items-center space-x-2 truncate">
+<i data-lucide="calendar" class="w-5 h-5 sm:w-6 sm:h-6 text-slate-300 flex-shrink-0"></i>
+<span class="truncate">Worship Lineups</span>
+</h2>
+<p class="text-[11px] sm:text-xs text-slate-300 font-medium truncate">Organize setlists & live presentation</p>
+</div>
+<button onclick="openLineupModal()" class="btn-gradient-bw px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl text-slate-950 font-extrabold text-xs sm:text-sm shadow-lg flex items-center justify-center space-x-1.5 flex-shrink-0">
+<i data-lucide="plus" class="w-4 h-4"></i>
+<span class="hidden sm:inline">Create New Lineup</span>
+<span class="sm:hidden">Create</span>
+</button>
+</div>
+<div id="lineups-view-container" class="space-y-4 sm:space-y-8"></div>
+</div>
+
+<!-- BIBLE TAB -->
+<div id="tab-bible" class="hidden animate-fade-in space-y-5 sm:space-y-6">
+  <div class="pt-1 flex items-start gap-3">
+    <div class="w-11 h-11 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0"><i data-lucide="book-open-check" class="w-6 h-6 text-white"></i></div>
+    <div class="min-w-0"><h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">Bible</h2><p class="text-[11px] sm:text-sm text-slate-300 mt-1">Berean Standard Bible (BSB) · Public domain · No API key required</p></div>
+  </div>
+  <div class="rounded-2xl border border-slate-700 bg-slate-900/90 p-4 sm:p-5 space-y-3 shadow-xl">
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div><h3 class="font-bold text-white text-sm">Offline Bible library</h3><p class="text-xs text-slate-400 mt-1">The Bible is read from a JSON file stored with this website. No API account or key is used.</p></div>
+      <span id="bible-connection-status" class="text-[10px] px-2 py-1 rounded-full bg-amber-950/70 border border-amber-800 text-amber-200">Loading Bible…</span>
+    </div>
+    <div id="bible-library-help" class="text-xs text-slate-300 leading-relaxed">Looking for <code class="text-slate-100">bible-bsb.json</code> beside this HTML file…</div>
+    <div class="flex flex-wrap gap-2">
+      <button type="button" onclick="document.getElementById('bible-file-input').click()" class="rounded-xl px-4 py-2.5 text-xs font-extrabold bg-slate-800 border border-slate-600 text-white">Load Bible JSON file</button>
+      <a href="https://raw.githubusercontent.com/malexander-ogletree/ScriptureDesk/main/bible-bsb.json" target="_blank" rel="noopener" class="rounded-xl px-4 py-2.5 text-xs font-bold border border-slate-700 bg-slate-950 text-slate-200">Download free BSB Bible data</a>
+      <input id="bible-file-input" type="file" accept=".json,application/json" class="hidden" onchange="loadBibleFile(event)">
+    </div>
+    <p class="text-[10px] leading-relaxed text-slate-500">For your hosted website, upload the downloaded file into the same folder as this HTML and name it <code>bible-bsb.json</code>. For local use, select the JSON file above. Text: Berean Standard Bible (BSB), dedicated to the public domain by its publisher.</p>
+  </div>
+  <div class="rounded-2xl border border-slate-700 bg-slate-900/90 p-4 sm:p-5 space-y-4 shadow-xl">
+    <div class="space-y-1"><h3 class="font-bold text-white">Find a Scripture</h3><p class="text-xs text-slate-400">Search a reference (John 3:16, Psalm 23, Romans 8:28) or a word/phrase (grace, worship, faith).</p></div>
+    <form onsubmit="searchBible(event)" class="flex flex-col sm:flex-row gap-2"><input id="bible-search-input" type="search" placeholder="Enter a verse reference or keyword…" class="min-w-0 flex-1 rounded-xl bg-slate-950 border border-slate-700 px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-500"><button type="submit" class="btn-gradient-bw rounded-xl px-5 py-3 text-sm font-extrabold text-slate-950 flex items-center justify-center gap-2"><i data-lucide="search" class="w-4 h-4"></i>Search</button></form>
+    <div id="bible-search-status" class="text-xs text-slate-400" aria-live="polite">Load the BSB Bible data to begin searching.</div>
+    <div id="bible-search-results" class="space-y-3"></div>
+    <div id="bible-reader" class="hidden rounded-xl border border-slate-700 bg-slate-950 p-4 sm:p-5 space-y-3"></div>
+    <div class="border-t border-slate-800 pt-3 space-y-2">
+      <h4 class="text-xs font-bold text-slate-200">Browse by book and chapter</h4>
+      <div class="grid grid-cols-1 sm:grid-cols-[1fr_120px_auto] gap-2">
+        <select id="bible-book-select" onchange="updateBibleChapterOptions()" class="min-w-0 rounded-xl bg-slate-950 border border-slate-700 px-3 py-2.5 text-sm text-white"><option value="">Select a book</option></select>
+        <select id="bible-chapter-select" class="rounded-xl bg-slate-950 border border-slate-700 px-3 py-2.5 text-sm text-white"><option value="1">Chapter 1</option></select>
+        <button type="button" onclick="readSelectedBibleChapter()" class="rounded-xl px-4 py-2.5 text-xs font-extrabold btn-gradient-bw text-slate-950">Read chapter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TUNER TAB -->
+<div id="tab-tuner" class="hidden animate-fade-in space-y-5 sm:space-y-6">
+  <div class="pt-1">
+    <h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight flex items-center gap-2">
+      <i data-lucide="audio-lines" class="w-6 h-6 sm:w-7 sm:h-7 text-slate-300"></i>
+      <span>Tuner</span>
+    </h2>
+    <p class="text-[11px] sm:text-sm text-slate-300 font-medium mt-1">Tune your guitar or bass using your device microphone.</p>
+  </div>
+  <div class="w-full overflow-hidden rounded-2xl border border-slate-700/80 bg-slate-950/90 shadow-2xl">
+    <iframe
+      src="https://guitarapp.com/tuner.html?embed=true"
+      title="GuitarApp Online Tuner"
+      allow="microphone"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      class="block w-full border-0"
+      style="height: min(78vh, 760px); min-height: 560px; background: #fff;"
+    ></iframe>
+  </div>
+  <p class="text-xs text-slate-400 text-center">Allow microphone access when prompted.</p>
+</div>
+
+</main>
+
+<!-- MEDIA EMBED MODAL -->
+<div id="media-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md hidden">
+<div class="bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl w-full max-w-2xl p-4 sm:p-6 shadow-2xl space-y-4 max-h-[90vh] flex flex-col">
+<div class="flex justify-between items-center border-b border-slate-800 pb-3 flex-shrink-0">
+<div class="flex items-center space-x-2 min-w-0">
+<div id="media-modal-icon-bg" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 text-white flex-shrink-0">
+<i id="media-modal-icon" data-lucide="youtube" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+</div>
+<h3 id="media-modal-title" class="text-sm sm:text-lg font-bold text-white truncate">Media Preview</h3>
+</div>
+<button onclick="closeMediaModal()" class="text-slate-400 hover:text-white p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+</div>
+<div id="media-embed-container" class="w-full aspect-video rounded-xl sm:rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center border border-slate-800 flex-1"></div>
+</div>
+</div>
+
+<!-- STAGE PRESENTATION FULLSCREEN OVERLAY -->
+<div id="presentation-modal" class="fixed inset-0 z-50 bg-slate-950 flex flex-col overflow-hidden hidden">
+<div class="flex-none bg-slate-900 border-b border-slate-800 p-2.5 sm:p-4 flex items-center justify-between gap-2 backdrop-blur-2xl">
+<div class="flex items-center space-x-2 min-w-0">
+<span class="w-2.5 h-2.5 rounded-full bg-white animate-pulse flex-shrink-0 shadow-lg shadow-white/50"></span>
+<div class="min-w-0">
+<h3 id="stage-lineup-title" class="text-xs sm:text-lg font-bold text-white truncate">Service Title</h3>
+<p id="stage-lineup-leader" class="text-[10px] sm:text-xs text-slate-400 truncate">Leader</p>
+</div>
+</div>
+<div class="flex items-center space-x-1.5 sm:space-x-2 flex-shrink-0">
+<button onclick="toggleStageChords()" id="stage-chords-btn" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-800 border-slate-600 text-white">
+<i data-lucide="eye" class="w-3.5 h-3.5"></i>
+<span>Chords</span>
+</button>
+<button onclick="exitPresentation()" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-[11px] sm:text-xs border border-slate-700 font-bold">
+Exit
+</button>
+</div>
+</div>
+<div id="stage-song-pills" class="flex-none bg-slate-900/80 border-b border-slate-800 px-3 py-2 flex space-x-2 overflow-x-auto"></div>
+<div class="flex-1 overflow-y-auto p-4 sm:p-8 bg-slate-950 flex flex-col justify-between">
+<div class="space-y-4 sm:space-y-6 max-w-4xl mx-auto w-full">
+<div class="flex flex-row justify-between items-center gap-2 pb-3 sm:pb-4 border-b border-slate-800 min-w-0">
+<div class="min-w-0">
+<h2 id="stage-song-title" class="text-xl sm:text-4xl font-extrabold text-white truncate">Song Title</h2>
+<p id="stage-song-singer" class="text-xs sm:text-sm text-slate-400 font-semibold mt-0.5 sm:mt-1 truncate">Artist</p>
+</div>
+<div class="flex items-center space-x-1 sm:space-x-1.5 bg-slate-900 p-1 sm:p-1.5 rounded-xl sm:rounded-2xl border border-slate-800 shadow-md flex-shrink-0">
+<span class="text-[10px] sm:text-[11px] font-bold text-slate-400 px-1">Key:</span>
+<span id="stage-song-key" class="text-xs sm:text-sm font-extrabold text-white w-5 sm:w-7 text-center">C</span>
+<button onclick="adjustStageKey(-1)" class="w-6 h-6 sm:w-7 sm:h-7 bg-slate-800 rounded-lg font-bold text-white hover:bg-slate-700 flex items-center justify-center text-xs sm:text-sm">-</button>
+<button onclick="adjustStageKey(1)" class="w-6 h-6 sm:w-7 sm:h-7 bg-slate-800 rounded-lg font-bold text-white hover:bg-slate-700 flex items-center justify-center text-xs sm:text-sm">+</button>
+</div>
+</div>
+<div id="stage-lyrics-box" class="py-2 overflow-x-auto min-h-[200px]"></div>
+</div>
+</div>
+<div class="flex-none bg-slate-900 border-t border-slate-800 p-3 sm:p-4 backdrop-blur-2xl">
+<div class="max-w-4xl mx-auto flex items-center justify-between gap-2">
+<button onclick="navigateStageSong(-1)" id="stage-prev-btn" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1 border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700">
+<i data-lucide="chevron-left" class="w-4 h-4 stroke-[3]"></i>
+<span>Prev</span>
+</button>
+<span id="stage-track-counter" class="text-[11px] sm:text-xs font-bold text-slate-400 truncate">1 of 3</span>
+<button onclick="navigateStageSong(1)" id="stage-next-btn" class="px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl border text-xs sm:text-sm font-bold flex items-center space-x-1 border-slate-700 bg-slate-800 text-slate-200 hover:bg-slate-700">
+<span>Next</span>
+<i data-lucide="chevron-right" class="w-4 h-4 stroke-[3]"></i>
+</button>
+</div>
+</div>
+</div>
+
+<!-- SONG MODAL (ADD / EDIT) -->
+<div id="song-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
+<div class="bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl w-full max-w-2xl p-4 sm:p-6 shadow-2xl space-y-4 sm:space-y-6 my-auto max-h-[92vh] overflow-y-auto">
+<div class="flex justify-between items-center border-b border-slate-800 pb-3 sm:pb-4">
+<h3 id="song-modal-title" class="text-lg sm:text-xl font-bold text-white">Add New Song</h3>
+<button onclick="closeSongModal()" class="text-slate-400 hover:text-white p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+</div>
+<form onsubmit="saveSongForm(event)" class="space-y-3 sm:space-y-4">
+<input type="hidden" id="edit-song-id">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+<div>
+<label class="text-xs font-semibold text-slate-300">Song Title *</label>
+<input type="text" id="form-song-title" required class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300">Singer / Artist</label>
+<input type="text" id="form-song-singer" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+<div>
+<label class="text-xs font-semibold text-slate-300">Original Key</label>
+<select id="form-song-key" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<option value="C">Key of C</option><option value="C#">Key of C#</option><option value="D">Key of D</option><option value="D#">Key of D#</option><option value="E">Key of E</option><option value="F">Key of F</option><option value="F#">Key of F#</option><option value="G">Key of G</option><option value="G#">Key of G#</option><option value="A">Key of A</option><option value="A#">Key of A#</option><option value="B">Key of B</option>
+</select>
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300">Language</label>
+<select id="form-song-language" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+<option value="Auto">Auto-Detect from Title/Lyrics</option>
+<option value="English">English</option>
+<option value="Tagalog">Tagalog</option>
+</select>
+</div>
+</div>
+<!-- Media Links -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+<div>
+<label class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5"><i data-lucide="youtube" class="w-3.5 h-3.5 text-slate-400"></i><span>YouTube Link / ID</span></label>
+<input type="text" id="form-song-youtube" placeholder="https://youtube.com/watch?v=..." class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300 flex items-center space-x-1.5"><i data-lucide="disc" class="w-3.5 h-3.5 text-slate-400"></i><span>Spotify Link / ID</span></label>
+<input type="text" id="form-song-spotify" placeholder="https://open.spotify.com/track/..." class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/50 font-medium">
+</div>
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300">Lyrics & Chords (use [G] You are [C] here; add [Verse], [Chorus], [Bridge] section labels)</label>
+<textarea id="form-song-lyrics" rows="6" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-mono focus:outline-none focus:ring-2 focus:ring-white/50"></textarea>
+</div>
+<div class="flex justify-end space-x-3 pt-3 border-t border-slate-800">
+<button type="button" onclick="closeSongModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+<button type="submit" class="btn-gradient-bw px-5 sm:px-6 py-2 rounded-xl text-slate-950 font-extrabold text-xs shadow-lg">Save Song</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- LINEUP MODAL -->
+<div id="lineup-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md hidden overflow-y-auto">
+<div class="bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl w-full max-w-2xl p-4 sm:p-6 shadow-2xl space-y-4 sm:space-y-6 my-auto max-h-[92vh] overflow-y-auto">
+<div class="flex justify-between items-center border-b border-slate-800 pb-3 sm:pb-4">
+<h3 id="lineup-modal-title" class="text-lg sm:text-xl font-bold text-white">Create Service Lineup</h3>
+<button onclick="closeLineupModal()" class="text-slate-400 hover:text-white p-1"><i data-lucide="x" class="w-5 h-5"></i></button>
+</div>
+<form onsubmit="saveLineupForm(event)" class="space-y-3 sm:space-y-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+<div>
+<label class="text-xs font-semibold text-slate-300">Lineup Title *</label>
+<input type="text" id="form-lineup-title" required placeholder="e.g. Sunday Worship" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300">Service Date *</label>
+<input type="date" id="form-lineup-date" required class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
+</div>
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300">Worship Leader</label>
+<input type="text" id="form-lineup-leader" placeholder="e.g. Sarah Jenkins" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-300">Service Notes / Theme</label>
+<input type="text" id="form-lineup-notes" placeholder="e.g. Prelude starts 9:45 AM" class="w-full mt-1 px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white font-medium">
+</div>
+<div class="space-y-2 sm:space-y-3 pt-1">
+<label class="text-xs font-bold text-white uppercase tracking-wider">Select Songs for Lineup</label>
+<div id="lineup-songs-checkboxes" class="max-h-40 sm:max-h-48 overflow-y-auto space-y-1.5 p-2 rounded-xl bg-slate-950 border border-slate-800"></div>
+<div class="mt-2 sm:mt-3 rounded-xl bg-slate-950/70 border border-slate-800 p-2.5 sm:p-3 space-y-2">
+<div class="flex items-center justify-between gap-2">
+<span class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider">Selected song order</span>
+<span class="text-[10px] text-slate-400">Use arrows to arrange</span>
+</div>
+<div id="lineup-selected-order" class="space-y-2"></div>
+</div>
+</div>
+<div class="flex justify-end space-x-3 pt-3 border-t border-slate-800">
+<button type="button" onclick="closeLineupModal()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+<button id="lineup-submit-btn" type="submit" class="btn-gradient-bw px-5 sm:px-6 py-2 rounded-xl text-slate-950 font-extrabold text-xs shadow-lg">Create Lineup</button>
+</div>
+</form>
+</div>
+</div>
+
+<!-- ADD SONG TO LINEUP CHOOSER -->
+<div id="add-lineup-choice-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md hidden">
+  <div class="bg-slate-900 border border-slate-700 rounded-2xl sm:rounded-3xl w-full max-w-md p-4 sm:p-6 shadow-2xl space-y-4 max-h-[85vh] overflow-y-auto">
+    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+      <div>
+        <h3 class="text-base sm:text-lg font-bold text-white">Add Song to Lineup</h3>
+        <p id="add-lineup-song-title" class="text-xs text-slate-400 mt-1"></p>
+      </div>
+      <button type="button" onclick="closeAddLineupChoice()" class="text-slate-400 hover:text-white p-1" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <button type="button" onclick="chooseCreateNewLineup()" class="w-full btn-gradient-bw px-4 py-3 rounded-xl text-slate-950 font-extrabold text-xs sm:text-sm flex items-center justify-center gap-2">
+      <i data-lucide="plus" class="w-4 h-4"></i><span>Create a New Lineup</span>
+    </button>
+    <div class="space-y-2">
+      <p class="text-[11px] font-bold text-slate-300 uppercase tracking-wider">Or add to an existing lineup</p>
+      <div id="add-lineup-existing-list" class="space-y-2"></div>
+    </div>
+    <div class="flex justify-end pt-2 border-t border-slate-800">
+      <button type="button" onclick="closeAddLineupChoice()" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-300 text-xs font-semibold">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE BOTTOM NAVIGATION -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-slate-950/95 backdrop-blur-2xl border-t border-slate-800 px-4 py-2 flex justify-around items-center shadow-2xl">
+<button onclick="switchTab('home')" id="bm-home" class="flex flex-col items-center py-1 px-3 text-white">
+<i data-lucide="home" class="w-5 h-5"></i>
+<span class="text-[10px] font-bold mt-1">Home</span>
+</button>
+<button onclick="switchTab('songs')" id="bm-songs" class="flex flex-col items-center py-1 px-3 text-slate-400">
+<i data-lucide="book-open" class="w-5 h-5"></i>
+<span class="text-[10px] font-bold mt-1">Song Bank</span>
+</button>
+<button onclick="switchTab('bible')" id="bm-bible" class="flex flex-col items-center py-1 px-3 text-slate-400">
+<i data-lucide="book-open-check" class="w-5 h-5"></i>
+<span class="text-[10px] font-bold mt-1">Bible</span>
+</button>
+<button onclick="switchTab('lineup')" id="bm-lineup" class="flex flex-col items-center py-1 px-3 text-slate-400">
+<i data-lucide="calendar" class="w-5 h-5"></i>
+<span class="text-[10px] font-bold mt-1">Lineups</span>
+</button>
+<button onclick="switchTab('tuner')" id="bm-tuner" class="flex flex-col items-center py-1 px-3 text-slate-400">
+<i data-lucide="audio-lines" class="w-5 h-5"></i>
+<span class="text-[10px] font-bold mt-1">Tuner</span>
+</button>
+</div>
+
+<!-- JAVASCRIPT APP LOGIC -->
+<script>
+const CHROMATIC = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+let activeLanguageFilter = 'All';
+
+let songs = JSON.parse(localStorage.getItem('sslim_songs')) || [
+{ id: 's1', title: 'Way Maker', singer: 'Sinach / Leeland', language: 'English', originalKey: 'G', tempo: 'Slow (68 BPM)', youtube: 'iJCV_2H9xD0', spotify: '1BxfuPKuaBlyZgBg5aZaB1', lyrics: '[Chorus]\n[G] You are here, moving in our [D] midst\nI worship [A] You, I worship [Bm] You\n\n[Verse 1]\n[G] Way Maker, Miracle Worker, Promise [D] Keeper\nLight in the darkness, my [A] God, that is who You [Bm] are' },
+{ id: 's2', title: 'Goodness of God', singer: 'Bethel Music', language: 'English', originalKey: 'A', tempo: 'Mid (70 BPM)', youtube: 'n0FBb6hnwTo', spotify: '0u9L3aX7wX8x18X0Yk6BvW', lyrics: '[Verse 1]\n[A] I love You Lord, Oh Your mercy [D] never fails [A] me\n[E/G#] All my [F#m] days, I\'ve been [D] held in Your [E] hands\n\n[Chorus]\n[D] All my life You have been [A] faithful\n[D] All my life You have been [A] so, so [E] good' },
+{ id: 's3', title: 'Build My Life', singer: 'Housefires', language: 'English', originalKey: 'G', tempo: 'Mid (68 BPM)', youtube: 'QZVMnHhPWIw', spotify: '3yYd1N8xQ6w15X0Yk6BvW', lyrics: '[Verse 1]\n[G] Worthy of every [C/G] song we could ever sing\n[G/B] Worthy of all the [C] praise we could ever bring' },
+{ id: 's4', title: 'Salamat Musikero', singer: 'Malayang Pilipino', language: 'Tagalog', originalKey: 'D', tempo: 'Mid (74 BPM)', youtube: '', spotify: '', lyrics: '[Chorus]\n[D] Salamat sa Iyo, Oh [Bm] Panginoong Hesus\n[G] Sa biyaya\'t pagpapala Mo sa [A] aming buhay\n\n[Bridge]\n[D] Ikaw ang dahilan ng [F#m] aming pag-awit\n[G] Pupurihin Ka sa [A] habang panahon' },
+{ id: 's5', title: 'Dahil Sa Iyo', singer: 'Musikatha', language: 'Tagalog', originalKey: 'E', tempo: 'Slow (65 BPM)', youtube: '', spotify: '', lyrics: '[Verse 1]\n[E] Dahil sa Iyo, may [C#m] pag-asa ako\n[F#m] Ikaw ang liwanag sa [B] aking mundo' }
+];
+
+let lineups = JSON.parse(localStorage.getItem('sslim_lineups')) || [
+{ id: 'l1', date: '2025-02-16', leader: 'Sarah Jenkins', title: 'Sunday Morning Worship', notes: 'Focus on God\'s faithfulness.', songIds: ['s1', 's2', 's3'], transpositions: {} }
+];
+
+let songTranspositions = {};
+let activeTabState = 'home';
+let expandedSongId = null;
+let showSongBankChords = true;
+let editingLineupId = null;
+let lineupDraftSongIds = [];
+
+let currentStageLineup = null;
+let currentStageSongIdx = 0;
+// Song Bank and Live Presentation share songTranspositions by song ID.
+let showStageChords = true;
+
+const SHARED_API_URL = 'https://sslim.eunicelardizabal30.workers.dev';
+const SYNC_INTERVAL_MS = 10000;
+let sharedFileSha = null;
+let syncTimer = null;
+let syncSaveTimer = null;
+let syncInProgress = false;
+let syncDirty = false;
+
+function setSyncStatus(message, state = 'normal') {
+    const el = document.getElementById('sync-status');
+    if (!el) return;
+    el.textContent = message;
+    el.title = message;
+    el.className = state === 'error' ? 'text-red-300' : state === 'ok' ? 'text-emerald-300' : 'text-slate-200';
+}
+
+function saveLocalBackup() {
+    localStorage.setItem('sslim_songs', JSON.stringify(songs));
+    localStorage.setItem('sslim_lineups', JSON.stringify(lineups));
+}
+
+function saveData() {
+    saveLocalBackup();
+    syncDirty = true;
+    clearTimeout(syncSaveTimer);
+    syncSaveTimer = setTimeout(pushSharedData, 600);
+    setSyncStatus('Changes waiting to sync…');
+}
+
+function getWritePassword() {
+    let password = sessionStorage.getItem('sslim_shared_write_password');
+    if (!password) {
+        password = prompt('Enter the SSLIM team shared editing password:');
+        if (!password) return null;
+        sessionStorage.setItem('sslim_shared_write_password', password);
+    }
+    return password;
+}
+
+async function fetchSharedData() {
+    const response = await fetch(`${SHARED_API_URL}/api/data`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Shared data could not be loaded.`);
+    return response.json();
+}
+
+function refreshVisibleView() {
+    if (activeTabState === 'home') renderHome();
+    if (activeTabState === 'songs') renderSongsBank();
+    if (activeTabState === 'lineup') renderLineupsView();
+    if (window.lucide) lucide.createIcons();
+}
+
+function isEditingOrPresenting() {
+    return ['song-modal', 'lineup-modal', 'presentation-modal', 'media-modal'].some(id => {
+        const el = document.getElementById(id);
+        return el && !el.classList.contains('hidden');
+    });
+}
+
+async function loadSharedData({ silent = false } = {}) {
+    try {
+        const result = await fetchSharedData();
+        if (result.exists && result.data) {
+            const changed = result.sha !== sharedFileSha;
+            if (changed) {
+                songs = Array.isArray(result.data.songs) ? result.data.songs : [];
+                lineups = Array.isArray(result.data.lineups) ? result.data.lineups : [];
+                sharedFileSha = result.sha || null;
+                saveLocalBackup();
+                if (!isEditingOrPresenting()) refreshVisibleView();
+            }
+        } else {
+            sharedFileSha = null;
+        }
+        setSyncStatus('Cloud synced', 'ok');
+        return true;
+    } catch (error) {
+        setSyncStatus('Local offline copy active', 'error');
+        if (!silent) console.warn('SSLIM sync:', error);
+        return false;
+    }
+}
+
+async function pushSharedData() {
+    if (!syncDirty || syncInProgress) return;
+    const password = getWritePassword();
+    if (!password) return;
+
+    syncInProgress = true;
+    const snapshot = { songs: structuredClone(songs), lineups: structuredClone(lineups), baseSha: sharedFileSha };
+    setSyncStatus('Saving cloud data…');
+    try {
+        const response = await fetch(`${SHARED_API_URL}/api/data`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'X-App-Password': password },
+            body: JSON.stringify(snapshot)
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(result.error || `Save failed.`);
+        sharedFileSha = result.sha || sharedFileSha;
+        syncDirty = false;
+        saveLocalBackup();
+        setSyncStatus('All changes synced', 'ok');
+    } catch (error) {
+        setSyncStatus('Cloud save pending', 'error');
+    } finally {
+        syncInProgress = false;
+    }
+}
+
+function startSharedSync() {
+    loadSharedData().finally(() => {
+        clearInterval(syncTimer);
+        syncTimer = setInterval(() => {
+            if (!syncDirty && !syncInProgress && !isEditingOrPresenting()) {
+                loadSharedData({ silent: true });
+            }
+        }, SYNC_INTERVAL_MS);
+    });
+}
+
+function switchTab(tab) {
+    activeTabState = tab;
+    ['home', 'songs', 'lineup', 'bible', 'tuner'].forEach(t => {
+        const target = document.getElementById(`tab-${t}`);
+        if (target) target.classList.add('hidden');
+        
+        const nav = document.getElementById(`nav-${t}`);
+        if (nav) {
+            nav.className = t === tab 
+                ? 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all btn-gradient-bw font-bold text-slate-950 shadow-md' 
+                : 'flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all text-slate-300 hover:text-white hover:bg-slate-800/80';
+        }
+        
+        const bm = document.getElementById(`bm-${t}`);
+        if (bm) {
+            bm.className = t === tab ? 'flex flex-col items-center py-1 px-3 text-white' : 'flex flex-col items-center py-1 px-3 text-slate-400';
+        }
+    });
+    
+    const activeEl = document.getElementById(`tab-${tab}`);
+    if (activeEl) activeEl.classList.remove('hidden');
+    
+    if (tab === 'home') renderHome();
+    if (tab === 'songs') renderSongsBank();
+    if (tab === 'lineup') renderLineupsView();
+    if (tab === 'bible') renderBibleTab();
+    if (window.lucide) lucide.createIcons();
+}
+
+function detectSongLanguage(title, lyrics) {
+    const text = `${title} ${lyrics}`.toLowerCase();
+    const tagalogKeywords = [
+        'ako', 'ikaw', 'siya', 'tayo', 'kami', 'sila', 'ang', 'ng', 'sa', 'mga', 
+        'na', 'ay', 'at', 'o', 'kay', 'kayo', 'mo', 'ko', 'namin', 'natin', 'nila', 
+        'ito', 'iyan', 'iyon', 'lahat', 'pangi', 'Panginoon', 'Hesus', 'Diyos', 
+        'Salamat', 'Papuri', 'Samba', 'Banal', 'Biyaya', 'Pag-ibig', 'Puso', 'Awa',
+        'Dakila', 'Tapat', 'Ligaya', 'Kapayapaan', 'Liwanag', 'Tinig', 'Awit'
+    ];
+    
+    let tagalogScore = 0;
+    const words = text.replace(/\[.*?\]/g, '').split(/\s+/);
+    words.forEach(w => {
+        const cleanWord = w.replace(/[^a-zñáéíóú]/g, '');
+        if (tagalogKeywords.includes(cleanWord)) {
+            tagalogScore++;
+        }
+    });
+
+    return tagalogScore >= 2 ? 'Tagalog' : 'English';
+}
+
+function getYouTubeId(urlOrId) {
+    if (!urlOrId) return null;
+    const str = String(urlOrId).trim();
+    if (str.length === 11 && !str.includes('/') && !str.includes('.')) return str;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = str.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+}
+
+function getSpotifyTrackId(urlOrId) {
+    if (!urlOrId) return null;
+    const str = String(urlOrId).trim();
+    if (str.includes('spotify.com/track/')) {
+        const parts = str.split('track/');
+        return parts[1] ? parts[1].split('?')[0] : null;
+    }
+    if (!str.includes('/') && !str.includes('.')) return str;
+    return null;
+}
+
+function openMediaModal(songId, type) {
+    const song = songs.find(s => s.id === songId);
+    if (!song) return;
+
+    const container = document.getElementById('media-embed-container');
+    const titleEl = document.getElementById('media-modal-title');
+    const iconBg = document.getElementById('media-modal-icon-bg');
+    const icon = document.getElementById('media-modal-icon');
+
+    if (type === 'youtube') {
+        const ytId = getYouTubeId(song.youtube);
+        if (!ytId) return alert('No valid YouTube link configured for this song.');
+        titleEl.textContent = `${song.title} - YouTube`;
+        iconBg.className = 'p-2 rounded-xl bg-slate-800 text-white';
+        icon.setAttribute('data-lucide', 'youtube');
+        container.innerHTML = `<iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+    } else if (type === 'spotify') {
+        const spId = getSpotifyTrackId(song.spotify);
+        if (!spId) return alert('No valid Spotify link configured for this song.');
+        titleEl.textContent = `${song.title} - Spotify`;
+        iconBg.className = 'p-2 rounded-xl bg-slate-800 text-white';
+        icon.setAttribute('data-lucide', 'disc');
+        container.innerHTML = `<iframe class="w-full h-full rounded-2xl" src="https://open.spotify.com/embed/track/${spId}?utm_source=generator&theme=0" frameborder="0" allowfullscreen="" loading="lazy"></iframe>`;
+    }
+
+    if (window.lucide) lucide.createIcons();
+    document.getElementById('media-modal').classList.remove('hidden');
+}
+
+function closeMediaModal() {
+    document.getElementById('media-embed-container').innerHTML = '';
+    document.getElementById('media-modal').classList.add('hidden');
+}
+
+// SMART CHORD IDENTIFIER + TRANSPOSITION ENGINE
+// Supports bracketed inline chords ([G] You are [D] here), standalone chord
+// rows (G  D  Em  C), slash chords, extensions, and section headings.
+const CHORD_ROOT_RE = '[A-G](?:#|b)?';
+const CHORD_TOKEN_RE = new RegExp(
+    '^' + CHORD_ROOT_RE +
+    '(?:(?:maj|min|m|M|dim|aug|sus2|sus4|sus|add\\d+|\\+|°|ø))?' +
+    '(?:6|7|9|11|13)?' +
+    '(?:M)?' +
+    '(?:(?:add\\d+|sus\\d*|[#b](?:5|9|11|13)|(?:omit|no)\\d+))*' +
+    '(?:/' + CHORD_ROOT_RE + ')?$', 'i'
+);
+
+function normalizeSectionLabel(value) {
+    return String(value || '').trim().replace(/^\[|\]$/g, '').replace(/\s+/g, ' ');
+}
+
+function isSectionLabel(value) {
+    const label = normalizeSectionLabel(value);
+    return /^(?:intro|verse|chorus|pre[- ]?chorus|bridge|interlude|instrumental|outro|tag|ending|refrain|hook|vamp|coda)(?:\s*\d+)?(?:\s*[:.-].*)?$/i.test(label);
+}
+
+function isChordToken(value) {
+    const token = String(value || '').trim().replace(/[|,;]$/, '');
+    if (!token || isSectionLabel(token)) return false;
+    return CHORD_TOKEN_RE.test(token);
+}
+
+function transposeSingleChordToken(token, semitones) {
+    const shift = Number(semitones) || 0;
+    if (!shift || !isChordToken(token)) return token;
+    const noteMap = { C:0, 'B#':0, 'C#':1, Db:1, D:2, 'D#':3, Eb:3,
+        E:4, Fb:4, 'E#':5, F:5, 'F#':6, Gb:6, G:7, 'G#':8, Ab:8,
+        A:9, 'A#':10, Bb:10, B:11, Cb:11 };
+    const preferFlats = /(?:[A-G]b|\/(?:[A-G]b))/.test(token);
+    const sharpNames = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+    const flatNames  = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+    const match = String(token).match(/^([A-G](?:#|b)?)(.*?)(?:\/([A-G](?:#|b)?))?$/i);
+    if (!match) return token;
+    const transposeNote = note => {
+        const normalized = note.charAt(0).toUpperCase() + note.slice(1);
+        const index = noteMap[normalized];
+        if (index === undefined) return note;
+        return (preferFlats ? flatNames : sharpNames)[((index + shift) % 12 + 12) % 12];
+    };
+    return transposeNote(match[1]) + match[2] + (match[3] ? '/' + transposeNote(match[3]) : '');
+}
+
+function transposeChord(chord, semitones) {
+    const token = String(chord || '').trim();
+    return isChordToken(token) ? transposeSingleChordToken(token, semitones) : token;
+}
+
+function detectStandaloneChordRow(line) {
+    const raw = String(line || '').trim();
+    if (!raw || isSectionLabel(raw)) return null;
+    // Accept common progression separators: spaces, bars, commas, and hyphen,
+    // en dash, em dash, or minus characters (e.g. "Em – D/F# - G – A").
+    // A complete row must still consist only of chord symbols so lyric text is
+    // never mistaken for a chord progression.
+    const normalized = raw.replace(/[–—−-]/g, ' ');
+    const tokens = normalized.split(/[\s|,;]+/).map(t => t.trim()).filter(Boolean);
+    if (!tokens.length || !tokens.every(isChordToken)) return null;
+    return tokens;
+}
+
+function parseLine(line, semitones = 0) {
+    const source = String(line ?? '');
+    const trimmed = source.trim();
+    if (!trimmed) return { hasChords:false, chords:[], lyrics:'', isHeader:false, chordOnly:false };
+
+    const unwrapped = normalizeSectionLabel(trimmed);
+    if (isSectionLabel(unwrapped)) {
+        return { hasChords:false, chords:[], lyrics:unwrapped, isHeader:true, chordOnly:false };
+    }
+
+    const matches = [...source.matchAll(/\[([^\]]+)\]/g)];
+    if (matches.length) {
+        let lyrics = '';
+        let cursor = 0;
+        const chords = [];
+        for (const match of matches) {
+            lyrics += source.slice(cursor, match.index);
+            const token = match[1].trim();
+            if (isChordToken(token)) chords.push(transposeChord(token, semitones));
+            else lyrics += match[0];
+            cursor = match.index + match[0].length;
+        }
+        lyrics += source.slice(cursor);
+        return { hasChords:chords.length > 0, chords, lyrics, isHeader:false, chordOnly:!lyrics.trim() && chords.length > 0 };
+    }
+
+    const rowChords = detectStandaloneChordRow(source);
+    if (rowChords) {
+        return { hasChords:true, chords:rowChords.map(chord => transposeChord(chord, semitones)), lyrics:'', isHeader:false, chordOnly:true };
+    }
+    return { hasChords:false, chords:[], lyrics:source, isHeader:false, chordOnly:false };
+}
+
+function renderLyricsHTML(text, semitones = 0, showChords = true) {
+    if (!text) return '';
+    return String(text).split(/\r?\n/).map(line => {
+        const parsed = parseLine(line, semitones);
+        if (parsed.isHeader) {
+            return `<div class="pt-4 pb-1.5"><span class="inline-block px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-xs sm:text-sm font-extrabold text-white tracking-wider uppercase">${escapeHTML(parsed.lyrics)}</span></div>`;
+        }
+        if (parsed.chordOnly) {
+            if (!showChords) return '';
+            return `<div class="flex flex-wrap items-center gap-1.5 py-1 font-bold text-slate-200 text-xs sm:text-sm select-none">${parsed.chords.map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-2 py-1 rounded text-white">${escapeHTML(chord)}</span>`).join('')}</div>`;
+        }
+        const chordHtml = showChords && parsed.hasChords
+            ? `<div class="flex flex-wrap items-center gap-1.5 py-1 font-bold text-slate-200 text-xs sm:text-sm select-none">${parsed.chords.map(chord => `<span class="inline-flex bg-slate-800 border border-slate-700 px-2 py-1 rounded text-white">${escapeHTML(chord)}</span>`).join('')}</div>`
+            : '';
+        return `<div class="leading-relaxed py-0.5">${chordHtml}<div class="whitespace-pre-wrap break-words text-slate-100 font-sans tracking-wide text-xs sm:text-base">${escapeHTML(parsed.lyrics)}</div></div>`;
+    }).join('');
+}
+
+// --- Offline Berean Standard Bible reader and song-to-Scripture context matcher ---
+let bibleData = null;
+let bibleLastSearch = '';
+let bibleDataLoading = false;
+let bibleCurrentBook = null;
+let bibleCurrentChapter = 1;
+
+const BIBLE_BOOKS = [
+  ['GEN','Genesis',['gen','ge','gn']],['EXO','Exodus',['exo','ex','exod']],['LEV','Leviticus',['lev','le']],
+  ['NUM','Numbers',['num','nu']],['DEU','Deuteronomy',['deut','deu','dt']],['JOS','Joshua',['josh','jos']],
+  ['JDG','Judges',['judg','jdg']],['RUT','Ruth',['rut','ru']],['1SA','1 Samuel',['1 samuel','1 sam','1sa']],
+  ['2SA','2 Samuel',['2 samuel','2 sam','2sa']],['1KI','1 Kings',['1 kings','1 kgs','1ki']],['2KI','2 Kings',['2 kings','2 kgs','2ki']],
+  ['1CH','1 Chronicles',['1 chronicles','1 chron','1ch']],['2CH','2 Chronicles',['2 chronicles','2 chron','2ch']],
+  ['EZR','Ezra',['ezra','ezr']],['NEH','Nehemiah',['neh','ne']],['EST','Esther',['esth','est']],
+  ['JOB','Job',['job']],['PSA','Psalms',['psalm','psalms','ps']],['PRO','Proverbs',['prov','pro']],
+  ['ECC','Ecclesiastes',['eccles','ecc']],['SNG','Song of Solomon',['song of solomon','song of songs','songs','sos']],
+  ['ISA','Isaiah',['isa','is']],['JER','Jeremiah',['jer','je']],['LAM','Lamentations',['lam']],
+  ['EZK','Ezekiel',['ezek','ezk']],['DAN','Daniel',['dan','da']],['HOS','Hosea',['hos']],
+  ['JOL','Joel',['joel','jol']],['AMO','Amos',['amos','amo']],['OBA','Obadiah',['obad','oba']],
+  ['JON','Jonah',['jon']],['MIC','Micah',['mic']],['NAM','Nahum',['nah','nam']],['HAB','Habakkuk',['hab']],
+  ['ZEP','Zephaniah',['zeph','zep']],['HAG','Haggai',['hag']],['ZEC','Zechariah',['zech','zec']],['MAL','Malachi',['mal']],
+  ['MAT','Matthew',['matt','mat']],['MRK','Mark',['mark','mrk']],['LUK','Luke',['luke','luk']],
+  ['JHN','John',['john','jn']],['ACT','Acts',['acts','act']],['ROM','Romans',['rom']],
+  ['1CO','1 Corinthians',['1 corinthians','1 cor','1co']],['2CO','2 Corinthians',['2 corinthians','2 cor','2co']],
+  ['GAL','Galatians',['gal']],['EPH','Ephesians',['eph']],['PHP','Philippians',['philippians','phil','php']],
+  ['COL','Colossians',['col']],['1TH','1 Thessalonians',['1 thessalonians','1 thess','1th']],
+  ['2TH','2 Thessalonians',['2 thessalonians','2 thess','2th']],['1TI','1 Timothy',['1 timothy','1 tim','1ti']],
+  ['2TI','2 Timothy',['2 timothy','2 tim','2ti']],['TIT','Titus',['tit']],['PHM','Philemon',['philem','phm']],
+  ['HEB','Hebrews',['heb']],['JAS','James',['james','jas']],['1PE','1 Peter',['1 peter','1 pet','1pe']],
+  ['2PE','2 Peter',['2 peter','2 pet','2pe']],['1JN','1 John',['1 john','1jn']],['2JN','2 John',['2 john','2jn']],
+  ['3JN','3 John',['3 john','3jn']],['JUD','Jude',['jude','jud']],['REV','Revelation',['revelation','rev']]
+];
+const BIBLE_BOOK_BY_CODE = Object.fromEntries(BIBLE_BOOKS.map(b=>[b[0],{code:b[0],name:b[1],aliases:[b[1].toLowerCase(),...b[2]]}]));
+
+const SONG_SCRIPTURE_TOPICS = [
+  {topic:'Worship and praise', terms:['worship','praise','sing','song','glory','honor','magnify','exalt','hallelujah','holy','adoration'], refs:[['Psalm 95:1-6','A call to worship the Lord with joyful praise.'],['Psalm 100:1-5','A song of thanksgiving and praise.'],['John 4:23-24','Worship that comes from the spirit and truth.']]},
+  {topic:'Faith and trust', terms:['faith','trust','believe','confidence','depend','surrender','lean on','unshaken'], refs:[['Proverbs 3:5-6','Trusting God and acknowledging Him in every path.'],['Hebrews 11:1','The biblical description of faith.'],['Isaiah 41:10','God’s promise to strengthen and uphold His people.']]},
+  {topic:'God’s faithfulness', terms:['faithful','faithfulness','never fail','never forsake','promise','steadfast','constant','unchanging'], refs:[['Lamentations 3:22-23','God’s mercies are renewed and His faithfulness is great.'],['Deuteronomy 7:9','God is faithful and keeps His covenant.'],['2 Timothy 2:13','God remains faithful.']]},
+  {topic:'Grace and mercy', terms:['grace','mercy','forgive','forgiveness','compassion','undeserved','redeem','redemption'], refs:[['Ephesians 2:8-9','Salvation is by grace through faith.'],['Psalm 103:8-12','The Lord is merciful and gracious.'],['Titus 3:4-7','God saves according to His mercy.']]},
+  {topic:'Love of God', terms:['love','beloved','loved','loving','heart','compassion','everlasting love'], refs:[['1 John 4:7-12','God’s love is revealed through Christ.'],['Romans 8:38-39','Nothing can separate believers from God’s love.'],['John 3:16-17','God’s love and the gift of His Son.']]},
+  {topic:'Hope and encouragement', terms:['hope','future','tomorrow','waiting','strength','weary','encourage','persevere'], refs:[['Romans 15:13','God fills His people with joy, peace, and hope.'],['Isaiah 40:28-31','The Lord renews the strength of those who wait on Him.'],['Hebrews 6:19','Hope as an anchor for the soul.']]},
+  {topic:'God’s presence', terms:['presence','here with me','with us','never alone','near','abide','dwell','walk with'], refs:[['Psalm 23:4','God’s presence in the darkest valley.'],['Matthew 28:20','Jesus promises to be with His disciples.'],['Psalm 139:7-10','No place is beyond God’s presence.']]},
+  {topic:'Peace', terms:['peace','still','quiet','rest','fear','anxious','calm','storm'], refs:[['Philippians 4:6-7','God’s peace guards hearts and minds.'],['John 14:27','The peace Jesus gives.'],['Psalm 46:1-3','God is refuge and strength.']]},
+  {topic:'Healing and restoration', terms:['heal','healing','restore','restoration','broken','wounds','comfort','sorrow'], refs:[['Psalm 147:3','The Lord heals the brokenhearted.'],['Jeremiah 17:14','A prayer for healing and salvation.'],['Isaiah 61:1-3','Good news, comfort, and restoration.']]},
+  {topic:'Jesus and salvation', terms:['jesus','savior','saviour','cross','calvary','blood','salvation','redeemer','lamb of god'], refs:[['John 1:29','Jesus is identified as the Lamb of God.'],['Romans 10:9-13','The promise of salvation through the Lord.'],['1 Peter 2:24','Christ bore our sins on the cross.']]},
+  {topic:'Light and guidance', terms:['light','darkness','lamp','guide','path','way','lead me','direction'], refs:[['John 8:12','Jesus is the light of the world.'],['Psalm 119:105','God’s word as a lamp and light.'],['Psalm 27:1','The Lord is light and salvation.']]},
+  {topic:'Victory in God', terms:['victory','overcome','conquer','triumph','battle','freedom','stronger'], refs:[['Romans 8:37','More than conquerors through Christ.'],['1 Corinthians 15:57','Victory through Jesus Christ.'],['1 John 5:4-5','Faith overcomes the world.']]}
+];
+
+function getSongTopicMatches(song) {
+  const cleanLyrics = String(song.lyrics || '').replace(/\[[^\]]+\]/g, ' ').replace(/\([^)]*\)/g, ' ');
+  const text = `${song.title || ''} ${cleanLyrics}`.toLowerCase().replace(/[^a-z0-9\s']/g, ' ');
+  const scored = SONG_SCRIPTURE_TOPICS.map(item => {
+    let score = 0;
+    const hits = [];
+    item.terms.forEach(term => {
+      const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp(`\\b${escaped}\\b`, 'g');
+      const count = (text.match(re) || []).length;
+      if (count) { score += Math.min(count, 3); hits.push(term); }
+    });
+    return {...item, score, hits};
+  }).filter(x => x.score > 0).sort((a,b) => b.score-a.score);
+  return scored.slice(0, 3);
+}
+function normalizeBibleText(text) { return String(text || '').replace(/\s+/g,' ').trim(); }
+function bibleBooksAvailable() { return BIBLE_BOOKS.filter(b => bibleData && Array.isArray(bibleData[b[0]])); }
+function getBibleBook(code) { return BIBLE_BOOK_BY_CODE[code]; }
+function bibleVerse(code, chapter, verse) {
+  const book = bibleData && bibleData[code];
+  const row = book && book[chapter-1];
+  return row && row[verse-1] !== undefined ? normalizeBibleText(row[verse-1]) : '';
+}
+function parseBibleReference(query) {
+  const q = String(query || '').trim().toLowerCase().replace(/[.]/g,'').replace(/\s+/g,' ');
+  const candidates = Object.values(BIBLE_BOOK_BY_CODE).flatMap(b=>b.aliases.map(a=>({book:b,alias:a}))).sort((a,b)=>b.alias.length-a.alias.length);
+  for (const item of candidates) {
+    const escaped = item.alias.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const re = new RegExp('^'+escaped+'\\s+(\\d+)(?::(\\d+)(?:\\s*[-–—]\\s*(\\d+))?)?$','i');
+    const m=q.match(re);
+    if (m) return {book:item.book,chapter:Number(m[1]),start:m[2]?Number(m[2]):1,end:m[3]?Number(m[3]):(m[2]?Number(m[2]):null),isChapter:!m[2]};
+  }
+  return null;
+}
+function formatBibleRef(book, chapter, verse) { return `${book.name} ${chapter}:${verse}`; }
+function getBibleReferenceContent(reference) {
+  if (!bibleData) return null;
+  const parsed=parseBibleReference(reference);
+  if (!parsed) return null;
+  const chapters=bibleData[parsed.book.code];
+  const chapter=chapters && chapters[parsed.chapter-1];
+  if (!chapter) return null;
+  const first=parsed.isChapter?1:parsed.start;
+  const last=parsed.isChapter?chapter.length:Math.min(parsed.end || parsed.start,chapter.length);
+  const verses=[];
+  for(let v=first;v<=last;v++){const text=bibleVerse(parsed.book.code,parsed.chapter,v);if(text)verses.push({number:v,text});}
+  if(!verses.length)return null;
+  return {book:parsed.book,chapter:parsed.chapter,verses,reference:parsed.isChapter?`${parsed.book.name} ${parsed.chapter}`:(first===last?formatBibleRef(parsed.book,parsed.chapter,first):`${parsed.book.name} ${parsed.chapter}:${first}-${last}`)};
+}
+function renderSongScriptureSuggestions(song) {
+  const topics=getSongTopicMatches(song);
+  const heading=`<div class="flex items-center gap-2"><i data-lucide="book-open-check" class="w-4 h-4 text-slate-200"></i><h4 class="text-sm font-extrabold text-white">Related Bible passages</h4><span class="text-[9px] rounded-full border border-slate-700 bg-slate-800 px-2 py-0.5 text-slate-300">Theme match</span></div>`;
+  if(!topics.length)return `<div class="mt-5 pt-4 border-t border-slate-800">${heading}<p class="text-xs text-slate-400 mt-2">No strong theme match was detected automatically. Search a keyword in the Bible tab to explore the song’s message.</p><button onclick="switchTab('bible')" class="mt-2 text-xs font-bold text-slate-200 underline underline-offset-2">Open Bible</button></div>`;
+  return `<div class="mt-5 pt-4 border-t border-slate-800 space-y-3">${heading}<p class="text-[11px] text-slate-400">Suggested from recurring words and themes in the lyrics. These are study suggestions, not a claim that the song quotes these passages directly.</p>${topics.map(topic=>`<div class="rounded-xl border border-slate-800 bg-slate-900/80 p-3 space-y-2"><div class="flex items-center justify-between gap-2"><span class="text-xs font-bold text-slate-100">${escapeHTML(topic.topic)}</span><span class="text-[9px] text-slate-500">${topic.score} theme match${topic.score===1?'':'es'}</span></div><div class="grid grid-cols-1 gap-2">${topic.refs.slice(0,2).map(ref=>{const passage=getBibleReferenceContent(ref[0]);const excerpt=passage?passage.verses.map(v=>`${v.number}. ${v.text}`).join(' '):ref[1];return `<button type="button" onclick="openBibleReference('${ref[0].replace(/'/g,"\\'")}')" class="text-left rounded-lg bg-slate-950 border border-slate-800 p-2.5 hover:border-slate-500 transition"><span class="block text-xs font-extrabold text-white">${escapeHTML(ref[0])}</span><span class="block text-[11px] text-slate-300 leading-relaxed mt-1">${escapeHTML(excerpt)}</span></button>`;}).join('')}</div></div>`).join('')}</div>`;
+}
+function setBibleStatus(text) { const el=document.getElementById('bible-search-status'); if(el)el.textContent=text; }
+function updateBibleConnectionStatus() {
+  const el=document.getElementById('bible-connection-status');
+  const help=document.getElementById('bible-library-help');
+  if(el){el.textContent=bibleData?'BSB loaded':'Bible file needed';el.className=bibleData?'text-[10px] px-2 py-1 rounded-full bg-emerald-950/70 border border-emerald-800 text-emerald-200':'text-[10px] px-2 py-1 rounded-full bg-amber-950/70 border border-amber-800 text-amber-200';}
+  if(help)help.textContent=bibleData?`Berean Standard Bible loaded (${bibleBooksAvailable().length} books available). Search and reading work without an API connection.`:'Could not find bible-bsb.json automatically. Download the free BSB JSON file, then upload it beside this HTML or use “Load Bible JSON file”.';
+}
+function populateBibleBookSelect() {
+  const select=document.getElementById('bible-book-select');
+  if(!select||!bibleData)return;
+  const books=bibleBooksAvailable();
+  select.innerHTML='<option value="">Select a book</option>'+books.map(b=>`<option value="${b[0]}">${escapeHTML(b[1])}</option>`).join('');
+  if(!bibleCurrentBook&&books.length)select.value=books[0][0];
+  else if(bibleCurrentBook)select.value=bibleCurrentBook;
+  updateBibleChapterOptions();
+}
+function updateBibleChapterOptions() {
+  const bookSelect=document.getElementById('bible-book-select');
+  const chapterSelect=document.getElementById('bible-chapter-select');
+  if(!bookSelect||!chapterSelect||!bibleData)return;
+  const code=bookSelect.value;
+  const chapters=(bibleData[code]||[]);
+  chapterSelect.innerHTML=chapters.map((_,i)=>`<option value="${i+1}">Chapter ${i+1}</option>`).join('');
+  chapterSelect.value=String(Math.min(Number(chapterSelect.value)||1,chapters.length||1));
+}
+function renderBibleTab() {
+  updateBibleConnectionStatus();
+  if(bibleData)populateBibleBookSelect();
+  else loadBibleData();
+}
+function normalizeBsbDataset(raw) {
+  // Accept either the compact BSB schema (books -> chapters -> verse strings)
+  // or a USFM-code keyed dataset. Convert both to the reader's internal shape.
+  if (raw && raw.GEN && raw.REV) return raw;
+  if (!raw || !Array.isArray(raw.books)) throw new Error('Expected a BSB JSON file containing a books array.');
+  const normalized = {};
+  const norm = value => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  for (const book of raw.books) {
+    const candidates = [book.name, book.id, book.abbrev, book.abbreviation].map(norm);
+    const match = BIBLE_BOOKS.find(([code, name, aliases]) => {
+      const names = [name, code, ...aliases].map(norm);
+      return candidates.some(candidate => candidate && names.includes(candidate));
+    });
+    if (!match) continue;
+    let chapters = book.chapters || [];
+    if (chapters.length && !Array.isArray(chapters[0])) {
+      chapters = chapters.map(ch => {
+        if (Array.isArray(ch.verses)) return ch.verses.map(v => typeof v === 'string' ? v : (v.text || ''));
+        return [];
+      });
+    }
+    normalized[match[0]] = chapters.map(ch => {
+      if (!Array.isArray(ch)) return [];
+      return ch.map(v => typeof v === 'string' ? v : (v && (v.text || v.content) || ''));
+    });
+  }
+  const missing = BIBLE_BOOKS.filter(b => !normalized[b[0]]);
+  if (missing.length) throw new Error(`BSB file is missing ${missing.length} books: ${missing.slice(0,5).map(b=>b[1]).join(', ')}.`);
+  return normalized;
+}
+
+async function loadBibleData() {
+  if(bibleData||bibleDataLoading)return;
+  bibleDataLoading=true;
+  setBibleStatus('Loading the free Berean Standard Bible text…');
+  try {
+    const response=await fetch('./bible-bsb.json',{cache:'force-cache'});
+    if(!response.ok)throw new Error(`File not found (${response.status})`);
+    const raw=await response.json();
+    bibleData=normalizeBsbDataset(raw);
+    updateBibleConnectionStatus();
+    populateBibleBookSelect();
+    setBibleStatus('Berean Standard Bible loaded. Search by verse reference or keyword.');
+    refreshSongScriptureDisplays();
+  } catch(err) {
+    console.warn('Automatic BSB load failed; use the file picker:',err);
+    updateBibleConnectionStatus();
+    setBibleStatus(`Automatic load failed (${err.message}). Choose bible-bsb.json with “Load Bible JSON file”. If opening the page directly from your computer, use a local web server for automatic loading.`);
+  } finally { bibleDataLoading=false; }
+}
+async function loadBibleFile(event) {
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  try {
+    setBibleStatus(`Reading ${file.name}…`);
+    const data=JSON.parse(await file.text());
+    // The supplied BSB file uses { books: [{ id, name, chapters: [[verseText]] }] },
+    // while older builds expected a GEN/EXO keyed object. Normalize both formats.
+    const normalized=normalizeBsbDataset(data);
+    const available=BIBLE_BOOKS.filter(b=>Array.isArray(normalized[b[0]])&&normalized[b[0]].length>0);
+    if(available.length!==66)throw new Error(`Expected all 66 books; found ${available.length}.`);
+    bibleData=normalized;
+    bibleCurrentBook='';
+    bibleCurrentChapter=1;
+    updateBibleConnectionStatus();
+    populateBibleBookSelect();
+    setBibleStatus(`Loaded ${file.name}: all 66 books are ready for reading and search.`);
+    refreshSongScriptureDisplays();
+  } catch(err) {
+    console.error('BSB Bible file load failed:',err);
+    setBibleStatus(`Could not load Bible file: ${err.message}`);
+  } finally {
+    // Permit selecting the same file again after correcting an issue.
+    if(event.target)event.target.value='';
+  }
+}
+function refreshSongScriptureDisplays() {
+  if(typeof renderSongsBank==='function')renderSongsBank();
+  if(typeof renderStage==='function'&&currentStageLineup)renderStage();
+}
+function renderBiblePassage(bookCode, chapterNumber, startVerse=1, endVerse=null) {
+  const book=getBibleBook(bookCode);
+  const chapters=bibleData&&bibleData[bookCode];
+  const chapter=chapters&&chapters[chapterNumber-1];
+  const reader=document.getElementById('bible-reader');
+  if(!book||!chapter||!reader){setBibleStatus('That Bible chapter could not be found.');return;}
+  const end=Math.min(endVerse||chapter.length,chapter.length);
+  const verses=[];
+  for(let v=Math.max(1,startVerse);v<=end;v++){const text=bibleVerse(bookCode,chapterNumber,v);if(text)verses.push(`<p class="text-sm leading-7 text-slate-100"><sup class="text-slate-500 font-bold mr-1">${v}</sup>${escapeHTML(text)}</p>`);}
+  bibleCurrentBook=bookCode;bibleCurrentChapter=chapterNumber;
+  reader.classList.remove('hidden');
+  reader.innerHTML=`<div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3"><div><h3 class="text-base font-extrabold text-white">${escapeHTML(book.name)} ${chapterNumber}${startVerse>1||endVerse?' · verses '+startVerse+'–'+end:''}</h3><p class="text-[10px] text-slate-500">Berean Standard Bible (BSB) · Public domain</p></div><div class="flex gap-2"><button type="button" onclick="navigateBibleChapter(-1)" class="rounded-lg px-3 py-1.5 bg-slate-800 border border-slate-700 text-xs text-white">Previous</button><button type="button" onclick="navigateBibleChapter(1)" class="rounded-lg px-3 py-1.5 bg-slate-800 border border-slate-700 text-xs text-white">Next</button></div></div><div class="space-y-1">${verses.join('')}</div>`;
+  setBibleStatus(`Displaying ${book.name} ${chapterNumber}.`);
+}
+function navigateBibleChapter(delta) {
+  if(!bibleData||!bibleCurrentBook)return;
+  const total=(bibleData[bibleCurrentBook]||[]).length;
+  let next=bibleCurrentChapter+delta, code=bibleCurrentBook;
+  if(next<1||next>total){
+    const idx=BIBLE_BOOKS.findIndex(b=>b[0]===code);
+    const nextBook=BIBLE_BOOKS[idx+delta];
+    if(!nextBook||!bibleData[nextBook[0]])return;
+    code=nextBook[0];next=delta>0?1:(bibleData[code]||[]).length;
+  }
+  renderBiblePassage(code,next);
+}
+function readSelectedBibleChapter() {
+  const code=document.getElementById('bible-book-select')?.value;
+  const chapter=Number(document.getElementById('bible-chapter-select')?.value||1);
+  if(code)renderBiblePassage(code,chapter);
+}
+function renderBibleSearchResult(ref, text) {
+  return `<button type="button" onclick="openBibleReference('${String(ref).replace(/'/g,"\\'")}')" class="w-full text-left rounded-xl border border-slate-800 bg-slate-950 p-3 hover:border-slate-500 transition"><span class="block text-xs font-extrabold text-white">${escapeHTML(ref)}</span><span class="block text-xs text-slate-300 leading-relaxed mt-1">${escapeHTML(text)}</span><span class="block text-[10px] text-slate-500 mt-2">Open passage</span></button>`;
+}
+async function searchBible(event) {
+  if(event)event.preventDefault();
+  const query=(document.getElementById('bible-search-input')?.value||'').trim();
+  if(!query)return;
+  bibleLastSearch=query;
+  const results=document.getElementById('bible-search-results');
+  const reader=document.getElementById('bible-reader');
+  if(!bibleData){setBibleStatus('Load bible-bsb.json first. Use the download link above, then select the file or upload it beside this HTML.');return;}
+  if(reader){reader.classList.add('hidden');reader.innerHTML='';}
+  if(results)results.innerHTML='';
+  const parsed=parseBibleReference(query);
+  if(parsed){
+    const passage=getBibleReferenceContent(query);
+    if(!passage){setBibleStatus(`No passage found for “${query}”. Check the book, chapter, and verse number.`);return;}
+    setBibleStatus(`Found ${passage.reference}.`);
+    renderBiblePassage(parsed.book.code,parsed.chapter,parsed.isChapter?1:parsed.start,parsed.isChapter?null:parsed.end);
+    return;
+  }
+  const terms=query.toLowerCase().split(/\s+/).filter(Boolean);
+  const matches=[];
+  for(const [code,chapters] of Object.entries(bibleData)){
+    const book=getBibleBook(code);if(!book||!Array.isArray(chapters))continue;
+    for(let c=0;c<chapters.length;c++){
+      const verses=chapters[c]||[];
+      for(let v=0;v<verses.length;v++){
+        const text=normalizeBibleText(verses[v]);
+        const lower=text.toLowerCase();
+        const match=lower.includes(query.toLowerCase()) || (terms.length>1&&terms.every(t=>lower.includes(t)));
+        if(match)matches.push({ref:`${book.name} ${c+1}:${v+1}`,text});
+        if(matches.length>=40)break;
+      }
+      if(matches.length>=40)break;
+    }
+    if(matches.length>=40)break;
+  }
+  if(!matches.length){setBibleStatus(`No BSB verses found for “${query}”. Try a shorter keyword or phrase.`);return;}
+  setBibleStatus(`Showing ${matches.length}${matches.length===40?'+':''} result(s) for “${query}”.`);
+  if(results)results.innerHTML=matches.map(m=>renderBibleSearchResult(m.ref,m.text)).join('');
+}
+async function openBibleReference(reference) {
+  switchTab('bible');
+  const input=document.getElementById('bible-search-input');
+  if(input)input.value=reference;
+  if(!bibleData)await loadBibleData();
+  searchBible();
+}
+
+function renderHome() {
+    const grid = document.getElementById('home-lineups-grid');
+    if (!grid) return;
+    grid.innerHTML = lineups.slice(0, 3).map(l => {
+        const songPills = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean).map((s, idx) => `<span class="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-200 border border-slate-700 truncate max-w-full">${idx+1}. ${s.title}</span>`).join('');
+        return `
+        <div class="rounded-2xl border border-slate-800 bg-slate-900/90 backdrop-blur-xl p-4 sm:p-5 flex flex-col justify-between shadow-xl min-w-0">
+        <div class="space-y-3 min-w-0">
+        <div class="flex justify-between items-start gap-2">
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-800 border border-slate-700 text-white flex-shrink-0">${l.date}</span>
+        <span class="text-xs text-slate-300 truncate"><i data-lucide="user" class="w-3.5 h-3.5 inline text-slate-300"></i> ${l.leader || 'Team'}</span>
+        </div>
+        <h4 class="font-bold text-base sm:text-lg text-white truncate">${l.title}</h4>
+        <p class="text-xs text-slate-300 line-clamp-2 break-words">${l.notes || ''}</p>
+        <div class="space-y-1 pt-2"><p class="text-[11px] font-semibold uppercase tracking-wider text-slate-300">Tracklist:</p><div class="flex flex-wrap gap-1.5">${songPills}</div></div>
+        </div>
+        <div class="pt-4 sm:pt-5 mt-4 border-t border-slate-800">
+        <button onclick="startPresentation('${l.id}', 0)" class="w-full py-2.5 rounded-xl btn-gradient-bw font-extrabold text-slate-950 text-xs sm:text-sm shadow-md flex items-center justify-center space-x-2">
+        <i data-lucide="play" class="w-4 h-4 fill-current"></i><span>Launch Presentation</span>
+        </button>
+        </div>
+        </div>`;
+    }).join('');
+    if (window.lucide) lucide.createIcons();
+}
+
+function handleGlobalSearch(query) {
+    const container = document.getElementById('global-search-results-container');
+    const grid = document.getElementById('global-search-grid');
+    if (!query.trim()) { container.classList.add('hidden'); return; }
+    container.classList.remove('hidden');
+    const matches = songs.filter(s => s.title.toLowerCase().includes(query.toLowerCase()) || s.singer.toLowerCase().includes(query.toLowerCase()));
+    document.getElementById('global-search-count').innerText = `Search Results (${matches.length})`;
+    grid.innerHTML = matches.map(s => `
+    <div onclick="alertSongLyrics('${s.id}')" class="p-3.5 sm:p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-600 cursor-pointer flex justify-between items-center gap-2 min-w-0">
+    <div class="min-w-0 flex-1"><h4 class="font-bold text-white text-sm sm:text-base truncate">${s.title}</h4><p class="text-xs text-slate-300 truncate">${s.singer} • Key: <span class="text-white font-bold">${s.originalKey}</span></p></div>
+    <span class="text-xs px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 text-white font-medium border border-slate-700 flex-shrink-0">View</span>
+    </div>`).join('');
+    if (window.lucide) lucide.createIcons();
+}
+
+function alertSongLyrics(id) {
+    const s = songs.find(x => x.id === id);
+    if (s) {
+        alert(`${s.title} (${s.originalKey})\n\n` + s.lyrics.replace(/\[[^\]]+\]/g, ''));
+    }
+}
+
+function setLanguageFilter(lang) {
+    activeLanguageFilter = (activeLanguageFilter === lang) ? 'All' : lang;
+    renderSongsBank();
+}
+
+function renderSongsBank() {
+    const searchInput = document.getElementById('song-bank-search');
+    const search = searchInput ? searchInput.value.toLowerCase() : '';
+    const list = document.getElementById('songs-bank-list');
+    if (!list) return;
+
+    const engCard = document.getElementById('filter-card-english');
+    const tagCard = document.getElementById('filter-card-tagalog');
+    if (engCard) engCard.className = `filter-card p-3 sm:p-4 rounded-xl sm:rounded-2xl cursor-pointer flex items-center justify-between group min-w-0 ${activeLanguageFilter === 'English' ? 'filter-card-active' : ''}`;
+    if (tagCard) tagCard.className = `filter-card p-3 sm:p-4 rounded-xl sm:rounded-2xl cursor-pointer flex items-center justify-between group min-w-0 ${activeLanguageFilter === 'Tagalog' ? 'filter-card-active' : ''}`;
+
+    const engCount = songs.filter(s => (s.language || detectSongLanguage(s.title, s.lyrics)) === 'English').length;
+    const tagCount = songs.filter(s => (s.language || detectSongLanguage(s.title, s.lyrics)) === 'Tagalog').length;
+    const bEng = document.getElementById('badge-english-count');
+    const bTag = document.getElementById('badge-tagalog-count');
+    if (bEng) bEng.innerText = engCount;
+    if (bTag) bTag.innerText = tagCount;
+
+    const filtered = songs.filter(s => {
+        const resolvedLang = s.language && s.language !== 'Auto' ? s.language : detectSongLanguage(s.title, s.lyrics);
+        const matchesLang = activeLanguageFilter === 'All' || resolvedLang === activeLanguageFilter;
+        const matchesSearch = s.title.toLowerCase().includes(search) || 
+                              s.singer.toLowerCase().includes(search) || 
+                              (s.lyrics && s.lyrics.toLowerCase().includes(search));
+        return matchesLang && matchesSearch;
+    });
+
+    list.innerHTML = filtered.length === 0 ? `<div class="p-8 sm:p-12 text-center text-slate-300 glass-panel rounded-2xl text-xs sm:text-base">No songs found in this category.</div>` : filtered.map(s => {
+        const semitones = songTranspositions[s.id] || 0;
+        const currentKey = transposeChord(s.originalKey, semitones);
+        const isExpanded = expandedSongId === s.id;
+        const hasYt = !!getYouTubeId(s.youtube);
+        const hasSp = !!getSpotifyTrackId(s.spotify);
+        const resolvedLang = s.language && s.language !== 'Auto' ? s.language : detectSongLanguage(s.title, s.lyrics);
+
+        return `
+        <div class="rounded-2xl transition-all overflow-hidden min-w-0 ${isExpanded ? 'song-card-glass-expanded' : 'song-card-glass'}">
+        <div class="p-3.5 sm:p-4 flex flex-col space-y-3 min-w-0">
+        
+        <!-- Header row -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 min-w-0">
+            <div class="flex-1 cursor-pointer flex items-center space-x-2.5 sm:space-x-3 min-w-0" onclick="toggleSongExpand('${s.id}')">
+            <div class="p-2 sm:p-2.5 rounded-xl flex-shrink-0 ${isExpanded ? 'bg-white text-slate-950' : 'bg-slate-800 text-white'}">
+                <i data-lucide="music" class="w-4 h-4"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+                <div class="flex items-center space-x-2 min-w-0">
+                    <h3 class="text-sm sm:text-base font-bold text-white truncate">${s.title}</h3>
+                    <span class="text-[9px] sm:text-[10px] font-bold px-1.5 sm:px-2 py-0.5 rounded-md bg-slate-800 text-slate-200 border border-slate-700 flex-shrink-0">${resolvedLang}</span>
+                </div>
+                <p class="text-[11px] sm:text-xs text-slate-300 font-medium truncate">${s.singer || 'Unknown Artist'}</p>
+            </div>
+            </div>
+
+            <div class="flex items-center space-x-1.5 sm:space-x-2 self-start sm:self-center flex-wrap sm:flex-nowrap gap-y-2">
+            <div class="flex items-center bg-slate-950 border border-slate-800 rounded-xl px-2 py-1 space-x-1 flex-shrink-0">
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-300">Key:</span>
+            <span class="text-xs font-extrabold text-white w-4 sm:w-5 text-center">${currentKey}</span>
+            <button onclick="changeKey('${s.id}', -1)" class="w-5 h-5 rounded bg-slate-800 text-white font-bold text-xs hover:bg-slate-700">-</button>
+            <button onclick="changeKey('${s.id}', 1)" class="w-5 h-5 rounded bg-slate-800 text-white font-bold text-xs hover:bg-slate-700">+</button>
+            </div>
+            <button onclick="openSongModal('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition" title="Edit song"><i data-lucide="edit" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></button>
+            <button onclick="deleteSong('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition" title="Delete song"><i data-lucide="trash-2" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></button>
+            <button onclick="toggleSongExpand('${s.id}')" class="p-1.5 sm:p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition" title="View lyrics"><i data-lucide="eye" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i></button>
+            </div>
+        </div>
+
+        <!-- EXPLICIT MEDIA BUTTONS WITH FULL LABELS & ICONS -->
+        <div class="flex flex-wrap gap-2 pt-1 border-t border-slate-800 min-w-0">
+            ${hasYt ? `
+            <button onclick="openMediaModal('${s.id}', 'youtube')" class="btn-gradient-dark px-2.5 sm:px-3 py-1.5 rounded-xl text-slate-100 font-bold text-[11px] sm:text-xs flex items-center space-x-1.5 min-w-0">
+                <span class="truncate">Watch on Youtube</span>
+                <i data-lucide="youtube" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white flex-shrink-0"></i>
+            </button>` : `
+            <button onclick="openSongModal('${s.id}')" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-[11px] sm:text-xs flex items-center space-x-1.5 min-w-0">
+                <span class="truncate">Add Youtube</span>
+                <i data-lucide="youtube" class="w-3.5 h-3.5 opacity-50 flex-shrink-0"></i>
+            </button>`}
+
+            ${hasSp ? `
+            <button onclick="openMediaModal('${s.id}', 'spotify')" class="btn-gradient-dark px-2.5 sm:px-3 py-1.5 rounded-xl text-slate-100 font-bold text-[11px] sm:text-xs flex items-center space-x-1.5 min-w-0">
+                <span class="truncate">Listen to Spotify</span>
+                <i data-lucide="disc" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white flex-shrink-0"></i>
+            </button>` : `
+            <button onclick="openSongModal('${s.id}')" class="px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-[11px] sm:text-xs flex items-center space-x-1.5 min-w-0">
+                <span class="truncate">Add Spotify</span>
+                <i data-lucide="disc" class="w-3.5 h-3.5 opacity-50 flex-shrink-0"></i>
+            </button>`}
+        </div>
+        <div class="pt-1">
+            <button onclick="addSongToLineup('${s.id}')" class="btn-gradient-bw w-full sm:w-auto px-3 py-2 rounded-xl text-slate-950 font-extrabold text-[11px] sm:text-xs flex items-center justify-center gap-1.5">
+                <i data-lucide="list-plus" class="w-4 h-4"></i><span>Add to Lineup</span>
+            </button>
+        </div>
+        </div>
+        ${isExpanded ? `<div class="p-3.5 sm:p-6 border-t border-slate-800 bg-slate-950/95 overflow-x-auto min-w-0">
+            <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="text-[10px] sm:text-xs text-slate-400">Smart chord detection: bracketed chords + chord-only rows; section labels preserved</span>
+                <button type="button" onclick="toggleSongBankChords()" class="px-3 py-1.5 rounded-lg border text-[11px] font-bold ${showSongBankChords ? 'bg-slate-800 border-slate-600 text-white' : 'bg-slate-900 border-slate-800 text-slate-300'}" aria-pressed="${showSongBankChords}">
+                    ${showSongBankChords ? 'Hide Chords' : 'Show Chords'}
+                </button>
+            </div>
+            ${renderLyricsHTML(s.lyrics, semitones, showSongBankChords)}
+            ${renderSongScriptureSuggestions(s)}
+        </div>` : ''}
+        </div>`;
+    }).join('');
+    if (window.lucide) lucide.createIcons();
+}
+
+function toggleSongExpand(id) {
+    expandedSongId = expandedSongId === id ? null : id;
+    renderSongsBank();
+}
+
+function changeKey(id, delta) {
+    songTranspositions[id] = (Number(songTranspositions[id]) || 0) + Number(delta);
+    lineups.forEach(lineup => {
+        if (Array.isArray(lineup.songIds) && lineup.songIds.includes(id)) {
+            lineup.transpositions = { ...(lineup.transpositions || {}), [id]: songTranspositions[id] };
+        }
+    });
+    renderSongsBank();
+}
+
+function toggleSongBankChords() {
+    showSongBankChords = !showSongBankChords;
+    renderSongsBank();
+}
+
+function deleteSong(id) {
+    if (confirm('Delete this song?')) {
+        songs = songs.filter(s => s.id !== id);
+        saveData();
+        renderSongsBank();
+    }
+}
+
+function renderLineupsView() {
+    const container = document.getElementById('lineups-view-container');
+    if (!container) return;
+    container.innerHTML = lineups.map(l => {
+        const lineupSongs = l.songIds.map(id => songs.find(s => s.id === id)).filter(Boolean);
+        return `
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 backdrop-blur-xl flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-4 min-w-0 shadow-lg">
+        <div class="min-w-0 flex-1 break-words">
+        <span class="text-xs font-bold text-slate-200">${l.date}</span> <span class="text-slate-500">•</span> <span class="text-xs text-slate-300">${l.leader || 'Team'}</span>
+        <h4 class="font-bold text-white text-base sm:text-lg mt-0.5 break-words">${l.title}</h4>
+        <p class="text-xs text-slate-300 mt-1">${lineupSongs.length} ${lineupSongs.length === 1 ? 'song' : 'songs'} in setlist</p>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-800">
+        <button onclick="startPresentation('${l.id}', 0)" class="flex-1 sm:flex-initial px-3.5 sm:px-4 py-2 rounded-xl btn-gradient-bw font-extrabold text-slate-950 text-xs flex items-center justify-center space-x-1.5"><i data-lucide="play" class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current"></i><span>Launch</span></button>
+        <button onclick="editLineup('${l.id}')" title="Edit lineup" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200"><i data-lucide="edit-3" class="w-4 h-4"></i></button>
+        <button onclick="deleteLineup('${l.id}')" title="Delete lineup" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300"><i data-lucide="trash-2" class="w-4 h-4"></i></button>
+        </div>
+        </div>`;
+    }).join('');
+    if (window.lucide) lucide.createIcons();
+}
+
+function deleteLineup(id) {
+    if (confirm('Delete lineup?')) {
+        lineups = lineups.filter(l => l.id !== id);
+        saveData();
+        renderLineupsView();
+    }
+}
+
+function startPresentation(lineupId, songIdx) {
+    currentStageLineup = lineups.find(l => l.id === lineupId);
+    showStageChords = true;
+    if (!currentStageLineup) return;
+    currentStageSongIdx = songIdx;
+    // Use one per-song transpose map in Song Bank and Live Presentation.
+    // Import legacy lineup shifts only if this song has no shared value yet.
+    Object.entries(currentStageLineup.transpositions || {}).forEach(([id, value]) => {
+        if (songTranspositions[id] === undefined) songTranspositions[id] = Number(value) || 0;
+    });
+    document.getElementById('presentation-modal').classList.remove('hidden');
+    renderStage();
+}
+
+function renderStage() {
+    if (!currentStageLineup) return;
+    document.getElementById('stage-lineup-title').innerText = currentStageLineup.title;
+    document.getElementById('stage-lineup-leader').innerText = `Leader: ${currentStageLineup.leader || 'Team'}`;
+
+    document.getElementById('stage-song-pills').innerHTML = currentStageLineup.songIds.map((sId, idx) => {
+        const s = songs.find(x => x.id === sId);
+        if (!s) return '';
+        const active = idx === currentStageSongIdx;
+        return `<button onclick="currentStageSongIdx=${idx}; renderStage();" class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all ${active ? 'btn-gradient-bw text-slate-950 shadow-md' : 'bg-slate-900 border border-slate-800 text-slate-300'}">${idx+1}. ${s.title}</button>`;
+    }).join('');
+
+    const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
+    const song = songs.find(s => s.id === currentSongId);
+    if (!song) return;
+
+    const semitones = songTranspositions[currentSongId] || 0;
+    document.getElementById('stage-song-title').innerText = song.title;
+    document.getElementById('stage-song-singer').innerText = song.singer;
+    document.getElementById('stage-song-key').innerText = transposeChord(song.originalKey, semitones);
+    document.getElementById('stage-lyrics-box').innerHTML = renderLyricsHTML(song.lyrics, semitones, showStageChords) + renderSongScriptureSuggestions(song);
+    const chordButton = document.getElementById('stage-chords-btn');
+    if (chordButton) {
+        chordButton.setAttribute('aria-pressed', String(showStageChords));
+        chordButton.innerHTML = `<i data-lucide="${showStageChords ? 'eye' : 'eye-off'}" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Hide Chords' : 'Show Chords'}</span>`;
+    }
+    document.getElementById('stage-track-counter').innerText = `${currentStageSongIdx + 1} of ${currentStageLineup.songIds.length}`;
+
+    document.getElementById('stage-prev-btn').disabled = currentStageSongIdx === 0;
+    document.getElementById('stage-next-btn').disabled = currentStageSongIdx === currentStageLineup.songIds.length - 1;
+    if (window.lucide) lucide.createIcons();
+}
+
+function navigateStageSong(delta) {
+    currentStageSongIdx += delta;
+    renderStage();
+}
+
+function adjustStageKey(delta) {
+    const currentSongId = currentStageLineup.songIds[currentStageSongIdx];
+    songTranspositions[currentSongId] = (Number(songTranspositions[currentSongId]) || 0) + Number(delta);
+    if (currentStageLineup) {
+        currentStageLineup.transpositions = { ...(currentStageLineup.transpositions || {}), [currentSongId]: songTranspositions[currentSongId] };
+    }
+    renderStage();
+}
+
+function toggleStageChords() {
+    showStageChords = !showStageChords;
+    const btn = document.getElementById('stage-chords-btn');
+    if (btn) {
+        btn.setAttribute('aria-pressed', String(showStageChords));
+        btn.title = showStageChords ? 'Hide chords' : 'Show chords';
+        btn.className = showStageChords
+            ? 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-800 border-slate-600 text-white'
+            : 'px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border text-[11px] sm:text-xs font-bold flex items-center space-x-1 bg-slate-900 border-slate-800 text-slate-300';
+        btn.innerHTML = `<i data-lucide="${showStageChords ? 'eye' : 'eye-off'}" class="w-3.5 h-3.5"></i><span>${showStageChords ? 'Hide Chords' : 'Show Chords'}</span>`;
+    }
+    renderStage();
+}
+
+function exitPresentation() {
+    document.getElementById('presentation-modal').classList.add('hidden');
+}
+
+function openSongModal(id = null) {
+    document.getElementById('edit-song-id').value = id || '';
+    if (id) {
+        const s = songs.find(x => x.id === id);
+        document.getElementById('song-modal-title').innerText = 'Edit Song';
+        document.getElementById('form-song-title').value = s.title;
+        document.getElementById('form-song-singer').value = s.singer || '';
+        document.getElementById('form-song-key').value = s.originalKey;
+        document.getElementById('form-song-language').value = s.language || 'Auto';
+        document.getElementById('form-song-youtube').value = s.youtube || '';
+        document.getElementById('form-song-spotify').value = s.spotify || '';
+        document.getElementById('form-song-lyrics').value = s.lyrics;
+    } else {
+        document.getElementById('song-modal-title').innerText = 'Add New Song';
+        document.getElementById('form-song-title').value = '';
+        document.getElementById('form-song-singer').value = '';
+        document.getElementById('form-song-key').value = 'C';
+        document.getElementById('form-song-language').value = 'Auto';
+        document.getElementById('form-song-youtube').value = '';
+        document.getElementById('form-song-spotify').value = '';
+        document.getElementById('form-song-lyrics').value = '';
+    }
+    document.getElementById('song-modal').classList.remove('hidden');
+}
+
+function closeSongModal() { document.getElementById('song-modal').classList.add('hidden'); }
+
+function saveSongForm(e) {
+    e.preventDefault();
+    const id = document.getElementById('edit-song-id').value;
+    const title = document.getElementById('form-song-title').value;
+    const lyrics = document.getElementById('form-song-lyrics').value;
+    const langSelect = document.getElementById('form-song-language').value;
+    
+    const resolvedLanguage = langSelect === 'Auto' ? detectSongLanguage(title, lyrics) : langSelect;
+
+    const data = {
+        title,
+        singer: document.getElementById('form-song-singer').value,
+        originalKey: document.getElementById('form-song-key').value,
+        language: resolvedLanguage,
+        youtube: document.getElementById('form-song-youtube').value,
+        spotify: document.getElementById('form-song-spotify').value,
+        lyrics
+    };
+
+    if (id) {
+        songs = songs.map(s => s.id === id ? { ...s, ...data } : s);
+    } else {
+        songs.unshift({ id: 's_' + Date.now(), ...data });
+    }
+    saveData();
+    closeSongModal();
+    renderSongsBank();
+}
+
+function renderLineupSongSelection() {
+    const container = document.getElementById('lineup-songs-checkboxes');
+    if (!container) return;
+    const selected = new Set(lineupDraftSongIds);
+
+    const songChoices = songs.map(s => `
+        <label class="flex items-center justify-between gap-2 p-2 rounded-xl bg-slate-900 border border-slate-800 text-xs cursor-pointer hover:border-slate-600 transition min-w-0">
+            <span class="min-w-0 flex-1 truncate"><span class="font-bold text-slate-200 truncate">${escapeHTML(s.title)}</span><span class="text-slate-400 truncate"> (${escapeHTML(s.singer || 'Unknown artist')})</span></span>
+            <input type="checkbox" name="lineup-song" value="${escapeHTML(s.id)}" ${selected.has(s.id) ? 'checked' : ''}
+                onchange="toggleLineupSong('${escapeHTML(s.id)}', this.checked)"
+                class="rounded bg-slate-950 border-slate-700 text-white focus:ring-white shrink-0">
+        </label>`).join('');
+
+    container.innerHTML = songChoices || '<p class="text-xs text-slate-300 p-2">No songs in song bank yet.</p>';
+    renderLineupSelectedOrder();
+    if (window.lucide) lucide.createIcons();
+}
+
+function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[char]));
+}
+
+function renderLineupSelectedOrder() {
+    const container = document.getElementById('lineup-selected-order');
+    if (!container) return;
+
+    if (!lineupDraftSongIds.length) {
+        container.innerHTML = '<p class="text-xs text-slate-300 py-1.5">No songs selected yet. Select songs above to build setlist.</p>';
+        return;
+    }
+
+    container.innerHTML = lineupDraftSongIds.map((id, index) => {
+        const song = songs.find(item => item.id === id);
+        if (!song) return '';
+        return `
+          <div class="flex items-center gap-2 p-1.5 rounded-lg bg-slate-900 border border-slate-800 min-w-0">
+            <span class="w-5 h-5 shrink-0 rounded bg-slate-800 text-white flex items-center justify-center text-[11px] font-bold">${index + 1}</span>
+            <span class="min-w-0 flex-1 text-xs font-semibold text-slate-200 truncate">${escapeHTML(song.title)}</span>
+            <div class="flex items-center gap-1 shrink-0">
+              <button type="button" onclick="moveLineupSong(${index}, -1)" ${index === 0 ? 'disabled' : ''} class="w-6 h-6 rounded bg-slate-800 text-white disabled:opacity-35 text-xs flex items-center justify-center">↑</button>
+              <button type="button" onclick="moveLineupSong(${index}, 1)" ${index === lineupDraftSongIds.length - 1 ? 'disabled' : ''} class="w-6 h-6 rounded bg-slate-800 text-white disabled:opacity-35 text-xs flex items-center justify-center">↓</button>
+              <button type="button" onclick="removeLineupSong('${escapeHTML(id)}')" class="w-6 h-6 rounded bg-slate-800 text-slate-300 text-xs flex items-center justify-center">×</button>
+            </div>
+          </div>`;
+    }).join('');
+}
+
+function moveLineupSong(index, direction) {
+    const target = index + direction;
+    if (target < 0 || target >= lineupDraftSongIds.length) return;
+    [lineupDraftSongIds[index], lineupDraftSongIds[target]] =
+        [lineupDraftSongIds[target], lineupDraftSongIds[index]];
+    renderLineupSongSelection();
+}
+
+function removeLineupSong(id) {
+    lineupDraftSongIds = lineupDraftSongIds.filter(songId => songId !== id);
+    renderLineupSongSelection();
+}
+
+function toggleLineupSong(id, checked) {
+    if (checked && !lineupDraftSongIds.includes(id)) lineupDraftSongIds.push(id);
+    if (!checked) lineupDraftSongIds = lineupDraftSongIds.filter(songId => songId !== id);
+    renderLineupSongSelection();
+}
+
+let pendingLineupSongId = null;
+
+function addSongToLineup(songId) {
+    const song = songs.find(item => item.id === songId);
+    if (!song) return;
+    pendingLineupSongId = songId;
+    const title = document.getElementById('add-lineup-song-title');
+    if (title) title.innerText = song.title;
+
+    const list = document.getElementById('add-lineup-existing-list');
+    if (lineups.length) {
+        list.innerHTML = lineups.map(lineup => `
+          <button type="button" onclick="addSongToExistingLineup('${escapeHTML(lineup.id)}')" class="w-full text-left p-3 rounded-xl bg-slate-950 border border-slate-800 hover:border-slate-500 transition flex items-center justify-between gap-3 min-w-0">
+            <span class="min-w-0 flex-1"><span class="block text-xs font-bold text-white truncate">${escapeHTML(lineup.title || 'Untitled Lineup')}</span><span class="block text-[10px] text-slate-400 mt-0.5">${(lineup.songIds || []).length} songs${lineup.date ? ' · ' + escapeHTML(lineup.date) : ''}</span></span>
+            <i data-lucide="list-plus" class="w-4 h-4 text-slate-300 flex-shrink-0"></i>
+          </button>`).join('');
+    } else {
+        list.innerHTML = '<p class="text-xs text-slate-400 p-3 rounded-xl bg-slate-950 border border-slate-800">You don’t have any saved lineups yet. Create a new one to get started.</p>';
+    }
+    document.getElementById('add-lineup-choice-modal').classList.remove('hidden');
+    if (window.lucide) lucide.createIcons();
+}
+
+function closeAddLineupChoice() {
+    const modal = document.getElementById('add-lineup-choice-modal');
+    if (modal) modal.classList.add('hidden');
+    pendingLineupSongId = null;
+}
+
+function chooseCreateNewLineup() {
+    const songId = pendingLineupSongId;
+    closeAddLineupChoice();
+    if (songId) openLineupModal(songId);
+}
+
+function addSongToExistingLineup(lineupId) {
+    const songId = pendingLineupSongId;
+    const lineup = lineups.find(item => item.id === lineupId);
+    if (!lineup || !songId) return;
+    if (!Array.isArray(lineup.songIds)) lineup.songIds = [];
+    if (lineup.songIds.includes(songId)) {
+        alert('This song is already in that lineup.');
+        return;
+    }
+    lineup.songIds.push(songId);
+    if (!lineup.transpositions) lineup.transpositions = {};
+    saveData();
+    closeAddLineupChoice();
+    renderLineupsView();
+    alert('Song added to "' + (lineup.title || 'Untitled Lineup') + '".');
+}
+
+function openLineupModal(preselectedSongId = null) {
+    editingLineupId = null;
+    lineupDraftSongIds = preselectedSongId && songs.some(song => song.id === preselectedSongId) ? [preselectedSongId] : [];
+    document.getElementById('lineup-modal-title').innerText = 'Create Service Lineup';
+    document.getElementById('lineup-submit-btn').innerText = 'Create Lineup';
+    document.getElementById('form-lineup-title').value = '';
+    document.getElementById('form-lineup-date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('form-lineup-leader').value = '';
+    document.getElementById('form-lineup-notes').value = '';
+    renderLineupSongSelection();
+    document.getElementById('lineup-modal').classList.remove('hidden');
+}
+
+function editLineup(id) {
+    const lineup = lineups.find(item => item.id === id);
+    if (!lineup) return;
+
+    editingLineupId = id;
+    lineupDraftSongIds = [...(lineup.songIds || [])].filter(songId => songs.some(s => s.id === songId));
+    document.getElementById('lineup-modal-title').innerText = 'Edit Service Lineup';
+    document.getElementById('lineup-submit-btn').innerText = 'Save Changes';
+    document.getElementById('form-lineup-title').value = lineup.title || '';
+    document.getElementById('form-lineup-date').value = lineup.date || '';
+    document.getElementById('form-lineup-leader').value = lineup.leader || '';
+    document.getElementById('form-lineup-notes').value = lineup.notes || '';
+    renderLineupSongSelection();
+    document.getElementById('lineup-modal').classList.add('hidden');
+    document.getElementById('lineup-modal').classList.remove('hidden');
+}
+
+function closeLineupModal() {
+    document.getElementById('lineup-modal').classList.add('hidden');
+    editingLineupId = null;
+}
+
+function saveLineupForm(e) {
+    e.preventDefault();
+    if (lineupDraftSongIds.length === 0) {
+        alert('Select at least one song.');
+        return;
+    }
+
+    const data = {
+        title: document.getElementById('form-lineup-title').value.trim(),
+        date: document.getElementById('form-lineup-date').value,
+        leader: document.getElementById('form-lineup-leader').value.trim(),
+        notes: document.getElementById('form-lineup-notes').value.trim(),
+        songIds: [...lineupDraftSongIds]
+    };
+
+    if (editingLineupId) {
+        lineups = lineups.map(lineup => lineup.id === editingLineupId
+            ? { ...lineup, ...data, transpositions: lineup.transpositions || {} }
+            : lineup);
+    } else {
+        lineups.unshift({
+            id: 'l_' + Date.now(),
+            ...data,
+            transpositions: {}
+        });
+    }
+
+    saveData();
+    closeLineupModal();
+    renderLineupsView();
+}
+
+window.onload = async () => {
+    await loadSharedData();
+    renderHome();
+    if (window.lucide) lucide.createIcons();
+    startSharedSync();
+};
+</script>
+</body>
+</html>

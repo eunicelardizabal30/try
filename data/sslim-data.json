@@ -1510,22 +1510,6 @@
       "createdAt": "2026-11-09"
     }
   ],
-  "lineups": [
-    {
-      "id": "l_1795239281500",
-      "title": "Nov 22, 2026",
-      "date": "2026-11-22",
-      "leader": "Bebe",
-      "notes": "I stand in awe of you (beautiful beyond description)",
-      "songIds": [
-        "s_1794446621080",
-        "s_1794446076907",
-        "s_1794445620900"
-      ],
-      "transpositions": {
-        "s_1794446621080": -1
-      }
-    }
-  ],
-  "updatedAt": "2026-11-21T06:26:53.611Z"
+  "lineups": [],
+  "updatedAt": "2026-11-26T03:29:46.400Z"
 }
